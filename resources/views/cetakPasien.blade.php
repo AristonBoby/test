@@ -8,7 +8,7 @@
         .text-center{
             text-align: center;
             font-size: 11.5pt;
-            font-family: calibri;
+            font-family: ;
         }
         .uppercase{
             text-transform: uppercase;
