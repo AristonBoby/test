@@ -27,6 +27,18 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
       </ul>
+      <div class="col-md-11 ">
+        <div class="float-right">
+          <a class="text-dark " href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+          </form>
+        </div>
+      </div>
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <a href="{{Route('home')}}" class="brand-link">

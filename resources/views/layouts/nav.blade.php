@@ -78,15 +78,11 @@
           </li>
         </ul>
       </li>
+      
       <li class="nav-item">
-        <form method="POST" action="{{ route('logout') }}" x-data>
-          @csrf
-
-          <a href="{{ route('logout') }}"
-                   @click.prevent="$root.submit();">
-              {{ __('Log Out') }}
-          </a>
-      </form>
+        
+       
       </li>
+    
     </ul>
   </nav>
