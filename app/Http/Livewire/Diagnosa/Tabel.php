@@ -29,7 +29,7 @@ class Tabel extends Component
                 ->join('icd10','diagnosas.id_icd','=','icd10.icd_code')
                 ->join('pasiens','kunjungans.id_pasien','pasiens.id')
                 ->join('polis','kunjungans.id_poli','polis.id_poli')
-                ->whereBetween('kunjungans.tanggal',['2022-07-01','2022-07-30'])
+                ->whereBetween('kunjungans.tanggal',['2022-07-01','2022-07-31'])
                 ->select('diagnosas.id_diag',DB::raw('group_concat(diagnosas.id_icd)as icd'),DB::raw('group_concat(icd10.diagnosa)as diagnosa')
                         ,'pasiens.nama' 
                         ,'pasiens.no_Rm'

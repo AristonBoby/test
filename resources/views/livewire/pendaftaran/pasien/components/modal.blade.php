@@ -1,6 +1,6 @@
    <div>       <!-- Modal -->
           <div wire:ignore.self class="modal modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="staticBackdropLabel">DATA PASIEN</h5>
@@ -9,85 +9,64 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12 mb-9" style="margin-bottom:-20px;">
-                            <div class="form-group row" >
-                                <label class="col-md-3 col-from-label text-md">NOMOR REKAM MEDIS</label>
-                                <label class="col-md-8 col-form-label text-md">{{$no_Rm}}</label>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-9" style="margin-bottom:-20px;">
-                              <div class="form-group row">
-                                  <label class="col-md-3 col-from-label text-md">NAMA LENGKAP</label>
-                                  <label class="col-md-8 col-form-label text-md">{{$nama}}</label>
-                              </div>
-                        </div>
-                        <div class="col-md-12" style="margin-bottom:-20px;">
-                            <div class="form-group row">
-                                <label class="col-md-3 col-from-label text-md">TEMPAT LAHIR</label>
-                                <label class="col-md-8 col-form-label text-md">{{$tempat_Lahir}}</label>
-                            </div>
-                        </div>
-                        <div class="col-md-12" style="margin-bottom:-20px;">
-                          <div class="form-group row">
-                              <label class="col-md-3 col-from-label text-md">TANGGAL LAHIR</label>
-                              <label class="col-md-8 col-form-label text-md">{{$tanggal_Lahir}}</label>
-                          </div>
-                      </div>
-                      <div class="col-md-12" style="margin-bottom:-20px;">
-                        <div class="form-group row">
-                            <label class="col-md-3 col-from-label text-md">KEPALA KELUARGA</label>
-                            <label class="col-md-8 col-form-label text-md">{{$kepala_keluarga}}</label>
-                        </div>
-                    </div>
-                    <div class="col-md-12" style="margin-bottom:-20px;">
-                      <div class="form-group row">
-                          <label class="col-md-3 col-from-label text-md">JENIS KELAMIN</label>
-                          <label class="col-md-8 col-form-label text-md">@if($jenkel == 'L')LAKI-LAKI @else PEREMPUAN @endif </label>
-                      </div>
-                    </div>
-                      <div class="col-md-12 " style="margin-bottom:-20px;">
-                        <div class="form-group row">
-                            <label class="col-md-3 col-from-label text-md">AGAMA</label>
-                            <label class="col-md-8 col-form-label text-md">{{$agama}}</label>
-                        </div>
-                    </div>
-                    <div class="col-md-12" style="margin-bottom:-20px;">
-                      <div class="form-group row">
-                          <label class="col-md-3 col-from-label text-md">PEKERJAAN</label>
-                          <label class="col-md-8 col-form-label text-md">{{$pekerjaan}}</label>
-                      </div>
-                    </div>
-                      <div class="col-md-12" style="margin-bottom:-20px;">
-                        <div class="form-group row">
-                          <label class="col-md-3 col-from-label text-md">NIK</label>
-                          <label class="col-md-8 col-form-label text-md">{{$nik}}</label>
-                        </div>
-                      </div>
-                      <div class="col-md-12" style="margin-bottom:-20px;">  
-                        <div class="form-group row">
-                          <label class="col-md-3 col-from-label text-md">BPJS</label>
-                          <label class="col-md-8 col-form-label text-md">{{$bpjs}}</label>
-                        </div>
-                      </div>
-                      <div class="col-md-12" style="margin-bottom:-20px;">
-                        <div class="form-group row">
-                          <label class="col-md-3 col-from-label text-md">NOMOR TELEPON / HP</label>
-                          <label class="col-md-8 col-form-label text-md">{{$no_tlpn}}</label>
-                        </div>
-                      </div>
-                      <div class="col-md-12" style="margin-bottom:-20px;">
-                        <div class="form-group row">
-                          <label class="col-md-3 col-from-label text-md">ALAMAT</label>
-                          <label class="col-md-8 col-form-label text-md">{{$alamat}}</label>
-                        </div>
-                      </div>
-                  </div>
+                    <table class="table table-bordered text-sm">
+                            <tbody>
+                                <tr>
+                                    <td>NOMOR REKAM MEDIS</td>
+                                    <td>{{$no_Rm}}</td>
+                                </tr>
+                                <tr>
+                                    <td>NAMA LENGKAP</td>
+                                    <td>{{$nama}}</td>
+                                </tr>
+                                <tr>
+                                    <td>TEMPAT LAHIR</td>
+                                    <td>{{$tempat_Lahir}}</td>
+                                </tr>
+                                <tr>
+                                    <td>TANGGAL LAHIR</td>
+                                    <td>{{$tanggal_Lahir}}</td>
+                                </tr>
+                                <tr>
+                                    <td>KEPALA KELUARGA</td>
+                                    <td>{{$kepala_keluarga}}</td>
+                                </tr>
+                                <tr>
+                                    <td>JENIS KELAMIN</td>
+                                    <td>@if($jenkel == 'L')LAKI-LAKI @else PEREMPUAN @endif </td>
+                                </tr>
+                                <tr>
+                                    <td>AGAMA</td>
+                                    <td>{{$agama}}</td>
+                                </tr>
+                                <tr>
+                                    <td>PEKERJAAN</td>
+                                    <td>{{$pekerjaan}}</td>
+                                </tr>
+                                <tr>
+                                    <td>NIK</td>
+                                    <td>{{$nik}}</td>
+                                </tr>
+                                <tr>
+                                    <td>BPJS</td>
+                                    <td>{{$bpjs}}</td>
+                                </tr>
+                                <tr>
+                                    <td>NOMOR TELEPON / HP</td>
+                                    <td>{{$no_tlpn}}</td>
+                                </tr>
+                                <tr>
+                                    <td>ALAMAT</td>
+                                    <td>{{$alamat}}</td>
+                                </tr>
+                            </tbody>
+                    </table>
                 </div>
-             
-              
+
+
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <a class="btn btn-primary" href="printpasien/{{$no_Rm}}"  target="_blank">Print</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                 </div>
               </div>
             </div>
@@ -99,15 +78,15 @@
           <div wire:ignore.self class="modal fade" id="edit" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
-              
+
                 <div class="modal-header">
-                  <h5 class="modal-title" id="edit">Data Pasien</h5>
+                  <h5 class="modal-title" id="edit">Edit Data Pasien</h5>
                   <a type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </a>
                 </div>
                 <div class="modal-body">
-                  <form wire:submit.prevent='editPasien'> 
+                  <form wire:submit.prevent='editPasien'>
                     @csrf
                     <input type="hidden" wire:model='id_pasien'>
                     <div class="row">
@@ -214,7 +193,7 @@
                         </div>
                       </div>
                     </div>
- 
+
                 </div>
                 <div class="modal-footer">
                   <a type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</a>
@@ -224,5 +203,5 @@
               </div>
             </div>
           </div>
-      
+
    </div>

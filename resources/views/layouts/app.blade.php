@@ -47,7 +47,7 @@
       <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="info">
-           
+             <b class="text-white">{{Auth::user()->name}}</b>
           </div>
         </div>
         @include('layouts.nav')
@@ -102,8 +102,3 @@
 @livewireScripts
 </body>
 </html>
-<!--
-  { defaultDate : new Date(),
-            format:'yyyy-mm-dd',
-            autoclose:true,
-          }
