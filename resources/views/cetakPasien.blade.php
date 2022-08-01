@@ -10,6 +10,9 @@
             font-size: 11.5pt;
             font-family: calibri;
         }
+        .uppercase{
+            text-transform: uppercase;
+        }
         #logo1{
             position: absolute;
             top:20px;
@@ -45,8 +48,7 @@
     <title>{{$query->no_Rm}}_{{$query->nama}}</title>
 </head>
 <body>
-
-    <table border="1" style="width:100%; border-collapse: collapse;" collapse="0">
+    <table border="0" style="width:100%; border-collapse: collapse;" collapse="0">
         <tr>
             <td text-center class="text-center" colspan="3">PEMERINTAH KOTA SAMARINDA</td>
         </tr>
@@ -62,64 +64,68 @@
         <tr>
             <td class="text-center" colspan="3">HP. 081253721754, Email : pkmsegiri@yahoo.com</td>
         </tr>
-        <tr height="40" style="border-bottom:none">
-            <td class="text-center" colspan="3"><b style="font-size: 12pt"> REKAM MEDIS </b></td>
+    </table>
+    <hr>
+
+    <table border="0" style="width:100%; border-collapse: collapse; margin-bottom:30px;" collapse="0">
+        <tr height="40" style="border-bottom:">
+            <td class="text-center" colspan="3"><b style="font-size: 13pt"> REKAM MEDIS </b></td>
         </tr>
-
-
         <tr height="30" style="border-bottom:px">
-            <td class="text-center" style="text-align:right;" colspan="3" ><b>Nomor Rekam Medis :</b><b style="margin-right:20px; font-size:14pt;">  {{$query->no_Rm}} </b></td>
+            <td class="text-center uppercase" style="text-align:right;" colspan="3" ><b>Nomor Rekam Medis :</b><b style="margin-right:20px; font-size:14pt;">  {{$query->no_Rm}} </b></td>
         </tr>
-        <tr style="border-top:3pt;" height="22">
+    </table>
+    <table border="1" style="width:100%; border-collapse: collapse;" collapse="0">
+        <tr style="" height="22">
             <td class="text-center" style="text-align:left; width:1%;">&nbsp; NAMA</td>
             <td class="text-center" style="text-align:center; width:1%">:</td>
-            <td class="text-center" style="text-align:left;"> &nbsp; {{$query->nama}}</td>
+            <td class="text-center uppercase" style="text-align:left; "> &nbsp; {{$query->nama}}</td>
         </tr>
         <tr height="22">
-            <td class="text-center" style="text-align:left; width:30%;">&nbsp; Tempat Lahir, Tanggal Lahir</td>
+            <td class="text-center " style="text-align:left; width:30%;">&nbsp; Tempat Lahir, Tanggal Lahir</td>
             <td class="text-center" style="text-align:center alig; width:1%">:</td>
-            <td class="text-center" style="text-align:left;"> &nbsp; {{$query->tempat_Lahir}}, &nbsp; {{$tgl_Lahir, }}</td>
+            <td class="text-center uppercase" style="text-align:left; "> &nbsp; {{$query->tempat_Lahir}}, &nbsp; {{$tgl_Lahir, }}</td>
 
         </tr>
         <tr height="22">
             <td class="text-center" style="text-align:left;">&nbsp; Jenis Kelamin</td>
             <td class="text-center" style="text-align:center; width:1%">:</td>
-            <td class="text-center" style="text-align:left;">&nbsp; @if($query->jenkel == "L") Laki-laki @else Perempuan @endif</td>
+            <td class="text-center uppercase" style="text-align:left;">&nbsp; @if($query->jenkel == "L") Laki-laki @else Perempuan @endif</td>
         </tr>
         <tr height="22">
             <td class="text-center" style="text-align:left;">&nbsp; Kepala Keluarga</td>
             <td class="text-center" style="text-align:center; width:1%">:</td>
-            <td class="text-center" style="text-align:left;"> &nbsp; {{$query->kepala_keluarga}}</td>
+            <td class="text-center uppercase" style="text-align:left;"> &nbsp; {{$query->kepala_keluarga}}</td>
         </tr>
         <tr height="22">
             <td class="text-center" style="text-align:left;">&nbsp; Agama</td>
             <td class="text-center" style="text-align:center; width:1%">:</td>
-            <td class="text-center" style="text-align:left;"> &nbsp; {{$query->agama}}</td>
+            <td class="text-center uppercase" style="text-align:left;"> &nbsp; {{$query->agama}}</td>
         </tr>
         <tr height="22">
             <td class="text-center" style="text-align:left;">&nbsp; Pekerjaan</td>
             <td class="text-center" style="text-align:center; width:1%">:</td>
-            <td class="text-center" style="text-align:left;"> &nbsp; {{$query->pekerjaan}}</td>
+            <td class="text-center uppercase" style="text-align:left;"> &nbsp; {{$query->pekerjaan}}</td>
         </tr>
         <tr height="22">
             <td class="text-center" style="text-align:left;">&nbsp; NIK</td>
             <td class="text-center" style="text-align:center; width:1%">:</td>
-            <td class="text-center" style="text-align:left;"> &nbsp; {{$query->nik}}</td>
+            <td class="text-center uppercase" style="text-align:left;"> &nbsp; {{$query->nik}}</td>
         </tr>
         <tr height="22">
             <td class="text-center" style="text-align:left;">&nbsp; Nomor BPJS</td>
             <td class="text-center" style="text-align:center; width:1%">:</td>
-            <td class="text-center" style="text-align:left;"> &nbsp; {{$query->bpjs}}</td>
+            <td class="text-center uppercase" style="text-align:left;"> &nbsp; {{$query->bpjs}}</td>
         </tr>
         <tr height="22">
             <td class="text-center" style="text-align:left;">&nbsp; Alamat</td>
             <td class="text-center" style="text-align:center; width:1%">:</td>
-            <td class="text-center" style="text-align:left;"> &nbsp; {{$query->alamat}}</td>
+            <td class="text-center uppercase" style="text-align:left;"> &nbsp; {{$query->alamat}}</td>
         </tr>
         <tr height="22">
             <td class="text-center" style="text-align:left;">&nbsp; No. Tlpn./HP</td>
             <td class="text-center" style="text-align:center; width:1%">:</td>
-            <td class="text-center" style="text-align:left;"> &nbsp; {{$query->no_tlpn}}</td>
+            <td class="text-center uppercase" style="text-align:left;"> &nbsp; {{$query->no_tlpn}}</td>
         </tr>
         <tr height="22">
             <td class="text-center" style="text-align:left;">&nbsp; Golongan Darah</td>
@@ -233,10 +239,11 @@
         <tr>
             <td class="text-center" colspan="2" style="text-align:left; padding-left:20px;"> Nilai-nilai yang bertanggung jawab dengan kebutuhan kesehatan : .................................................. </td>
         </tr>
+
     </table>
     <div style="page-break-before:always;">
 
-        <table border="1" style="width:100%; margin-top:-60px; border-collapse: collapse;" collapse="0">
+        <table style="width:100%; margin-top:-60px;  border-collapse: collapse;" collapse="0">
             <tr>
                 <td text-center class="text-center" colspan="3">PEMERINTAH KOTA SAMARINDA</td>
             </tr>
@@ -253,7 +260,8 @@
                 <td class="text-center" colspan="3">HP. 081253721754, Email : pkmsegiri@yahoo.com</td>
             </tr>
         </table>
-        <table style="width:100%; margin-top:5px;border-collapse: collapse;" collapse="0">
+        <hr style="margin-bottom:40px;">
+        <table style="width:100%; margin-top:5px;border-collapse: collapse; font-family: calibri;" collapse="0">
             <tr>
                 <td><b>Dengan ini saya menyatakan bahwa :</b></td>
             </tr>
@@ -368,7 +376,7 @@
                 <td text-center class="text-center" style=" text-align:center; border-botom:0px; border-top:0px;" colspan="2"></td>
             </tr>
             <tr style="height:20px;">
-                <td text-center class="text-center" style=" text-align:center; border-botom:0px; border-top:0px;" colspan="2">{{$query->nama}}</td>
+                <td text-center class="text-center uppercase" style=" text-align:center; border-botom:0px; border-top:0px;" colspan="2">{{$query->nama}}</td>
             </tr>
         </table>
     </div>
