@@ -43,7 +43,37 @@ class EditdataPasien extends Component
         $this->tanggal_Lahir = date('Y-m-d');
         $this->tanggal = date('Y-m-d');
     }
-
+    protected $rules =([
+        'no_Rm'             => 'required|max:8',
+        'nama'              => 'required',
+        'tempat_Lahir'      => 'required',
+        'tanggal_Lahir'     => 'required',
+        'kepala_keluarga'   => 'required',
+        'jenkel'            => 'required',
+        'agama'             => 'required',
+        'no_tlpn'           => 'required',
+        'nik'               => 'max:16',
+        'bpjs'              => 'max:13',
+        'pekerjaan'         => 'required',
+        'alamat'            => 'required',
+    ]);
+    protected $messages =[
+        'no_Rm.required'=>'Nomor Rekam Medis wajib di isi',
+        'max'=>'Nomor Rekam Medis Maksimal 8 Karakter',
+        'nama.required'=>'Nama Pasien wajib diisi',
+        'tempat_Lahir.required'=>'Tempat lahir Pasien wajib diisi',
+        'tanggal_Lahir.required'=>'Tanggal lahir Pasien wajib diisi',
+        'kepala_keluarga.required'=>'Kepala keluarga Pasien wajib diisi',
+        'jenkel.required'=>'Jenis Kelamin Pasien wajib diisi',
+        'agama.required'=>'Agama Pasien wajib diisi',
+        'pekerjaan.required'=>'Pekerjaan Pasien wajib diisi',
+        'no_tlpn.required'=>'Nomor Telepon / Hp Pasien wajib diisi',
+        'alamat.required'=>'Alamat Pasien wajib diisi',
+        'nik.unique'=>'NIK Pasien telah digunakan',
+        'nik.max'=>'NIK Pasien Maksimal 16 karakter',
+        'bpjs.unique'=>'Nomor BPJS Pasien telah digunakan',
+        'bpjs.max'=>'Nomor BPJS Pasien Maksimal 13 Karakter',
+    ];
 
     public function showUpdatePasien (){
         $query = pasien::where('nama','like','%'.$this->cariPasien.'%')->first();
@@ -85,7 +115,7 @@ class EditdataPasien extends Component
     }
 
     public function editPasien ()
-    {
+    {   $this->validate();
         $query = pasien::find($this->id_pasien);
         $query->update([
             'no_Rm'             =>  $this->no_Rm,

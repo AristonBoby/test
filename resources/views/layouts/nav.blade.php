@@ -62,8 +62,24 @@
         </ul>
       </li>
       <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fa-solid fas fa-wrench"> </i>
+          <p>
+            Ubah Password
+          </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('tambahuser')}}">
+          <i class="nav-icon fa-solid fas fa-users"></i>
+          <p>
+            Tambah User
+          </p>
+        </a>
+      </li>
+      <li class="nav-item">
         <a href="" class="nav-link">
-          <i class="nav-icon fas fa-table"></i>
+          <i class="nav-icon fa-solid fas fa-solid fas fa-receipt"></i>
           <p>
             Laporan
             <i class="fas fa-angle-left right"></i>
@@ -81,6 +97,13 @@
               </a>
           </li>
         </ul>
+        <li class="nav-item">
+          <a class=" nav-link " href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+              <p>Logout</p>
+          </a>
+        </li>
       </li>
 
       <li class="nav-item">

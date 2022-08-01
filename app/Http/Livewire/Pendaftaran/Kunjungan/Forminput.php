@@ -74,18 +74,26 @@ class Forminput extends Component
 
     public function simpanKunjungan (){
         $this->validate();
-      $query = kunjungan::create([
+        $data = kunjungan::where('id_pasien',$this->id_pasien)->where('tanggal',$this->tanggal)->where('id_poli',$this->poli)->first();
+        if($data)
+        {
+            $this->dispatchBrowserEvent('kunjunganganda');
+        }
+        else{
+            $query = kunjungan::create([
                 'id_pasien' =>  $this->id_pasien,
                 'tanggal'   =>  $this->tanggal,
                 'id_user'   =>  Auth::id(),
                 'id_poli'   =>  $this->poli,
-      ]);
+            ]);
 
-      if($query)
-      {
-        $this->dispatchBrowserEvent('kunjunganBerhasil');
-        $this->clear();
-      }
+            if($query)
+                {
+                    $this->dispatchBrowserEvent('kunjunganBerhasil');
+                    $this->clear();
+                }
+        }
+       
     }
 
 }

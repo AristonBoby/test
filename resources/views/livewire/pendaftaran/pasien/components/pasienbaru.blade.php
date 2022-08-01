@@ -80,7 +80,7 @@
                                             <option value="L">Laki-Laki</option>
                                             <option value="P">Perempuan</option>
                                         </select>
-                                        @error('jenkel')<span class="invalid-feedback">{{$message}}}</span> @enderror
+                                        @error('jenkel')<span class="invalid-feedback">{{$message}}</span> @enderror
                                     </div>
                                 </div>
                             </div>

@@ -63,6 +63,18 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="form-control-label text-sm col-md-4">Jenis Kunjungan</label>
+                            <div class="col-md-6">
+                                <select class="form-control form-control-sm text-sm rounded-0 @error('poli') is-invalid @enderror" wire:model="poli" @($form) >
+                                    <option>BPJS Dalam Wilayah</option>
+                                    <option>BPJS Luar Wilayah/Luar Daerah</option>
+                                    <option>Masyarakat Samarinda</option>
+                                    <option>Non Masyarakat Samarinda</option>
+                                </select>
+                                @error("poli")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror
+                            </div>
+                        </div> 
+                        <div class="form-group row">
                             <label class="form-control-label text-sm col-md-4">POLI</label>
                             <div class="col-md-6">
                                 <select class="form-control form-control-sm text-sm rounded-0 @error('poli') is-invalid @enderror" wire:model="poli" @disabled($form) >
@@ -93,6 +105,13 @@ window.addEventListener('kunjunganBerhasil', event => {
         title: 'Perhatian',
         text: "Data Pasien Tersimpan",
         icon: 'success',
+    })
+});
+window.addEventListener('kunjunganganda', event => {
+    Swal.fire({
+        title: 'Perhatian',
+        text: "Pasien Telah di Entri pada hari yang sama dan Poli yang sama",
+        icon: 'warning',
     })
 });
 

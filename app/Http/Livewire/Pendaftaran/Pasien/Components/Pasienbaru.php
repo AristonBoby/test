@@ -35,8 +35,8 @@ class Pasienbaru extends Component
         return view('livewire.pendaftaran.pasien.index');
     }
 
-    protected $rules = [
-        'no_Rm'             => 'required|unique:pasiens',
+    protected $rules =([
+        'no_Rm'             => 'required|unique:pasiens|max:8',
         'nama'              => 'required',
         'tempat_Lahir'      => 'required',
         'tanggal_Lahir'     => 'required',
@@ -48,7 +48,27 @@ class Pasienbaru extends Component
         'bpjs'              => 'unique:pasiens|max:13',
         'pekerjaan'         => 'required',
         'alamat'            => 'required',
+    ]);
+
+    protected $messages =[
+        'no_Rm.required'=>'Nomor Rekam Medis wajib di isi',
+        'no_Rm.unique'=>'Nomor Rekam Medis telah digunakan',
+        'max'=>'Nomor Rekam Medis Maksimal 8 Karakter',
+        'nama.required'=>'Nama Pasien wajib diisi',
+        'tempat_Lahir.required'=>'Tempat lahir Pasien wajib diisi',
+        'tanggal_Lahir.required'=>'Tanggal lahir Pasien wajib diisi',
+        'kepala_keluarga.required'=>'Kepala keluarga Pasien wajib diisi',
+        'jenkel.required'=>'Jenis Kelamin Pasien wajib diisi',
+        'agama.required'=>'Agama Pasien wajib diisi',
+        'pekerjaan.required'=>'Pekerjaan Pasien wajib diisi',
+        'no_tlpn.required'=>'Nomor Telepon / Hp Pasien wajib diisi',
+        'alamat.required'=>'Alamat Pasien wajib diisi',
+        'nik.unique'=>'NIK Pasien telah digunakan',
+        'nik.max'=>'NIK Pasien Maksimal 16 karakter',
+        'bpjs.unique'=>'Nomor BPJS Pasien telah digunakan',
+        'bpjs.max'=>'Nomor BPJS Pasien Maksimal 13 Karakter',
     ];
+
 
     public function store(){
         $this->validate();

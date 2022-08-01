@@ -10,11 +10,14 @@ class Cetak extends Component
     public function cetak ($id)
     {
         $que = pasien::where('no_Rm',$id)->first();
-        $s = Carbon::parse('2022-01-01')->translatedFormat('d F Y');
+        $s = Carbon::parse($que->tanggal_Lahir)->translatedFormat('d F Y');
         $date=carbon::now()->isoFormat('dddd, D MMMM Y');
 
-        $data = PDF::loadview('cetak');
+        $data = PDF::loadView('cetak',['data'=>$que,'tgl_lahir'=>$s,'date'=>$date]);
+        $kertas = array(0,0,595.4,935.5);
         //mendownload laporan.pdf
-    	return $data->download($que->no_Rm.$que->nama.'.pdf');
+    	    $data->set_paper($kertas);
+            $data->stream('hghg.pdf');
+            return $data->stream();
     }
 }

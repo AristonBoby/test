@@ -26,4 +26,6 @@ Route::middleware(['auth','admin'])->group(function(){
 });
 
 Route::get('/laporan',[App\Http\Livewire\Laporan\home::class,'index'])->name('laporan');
+Route::get('/tambahuser',[App\Http\Livewire\Tambahuser\index::class,'index'])->name('tambahuser');
+
 
