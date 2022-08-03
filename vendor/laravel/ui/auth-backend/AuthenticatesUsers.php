@@ -47,9 +47,9 @@ trait AuthenticatesUsers
             if ($request->hasSession()) {
                 $request->session()->put('auth.password_confirmed_at', time());
             }
-
+           
             return $this->sendLoginResponse($request);
-        }
+        }   
 
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
@@ -86,6 +86,7 @@ trait AuthenticatesUsers
         return $this->guard()->attempt(
             $this->credentials($request), $request->boolean('remember')
         );
+        
     }
 
     /**
@@ -129,7 +130,7 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        //
+
     }
 
     /**

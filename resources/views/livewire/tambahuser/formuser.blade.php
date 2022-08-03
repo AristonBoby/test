@@ -24,8 +24,8 @@
                         <select wire:model='role' class="form-control text-sm form-control-sm">
                             <option value="1">Pendaftaran</option>
                             <option value="2">Rekam Medis</option>
-                            <option value="3">Admin</option>
-                            <option value="4">Dokter</option>
+                            <option value="3">Dokter</option>
+                            <option value="4">Admin</option>
                         </select>
                     </div>
                 </div>

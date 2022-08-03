@@ -12,5 +12,7 @@
     <div class="row">
         <livewire:tambahuser.formuser>
         <livewire:tambahuser.tabeluser>
+        <livewire:tambahuser.modaledituser>
+
     </div>
 @endsection

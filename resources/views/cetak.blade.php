@@ -1,8 +1,21 @@
+<html>
+<head>
+
 <style>
-    @page { margin-left: 1cm; margin-bottom: 2cm; margin-bottom:0.5cm; }
+@page{
+    size:21.5cm 33cm;  
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.page1{
+    margin-left: 30px;
+}
+.page2{
+    margin-right: 30px;
+}
     .text-center{
         text-align: center;
-        font-size: 11.5pt;
+        font-size: 11pt;
         font-family: ;
     }
     .uppercase{
@@ -10,8 +23,8 @@
     }
     #logo1{
         position: absolute;
-        top:0px;
-        left:30px;
+        top:-20px;
+        left:10px;
         width:2.2cm;
         height:2.2cm;
     }
@@ -26,14 +39,17 @@
         left:35px;
     }
    
-    footer{
+    .footer1{
         text-align: center;
-        font-size: 9pt;
-        margin-top:50px;
+        font-size: 8pt;
+        margin-top:120px;
     }
-    @media print {
-            h1 {page-break-after: always;}
-            }
+    .footer2{
+        text-align: center;
+        font-size: 8pt;
+        margin-top:325px;
+    }
+
     .bordernone{
         border-left:none;
         border-right:none;
@@ -49,8 +65,9 @@
             border-collapse: collapse;
     }
 </style>
-
-<body style="margin:0;">
+</head>
+<body style="margin-top:-20;">
+    <div class="page1">
     <table border="0" style="width:100%; border-collapse: collapse;" collapse="0">
         <img id="logo1"  src="{{public_path('logo/pemkot.png')}}">
         <tr>
@@ -142,17 +159,17 @@
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; Alergi Makanan</td>
             <td class="text-center bordernone" style="text-align:center; width:1%">:</td>
-            <td class="text-center borderleft" style="text-align:left;"> &nbsp;1. Seafood &nbsp;2. Gandum &nbsp;3. Susu Sapi &nbsp;4. Kacang-kacangan &nbsp;5. Tidak Ada <br>&nbsp;6. ..................</td>
+            <td class="text-center borderleft" style="text-align:left;"> &nbsp;1. Ya .............................  2.Tidak</td>
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; Alergi Udara</td>
             <td class="text-center bordernone" style="text-align:center; width:1%">:</td>
-            <td class="text-center borderleft" style="text-align:left;"> &nbsp;1. Udara Panas &nbsp;2. Udara Dingin &nbsp;3. Udara kotor</td>
+            <td class="text-center borderleft" style="text-align:left;"> &nbsp;1. Ya .............................  2.Tidak</td>
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; Alergi Obat-Obatan</td>
             <td class="text-center bordernone" style="text-align:center; width:1%">:</td>
-            <td class="text-center borderleft" style="text-align:left;"> &nbsp;1. Antibiotik &nbsp; 2. Antiinflamasi &nbsp;3.Non Steroid &nbsp;4. Aspirin &nbsp;5. Kortikosteroid  <br> &nbsp;6. Insulin &nbsp;7..............</td>
+            <td class="text-center borderleft" style="text-align:left;"> &nbsp;1. Ya .............................  2.Tidak</td>
         </tr>
     </table>
     <table  border="1" style="width:100%; border-collapse: collapse; margin-top:10px;" collapse="0">
@@ -195,7 +212,7 @@
     </table>
     <table border="1" style="width:100%; border-collapse: collapse; margin-top:10px;" collapse="0">
         <tr>
-            <td class="text-center" colspan="2" style="background-color:rgb(221, 217, 196)"">PENGKAJIAN PSIKOLOGIS DAN SOSIAL</td>
+            <td class="text-center" colspan="2" style="background-color:rgb(221, 217, 196)">PENGKAJIAN PSIKOLOGIS DAN SOSIAL</td>
         </tr>
         <tr>
             <td class="text-center" colspan="2" style="text-align:left; padding-left:20px;"> PENGKAJIAN PSIKOLOGIS</td>
@@ -257,9 +274,11 @@
             <td class="text-center" colspan="2" style="text-align:left; padding-left:20px;"> Nilai-nilai yang bertanggung jawab dengan kebutuhan kesehatan : .................................................. </td>
         </tr>   
     </table>
-    <footer style="margin-top:30px;">
+    <footer class="footer1">
         02/100.02.014/RM/2022 
     </footer>
+    </div>
+    <div class="page2">
     <div style="page-break-before:always;">
         <table style="width:100%; margin-top:-60px;  border-collapse: collapse; margin-top:0;" collapse="0">
             <img id="logo1"  src="{{public_path('logo/pemkot.png')}}">
@@ -404,7 +423,9 @@
             <td text-center class="text-center uppercase" style=" text-align:center; border-botom:0px; border-top:0px;" colspan="2">{{$data->nama}}</td>
         </tr>
     </table>
-    <footer style="margin-top:240px;">
+    <footer class="footer2">
         02/100.02.014/RM/2022 
     </footer>
+    </div>
 </body>    
+</html>

@@ -6,7 +6,9 @@ use Livewire\Component;
 use App\Models\kunjungan;
 use Livewire\WithPagination;
 class Tabelkunjungan extends Component
-{   public $tanggal;
+{   
+    
+    public $tanggal;
     public $delate;
     use WithPagination;
 

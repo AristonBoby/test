@@ -61,7 +61,7 @@
                     </tbody>
                        
                 </table>
-                <div class=" float-right text-xs btn-flaat btn-xs">
+                <div class=" float-right text-xs btn-flat btn-xs">
                     {{$query->links()}}
                 </div>
     

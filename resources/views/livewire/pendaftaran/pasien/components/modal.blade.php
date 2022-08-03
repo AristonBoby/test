@@ -9,7 +9,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-bordered text-sm">
+                    <table class="table table-sm table-bordered text-sm">
                             <tbody>
                                 <tr>
                                     <td>NOMOR REKAM MEDIS</td>
