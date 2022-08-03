@@ -14,7 +14,8 @@
                 <div class="form-group row">
                     <label class="text-sm form-label col-md-3">Nama</label>
                     <div class="col-md-9">
-                        <input type="text" wire:model='nama' class="form-control-sm form-control rounded-0" placeholder="Masukan Nama User" maxlength="30">
+                        <input type="text" wire:model='nama' class="form-control-sm form-control rounded-0 @error('nama')is-invalid @enderror" placeholder="Masukan Nama User" maxlength="30">
+                        @error('nama')<span class="invalid-feedback text-sm">{{ $message }}</span>@enderror
                     </div>
                 </div>
                 <div class="form-group row">
