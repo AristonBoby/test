@@ -11,6 +11,8 @@ class Formuser extends Component
     public $password = "";
     public $email = "";
     public $re_password= "";
+    public $txtnama=true;
+    public $txtemail=true;
     
     public function render()
     {
@@ -18,12 +20,35 @@ class Formuser extends Component
     }
     
     protected $rules =([
-        'nama' => 'required',
+        'nama'          => 'required',
+        'email'         => 'required|unique:users',
+        'role'          => 'required',
+        'password'      => 'required|min:8',
+        're_password'   => 'required_with:password|same:password|min:8'
     ]);
 
     protected $messages = ([
-        'nama.required' =>  'Nama Wajib diisi'
+        'nama.required'     =>  'Nama Wajib diisi',
+        'email.required'    =>  'Email Wajib diisi ',
+        'email.unique'      =>  'Email Telah digunakan, Masukan Email yang belum terdaftar ',
+        'role.required'     =>  'Role User Wajib diisi ',
+        'password.min'          =>  'Password Minimal 8 Karakter',
+        'password.required'          =>  'Password Wajib diisi',
     ]);
+
+    public function validasiinputan($request){
+       
+       
+       
+        if($request=='nama')
+          {
+              $this->txtnama = false;
+          }
+         else if($request=='email')
+          {
+              $this->txtemail = false;
+          }
+    }
 
     public function simpanuser(){
         $this->validate();
