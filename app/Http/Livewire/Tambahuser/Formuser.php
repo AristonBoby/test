@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use App\Models\User;
 class Formuser extends Component
-{   public $status_user = 0;
+{   public $status_user = 1;
     public $nama = "";
     public $role = "";
     public $password = "";
@@ -19,12 +19,12 @@ class Formuser extends Component
         return view('livewire..tambahuser.formuser');
     }
     
-    protected $rules =([
+    protected $rules = ([
         'nama'          => 'required',
         'email'         => 'required|unique:users',
         'role'          => 'required',
         'password'      => 'required|min:8',
-        're_password'   => 'required_with:password|same:password|min:8'
+        're_password'   => 'required|same:password|min:8'
     ]);
 
     protected $messages = ([
@@ -32,8 +32,10 @@ class Formuser extends Component
         'email.required'    =>  'Email Wajib diisi ',
         'email.unique'      =>  'Email Telah digunakan, Masukan Email yang belum terdaftar ',
         'role.required'     =>  'Role User Wajib diisi ',
-        'password.min'          =>  'Password Minimal 8 Karakter',
-        'password.required'          =>  'Password Wajib diisi',
+        'password.min'      =>  'Password Minimal 8 Karakter',
+        'password.required' =>  'Password Wajib diisi',
+        're_password.same'  =>  'Password yang anda masukan tidak sama'
+
     ]);
 
     public function validasiinputan($request){
@@ -52,12 +54,16 @@ class Formuser extends Component
 
     public function simpanuser(){
         $this->validate();
-       $query = User::create([
+        $query = User::create([
         'name'          =>  $this->nama,
         'email'         =>  $this->email,
         'password'      =>  Hash::make($this->password) ,
         'status_user'   =>  $this->status_user,
         'role'          =>  $this->role,
        ]);
+            if($query)
+            {
+                $this->dispatchBrowserEvent('success');
+            }
     }
 }

@@ -16,10 +16,11 @@
                 <div class="form-group row">
                     <label class="text-sm form-label col-md-3">Nama</label>
                     <div class="col-md-9" wire:click='validasiinputan("nama")'>
-                        <input type="text"   @disabled($txtnama) class="form-control-sm form-control rounded-0 @error('nama')is-invalid @enderror" placeholder="Masukan Nama User" maxlength="30">
+                        <input type="text" wire:model='nama'  @disabled($txtnama) class="form-control-sm form-control rounded-0 @error('nama')is-invalid @enderror" placeholder="Masukan Nama User" maxlength="30">
                         @error('nama')<span class="invalid-feedback text-sm">{{ $message }}</span>@enderror
                     </div>
                 </div>
+                
                 <div class="form-group row">
                     <label class="text-sm form-label col-md-3">Role User</label>
                     <div class="col-md-9">
@@ -67,3 +68,12 @@
         </div>
     </div>
 </div>
+<script>
+    window.addEventListener('success', event => {
+        Swal.fire({
+            title: 'Perhatian',
+            text: "Data Pasien Tersimpan",
+            icon: 'success',
+        })
+    });
+    </script>

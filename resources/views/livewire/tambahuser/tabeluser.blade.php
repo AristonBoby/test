@@ -4,6 +4,9 @@
             <h5 class="card-title">Form Tambah User</h5>
         </div>
         <div class="card-body">
+            <div class="col-md-8">
+                <span class="text-sm text-danger">*User yang sudah tidak digunakan harus di nonaktikan</span>
+            </div>
             <div class="col-md-4 row float-right mb-4">
                 <label class="form-label text-sm col-md-3">Cari User</label>
                 <input type="text" class="col-md-7 form-control form-control-sm rounded-0" wire:model='cari'>
@@ -28,24 +31,24 @@
                         <td>{{$query->email}}</td>
 
                         <td>
-                            @if($query->status_user == '1')
+                            @if($query->role == '1')
                                     Pendaftaran
-                            @elseif($query->status_user == '2')
+                            @elseif($query->role == '2')
                                     Rekam Medis
-                            @elseif($query->status_user == '3')
+                            @elseif($query->role == '3')
                                     Dokter
-                            @elseif($query->status_user == '4')
+                            @elseif($query->role == '4')
                                     Admin
                             @endif
                         </td>
-                        <td>@if($query->status_user=='0')
+                        <td class="text-sm">@if($query->status_user=='0')
                                     <span class="badge bg-danger">Tidak Aktif</span>
                             @elseif($query->status_user=='1')
                                     <span class="badge bg-success">Aktif</span>
                             @endif   
                         </td>
                         <td >
-                            <a class="btn btn-xs btn-warning" data-toggle="modal" data-target="#edituser"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-xs btn-warning" data-toggle="modal" wire:click="$emit('edituser',{{$query->id}})" data-target="#edituser"><i class="fa fa-edit"></i></a>
                             <a class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>

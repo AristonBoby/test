@@ -10,7 +10,7 @@ class Tabeluser extends Component
     public $cari;
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-
+    
     public function render()
     {
         $data = User::where('name', $this->cari)
