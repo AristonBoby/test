@@ -1,5 +1,5 @@
     <div class="col-md-12 col-sm-12 col-lg-8">
-        <div class="card card-info card-outline">
+        <div class="card card-primary card-outline">
             <div class="card-header">
                 <h3 class="card-title">Data Pasien</h3>
                 <div class="card-tools">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered table-hover text-sm text-center">
+                <table class="table table-sm table-bordered table-hover text-sm text-center">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
@@ -61,7 +61,7 @@
                     </tbody>
                 </table>
             </div>  
-            <div class="card-footer float-right btn-sm rounded-0 btn-flat">
+            <div class="card-footer btn-sm text-sm rounded-0 btn-flat">
                     {{$pasien->links()}}
             </div>
             @include('livewire.pendaftaran.pasien.components.modal')

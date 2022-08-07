@@ -44,7 +44,7 @@
                 <div class="form-group row">
                     <label class="text-sm form-label col-md-3">Ulangi Password</label>
                     <div class="col-md-9">
-                        <input type="password" wire:model='re_password' class="form-control-sm form-control rounded-0 @error('password') is-invalid @enderror" placeholder="Masukan Nama User" maxlength="20">
+                        <input type="password" wire:model='re_password' class="form-control-sm form-control rounded-0 @error('re_password') is-invalid @enderror" placeholder="Masukan Nama User" maxlength="20">
                         @error('re_password')<span class="invalid-feedback text-sm">{{$message}}</span>@enderror
                     </div>
                 </div>

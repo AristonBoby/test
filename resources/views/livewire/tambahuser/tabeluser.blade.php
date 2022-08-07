@@ -49,7 +49,7 @@
                         </td>
                         <td >
                             <a class="btn btn-xs btn-warning" data-toggle="modal" wire:click="$emit('edituser',{{$query->id}})" data-target="#edituser"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-xs btn-danger "><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-xs btn-danger " wire:click="konfirmasihapususer('{{$query->id}}')"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -63,3 +63,28 @@
         </div>
     </div>
 </div>
+<script>
+    window.addEventListener('konfirmasihapususer', event => {
+                  Swal.fire({
+                  title: 'Hapus?',
+                  text: "Apakah anda ingin menghapus User ?",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#d33',
+                  cancelButtonColor: '#3085d6',
+                  confirmButtonText: 'YA'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                      Livewire.emit('hapususer')
+                  }
+                })
+    });
+
+    window.addEventListener('berhasil', event => {
+        Swal.fire({
+            title: 'Berhasil',
+            text: "Data User Berhasil di Update",
+            icon: 'success',
+        })
+    });
+</script>

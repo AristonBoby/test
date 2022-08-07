@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use App\Models\User;
 class Formuser extends Component
-{   public $status_user = 1;
+{   
+    public $status_user = 1;
     public $nama = "";
     public $role = "";
     public $password = "";

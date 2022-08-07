@@ -17,19 +17,19 @@
                 </div>
             </div>
         </div>
-        <table class="table table-bordered text-sm" style="margin-top:30px;">
+        <table class="table  text-md table-sm" style="margin-top:30px;">
             <thead>
                 <tr>
-                    <th>No</th>
+                    <th width="5%">No</th>
                     <th>Poli</th>
-                    <th>Jumlah</th>
+                    <th class="text-center">Jumlah</th>
                 </tr>
             </thead>
             @foreach ($laporanpoli as $key=>$laporan)
             <tr>
                 <td>{{$key+1}}</td>
                 <td>{{$laporan->nama_poli}}</td>
-                <td><span class="badge bg-success">{{$laporan->jumlah}}</span></td>
+                <td class=" text-center"><span class="badge bg-success text-sm"><b>{{$laporan->jumlah}}</b></span></td>
             </tr>
             @endforeach
 

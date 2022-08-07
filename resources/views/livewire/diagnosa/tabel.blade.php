@@ -1,5 +1,5 @@
 
-    <div class="col-md-12 col-sm-12 col-lg-12w\">
+    <div class="col-md-12 col-sm-12 col-lg-12">
         <div class="card card-info card">
             <div class="card-header">
                 <h3 class="card-title ">Data Pasien Yang Telah Dilayani</h3>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered table-hover text-sm text-center">
+                <table class="table-sm table table-bordered table-hover text-sm text-center">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
@@ -75,10 +75,6 @@
                             @endforeach
                         }
                         @endif 
-                           
-                               
-                                    
-                 
                     </tbody>
                 </table>
             </div>  
