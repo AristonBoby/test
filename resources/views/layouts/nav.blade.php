@@ -7,7 +7,7 @@
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-book"></i>
           <p>
-            Data Pasien
+            Pendaftaran Pasien
             <i class="right fas fa-angle-left"></i>
           </p>
         </a>
@@ -21,7 +21,7 @@
           <li class="nav-item">
             <a href="{{Route('updatePasien')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-warning"></i>
-              <p>Pasien Terdaftar</p>
+              <p>Data Pasien</p>
             </a>
           </li>
 
