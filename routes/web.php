@@ -18,11 +18,14 @@ use Symfony\Component\Mailer\Transport\Smtp\Auth\LoginAuthenticator;
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
+
+Route::middleware(['auth','pendaftaran'])->group(function(){
 Route::get('/pendaftaran',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru::class, 'index'])->name('pendaftaranPasien');
 Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->middleware('auth')->name('updatePasien');
 Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::class,'cetak'])->name('printPasien');
 Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->middleware('auth')->name('Kunjungan');
+});
 
 //sistem login//
 Route::get('/',[LoginController::class,'showLoginForm'])->middleware('guest')->name('login');

@@ -18,7 +18,7 @@ class Tabelkunjungan extends Component
     {
         return view('livewire.pendaftaran.kunjungan.tabelkunjungan',
         [
-            'query' => kunjungan::where('tanggal',$this->tanggal)->paginate(10)
+            'query' => kunjungan::where('tanggal',$this->tanggal)->orderby('created_at','desc')->orderby('created_at','desc')->paginate(10)
         ]);
         
     }

@@ -44,6 +44,7 @@
           </li>
         </ul>
       </li>
+      @if (Auth::user()->role === '3' || Auth::user()->role === '4'  )
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class=" nav-icon fas fa-edit"></i>
@@ -61,6 +62,9 @@
           </li>
         </ul>
       </li>
+      @endif
+      
+      
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class=" nav-icon fas fa-cog"></i>
@@ -69,6 +73,7 @@
           </p>
         </a>
       </li>
+      @if (Auth::user()->role === '4')
       <li class="nav-item">
         <a class="nav-link" href="{{route('tambahuser')}}">
           <i class="nav-icon fa-solid fas fa-users"></i>
@@ -77,6 +82,7 @@
           </p>
         </a>
       </li>
+      @endif
       <li class="nav-item">
         <a href="" class="nav-link">
           <i class="nav-icon fa-solid fas fa-solid fas fa-receipt"></i>

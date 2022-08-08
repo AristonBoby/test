@@ -28,7 +28,7 @@ class EditdataPasien extends Component
     public function render()
     {
         return view('livewire.pendaftaran.pasien.components.editdata-pasien', [
-                        'pasien'=> pasien::where('created_at', 'like', '%' .$this->tanggal. '%')->paginate(10)
+                        'pasien'=> pasien::where('created_at', 'like', '%' .$this->tanggal. '%')->orderby('created_at','desc')->paginate(10)
                     ]);
         
     }
