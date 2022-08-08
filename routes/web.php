@@ -17,13 +17,19 @@ use Symfony\Component\Mailer\Transport\Smtp\Auth\LoginAuthenticator;
 */
 
 
-Auth::routes();//['register'=>false,'showLoginForm '=>false,'password.update'=>false,'reset'=>false,'confirm'=>false]);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/pendaftaran',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru::class, 'index'])->name('pendaftaranPasien');
 Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('updatePasien');
 Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::class,'cetak'])->name('printPasien');
 Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->middleware('auth')->name('Kunjungan');
-//Route::get('/',[LoginController::class,'showLoginForm'])->name('login');
+
+//sistem login//
+Route::get('/',[LoginController::class,'showLoginForm'])->middleware('guest')->name('login');
+Route::post('login',[LoginController::class,'login'])->name('login');
+Route::post('/',[LoginController::class,'logout'])->name('logout');
+
+
 
 Route::middleware(['auth','admin'])->group(function(){
     Route::get('/diagnosa',[App\Http\Livewire\Diagnosa\Index::class,'index'])->name('diagnosa');

@@ -1,4 +1,4 @@
-    <div class="col-md-12 col-sm-12 col-lg-8">
+    <div class="col-md-12 col-sm-12 col-lg-12">
         <div class="card card-primary card-outline">
             <div class="card-header">
                 <h3 class="card-title">Data Pasien</h3>

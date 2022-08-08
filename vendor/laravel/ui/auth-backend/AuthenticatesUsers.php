@@ -18,7 +18,7 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('layouts.appLogin');
     }
 
     /**
@@ -130,7 +130,7 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-
+       
     }
 
     /**
@@ -178,7 +178,7 @@ trait AuthenticatesUsers
 
         return $request->wantsJson()
             ? new JsonResponse([], 204)
-            : redirect('/login');
+            : redirect('/');
     }
 
     /**
