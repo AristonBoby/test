@@ -65,8 +65,8 @@
 
 
                 <div class="modal-footer">
-                    <a class="btn btn-primary" href="printpasien/{{$no_Rm}}"  target="_blank">Print</a>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <a class="btn btn-primary btn-sm btn-flat" href="printpasien/{{$no_Rm}}"  target="_blank">Print</a>
+                    <button type="button" class="btn btn-secondary btn-flat btn-sm" data-dismiss="modal">Tutup</button>
                 </div>
               </div>
             </div>
@@ -203,8 +203,8 @@
 
                 </div>
                 <div class="modal-footer">
-                  <a type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</a>
-                  <button type="submit" class="btn btn-primary btn-sm">Ubah Data</button>
+                  <button type="submit" class="btn btn-primary btn-sm btn-flat">Ubah Data</button>
+                  <a type="button" class="btn btn-secondary btn-sm btn-flat" data-dismiss="modal">Batal</a>
                 </div>
               </form>
               </div>

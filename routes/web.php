@@ -30,6 +30,7 @@ Route::post('login',[LoginController::class,'login'])->name('login');
 Route::post('/',[LoginController::class,'logout'])->name('logout');
 
 
+Route::get('/datapasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Datapasien::class,'show'])->name('showdatapasien');
 
 Route::middleware(['auth','admin'])->group(function(){
     Route::get('/diagnosa',[App\Http\Livewire\Diagnosa\Index::class,'index'])->name('diagnosa');

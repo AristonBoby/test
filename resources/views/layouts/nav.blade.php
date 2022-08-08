@@ -19,7 +19,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{Route('updatePasien')}}" class="nav-link">
+            <a href="{{Route('showdatapasien')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-warning"></i>
               <p>Data Pasien</p>
             </a>
