@@ -19,7 +19,11 @@ use Symfony\Component\Mailer\Transport\Smtp\Auth\LoginAuthenticator;
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
+Route::get('/ubahpassword', [App\Http\livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('ubah.password');
 
+
+
+/// Route Petugas Pendaftaran ///
 Route::group(['prefix'=>'pendaftaran','middleware'=>'auth','pendaftaran'],function(){
 Route::get('/daftar',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru::class, 'index']) ->name('pendaftaranPasien');
 Route::get('/datapasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Datapasien::class,'show'])->name('showdatapasien');
@@ -27,6 +31,8 @@ Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::clas
 Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->name('Kunjungan');
 Route::post('logout',[LoginController::class,'logout'])->name('logout');
 });
+ 
+/////END////
 
 Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function(){
     Route::get('/daftar',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru::class, 'index']) ->name('pendaftaranPasien');
