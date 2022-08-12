@@ -57,13 +57,11 @@
                                 </tr>
                                 <tr>
                                     <td>ALAMAT</td>
-                                    <td>{{$alamat}}</td>
+                                    <td>{{$alamat}}, @if($kelurahan)KELURAHAN {{$kelurahan}} KECAMATAN {{$kecamatan}} KAB/KOTA {{$kota_name}} PROVINSI {{$prov_name}}@endempty</td>
                                 </tr>
                             </tbody>
                     </table>
                 </div>
-
-
                 <div class="modal-footer">
                     <a class="btn btn-primary btn-sm btn-flat" href="printpasien/{{$no_Rm}}"  target="_blank">Print</a>
                     <button type="button" class="btn btn-secondary btn-flat btn-sm" data-dismiss="modal">Tutup</button>
@@ -190,6 +188,58 @@
                             </div>
                         </div>
                         </div>
+                        <div class="col-md-12">
+                          <div class="form-group row">
+                              <label class="col-md-4 col-from-label text-sm">Provinsi</label>
+                              <div class="col-md-8">
+                                <select id="test" wire:model="prov" class="rounded-0 form-control form-control-sm">
+                                  <option value="">-- Pilih Provinsi --</option>
+                                  @foreach ($provinsi as $data)
+                                      <option value="{{$data->prov_id}}">{{$data->prov_name}}</option>   
+                                  @endforeach                                     
+                              </select>
+                              </div>
+                          </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group row">
+                                <label class="col-md-4 col-from-label text-sm">Kab/Kota</label>
+                                <div class="col-md-8">
+                                  <select id="test" wire:model="kotas" class="rounded-0 form-control form-control-sm">
+                                    <option value="">-- Pilih Kota --</option>
+                                    @foreach ($kota as $data)
+                                        <option value="{{$data->kota_id}}">{{$data->kota_name}}</option>   
+                                    @endforeach                                     
+                                </select>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group row">
+                                  <label class="col-md-4 col-from-label text-sm">Kecamatan</label>
+                                  <div class="col-md-8">
+                                    <select id="test" wire:model="kecamatan" class="rounded-0 form-control form-control-sm">
+                                      <option value="">-- Pilih Kecamatan --</option>
+                                      @foreach ($kec as $data)
+                                          <option value="{{$data->id_kec}}">{{$data->kec_name}}</option>   
+                                      @endforeach                                     
+                                  </select>
+                                  </div>
+                              </div>
+                              </div>
+                              <div class="col-md-12">
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-from-label text-sm">Kelurahan</label>
+                                    <div class="col-md-8">
+                                      <select id="test" wire:model="kelurahan" class="rounded-0 form-control form-control-sm">
+                                        <option value="">-- Pilih Kelurahan --</option>
+                                        @foreach ($kel as $data)
+                                            <option value="{{$data->id_kel}}">{{$data->kel_name}}</option>   
+                                        @endforeach                                     
+                                    </select>
+                                    </div>
+                                </div>
+                                </div>
                         <div class="col-md-12">
                         <div class="form-group row">
                             <label class="col-md-4 col-from-label text-sm">Alamat</label>

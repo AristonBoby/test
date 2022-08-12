@@ -8,24 +8,12 @@ use Illuminate\support\Facades\DB;
 class Modalcari extends Component
 {
     public $caridiagnosa;
-    public $diagnosa;
+
 
     public function render()
     {
-        return view('livewire.diagnosa.modalcari',[
-            
+        return view('livewire.diagnosa.modalcari', [
+            'diagnosa' => icd::where('icd_code','LIKE','%'.$this->caridiagnosa.'%')->orWhere('diagnosa','LIKE','%'.$this->caridiagnosa.'%')->paginate(10)
         ]);
-    }
-
-    public function mount (){
-        $this->diagnosa;
-    }
-    
-    public function modaldiagnosa()
-    {
-        $query = DB::table('icd10')->paginate(10,'icd_code');
-        return $this->diagnosa = $query;
-       
-        
     }
 }

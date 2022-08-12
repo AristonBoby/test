@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kunjungans', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('id_pasien')->index()->unsigned();
-            $table->char('id_poli',3);
-            $table->integer('id_user');
-            $table->date('tanggal');
-            $table->timestamps();
+        Schema::create('provinsis', function (Blueprint $table) {
+            $table->id('prov_id');
+            $table->string('prov_name',30);
         });
     }
 
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kunjungans');
+        Schema::dropIfExists('provinsis');
     }
 };

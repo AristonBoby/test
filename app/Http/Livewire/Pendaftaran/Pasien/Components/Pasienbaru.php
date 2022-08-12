@@ -4,6 +4,10 @@ namespace App\Http\Livewire\Pendaftaran\Pasien\Components;
 
 use Livewire\Component;
 use App\Models\pasien;
+use App\Models\provinsi;
+use App\Models\kota;
+use App\Models\kecamatan;
+use App\Models\kelurahan;
 use Illuminate\Support\Facades\Auth;
 class Pasienbaru extends Component
 {   
@@ -19,15 +23,25 @@ class Pasienbaru extends Component
     public $nik;
     public $bpjs;
     public $alamat;
-
+    public $prov; // Variabel Provinsi 
+    public $kotas; //Vairabel Kota
+    public $kecamatan;  //Variabel Kelurahan
+    public $kelurahan; //Variabel Kelurahan
+    public $idkelurahan;
 
 
     public function mount(){
         $this->tanggal_Lahir = date('Y-m-d');
+        $this->prov;
     }
     public function render()
     {
-        return view('livewire.pendaftaran.pasien.components.pasienbaru');
+        return view('livewire.pendaftaran.pasien.components.pasienbaru',[
+            'provinsi'  =>  provinsi::all(),
+            'kota'      =>  kota::where('prov_id',$this->prov)->get(),
+            'kec'       =>  kecamatan::where('kota_id',$this->kotas)->get(),
+            'kel'       =>  kelurahan::where('kec_id',$this->kelurahan)->get()
+        ]);
     }
     
     public function index ()
@@ -48,6 +62,7 @@ class Pasienbaru extends Component
         'bpjs'              => 'unique:pasiens|max:13',
         'pekerjaan'         => 'required',
         'alamat'            => 'required',
+        'idkelurahan'       => 'required',
     ]);
 
     protected $messages =[
@@ -67,6 +82,7 @@ class Pasienbaru extends Component
         'nik.max'=>'NIK Pasien Maksimal 16 karakter',
         'bpjs.unique'=>'Nomor BPJS Pasien telah digunakan',
         'bpjs.max'=>'Nomor BPJS Pasien Maksimal 13 Karakter',
+        'idkelurahan.required' => 'Kelurahan tidak boleh kosong',
     ];
 
 
@@ -84,10 +100,10 @@ class Pasienbaru extends Component
                     'no_tlpn'           => $this->no_tlpn,    
                     'nik'               => $this->nik,
                     'bpjs'              => $this->bpjs,
+                    'kel_id'            => $this->idkelurahan,
                     'alamat'            => $this->alamat,
                     'id_user'           => Auth::id(),
             ]);
-        
         if($query){
                     $this->no_Rm           = "";
                     $this->nama            = "";
@@ -101,6 +117,7 @@ class Pasienbaru extends Component
                     $this->no_tlpn         = "";
                     $this->bpjs            = "";
                     $this->alamat          = "";
+                    $this->render();
             $this->dispatchBrowserEvent('simpan');
         }
 

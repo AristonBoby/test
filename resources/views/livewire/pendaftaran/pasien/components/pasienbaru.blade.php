@@ -1,5 +1,5 @@
     <div class="col-lg-4 col-md-8 col-sm-12">   
-            <div class="card card-info card-outline">
+            <div class="card card-info card">
                 <div class="card-header">
                     <h3 class="card-title">Pendaftaran Pasien Baru</h3>
                         <div class="card-tools">
@@ -144,6 +144,61 @@
                                 </div>
                             </div>
 
+                            <div class="col-lg-12">
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-sm">Provinsi</label>
+                                    <div class="col-md-8">
+                                        <select id="test" wire:model="prov" class="rounded-0 form-control form-control-sm">
+                                            <option value="">-- Pilih Provinsi --</option>
+                                            @foreach ($provinsi as $data)
+                                                <option value="{{$data->prov_id}}">{{$data->prov_name}}</option>   
+                                            @endforeach                                     
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-12">
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-sm">Kab/Kota</label>
+                                    <div class="col-md-8">
+                                        <select id="test" class="form-control form-control-sm rounded-0" wire:model="kotas" @empty($kota) disabled @endempty>
+                                            <option selected>-- Pilih Kab/Kota --</option>
+                                            @foreach ($kota as $data)
+                                                <option value="{{$data->kota_id}}" >{{$data->kota_name}}</option>   
+                                            @endforeach                                     
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-sm">Kecamatan</label>
+                                    <div class="col-md-8">
+                                        <select id="test"class="form-control form-control-sm rounded-0" wire:model="kelurahan" @empty($kota) disabled @endempty>
+                                            <option selected>-- Pilih Kecamatan --</option>
+                                            @foreach ($kec as $data)
+                                                <option value="{{$data->id_kec}}" >{{$data->kec_name}}</option>   
+                                            @endforeach                                     
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-sm">Kelurahan / Desa</label>
+                                    <div class="col-md-8">
+                                        <select id="test"class="form-control form-control-sm rounded-0" wire:model="idkelurahan" @empty($kota) disabled @endempty>
+                                            <option selected>-- Pilih Kelurahan / Desa --</option>
+                                            @foreach ($kel as $data)
+                                                <option value="{{$data->id_kel}}" >{{$data->kel_name}}</option>   
+                                            @endforeach                                     
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-md-12">
                                 <div class="form-group row">
@@ -162,7 +217,7 @@
                 </form>
             </div>
         </div>
-        <script>
+        <script type="text/javascript">
             window.addEventListener('simpan', event => {
             Swal.fire({
                 title: 'Berhasil',
@@ -170,4 +225,18 @@
                 icon: 'success',
             })
         });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $.ajax({
+                type: "GET",
+                url: "https://api.iluzi.id/region/",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",              
+                dataType: "json",
+                success: function (data) {
+                    alert("success");
+                    }
+                });
+            });
         </script>

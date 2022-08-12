@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Tambahuser;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class Modaledituser extends Component
@@ -46,13 +47,13 @@ class Modaledituser extends Component
         'role'          =>  'required|max:1',     
         'status'        =>  'required|max:1',
         'password'      =>  'max:20',         
-        're_password'   =>  'max:20|same:password'
+        're_password'   =>  'max:20|same:password',
     ]); 
 
     protected $messages =([
         're_password.same'          =>  'Password yang anda masukan tidak sesuai',
         'password.min'              =>  'Password minimal 8 karakter',
-        're_password.min'              =>  'Password minimal 8 karakter',
+        're_password.min'           =>  'Password minimal 8 karakter',
 
     ]);
 
@@ -62,10 +63,12 @@ class Modaledituser extends Component
             'name'          =>  $this->nama,
             'role'          =>  $this->role,
             'status_user'   =>  $this->status,
+            'password'      =>  Hash::make($this->password)
+            
         ]);
 
         if($query)
-        {   $this->clear();
+        {
             $this->dispatchBrowserEvent('edituser');
             $this->emit('refresh');
         }

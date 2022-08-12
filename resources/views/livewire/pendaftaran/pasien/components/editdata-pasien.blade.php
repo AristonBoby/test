@@ -62,7 +62,7 @@
             <div class="card-footer btn-sm text-sm rounded-0 btn-flat">
                     {{$pasien->links()}}
             </div>
-            @include('livewire.pendaftaran.pasien.components.modal')
+            @include('livewire.pendaftaran.pasien.components.modaldetailpasien')
         </div>
         <style>
             nav svg{

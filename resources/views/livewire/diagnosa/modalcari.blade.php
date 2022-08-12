@@ -8,24 +8,21 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group row center text-center offset-md-1 offset-sm-0">
+                    <div class="form-group row center offset-md-1 offset-sm-0">
                         <label class="label-text text-sm col-lg-3 col-sm-4">Cari Diagnosa Penyakit</label>
                         <input wire:modal='caridiagnosa' class=" col-lg-5 col-sm-4 text-sm form-control form-control-sm rounded-0" placeholder="Pencarian Diagnosa Penyakit">
-                        <button type="submit" wire:click="modaldiagnosa" class="col-sm-1 btn btn-sm btn-primary rounded-0">Cari</button>
-                    </div>
                 <p class="text-danger text-sm text-center">*Pencarian Diagnosa Penyakit</p>
                         <table class="table text-sm">
                             <tr>
                                 <th>Code</th>
                                 <th>Diagnosa</th>
                             </tr>   
-                            @if(!empty($franchiseList) && $links->links())
                                 @foreach ($diagnosa as $data)
                                     <tr>
                                         <td>{{$data->icd_code}}</td>
+                                        <td>{{$data->diagnosa}}</td>
                                     </tr>
-                                @endforeach
-                            @endif          
+                                @endforeach     
                         </table>
                 </div>
                 <div class="modal-footer">

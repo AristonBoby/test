@@ -42,7 +42,7 @@
     .footer1{
         text-align: center;
         font-size: 8pt;
-        margin-top:120px;
+        margin-top:80px;
     }
     .footer2{
         text-align: center;
@@ -102,54 +102,55 @@
     <table  border="1" style="width:100%; border-collapse: collapse;" class="border" collapse="0">
         <tr style="" height="22">
             <td class="text-center borderright" style="text-align:left; width:1%; ">&nbsp; Nama</td>
-            <td class="text-center bordernone" style="text-align:center; width:1%">:</td>
-            <td class="text-center borderleft uppercase" style="text-align:left; "> &nbsp; {{$data->nama}}</td>
+            <td class="text-center bordernone" style="text-align:center; width:2%">:</td>
+            <td class="text-center borderleft uppercase" style="text-align:left; "> {{$data->nama}}</td>
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left; width:30%;">&nbsp; Tempat Lahir, Tanggal Lahir</td>
             <td class="text-center bordernone" style="text-align:center; border-left: blank">:</td>
-            <td class="text-center borderleft uppercase" style="text-align:left; "> &nbsp; {{$data->tempat_Lahir}}, {{$tgl_lahir}}</td>
+            <td class="text-center borderleft uppercase" style="text-align:left; "> {{$data->tempat_Lahir}}, {{$tgl_lahir}}</td>
 
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; Jenis Kelamin</td>
             <td class="text-center bordernone" style="text-align:center; width:1%">:</td>
-            <td class="text-center borderleft uppercase" style="text-align:left;">&nbsp; @if($data->jenkel == "L")Laki-laki @else Perempuan @endif</td>
+            <td class="text-center borderleft uppercase" style="text-align:left;"> @if($data->jenkel == "L")Laki-laki @else Perempuan @endif</td>
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; Kepala Keluarga</td>
             <td class="text-center bordernone" style="text-align:center; width:1%">:</td>
-            <td class="text-center borderleft uppercase" style="text-align:left;"> &nbsp; {{$data->kepala_keluarga}}</td>
+            <td class="text-center borderleft uppercase" style="text-align:left;">  {{$data->kepala_keluarga}}</td>
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; Agama</td>
             <td class="text-center bordernone " style="text-align:center; width:1%;border-left:0px;x">:</td>
-            <td class="text-center borderleft uppercase" style="text-align:left;"> &nbsp; {{$data->agama}}</td>
+            <td class="text-center borderleft uppercase" style="text-align:left;">  {{$data->agama}}</td>
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; Pekerjaan</td>
             <td class="text-center bordernone" style="text-align:center; width:1%">:</td>
-            <td class="text-center borderleft uppercase" style="text-align:left;"> &nbsp; {{$data->pekerjaan}}</td>
+            <td class="text-center borderleft uppercase" style="text-align:left;"> {{$data->pekerjaan}}</td>
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; NIK</td>
             <td class="text-center bordernone " style="text-align:center; width:1%">:</td>
-            <td class="text-center borderleft uppercase" style="text-align:left;"> &nbsp; {{$data->nik}}</td>
+            <td class="text-center borderleft uppercase" style="text-align:left;"> {{$data->nik}}</td>
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; Nomor BPJS</td>
             <td class="text-center bordernone" style="text-align:center; width:1%">:</td>
-            <td class="text-center borderleft uppercase" style="text-align:left;"> &nbsp; {{$data->bpjs}}</td>
+            <td class="text-center borderleft uppercase" style="text-align:left;">{{$data->bpjs}}</td>
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; Alamat</td>
             <td class="text-center bordernone" style="text-align:center; width:1%">:</td>
-            <td class="text-center borderleft uppercase" style="text-align:left;">&nbsp; {{$data->alamat}}</td>
+            <td class="text-center borderleft uppercase" style="text-align:left;">{{$data->alamat}}@if($data->kel_name), Kelurahan {{$data->kel_name}}, 
+                Kecamatan {{$data->kec_name}}, Kab/Kota {{$data->kota_name}}, provinsi {{$data->prov_name}}@endif</td>
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; No. Tlpn./HP</td>
             <td class="text-center bordernone" style="text-align:center; width:1%">:</td>
-            <td class="text-center borderleft uppercase" style="text-align:left;"> &nbsp; {{$data->no_tlpn}}</td>
+            <td class="text-center borderleft uppercase" style="text-align:left;"> {{$data->no_tlpn}}</td>
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; Golongan Darah</td>

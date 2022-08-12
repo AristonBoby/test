@@ -3,7 +3,12 @@
 namespace App\Http\Livewire\Pendaftaran\Pasien\Components;
 use App\Models\pasien;
 use Livewire\Component;
+use App\Models\provinsi;
+use App\Models\kota;
+use App\Models\kecamatan;
+use App\Models\kelurahan;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\DB;
 
 class Datapasien extends Component
 {
@@ -21,7 +26,14 @@ class Datapasien extends Component
     public $delete_id;
     public $caripasien;
     public $id_pasien;
-
+    public $kel_name;
+    public $prov;      
+    public $kotas;     
+    public $kelurahan; 
+    public $kecamatan; 
+    public $prov_name;
+    public $kec_name;
+    public $kota_name;
     use WithPagination;
     protected $listeners = ['deleteConfirmed' => 'hapusPasien'];
     protected $paginationTheme = 'bootstrap';
@@ -29,7 +41,11 @@ class Datapasien extends Component
     public function render()
     {
         return view('livewire..pendaftaran.pasien.components.datapasien',[
-        'pasien'=> pasien::where('nama', 'like', '%' .$this->caripasien. '%')->orWhere('nik',$this->caripasien)->orWhere('bpjs',$this->caripasien)->paginate(10)
+        'pasien'    =>  pasien::where('nama', 'like', '%' .$this->caripasien. '%')->orWhere('nik',$this->caripasien)->orWhere('bpjs',$this->caripasien)->paginate(10),
+        'provinsi'  =>  provinsi::all(),
+        'kota'      =>  kota::where('prov_id',$this->prov)->get(),
+        'kec'       =>  kecamatan::where('kota_id',$this->kotas)->get(),
+        'kel'       =>  kelurahan::where('kec_id',$this->kecamatan)->get()
         ]);
     }
 
@@ -55,6 +71,7 @@ class Datapasien extends Component
         'bpjs'              => 'max:13',
         'pekerjaan'         => 'required',
         'alamat'            => 'required',
+        'kelurahan'         => 'required',
     ]);
     protected $messages =[
         'no_Rm.required'=>'Nomor Rekam Medis wajib di isi',
@@ -74,28 +91,23 @@ class Datapasien extends Component
         'bpjs.max'=>'Nomor BPJS Pasien Maksimal 13 Karakter',
     ];
 
-    public function showUpdatePasien (){
-        $query = pasien::where('nama','like','%'.$this->cariPasien.'%')->first();
-        if($query){
-            $this->id               =   $query->id;
-            $this->nama             =   $query->nama; 
-            $this->no_Rm            =   $query->no_Rm;
-            $this->agama            =   $query->agama;
-            $this->tempat_Lahir     =   $query->tempat_Lahir;
-            $this->tanggal_Lahir    =   $query->tanggal_Lahir;
-            $this->kepala_keluarga  =   $query->kepala_keluarga;
-            $this->pekerjaan        =   $query->pekerjaan;
-            $this->nik              =   $query->nik;
-            $this->bpjs             =   $query->bpjs;
-            $this->alamat           =   $query->alamat;
-        }   
-    }   
+    
     public function edit ($data){
         $this->detailPasien($data);
     }
 
+
+    // Menampilkan data pasien UNTUK EDIT > PENDAFTARAN PASIEN > DATA PASIEN >EDIT //
     public function detailPasien($data){
-           $query = pasien::find($data);
+
+           $query = DB::table('pasiens')
+                    ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
+                    ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
+                    ->join('kotas','kecamatans.kota_id','kotas.kota_id')
+                    ->join('provinsis','kotas.prov_id','provinsis.prov_id')
+                    ->select('*','kelurahans.id_kel','kecamatans.id_kec','kotas.kota_id','provinsis.prov_id')
+                    ->where('pasiens.id',$data)->first();
+                
            if($query){
             $this->id_pasien        =   $query->id;
             $this->nama             =   $query->nama; 
@@ -109,9 +121,39 @@ class Datapasien extends Component
             $this->nik              =   $query->nik;
             $this->bpjs             =   $query->bpjs;
             $this->alamat           =   $query->alamat;   
+            $this->no_tlpn          =   $query->no_tlpn; 
+            $this->kelurahan        =   $query->kel_id;
+            $this->kel_nama         =   $query->kel_name;
+            $this->prov             =   $query->prov_id;
+            $this->kotas            =   $query->kota_id;
+            $this->kecamatan        =   $query->id_kec;
+            $this->kec_name         =   $query->kec_name;
+            $this->kel_name         =   $query->kel_name;
+            $this->kota_name        =   $query->kel_name;
+            $this->prov_name        =   $query->prov_name;
+           }else{
+
+            $query = pasien::find($data);
+            $this->id_pasien        =   $query->id;
+            $this->nama             =   $query->nama; 
+            $this->no_Rm            =   $query->no_Rm;
+            $this->agama            =   $query->agama;
+            $this->tempat_Lahir     =   $query->tempat_Lahir;
+            $this->tanggal_Lahir    =   $query->tanggal_Lahir;
+            $this->kepala_keluarga  =   $query->kepala_keluarga;
+            $this->jenkel           =   $query->jenkel;
+            $this->pekerjaan        =   $query->pekerjaan;
+            $this->nik              =   $query->nik;
+            $this->bpjs             =   $query->bpjs;
+            $this->alamat           =   $query->alamat;   
             $this->no_tlpn          =   $query->no_tlpn;
-        }
+            $this->kelurahan        =   "";
+            $this->prov             =   "";
+            $this->kotas            =   "";
+            $this->kecamatan        =   "";
+            }
     }
+    // END //
 
     public function editPasien ()
     {   $this->validate();
@@ -129,9 +171,11 @@ class Datapasien extends Component
             'bpjs'              =>  $this->bpjs,
             'alamat'            =>  $this->alamat,
             'no_tlpn'           =>  $this->no_tlpn,
+            'kel_id'            =>  $this->kelurahan,
         ]);
         if($query){
             $this->dispatchBrowserEvent('editPasien');
+            $this->prov="";
         }
     }
 

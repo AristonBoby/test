@@ -17,28 +17,15 @@
                     <div class="col-md-8">
                         <p class="text-sm text-danger">* Data Pasien yang ditampilkan berdasarkan tanggal terdaftar pasien</p>
                     </div>
-                    <div class="col-lg-2 col-md-12 col-sm-12 mb-3 float-right">
-                        <div class="form-group row">
-                            <label class="form-label col-lg-4 col-sm-12 text-sm"> Status </label>
-                                <div class="col-lg-8 col-sm-12">
-                                    <div class="input-group mb-3">
-                                        <select class="form-control form-control-sm">
-                                            <option value="">Belum Dilayani</option>
-                                            <option>Sudah Dilayani</option>
-                                        </select>
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
                     <div class="col-md-12 col-lg-2 col-sm-12 mb-3 float-right">
                         <div class="form-group row">
-                            <label class="form-label col-md-12 col-lg-4 col-sm-12 text-sm"> Tanggal </label>
-                                <div class="col-lg-8 col-md-12 col-sm-12">
+                            <label class="form-label col-md-12 col-lg-3 col-sm-12 text-xs"> Tanggal </label>
+                                <div class="col-lg-9 col-md-12 col-sm-12">
                                     <div class="input-group mb-3">
-                                        <input type="date"  wire:model="tanggal" class=" form-control form-control-sm">
+                                        <input type="date"  wire:model="tanggal" class=" form-control form-control-sm text-sm rounded-0">
+                                        <button class="btn btn-sm btn-primary btn-flat" wire:click="pasienDiagnosa">CEK</button>
                                     </div>
                                 </div>
-                                <button wire:click="pasienDiagnosa">CEK</button>
                         </div>
                     </div>
                 </div>
@@ -52,7 +39,7 @@
                             <th class="text-center">Kelamin</th>
                             <th class="text-center">Poli</th>
                             <th class="text-ceneter">Dokter</th>
-                            <th class="text-center">Diagnosa</th>
+                            <th  width="30%" class="text-center">Diagnosa</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -68,7 +55,7 @@
                                 <td>@if(!empty($data->jenkel)){{$data->jenkel}}@endif</td>
                                 <td>@if(!empty($data->nama_poli)){{$data->nama_poli}}@endif</td>
                                 <td>@if(!empty($data->dokter)){{$data->dokter}}@endif</td>
-                                <td>{{$data->diagnosa}}</td>
+                                <td width="30%">{{$data->diagnosa}}</td>
 
                                 <td><a class="btn btn-xs btn-danger"><i class="fas fa-light fa-trash-alt"></i></a></td>
                             </tr>

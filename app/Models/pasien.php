@@ -22,7 +22,8 @@ class pasien extends Model
         'no_tlpn',
         'bpjs',
         'alamat',
-        'id_user'
+        'id_user',
+        'kel_id'
     ];
 
     public function kunjungan(){
