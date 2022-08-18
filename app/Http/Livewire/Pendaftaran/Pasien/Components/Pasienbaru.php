@@ -117,6 +117,10 @@ class Pasienbaru extends Component
                     $this->no_tlpn         = "";
                     $this->bpjs            = "";
                     $this->alamat          = "";
+                    $this->prov            = "";
+                    $this->kotas           = "";
+                    $this->kecamatan       = "";
+                    $this->kelurahan       = "";
                     $this->render();
             $this->dispatchBrowserEvent('simpan');
         }

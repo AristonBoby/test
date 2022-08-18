@@ -43,7 +43,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function(){
     });
 //sistem login//
 Route::get('/',[LoginController::class,'showLoginForm'])->middleware('guest')->name('login.redirect');
-Route::post('login',[LoginController::class,'login'])->name('login');
+Route::post('/login',[LoginController::class,'login'])->name('login');
 
 Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('updatePasien');
 

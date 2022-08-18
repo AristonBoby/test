@@ -8,22 +8,29 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group row center offset-md-1 offset-sm-0">
-                        <label class="label-text text-sm col-lg-3 col-sm-4">Cari Diagnosa Penyakit</label>
-                        <input wire:modal='caridiagnosa' class=" col-lg-5 col-sm-4 text-sm form-control form-control-sm rounded-0" placeholder="Pencarian Diagnosa Penyakit">
-                <p class="text-danger text-sm text-center">*Pencarian Diagnosa Penyakit</p>
-                        <table class="table text-sm">
+                    <div class="form-group row ">
+                        <div class="col-lg-12 row">
+                            <label class="label-text text-xs col-md-4 text-right">Cari Diagnosa Penyakit</label>
+                            <div class="col-md-6">
+                                <input wire:model='cariicd' class=" text-xs form-control form-control-sm rounded-0" placeholder="Pencarian Diagnosa Penyakit">
+                            </div>
+                            <p class=" col-md-12 text-danger text-xs text-center">*Pencarian Diagnosa Penyakit</p>
+                        </div>    
+                        <table class="table text-xs table-sm table-bordered" style="width:80%; margin:0 auto; margin-top:30px;">
                             <tr>
+                                <th>No.</th>
                                 <th>Code</th>
                                 <th>Diagnosa</th>
                             </tr>   
-                                @foreach ($diagnosa as $data)
-                                    <tr>
-                                        <td>{{$data->icd_code}}</td>
-                                        <td>{{$data->diagnosa}}</td>
-                                    </tr>
-                                @endforeach     
+                            @foreach ( $diag as $no=>$data )
+                                <tr>
+                                    <td>{{$no+1}}</td>
+                                    <td>{{$data->icd_code}}</td>
+                                    <td>{{$data->diagnosa}}</td>
+                                </tr>              
+                            @endforeach
                         </table>
+                        {{$diag->links()}}
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-danger btn-sm float-right rounded-0" data-dismiss="modal">Tutup</button>

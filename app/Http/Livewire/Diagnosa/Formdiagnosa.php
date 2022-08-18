@@ -52,11 +52,6 @@ class Formdiagnosa extends Component
         }
     }
 
-    public function city_change($id)
-    {
-        dd($id);
-    }
-
 
     public function clear(){
 
