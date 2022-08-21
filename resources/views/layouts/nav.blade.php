@@ -15,13 +15,13 @@
           <li class="nav-item">
             <a href="{{Route('pendaftaranPasien')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-info"></i>
-              <p>Pasien Baru</p>
+              <p>Input Pasien Baru</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{Route('showdatapasien')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-warning"></i>
-              <p>Data Pasien</p>
+              <p>Pencarian Data Pasien</p>
             </a>
           </li>
 
@@ -31,7 +31,7 @@
         <a href="#" class="nav-link">
           <i class=" nav-icon fas fa-edit"></i>
           <p>
-            Input Kunjungan
+              Kunjungan
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
@@ -39,7 +39,7 @@
           <li class="nav-item">
             <a href="{{route('Kunjungan')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-success"></i>
-              <p>Kunjungan Sakit</p>
+              <p>Input Kunjungan Sakit</p>
             </a>
           </li>
         </ul>
@@ -97,10 +97,6 @@
               <i class="far fa-circle nav-icon text-info"></i>
               <p>Laporan Kunjungan Poli</p>
             </a>
-            <a href="{{Route('laporan')}}" class="nav-link">
-                <i class="nav-icon fas fa-chart-pie text-danger"></i>
-                <p>Laporan Chart</p>
-              </a>
           </li>
         </ul>
         <li class="nav-item">

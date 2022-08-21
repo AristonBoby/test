@@ -17,8 +17,8 @@ use Symfony\Component\Mailer\Transport\Smtp\Auth\LoginAuthenticator;
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
 Route::get('/ubahpassword', [App\Http\livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('ubah.password');
-
-
+Route::post('logout',[LoginController::class,'logout'])->name('logout');
+Route::get('/laporan',[App\Http\Livewire\Laporan\Home::class,'index'])->name('laporan');
 
 /// Route Petugas Pendaftaran ///
 Route::group(['prefix'=>'pendaftaran','middleware'=>'auth','pendaftaran'],function(){
@@ -26,7 +26,8 @@ Route::get('/daftar',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru
 Route::get('/datapasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Datapasien::class,'show'])->name('showdatapasien');
 Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::class,'cetak'])->name('printPasien');
 Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->name('Kunjungan');
-Route::post('logout',[LoginController::class,'logout'])->name('logout');
+Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('updatePasien');
+
 });
 /////END////
 
@@ -35,20 +36,18 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function(){
     Route::get('/datapasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Datapasien::class,'show'])->name('showdatapasien');
     Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::class,'cetak'])->name('printPasien');
     Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->name('Kunjungan');
-    Route::post('logout',[LoginController::class,'logout'])->name('logout');
+    Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('updatePasien');
+    Route::get('/diagnosa',[App\Http\Livewire\Diagnosa\Index::class,'index'])->name('diagnosa');
+    Route::get('/tambahuser',[App\Http\Livewire\Tambahuser\Index::class,'index'])->name('tambahuser');
+    Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('updatePasien');
     });
 
 //sistem login//
 Route::get('/',[LoginController::class,'showLoginForm'])->middleware('guest')->name('login.redirect');
 Route::post('/login',[LoginController::class,'login'])->name('login');
+// end login
 
-Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('updatePasien');
 
-Route::middleware(['auth','admin'])->group(function(){
-    Route::get('/diagnosa',[App\Http\Livewire\Diagnosa\Index::class,'index'])->name('diagnosa');
-    Route::get('/tambahuser',[App\Http\Livewire\Tambahuser\Index::class,'index'])->name('tambahuser');
-});
-Route::get('/laporan',[App\Http\Livewire\Laporan\Home::class,'index'])->name('laporan');
 
 
 

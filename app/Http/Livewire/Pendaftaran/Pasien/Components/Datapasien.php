@@ -89,6 +89,8 @@ class Datapasien extends Component
         'nik.max'=>'NIK Pasien Maksimal 16 karakter',
         'bpjs.unique'=>'Nomor BPJS Pasien telah digunakan',
         'bpjs.max'=>'Nomor BPJS Pasien Maksimal 13 Karakter',
+        'bpjs.min'=>'Nomor BPJS Pasien Minimal 13 Karakter',
+
     ];
 
     

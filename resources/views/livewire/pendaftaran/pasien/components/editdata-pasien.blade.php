@@ -20,7 +20,7 @@
                         <div class="form-group row">
                             <label class="form-label col-md-4 text-sm"> Tanggal</label>
                                 <div class="col-md-8">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group">
                                         <input type="date"  wire:model="tanggal" class=" form-control form-control-sm">
                                         <a class="btn btn-primary btn-sm btn-flat" wire:click="render()">Cari</a>
                                     </div>

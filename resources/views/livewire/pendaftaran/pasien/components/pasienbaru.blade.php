@@ -139,7 +139,7 @@
                                     <label class="col-md-4 text-sm">No. BPJS</label>
                                     <div class="col-md-8">
                                         <input type="text" wire:model='bpjs' class=" number @error('bpjs')is-invalid @enderror form-control form-control-sm text-sm rounded-0" placeholder="Nomor BPJS" maxlength="13">
-                                        @error('bpjs')<span class="invalid-feedback">{{$message}}</span>@enderror
+                                        @error('bpjs')<span class="invalid-feedback">{{$message}}</span>@enderror 
                                     </div>
                                 </div>
                             </div>
