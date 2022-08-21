@@ -16,9 +16,9 @@ use Symfony\Component\Mailer\Transport\Smtp\Auth\LoginAuthenticator;
 */
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
-Route::get('/ubahpassword', [App\Http\livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('ubah.password');
-Route::post('logout',[LoginController::class,'logout'])->name('logout');
-Route::get('/laporan',[App\Http\Livewire\Laporan\Home::class,'index'])->name('laporan');
+Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('ubah.password');
+Route::post('logout',[LoginController::class,'logout'])->middleware('auth')->name('logout');
+Route::get('/laporan',[App\Http\Livewire\Laporan\Home::class,'index'])->middleware('auth')->name('laporan');
 
 /// Route Petugas Pendaftaran ///
 Route::group(['prefix'=>'pendaftaran','middleware'=>'auth','pendaftaran'],function(){
