@@ -10,7 +10,7 @@ class Laporankunjungan extends Component
     public $sampaitanggal;
     public function render()
     {
-        return view('livewire.laporan.laporankunjungan',[
+        return view('livewire.Laporan.laporankunjungan',[
             'laporanpoli'=> DB::table('kunjungans')
                     ->join('polis','kunjungans.id_poli','polis.id_poli')
                     ->selectRaw('count(kunjungans.id_poli)as jumlah, polis.nama_poli')
