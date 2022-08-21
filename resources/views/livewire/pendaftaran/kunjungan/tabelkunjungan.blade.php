@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered table-hover text-xs mb-2 text-center">
+                <table class="table table-bordered table-hover text-xs mb-2 text-center table-sm">
                     <thead>
                         <tr>
                             <th class=" ">No</th>
