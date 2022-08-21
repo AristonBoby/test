@@ -4,7 +4,6 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Mailer\Transport\Smtp\Auth\LoginAuthenticator;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,8 +14,6 @@ use Symfony\Component\Mailer\Transport\Smtp\Auth\LoginAuthenticator;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
 Route::get('/ubahpassword', [App\Http\livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('ubah.password');
@@ -31,7 +28,6 @@ Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::clas
 Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->name('Kunjungan');
 Route::post('logout',[LoginController::class,'logout'])->name('logout');
 });
- 
 /////END////
 
 Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function(){
@@ -46,7 +42,6 @@ Route::get('/',[LoginController::class,'showLoginForm'])->middleware('guest')->n
 Route::post('/login',[LoginController::class,'login'])->name('login');
 
 Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('updatePasien');
-
 
 Route::middleware(['auth','admin'])->group(function(){
     Route::get('/diagnosa',[App\Http\Livewire\Diagnosa\Index::class,'index'])->name('diagnosa');
