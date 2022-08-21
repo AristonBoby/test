@@ -31,7 +31,7 @@
                 <table class="table table-bordered table-hover text-xs mb-2 text-center">
                     <thead>
                         <tr>
-                            <th class=" ">No{{ Auth::user()->role }}</th>
+                            <th class=" ">No</th>
                             <th class="text-center">No Rekam Medis</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Tgl Lahir</th>

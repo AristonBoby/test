@@ -19,6 +19,7 @@ class Forminput extends Component
     public $nik;
     public $no_tlpn;
     public $id_pasien;
+    public $jeniskunjungan;
     public $form = true;
   
     public $cari_Pasien_no_RM;
@@ -43,6 +44,7 @@ class Forminput extends Component
         $this->bpjs             = "";
         $this->no_tlpn          = "";
         $this->tanggal_Lahir    = "";
+        $this->jeniskunjungan   = "";
         $this->form             = true;
     } 
     public function cekpasien(){
@@ -67,9 +69,10 @@ class Forminput extends Component
         }
     }
     protected $rules = [
-        'id_pasien' => 'required',
-        'tanggal'   => 'required',
-        'poli'   => 'required',
+        'id_pasien'         => 'required',
+        'tanggal'           => 'required',
+        'poli'              => 'required',
+        'jeniskunjungan'    => 'required',
     ];
 
     public function simpanKunjungan (){
@@ -81,10 +84,11 @@ class Forminput extends Component
         }
         else{
             $query = kunjungan::create([
-                'id_pasien' =>  $this->id_pasien,
-                'tanggal'   =>  $this->tanggal,
-                'id_user'   =>  Auth::id(),
-                'id_poli'   =>  $this->poli,
+                'id_pasien'         =>  $this->id_pasien,
+                'tanggal'           =>  $this->tanggal,
+                'id_user'           =>  Auth::id(),
+                'id_poli'           =>  $this->poli,
+                'jenis_kunjungan'   =>  $this->jeniskunjungan,
             ]);
 
             if($query)

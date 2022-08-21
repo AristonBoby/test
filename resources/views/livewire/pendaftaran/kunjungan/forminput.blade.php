@@ -65,13 +65,14 @@
                         <div class="form-group row">
                             <label class="form-control-label text-sm col-md-4">Jenis Kunjungan</label>
                             <div class="col-md-6">
-                                <select class="form-control form-control-sm text-sm rounded-0 @error('poli') is-invalid @enderror" wire:model="poli" @($form) >
-                                    <option>BPJS Dalam Wilayah</option>
-                                    <option>BPJS Luar Wilayah/Luar Daerah</option>
-                                    <option>Masyarakat Samarinda</option>
-                                    <option>Non Masyarakat Samarinda</option>
+                                <select class="form-control form-control-sm text-sm rounded-0 @error('jeniskunjungan') is-invalid @enderror" wire:model="jeniskunjungan">
+                                    <option value="" selected> --Pilih Salah Satu--</option>
+                                    <option value="DW"> BPJS Dalam Wilayah</option>
+                                    <option value="LW"> BPJS Luar Wilayah/Luar Daerah</option>
+                                    <option value="MS"> Masyarakat Samarinda</option>
+                                    <option value="NMS"> Non Masyarakat Samarinda</option>
                                 </select>
-                                @error("poli")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror
+                                @error("jeniskunjungan")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror
                             </div>
                         </div> 
                         <div class="form-group row">

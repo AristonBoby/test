@@ -9,7 +9,7 @@ class kunjungan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id_pasien','id_poli','id_user','tanggal'];
+    protected $fillable = ['id_pasien','id_poli','id_user','tanggal','jenis_kunjungan'];
     
     
     public function pasien()
