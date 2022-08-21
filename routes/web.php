@@ -37,6 +37,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function(){
     Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->name('Kunjungan');
     Route::post('logout',[LoginController::class,'logout'])->name('logout');
     });
+
 //sistem login//
 Route::get('/',[LoginController::class,'showLoginForm'])->middleware('guest')->name('login.redirect');
 Route::post('/login',[LoginController::class,'login'])->name('login');
@@ -47,7 +48,7 @@ Route::middleware(['auth','admin'])->group(function(){
     Route::get('/diagnosa',[App\Http\Livewire\Diagnosa\Index::class,'index'])->name('diagnosa');
     Route::get('/tambahuser',[App\Http\Livewire\Tambahuser\Index::class,'index'])->name('tambahuser');
 });
-Route::get('/laporan',[App\Http\Livewire\Laporan\home::class,'index'])->name('laporan');
+Route::get('/laporan',[App\Http\Livewire\Laporan\Home::class,'index'])->name('laporan');
 
 
 
