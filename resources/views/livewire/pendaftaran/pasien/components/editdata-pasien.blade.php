@@ -11,6 +11,9 @@
                     </button>
                 </div>
             </div>
+            <div wire:loading>
+                <p>Loading</p>
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
@@ -41,7 +44,13 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody wire:loading >
+                        <tr>
+                            <th colspan="8">Loading...</th>
+                        </tr>
+                    </tbody>
+
+                    <tbody wire:loading.remove>
                         @foreach ($pasien as $index => $query)
                             <tr>
                                 <td>{{$pasien->firstItem() + $index}}</td>
