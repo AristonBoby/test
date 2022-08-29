@@ -39,7 +39,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function(){
     Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('updatePasien');
     Route::get('/diagnosa',[App\Http\Livewire\Diagnosa\Index::class,'index'])->name('diagnosa');
     Route::get('/tambahuser',[App\Http\Livewire\Tambahuser\Index::class,'index'])->name('tambahuser');
-    Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('updatePasien');
+    Route::get('/poli',[App\Http\Livewire\Poli\Index::class,'show'])->name('poli');
     });
 
 //sistem login//

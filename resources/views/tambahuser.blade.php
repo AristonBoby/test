@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6 0">
-        <h3>Tambah User</h3>
+        <h4>MANAJEMEN USER</h4>
       </div>
     </div>
   </div><!-- /.container-fluid -->

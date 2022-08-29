@@ -10,4 +10,9 @@ class Index extends Component
     {
         return view('livewire.poli.forminput');
     }
+
+    public function show()
+    {
+        return view('poli');
+    }
 }

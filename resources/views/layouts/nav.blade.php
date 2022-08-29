@@ -2,12 +2,12 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-        <li class="nav-header">PENDAFTARAN PASIEN</li>
+        <li class="nav-header">PETUGAS PENDAFTARAN </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-book"></i>
           <p>
-            Pendaftaran Pasien
+            PASIEN
             <i class="right fas fa-angle-left"></i>
           </p>
         </a>
@@ -15,13 +15,13 @@
           <li class="nav-item">
             <a href="{{Route('pendaftaranPasien')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-info"></i>
-              <p>Input Pasien Baru</p>
+              <p>PENDAFTARAN PASIEN</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{Route('showdatapasien')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-warning"></i>
-              <p>Pencarian Data Pasien</p>
+              <p>PENCARIAN DATA PASIEN</p>
             </a>
           </li>
 
@@ -31,7 +31,7 @@
         <a href="#" class="nav-link">
           <i class=" nav-icon fas fa-edit"></i>
           <p>
-              Kunjungan
+              PENCATATAN
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
@@ -39,7 +39,7 @@
           <li class="nav-item">
             <a href="{{route('Kunjungan')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-success"></i>
-              <p>Input Kunjungan Sakit</p>
+              <p>KUNJUNGAN</p>
             </a>
           </li>
         </ul>
@@ -49,7 +49,7 @@
         <a href="#" class="nav-link">
           <i class=" nav-icon fas fa-edit"></i>
           <p>
-            Pelayanan Pasien
+            PELAYANAN PASIEN
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
@@ -57,7 +57,7 @@
           <li class="nav-item">
             <a href="{{route('diagnosa')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-danger"></i>
-              <p>Input Diagnosa</p>
+              <p>INPUT DIAGNOSA</p>
             </a>
           </li>
         </ul>
@@ -66,10 +66,10 @@
       
       
       <li class="nav-item">
-        <a href="{{Route('ubah.password')}}" class="nav-link" >
+        <a href="{{route('ubah.password')}}" class="nav-link" >
           <i class=" nav-icon fas fa-cog"></i>
           <p>
-            Ubah Password
+            UBAH PASSWORD
           </p>
         </a>
       </li>
@@ -78,11 +78,19 @@
         <a class="nav-link" href="{{route('tambahuser')}}">
           <i class="nav-icon fa-solid fas fa-users"></i>
           <p>
-            Tambah User
+            MANAJEMEN USER
           </p>
         </a>
       </li>
       @endif
+
+      <li class="nav-item">
+        <a href="{{route('poli')}}" class="nav-link">
+          <i class="nav-icon fas fa-hospital"></i>
+          <p>Manajemen Poli</p>
+        </a>
+      </li>
+
       <li class="nav-item">
         <a href="" class="nav-link">
           <i class="nav-icon fa-solid fas fa-solid fas fa-receipt"></i>
@@ -93,25 +101,12 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{Route('laporan')}}" class="nav-link">
+            <a href="{{route('laporan')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-info"></i>
               <p>Laporan Kunjungan Poli</p>
             </a>
           </li>
         </ul>
-        <li class="nav-item">
-          <a class=" nav-link " href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-              document.getElementById('logout-form').submit();">
-              <p>Logout</p>
-          </a>
-        </li>
       </li>
-
-      <li class="nav-item">
-
-
-      </li>
-
     </ul>
   </nav>

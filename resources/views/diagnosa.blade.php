@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h3>Diagnosa Pasien</h3>
+        <h4>DIAGNOSA PASIEN</h4>
       </div>
     </div>
   </div><!-- /.container-fluid -->

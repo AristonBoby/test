@@ -2,7 +2,7 @@
 @section('breadcrumb')
       <div class="row">
         <div class="col-sm-6">
-          <h3>Pendaftaran Pasien</h3>
+          <h4>PENDAFTARAN PASIEN</h4>
         </div>
       </div>  
 @endsection
