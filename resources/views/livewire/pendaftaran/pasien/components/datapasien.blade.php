@@ -22,7 +22,7 @@
                             <div class="col-md-8">
                                 <div class="input-group mb-3">
                                     <input type="text"  wire:model="caripasien" class=" form-control form-control-sm rounded-0" placeholder="Pencarian Pasien">
-                                    <a class="btn btn-primary btn-sm btn-flat" wire:click="render()">Cari</a>
+                                    <a class="btn btn-primary btn-sm btn-flat" wire:click="render()" wire:loading.target='table'>Cari</a>
                                 </div>
                             </div>
                     </div>
@@ -41,7 +41,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody wire:loading.remove='table'>
                     @foreach ($pasien as $index => $query)
                         <tr>
                             <td>{{$pasien->firstItem() + $index}}</td>
@@ -60,6 +60,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div  class="text-center" wire:loading wire:loading.target='table'>
+                <p >Loading...</p>
+            </div>
         </div>  
         <div class="card-footer btn-sm text-sm rounded-0 btn-flat">
                 {{$pasien->links()}}

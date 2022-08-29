@@ -11,9 +11,6 @@
                     </button>
                 </div>
             </div>
-            <div wire:loading>
-                <p>Loading</p>
-            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
@@ -24,8 +21,8 @@
                             <label class="form-label col-md-4 text-sm"> Tanggal</label>
                                 <div class="col-md-8">
                                     <div class="input-group">
-                                        <input type="date"  wire:model="tanggal" class=" form-control form-control-sm">
-                                        <a class="btn btn-primary btn-sm btn-flat" wire:click="render()">Cari</a>
+                                        <input type="date"  wire:model="tanggal" class=" form-control form-control-sm" wire.target="table">
+                                        <a class="btn btn-primary btn-sm btn-flat" wire:click="render()"wire.target="table">Cari</a>
                                     </div>
                                 </div>
                         </div>
@@ -44,12 +41,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody wire:loading >
-                        <tr>
-                            <th colspan="8">Loading...</th>
-                        </tr>
-                    </tbody>
-
+                    
                     <tbody wire:loading.remove>
                         @foreach ($pasien as $index => $query)
                             <tr>
@@ -67,6 +59,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div  class="text-center" wire:loading>
+                    <p >Loading...</p>
+                </div>
             </div>  
             <div class="card-footer btn-sm text-sm rounded-0 btn-flat">
                     {{$pasien->links()}}
