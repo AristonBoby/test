@@ -86,13 +86,13 @@
                 <div class="modal-body">
                   <form wire:submit.prevent='editPasien'>
                     @csrf
-                    <input type="hidden" wire:model='id_pasien'>
+                    <input type="hidden" wire:model.defer='id_pasien'>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group row">
                                 <label class="col-md-4 col-from-label text-sm">Nomor Rekam Medis</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control form-control-sm rounded-0 @error('no_Rm') is-invalid @enderror" wire:model='no_Rm' id="recipient-name" maxlength="8">
+                                    <input type="text" class="form-control form-control-sm rounded-0 @error('no_Rm') is-invalid @enderror" wire:model.defer='no_Rm' id="recipient-name" maxlength="8">
                                     @error('no_Rm')<span class="invalid-feedback">{{$message}}</span> @enderror
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                             <div class="form-group row">
                                 <label class="col-md-4 col-from-label text-sm">Nama Lengkap</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control form-control-sm rounded-0 @error('nama') is-invalid @enderror" wire:model='nama'  id="recipient-name" >
+                                    <input type="text" class="form-control form-control-sm rounded-0 @error('nama') is-invalid @enderror" wire:model.defer='nama'  id="recipient-name" >
                                     @error('nama')<span class="invalid-feedback">{{$message}}</span> @enderror
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                             <div class="form-group row">
                                 <label class="col-md-4 col-from-label text-sm">Tempat Lahir</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control form-control-sm rounded-0 @error('tempat_Lahir') is-invalid @enderror" wire:model='tempat_Lahir'" wire:model='tempat_Lahir' id="recipient-name" >
+                                    <input type="text" class="form-control form-control-sm rounded-0 @error('tempat_Lahir') is-invalid @enderror" wire:model.defer='tempat_Lahir'" wire:model='tempat_Lahir' id="recipient-name" >
                                     @error('tempat_Lahir')<span class="invalid-feedback">{{$message}}</span> @enderror
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                           <div class="form-group row">
                               <label class="col-md-4 col-from-label text-sm">Tanggal Lahir</label>
                               <div class="col-md-8">
-                                  <input type="date" class="form-control form-control-sm rounded-0  @error('tanggal_Lahir') is-invalid @enderror" wire:model="tanggal_Lahir" id="recipient-name" >
+                                  <input type="date" class="form-control form-control-sm rounded-0  @error('tanggal_Lahir') is-invalid @enderror" wire:model.defer="tanggal_Lahir" id="recipient-name" >
                                   @error('tanggal_Lahir')<span class="invalid-feedback">{{$message}}</span> @enderror
                               </div>
                           </div>
@@ -128,7 +128,7 @@
                           <div class="form-group row">
                             <label class="col-md-4 text-sm ">Jenis Kelamin</label>
                             <div class="col-md-8">
-                                <select class="form-control form-control-sm text-sm rounded-0 @error('jenkel') is-invalid @enderror " wire:model="jenkel" >
+                                <select class="form-control form-control-sm text-sm rounded-0 @error('jenkel') is-invalid @enderror " wire:model.defer="jenkel" >
                                     <option value="L">Laki-Laki</option>
                                     <option value="P">Perempuan</option>
                                 </select>
@@ -140,7 +140,7 @@
                           <div class="form-group row">
                             <label class="col-md-4 col-from-label text-sm">Agama</label>
                             <div class="col-md-8">
-                              <select class="form-control form-control-sm text-sm rounded-0 @error('agama')is-invalid @enderror" wire:model='agama'>
+                              <select class="form-control form-control-sm text-sm rounded-0 @error('agama')is-invalid @enderror" wire:model.defer='agama'>
                                 <option>Islam</option>
                                 <option>Kristen</option>
                                 <option>Khatolik</option>
@@ -156,7 +156,7 @@
                           <div class="form-group row">
                               <label class="col-md-4 col-from-label text-sm">Pekerjaan</label>
                               <div class="col-md-8">
-                                  <input type="text" class="form-control text-sm form-control-sm rounded-0 @error('pekerjaan')is-invalid @enderror" wire:model='pekerjaan'>
+                                  <input type="text" class="form-control text-sm form-control-sm rounded-0 @error('pekerjaan')is-invalid @enderror" wire:model.defer='pekerjaan'>
                                   @error('pekerjaan')<span class="invalid-feedback">{{$message}}</span> @enderror
                               </div>
                           </div>
@@ -165,7 +165,7 @@
                         <div class="form-group row">
                             <label class="col-md-4 col-from-label text-sm">No Telepon / HP</label>
                             <div class="col-md-8">
-                              <input type="text" class="form-control text-sm form-control-sm rounded-0 number  @error('no_tlpn')is-invalid @enderror" wire:model='no_tlpn' value="{{$no_tlpn}}" maxlength="16">
+                              <input type="text" class="form-control text-sm form-control-sm rounded-0 number  @error('no_tlpn')is-invalid @enderror" wire:model.defer='no_tlpn' value="{{$no_tlpn}}" maxlength="16">
                               @error('no_tlpn')<span class="invalid-feedback">{{$message}}</span> @enderror
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                         <div class="form-group row">
                             <label class="col-md-4 col-from-label text-sm">NIK</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control text-sm form-control-sm rounded-0 number @error('nik')is-invalid @enderror" wire:model="nik" maxlength="16">
+                                <input type="text" class="form-control text-sm form-control-sm rounded-0 number @error('nik')is-invalid @enderror" wire:model.defer="nik" maxlength="16">
                                 @error('nik')<span class="invalid-feedback">{{$message}}</span> @enderror
                             </div>
                         </div>
@@ -183,7 +183,7 @@
                         <div class="form-group row">
                             <label class="col-md-4 col-from-label text-sm">BPJS</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control text-sm form-control-sm rounded-0 number @error('bpjs')is-invalid @enderror " wire:model="bpjs" maxlength="13">
+                                <input type="text" class="form-control text-sm form-control-sm rounded-0 number @error('bpjs')is-invalid @enderror " wire:model.defer="bpjs" maxlength="13">
                                 @error('bpjs')<span class="invalid-feedback">{{$message}}</span> @enderror
                             </div>
                         </div>
@@ -244,7 +244,7 @@
                         <div class="form-group row">
                             <label class="col-md-4 col-from-label text-sm">Alamat</label>
                             <div class="col-md-8">
-                              <textarea placeholder="Alamat" class="form-control form-control-sm text-sm rounded-0 @error('alamat') is-invalid @enderror" wire:model='alamat'></textarea>
+                              <textarea placeholder="Alamat" class="form-control form-control-sm text-sm rounded-0 @error('alamat') is-invalid @enderror" wire:model.defer='alamat'></textarea>
                               @error('alamat')<span class="invalid-feedback">{{$message}}</span> @enderror
                             </div>
                         </div>

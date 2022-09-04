@@ -40,6 +40,7 @@
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <a href="{{Route('home')}}" class="brand-link">
+        <img src="{{url('pkmlogo.png')}}" alt="PKM LOGO" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Puskesmas Segiri</span>
       </a>
       <div class="sidebar">
