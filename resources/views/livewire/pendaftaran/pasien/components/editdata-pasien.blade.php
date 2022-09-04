@@ -1,5 +1,5 @@
     <div class="col-md-12 col-sm-12 col-lg-8">
-        <div class="card card-primary card-outline">
+        <div class="card card-primary card">
             <div class="card-header">
                 <h3 class="card-title">Data Pasien</h3>
                 <div class="card-tools">

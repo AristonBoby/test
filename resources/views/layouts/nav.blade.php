@@ -83,14 +83,14 @@
         </a>
       </li>
       @endif
-
+      @if (Auth::user()->role === '4')
       <li class="nav-item">
         <a href="{{route('poli')}}" class="nav-link">
           <i class="nav-icon fas fa-hospital"></i>
           <p>Manajemen Poli</p>
         </a>
       </li>
-
+      @endif
       <li class="nav-item">
         <a href="" class="nav-link">
           <i class="nav-icon fa-solid fas fa-solid fas fa-receipt"></i>

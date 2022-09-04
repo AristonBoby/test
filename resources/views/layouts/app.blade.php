@@ -52,15 +52,12 @@
       </div>
     </aside>
     <div class="content-wrapper" style="min-height: 1000.8px;">
-      <div class="container-fluid">
-        @yield('breadcrumb')
-        <section class="content-header">
-          @yield('header')
-        </section>
+        <div class="content-header">
+          @yield('breadcrumb')
+        </div>
         <section class="content-fluid">
                   @yield('content')
         </section>
-      </div>
     </div>
   
     <footer class="main-footer ">

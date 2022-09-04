@@ -20,8 +20,8 @@ class Pasienbaru extends Component
     public $agama;
     public $no_tlpn;
     public $pekerjaan;
-    public $nik;
-    public $bpjs;
+    public $nik ='';
+    public $bpjs='';
     public $alamat;
     public $prov; // Variabel Provinsi 
     public $kotas; //Vairabel Kota
@@ -58,8 +58,8 @@ class Pasienbaru extends Component
         'jenkel'            => 'required',
         'agama'             => 'required',
         'no_tlpn'           => 'required',
-        'nik'               => 'unique:pasiens|max:16',
-        'bpjs'              => 'unique:pasiens|max:13',
+        'nik'               => 'unique:pasiens',
+        'bpjs'              => 'unique:pasiens',
         'pekerjaan'         => 'required',
         'alamat'            => 'required',
         'idkelurahan'       => 'required',
@@ -79,15 +79,27 @@ class Pasienbaru extends Component
         'no_tlpn.required'          =>'Nomor Telepon / Hp Pasien wajib diisi',
         'alamat.required'           =>'Alamat Pasien wajib diisi',
         'nik.unique'                =>'NIK Pasien telah digunakan',
-        'nik.max'                   =>'NIK Pasien Maksimal 16 karakter',
         'bpjs.unique'               =>'Nomor BPJS Pasien telah digunakan',
-        'bpjs.max'                  =>'Nomor BPJS Pasien Maksimal 13 Karakter',
         'idkelurahan.required'      => 'Kelurahan tidak boleh kosong',
     ];
 
 
     public function store(){
+        if(empty($this->nik) && empty($this->bpjs))
+        {
+            $this->nik = '';
+            $this->bpjs = '';
+        }
+        elseif(empty($this->nik))
+        {
+            $this->bpjs = '';
+        }
+        elseif(empty($this->bpjs))
+        {
+            $this->bpjs = '';
+        }
         $this->validate();
+
         $query = pasien::create([
                     'no_Rm'             => $this->no_Rm,
                     'nama'              => $this->nama,
@@ -122,6 +134,7 @@ class Pasienbaru extends Component
                     $this->kecamatan       = "";
                     $this->kelurahan       = "";
                     $this->render();
+
             $this->dispatchBrowserEvent('simpan');
         }
 

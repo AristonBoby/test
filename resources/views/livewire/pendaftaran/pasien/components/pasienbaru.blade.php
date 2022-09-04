@@ -1,5 +1,5 @@
     <div class="col-lg-4 col-md-8 col-sm-12">   
-            <div class="card card-info card">
+            <div class="card card-primary card">
                 <div class="card-header">
                     <h3 class="card-title">Pendaftaran Pasien Baru</h3>
                         <div class="card-tools">
@@ -19,8 +19,9 @@
                                 <div class="form-group row ">
                                     <label class="col-md-4 col-form-label text-sm">No. Rekam Medis</label>
                                     <div class="col-md-8">
-                                        <input type="text" wire:model.defer="no_Rm"class="form-control form-control-sm text-sm rounded-0 @error('no_Rm') is-invalid @enderror " placeholder="Nomor Rekam Medis" maxlength="8">
+                                        <input type="text" wire:model="no_Rm"class="form-control form-control-sm text-sm rounded-0 @error('no_Rm') is-invalid @enderror " placeholder="Nomor Rekam Medis" maxlength="8">
                                         @error('no_Rm') <span class="invalid-feedback">{{ $message }} </span> @enderror
+                                        <span class="text-xs text-red">Penulisan No Rekam Medis tidak Menggunkan SPASI</span>
                                     </div>
                                 </div>
                             </div>
@@ -130,16 +131,18 @@
                                     <div class="col-md-8">
                                         <input type="text" wire:model='nik' class="@error('nik')is-invalid @enderror number form-control form-control-sm text-sm rounded-0" placeholder="Nomor Induk Kependudukan" maxlength="16">
                                         @error('nik')<span class="invalid-feedback">{{$message}}</span>@enderror
+                                        <span class="text-xs text-red">Kosongkan Jika Pasien Tidak Memiliki NIK</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group row">
-                                    <label class="col-md-4 text-sm">No. BPJS</label>
+                                    <label class="col-md-4 text-sm">No. BPJS <code>*</code></label>
                                     <div class="col-md-8">
                                         <input type="text" wire:model='bpjs' class=" number @error('bpjs')is-invalid @enderror form-control form-control-sm text-sm rounded-0" placeholder="Nomor BPJS" maxlength="13">
                                         @error('bpjs')<span class="invalid-feedback">{{$message}}</span>@enderror 
+                                        <span class="text-xs text-red">Kosongkan Jika Pasien Tidak Memiliki BPJS</span>
                                     </div>
                                 </div>
                             </div>

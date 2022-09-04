@@ -18,7 +18,7 @@
                             <div class="form-group row">
                                 <label class="col-md-4 text-sm">No</label>
                                 <div class="col-md-8 input-group input-group-sm">
-                                    <input type="text" class="form-control input-group-sm text-sm" wire:model="cari" placeholder="Nomor RM / NIK / BPJS" required maxlength="16">
+                                    <input type="text" class="form-control input-group-sm text-sm" wire:model="cari" placeholder="Nomor RM / NIK / BPJS" required maxlength="16" autofocus>
                                     <span class="input-group-append">
                                         <button type="submit" class="btn btn-info">Cari</button>
                                         <button data-toggle="modal" data-target="#modalKunjunganCariPasien" type="button" class="btn btn-default"> >>> </button>
