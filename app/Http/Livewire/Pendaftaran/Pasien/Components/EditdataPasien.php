@@ -32,36 +32,44 @@ class EditdataPasien extends Component
     public $kotas;
     public $kecamatan;
 
-
-    use WithPagination;
-    protected $listeners = ['deleteConfirmed' => 'hapusPasien'];
+    use WithPagination; 
     protected $paginationTheme = 'bootstrap';
+    
+    // Cara Reset Paginate LIVEWIRE//
+    // updatingTanggal Merupakan method yang digabung dengan nama valiabel yang dicari contoh $tanggal //
+    public function updatingTanggal()
+    {
+        $this->resetPage();
+    }
+    //end//
 
     public function render()
     {
         return view('livewire.pendaftaran.pasien.components.editdata-pasien', [
-                        'pasien'=> pasien::where('created_at', 'like', '%' .$this->tanggal. '%')->orderby('created_at','desc')->paginate(10),
+                        'pasien'=> DB::table('pasiens')
+                                    ->join('users','pasiens.id_user','users.id')
+                                    ->select('pasiens.id','pasiens.no_Rm','pasiens.nama','tanggal_Lahir','jenkel','nik','bpjs','users.name')
+                                    ->where('pasiens.created_at','LIKE','%'.$this->tanggal.'%')->paginate(10),
                         'provinsi'  =>  provinsi::all(),
                         'kota'      =>  kota::where('prov_id',$this->prov)->get(),
                         'kec'       =>  kecamatan::where('kota_id',$this->kotas)->get(),
                         'kel'       =>  kelurahan::where('kec_id',$this->kecamatan)->get()
                     ]);
-        
     }
     public function index ()
     { 
         return view('livewire.pendaftaran.pasien.editdata-Pasien');
         
     }
-
+    
     public function mount(){
         $this->tanggal_Lahir = date('Y-m-d');
         $this->tanggal = date('Y-m-d');
     }
 
     public function detailPasien($data){
-
-           $query = DB::table('pasiens')
+           
+            $query = DB::table('pasiens')
                     ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
                     ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
                     ->join('kotas','kecamatans.kota_id','kotas.kota_id')
@@ -108,5 +116,6 @@ class EditdataPasien extends Component
             $this->alamat           =   $query->alamat;   
             $this->no_tlpn          =   $query->no_tlpn;
         }
+        
     }
 }

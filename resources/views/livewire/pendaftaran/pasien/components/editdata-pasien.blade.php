@@ -38,6 +38,7 @@
                             <th class="text-center">Kelamin</th>
                             <th class="text-center">NIK</th>
                             <th class="text-center">BPJS</th>
+                            <th class="text-center">User</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -52,6 +53,7 @@
                                 <td text-center>{{$query->jenkel}}</td>
                                 <td>{{$query->nik}}</td>
                                 <td>{{$query->bpjs}}</td>
+                                <td>{{$query->name}}</td>
                                 <td>
                                     <a class="btn btn-xs btn-primary btn-flat"  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="far fa-eye"></i></a>
                                 </td>                  

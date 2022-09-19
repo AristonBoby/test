@@ -5,6 +5,7 @@
     <div class="card-body">
         <div class="row ">
             <div class="col-lg-3 col-md-12 col-sm-12 row">
+                <code>*Laporan Kunjungan Pasien</code>
                 <label class="form-label text-sm col-lg-5">Mulai Tanggal</label>
                 <div class="col-lg-6">
                     <input type="date" wire:model='mulaitanggal' class="form-control form-control-sm rounded-0">

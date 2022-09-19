@@ -14,6 +14,13 @@ class Tabelkunjungan extends Component
 
     protected $listeners = ['hapus' => 'hapus'];
     protected $paginationTheme = 'bootstrap';
+
+    //Reset Paginate//
+    public function updatingTanggal()
+    {
+        $this->resetPage();
+    }
+    //end//
     public function render()
     {
         return view('livewire.pendaftaran.kunjungan.tabelkunjungan',
