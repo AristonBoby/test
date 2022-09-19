@@ -26,7 +26,9 @@ class Forminput extends Component
     
     public function render()
     {
-        return view('livewire.pendaftaran.kunjungan.forminput',['pilihpoli' => poli::all()]);
+        return view('livewire.pendaftaran.kunjungan.forminput',[
+            'pilihpoli' => poli::all()
+        ]);
     }
 
     public function mount(){
@@ -47,8 +49,8 @@ class Forminput extends Component
         $this->jeniskunjungan   = "";
         $this->form             = true;
     } 
+    // Method untuk mencek pasien ada atau tidak ada di database //
     public function cekpasien(){
-
         $query = pasien::where('nik',$this->cari)
                         ->orWhere('no_Rm',$this->cari)
                         ->orWhere('bpjs',$this->cari)->first();
@@ -68,6 +70,9 @@ class Forminput extends Component
             $this->form = true;
         }
     }
+    //end//
+
+
     protected $rules = [
         'id_pasien'         => 'required',
         'tanggal'           => 'required',
