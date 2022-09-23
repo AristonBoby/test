@@ -16,6 +16,7 @@
     <div class="container-fluid">
       <div class="row">
           <livewire:poli.forminput>
+          <livewire:poli.tabel>
       </div>
     </div>
   </div>

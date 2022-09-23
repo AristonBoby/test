@@ -43,11 +43,11 @@ class Datapasien extends Component
     {
         $this->resetPage();
     }
-
+    // end //
     public function render()
     {
         return view('livewire..pendaftaran.pasien.components.datapasien',[
-        'pasien'    =>  pasien::where('nama', 'like', '%' .$this->caripasien. '%')->orWhere('no_Rm',$this->caripasien)->orWhere('nik',$this->caripasien)->orWhere('bpjs',$this->caripasien)->paginate(10),
+        'pasien'    =>  pasien::where('nama', 'like', '%' .$this->caripasien. '%')->orWhere('no_Rm',$this->caripasien)->orWhere('nik',$this->caripasien)->orWhere('bpjs',$this->caripasien)->orderBy('created_at','desc')->paginate(10),
         'provinsi'  =>  provinsi::all(),
         'kota'      =>  kota::where('prov_id',$this->prov)->get(),
         'kec'       =>  kecamatan::where('kota_id',$this->kotas)->get(),

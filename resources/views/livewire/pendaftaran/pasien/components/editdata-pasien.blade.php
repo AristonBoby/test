@@ -44,6 +44,11 @@
                     </thead>
                     
                     <tbody wire:loading.remove>
+                        @if($pasien->isEmpty())
+                        <tr>
+                            <td colspan="9">Data Kosong </td>
+                        </tr>
+                        @endif
                         @foreach ($pasien as $index => $query)
                             <tr>
                                 <td>{{$pasien->firstItem() + $index}}</td>

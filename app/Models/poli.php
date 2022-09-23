@@ -9,6 +9,7 @@ class poli extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['id_poli','nama_poli','status'];
 
     public function kunjungan()
     {
