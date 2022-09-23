@@ -42,8 +42,17 @@
                         </tr>
                     </thead>
                     <tbody>
+                            <tr wire:loading>
+                                <td colspan="9" class="text-sm">Loading...</td>
+                            </tr>
+                            @if($query->isEmpty())
+                            <tr wire:loading.remove>
+                                <td colspan="9" class="text-sm">Data Kosong</td>
+                            </tr>
+                            @endif
                             @foreach ($query as $no => $data)
-                                <tr>
+                                </tr>
+                                <tr wire:click.remove>
                                     <td>{{$query->firstItem() + $no}}</td>
                                     <td>@if(!empty($data->pasien['no_Rm'])){{$data->pasien['no_Rm']}} @endif</td>
                                     <td>@if(!empty($data->pasien['nama'])){{$data->pasien['nama']}} @endif</td>
