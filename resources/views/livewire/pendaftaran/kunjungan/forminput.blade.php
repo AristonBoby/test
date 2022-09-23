@@ -81,7 +81,9 @@
                                 <select class="form-control form-control-sm text-sm rounded-0 @error('poli') is-invalid @enderror" wire:model="poli" @disabled($form) >
                                     <option selected>Pilih Poli</option>
                                     @foreach ($pilihpoli as $polis )
+                                        @if($polis->status === '1')
                                         <option value="{{$polis->id_poli}}">{{$polis->nama_poli}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                                 @error("poli")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror

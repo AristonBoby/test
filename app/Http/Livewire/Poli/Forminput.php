@@ -18,8 +18,10 @@ class Forminput extends Component
         'namapoli'  => 'required|max:25',
         'status'    => 'required'
     ]);
-    protected $message = ([
-
+    protected $messages = ([
+        'id_poli.required'      =>  'ID Poli Wajib Diisi',
+        'id_poli.unique'        =>  'ID Poli Telah digunakan',
+        'namapoli.required'     =>  'Nama Poli Wajib diisi',
     ]);
 
     //Method Penyimpan Poli//
@@ -29,7 +31,11 @@ class Forminput extends Component
         $simpan = poli::create(['id_poli'=>$this->id_poli, 'nama_poli' => $this->namapoli, 'status' => $this->status]);
         if($simpan)
         {
+            $this->id_poli='';
+            $this->namapoli='';
+            $this->status=1;
             $this->dispatchBrowserEvent('simpanBerhasil');
+
         }
     }
     //end//

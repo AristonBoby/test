@@ -9,8 +9,10 @@ class Index extends Component
     public function render()
     {   
         return view('livewire..home.index',[
-            'jumlahpasien' => pasien::all(),
-            'jumlahperhari' => pasien::where('id_user',Auth::id())->where('created_at','LIKE','%'.$this->tanggal.'%')->get(),
+            'jumlahpasien'      => pasien::all(),
+            'jumlahperhari'     => pasien::where('id_user',Auth::id())->where('created_at','LIKE','%'.$this->tanggal.'%')->get(),
+            'jumlahperUser'     => pasien::where('id_user',Auth::id())->get(),
+            'jumlahperbulan'    => pasien::where('id_user',Auth::id())->where('created_at','LIKE','%'.$this->bulan.'%')->get(),
 
         ]);
     }
@@ -18,5 +20,7 @@ class Index extends Component
     public function mount()
     {
         $this->tanggal = date('Y-m-d');
+        $this->bulan = date('m-d');
+
     }
 }
