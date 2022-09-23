@@ -1,4 +1,3 @@
-
     <div class="col-lg-4 col-md-8 col-sm-12">   
         <div class="card card-danger card-outline">
             <div class="card-header">
