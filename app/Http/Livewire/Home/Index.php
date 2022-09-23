@@ -20,7 +20,7 @@ class Index extends Component
     public function mount()
     {
         $this->tanggal = date('Y-m-d');
-        $this->bulan = date('m-d');
+        $this->bulan = date('Y-m');
 
     }
 }
