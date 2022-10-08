@@ -32,7 +32,7 @@ class Formubahpassword extends Component
         're_password.required'     =>  'Password tidak boleh kosong',
 
     ];
-
+    
     public function resetpassword(){
         $this->validate();
         if(Hash::check($this->password_lama,Auth::user()->password))
@@ -46,8 +46,14 @@ class Formubahpassword extends Component
                 $this->password_lama ='';
                 $this->password ='';
                 $this->re_password  ='';
-                dd('berhasil');
+                $this->dispatchBrowserEvent('logout');
             }
+            else{
+                $this->dispatchBrowserEvent('editPasswordError');
+            }
+        }
+        else{
+            $this->dispatchBrowserEvent('editPasswordError');
         }
     }
 

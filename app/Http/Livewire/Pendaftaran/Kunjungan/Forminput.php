@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Pendaftaran\Kunjungan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\poli;
+use App\Models\jaminan;
 use App\Models\pasien;
 use App\Models\kunjungan;
 use Livewire\Component;
@@ -27,7 +28,8 @@ class Forminput extends Component
     public function render()
     {
         return view('livewire.pendaftaran.kunjungan.forminput',[
-            'pilihpoli' => poli::all()
+            'pilihpoli' => poli::all(),
+            'jaminans'   => jaminan::all()
         ]);
     }
 
@@ -93,7 +95,7 @@ class Forminput extends Component
                 'tanggal'           =>  $this->tanggal,
                 'id_user'           =>  Auth::id(),
                 'id_poli'           =>  $this->poli,
-                'jenis_kunjungan'   =>  $this->jeniskunjungan,
+                'id_jaminan'        =>  $this->jeniskunjungan,
             ]);
 
             if($query)

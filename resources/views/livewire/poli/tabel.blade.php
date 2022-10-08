@@ -44,7 +44,7 @@
                             @if($data->status==1)
                                 <td><span class="badge bg-success">Aktif</span></td>
                             @elseif($data->status==0)
-                                <td><span class="badge bg-dangerx">Tidak Aktif</span></td>
+                                <td><span class="badge bg-danger">Tidak Aktif</span></td>
                             @endif
                             <td><a class="btn btn-xs btn-danger btn-flat"  href="javascript:void(0)" wire:click='konfirmasiHapusPoli({{$data->id_poli}})'><i class="fas fa-light fa-trash-alt"></i></td>
                         </tr>

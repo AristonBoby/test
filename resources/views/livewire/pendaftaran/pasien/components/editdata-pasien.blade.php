@@ -43,7 +43,7 @@
                         </tr>
                     </thead>
                     
-                    <tbody wire:loading.remove>
+                    <tbody  style="overflow:auto;" wire:loading.remove>
                         @if($pasien->isEmpty())
                         <tr>
                             <td colspan="9">Data Kosong </td>

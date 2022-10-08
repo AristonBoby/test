@@ -14,7 +14,7 @@
         <div class="card-body">
             <form wire:submit.prevent='simpanpoli'>
                 <div class="col-md-12">
-                    <div class="form-group row" ">
+                    <div class="form-group row">
                         <label class="text-md col-md-4 col-form-label">Kode Poli</label>
                         <div class="col-md-7">
                             <input type="text" wire:model.defer='id_poli' class="form-control form-control rounded-0 number @error('id_poli')is-invalid @enderror" maxlength="2" placeholder="Kode Poli">

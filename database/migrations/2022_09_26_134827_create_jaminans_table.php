@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('kunjungans', function(Blueprint $table){
-            $table->char('id_jaminan',2)->index()->after('id_poli');
+        Schema::create('jaminans', function (Blueprint $table) {
+            $table->char('id_jaminan',2)->primary();
+            $table->char('jaminan',25);
+            $table->char('status',1);
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('kunjungans', function(Blueprint $table){
-            $table->dropColumn('id_jaminan');
-        });
+        Schema::dropIfExists('jaminans');
     }
 };

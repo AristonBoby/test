@@ -41,9 +41,9 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody wire:loading.remove='table'>
+                <tbody  wire:loading.remove='table'>
                     @foreach ($pasien as $index => $query)
-                        <tr>
+                        <tr style=" overflow-y: scroll;">
                             <td>{{$pasien->firstItem() + $index}}</td>
                             <td>{{$query->no_Rm}}</td>
                             <td>{{$query->nama}}</td>

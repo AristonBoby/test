@@ -2,7 +2,7 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-        <li class="nav-header">PETUGAS PENDAFTARAN </li>
+        <li class="nav-header">@if(Auth::user()->role==='1') Petugas Pendaftaran @elseif(Auth::user()->role==='4')Administrator @endif </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-book"></i>
@@ -87,7 +87,15 @@
       <li class="nav-item">
         <a href="{{route('poli')}}" class="nav-link">
           <i class="nav-icon fas fa-hospital"></i>
-          <p>Manajemen Poli</p>
+          <p>MANAJEMEN POLI</p>
+        </a>
+      </li>
+      @endif
+      @if (Auth::user()->role === '4')
+      <li class="nav-item">
+        <a href="{{route('jaminan')}}" class="nav-link">
+          <i class="nav-icon fas fa-hospital"></i>
+          <p>MANAJEMEN JAMINAN</p>
         </a>
       </li>
       @endif

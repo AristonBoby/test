@@ -76,4 +76,5 @@
             icon: 'success',
         })
     });
-    </script>
+    
+</script>

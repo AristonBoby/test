@@ -67,10 +67,9 @@
                             <div class="col-md-6">
                                 <select class="form-control form-control-sm text-sm rounded-0 @error('jeniskunjungan') is-invalid @enderror" wire:model="jeniskunjungan">
                                     <option value="" selected> --Pilih Salah Satu--</option>
-                                    <option value="DW"> BPJS Dalam Wilayah</option>
-                                    <option value="LW"> BPJS Luar Wilayah/Luar Daerah</option>
-                                    <option value="MS"> Masyarakat Samarinda</option>
-                                    <option value="NMS"> Non Masyarakat Samarinda</option>
+                                    @foreach ($jaminans as $data)
+                                        <option value="{{$data->id_jaminan}}">{{$data->jaminan}}</option>
+                                    @endforeach
                                 </select>
                                 @error("jeniskunjungan")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror
                             </div>

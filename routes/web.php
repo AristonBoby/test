@@ -40,11 +40,13 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function(){
     Route::get('/diagnosa',[App\Http\Livewire\Diagnosa\Index::class,'index'])->name('diagnosa');
     Route::get('/tambahuser',[App\Http\Livewire\Tambahuser\Index::class,'index'])->name('tambahuser');
     Route::get('/poli',[App\Http\Livewire\Poli\index::class,'show'])->name('poli');
+    Route::get('/jaminan',[App\Http\Livewire\Jaminan\Index::class,'show'])->name('jaminan');
+
     });
 
 //sistem login//
 Route::get('/',[LoginController::class,'showLoginForm'])->middleware('guest')->name('login.redirect');
-Route::post('/login',[LoginController::class,'login'])->name('login');
+Route::post('/login',[LoginController::class,'login'])->middleware('guest')->name('login');
 // end login
 
 

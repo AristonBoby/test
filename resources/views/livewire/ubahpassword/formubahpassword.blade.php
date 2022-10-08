@@ -46,3 +46,19 @@
         </div>
     </div>
 </div>
+<script>
+    window.addEventListener('logout', event => {
+        Swal.fire({
+            title: 'Perhatian',
+            text: "Data Pasien Tersimpan",
+            icon: 'success',
+        })
+    });
+    window.addEventListener('editPasswordError', event => {
+        Swal.fire({
+            title: 'Perhatian',
+            text: "Data Password yang Anda Masukan Tidak Sesuai",
+            icon: 'danger',
+        })
+    });
+</script>

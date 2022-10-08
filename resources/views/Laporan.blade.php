@@ -17,9 +17,7 @@
 @section('content')
   <div class="content">
     <div class="container-fluid">
-      <div class="row">
           <livewire:laporan.laporankunjungan>
-      </div>
     </div>
   </div>
 @endsection
