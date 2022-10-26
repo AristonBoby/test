@@ -1,15 +1,7 @@
     <div class="col-md-12 col-sm-12 col-lg-8">
-        <div class="card card-primary card">
+        <div class="card card-primary card-outline">
             <div class="card-header">
-                <h3 class="card-title">Data Pasien</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                    <i class="fas fa-times"></i>
-                    </button>
-                </div>
+                <h4 class="card-title">Data Pasien</h4>
             </div>
             <div class="card-body">
                 <div class="row">

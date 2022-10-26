@@ -1,15 +1,8 @@
 <div class="col-md-12 col-sm-12 col-lg-12">
-    <div class="card card-primary">
+    <div class="card card-danger card-outline">
         <div class="card-header">
-            <h3 class="card-title">Pencarian Data Pasien</h3>
-            <div class="card-tools">
-                <button type="button" class="btn btn-tools" data-card-widget="collapse" title="Collapse">
-                <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tools" data-card-widget="remove" title="Remove">
-                <i class="fas fa-times"></i>
-                </button>
-            </div>
+            <h5 class="card-title">Pencarian Data Pasien</h5>
+           
         </div>
         <div class="card-body">
             <div class="row">
@@ -38,6 +31,7 @@
                         <th class="text-center">Kelamin</th>
                         <th class="text-center">NIK</th>
                         <th class="text-center">BPJS</th>
+                        <th class="text-center">User</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -51,6 +45,7 @@
                             <td text-center>{{$query->jenkel}}</td>
                             <td>{{$query->nik}}</td>
                             <td>{{$query->bpjs}}</td>
+                            <td>{{$query->name}}</td>
                             <td>
                                 <a class="btn btn-xs btn-primary btn-flat"  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="far fa-eye"></i></a>
                                 <a class="btn btn-xs btn-warning btn-flat"  data-toggle="modal" data-target="#edit" wire:click="edit({{$query->id}})"><i class="fa fa-edit"></i></a>

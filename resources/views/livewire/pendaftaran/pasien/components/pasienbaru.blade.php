@@ -1,15 +1,7 @@
     <div class="col-lg-4 col-md-8 col-sm-12">   
-            <div class="card card-primary card">
+            <div class="card card-info card-outline">
                 <div class="card-header">
                     <h3 class="card-title">Pendaftaran Pasien Baru</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                            <i class="fas fa-times"></i>
-                            </button>
-                        </div>
                 </div>
                     <div class="card-body">
                         <form wire:submit.prevent='store' class="form-horizontal">
@@ -215,7 +207,7 @@
                         </div>
                     </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-sm btn-primary btn-flat float-right" >Simpan</button>
+                            <button type="submit" class="btn btn-primary float-right btn-sm">Simpan</button>
                         </div>
                 </form>
             </div>
