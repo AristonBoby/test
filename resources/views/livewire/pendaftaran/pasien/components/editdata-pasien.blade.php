@@ -1,12 +1,9 @@
     <div class="col-md-12 col-sm-12 col-lg-8">
         <div class="card card-primary card-outline">
-            <div class="card-header">
-                <h4 class="card-title">Data Pasien</h4>
-            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
-                        <p class="text-sm text-danger">* Data Pasien yang ditampilkan berdasarkan tanggal terdaftar pasien</p>
+                        <code>* Data Pasien yang ditampilkan berdasarkan tanggal pasien di input</code>
                     </div>
                     <div class="col-md-4 mb-3 float-right">
                         <div class="form-group row">
@@ -38,7 +35,7 @@
                     <tbody  style="overflow:auto;" wire:loading.remove>
                         @if($pasien->isEmpty())
                         <tr>
-                            <td colspan="9">Data Kosong </td>
+                            <td colspan="9">Data Kosong</td>
                         </tr>
                         @endif
                         @foreach ($pasien as $index => $query)
@@ -52,7 +49,7 @@
                                 <td>{{$query->bpjs}}</td>
                                 <td>{{$query->name}}</td>
                                 <td>
-                                    <a class="btn btn-xs btn-primary btn-flat"  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="far fa-eye"></i></a>
+                                    <a class="btn btn-sm btn-info"  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="far fa-eye"></i></a>
                                 </td>                  
                             </tr>
                         @endforeach
@@ -61,10 +58,11 @@
                 <div  class="text-center" wire:loading>
                     <p >Loading...</p>
                 </div>
-            </div>  
-            <div class="card-footer btn-sm text-sm rounded-0 btn-flat">
+                <div class="btn-sm rounded-0 btn-flat">
                     {{$pasien->links()}}
             </div>
+            </div>  
+           
             @include('livewire.pendaftaran.pasien.components.modaldetailpasien')
         </div>
         <style>

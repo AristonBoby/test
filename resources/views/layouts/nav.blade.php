@@ -5,7 +5,7 @@
         <li class="nav-header">@if(Auth::user()->role==='1') Petugas Pendaftaran @elseif(Auth::user()->role==='4')Administrator @endif </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-book"></i>
+          <i class="nav-icon fas fa-file-medical"></i>
           <p>
             PASIEN
             <i class="right fas fa-angle-left"></i>
@@ -14,13 +14,13 @@
         <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="{{Route('pendaftaranPasien')}}" class="nav-link">
-              <i class="far fa-circle nav-icon text-info"></i>
+              <i class="fas fa-notes-medical nav-icon text-success"></i>
               <p>PENDAFTARAN PASIEN</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{Route('showdatapasien')}}" class="nav-link">
-              <i class="far fa-circle nav-icon text-warning"></i>
+              <i class="fas fa-search nav-icon text-warning"></i>
               <p>PENCARIAN DATA PASIEN</p>
             </a>
           </li>
@@ -47,7 +47,7 @@
       @if (Auth::user()->role === '3' || Auth::user()->role === '4'  )
       <li class="nav-item">
         <a href="#" class="nav-link">
-          <i class=" nav-icon fas fa-edit"></i>
+          <i class=" nav-icon fas fa-medkit"></i>
           <p>
             PELAYANAN PASIEN
             <i class="fas fa-angle-left right"></i>
@@ -76,7 +76,7 @@
       @if (Auth::user()->role === '4')
       <li class="nav-item">
         <a class="nav-link" href="{{route('tambahuser')}}">
-          <i class="nav-icon fa-solid fas fa-users"></i>
+          <i class="nav-icon fa-solid fas fa-hospital-user"></i>
           <p>
             MANAJEMEN USER
           </p>
@@ -86,7 +86,7 @@
       @if (Auth::user()->role === '4')
       <li class="nav-item">
         <a href="{{route('poli')}}" class="nav-link">
-          <i class="nav-icon fas fa-hospital"></i>
+          <i class="nav-icon fas fa-clinic-medical"></i>
           <p>MANAJEMEN POLI</p>
         </a>
       </li>

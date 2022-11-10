@@ -77,7 +77,7 @@
                     </div>
                 </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-sm btn-primary btn-flat float-right"  @disabled($form)>Simpan</button>
+                        <button type="submit" class="btn btn-sm btn-primary float-right"  @disabled($form)>Simpan</button>
                     </div>
                     
                 </form>

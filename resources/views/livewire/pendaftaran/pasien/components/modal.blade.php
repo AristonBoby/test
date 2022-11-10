@@ -63,8 +63,8 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-primary btn-sm btn-flat" href="printpasien/{{$no_Rm}}"  target="_blank">Print</a>
-                    <button type="button" class="btn btn-danger btn-flat btn-sm" data-dismiss="modal"><b>x</b> Tutup</button>
+                    <a class="btn btn-primary btn-sm" href="printpasien/{{$no_Rm}}"  target="_blank"><i class="fa fa-print"></i> Print</a>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><b>X</b> Tutup</button>
                 </div>
               </div>
             </div>

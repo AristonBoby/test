@@ -82,24 +82,36 @@ class Pasienbaru extends Component
         'bpjs.unique'               =>'Nomor BPJS Pasien telah digunakan',
         'idkelurahan.required'      => 'Kelurahan tidak boleh kosong',
     ];
+    private function validasi(){
+        
+        // Pengecekan Nomor Rekam Medis Yang Ganda //
+        if(!empty($this->no_Rm))
+        {
+            $cekNoRm = pasien::where('no_Rm',$this->no_Rm)->first();
+            if($cekNoRm)
+            {
+                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Telah Digunakan !!!']);
+                return back();
+            }
+        }
+        // ===//
 
+        
+        if(empty($this->no_Rm))
+        {
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Wajib Diisi !!!']);
+            return back();
+        }
+        if(!empty($this->bpjs) && empty($this->nik))
+        {
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'NIK Wajib Diisi !!!']);
+            return back();
+        }
+    }
 
     public function store(){
-        if(empty($this->nik) && empty($this->bpjs))
-        {
-            $this->nik = '';
-            $this->bpjs = '';
-        }
-        elseif(empty($this->nik))
-        {
-            $this->bpjs = '';
-        }
-        elseif(empty($this->bpjs))
-        {
-            $this->bpjs = '';
-        }
+        $this->validasi();
         $this->validate();
-
         $query = pasien::create([
                     'no_Rm'             => $this->no_Rm,
                     'nama'              => $this->nama,
@@ -135,7 +147,7 @@ class Pasienbaru extends Component
                     $this->kelurahan       = "";
                     $this->render();
 
-            $this->dispatchBrowserEvent('simpan');
+                $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','icon'=>'success','text'=>'Data Berhasil Tersimpan']);
         }
 
     }

@@ -2,12 +2,11 @@
     <div class="card card-danger card-outline">
         <div class="card-header">
             <h5 class="card-title">Pencarian Data Pasien</h5>
-           
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-8">
-                    <p class="text-sm text-danger">* Pencarian Pasien dapat menggunakan NAMA NIK BPJS</p>
+                    <code>* Pencarian Pasien dapat menggunakan : NAMA, NIK, BPJS</code>
                 </div>
                 <div class="col-md-4 mb-3 float-right">
                     <div class="form-group row">
@@ -15,7 +14,7 @@
                             <div class="col-md-8">
                                 <div class="input-group mb-3">
                                     <input type="text"  wire:model="caripasien" class=" form-control form-control-sm rounded-0" placeholder="Pencarian Pasien">
-                                    <a class="btn btn-primary btn-sm btn-flat" wire:click="render()" wire:loading.target='table'>Cari</a>
+                                    <a class="btn btn-primary btn-sm" wire:click="render()" wire:loading.target='table'>Cari</a>
                                 </div>
                             </div>
                     </div>
@@ -38,7 +37,7 @@
                 <tbody  wire:loading.remove='table'>
                     @foreach ($pasien as $index => $query)
                         <tr style=" overflow-y: scroll;">
-                            <td>{{$pasien->firstItem() + $index}}</td>
+                            <td>{{$pasien->firstItem() + $index}}.</td>
                             <td>{{$query->no_Rm}}</td>
                             <td>{{$query->nama}}</td>
                             <td>{{$query->tanggal_Lahir}}</td>
@@ -47,9 +46,11 @@
                             <td>{{$query->bpjs}}</td>
                             <td>{{$query->name}}</td>
                             <td>
-                                <a class="btn btn-xs btn-primary btn-flat"  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="far fa-eye"></i></a>
-                                <a class="btn btn-xs btn-warning btn-flat"  data-toggle="modal" data-target="#edit" wire:click="edit({{$query->id}})"><i class="fa fa-edit"></i></a>
-                                <a class="btn btn-xs btn-danger btn-flat" href="javascript:void(0)" wire:click.prevent='deleteConfirmation({{$query->id}})' target="blank_"><i class="fas fa-light fa-trash-alt"></i></a>
+                                <div class="btn-group">
+                                    <a class="btn btn-sm btn-info   "  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="far fa-eye"></i></a>
+                                    <a class="btn btn-sm btn-warning"  data-toggle="modal" data-target="#edit" wire:click="edit({{$query->id}})"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-sm btn-danger" href="javascript:void(0)" wire:click.prevent='deleteConfirmation({{$query->id}})' target="blank_"><i class="fas fa-light fa-trash-alt"></i></a>
+                                </div>
                             </td>                  
                         </tr>
                     @endforeach
