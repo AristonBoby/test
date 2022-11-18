@@ -29,7 +29,7 @@
                     @error('status') <span class="invalid-feedback"> {{$message}} </span> @enderror
                 </div>
             </div>
-                <button class="btn btn-md btn-primary btn-flat float-right">Simpan</button>
+                <button class="btn btn-md btn-success btn-flat float-right">Simpan</button>
             </form>
         </div>
     </div>

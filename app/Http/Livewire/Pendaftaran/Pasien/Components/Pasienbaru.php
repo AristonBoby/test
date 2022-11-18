@@ -90,21 +90,49 @@ class Pasienbaru extends Component
             $cekNoRm = pasien::where('no_Rm',$this->no_Rm)->first();
             if($cekNoRm)
             {
-                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Telah Digunakan !!!']);
+                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'error','text'=>'Nomor Rekam Medis telah digunakan !!!']);
                 return back();
             }
         }
-        // ===//
-
+        // === //
         
+        // Pengecekan Nomor Rekam medis Jika Tidak Diisi //
         if(empty($this->no_Rm))
         {
-            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Wajib Diisi !!!']);
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis wajib diisi !!!']);
             return back();
         }
+
+        // === //
+        
+        // Cek NIK Ganda // 
+        if(!empty($this->nik))
+        {
+            $cekNIK = pasien::where('nik',$this->nik)->first();
+            if($cekNIK)
+            {
+                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'error','text'=>'NIK Telah digunakan !!!']);
+                return back();
+            }
+        }
+        // === //
+
+         // Cek BPJS Ganda // 
+         if(!empty($this->bpjs))
+         {
+             $cekNIK = pasien::where('bpjs',$this->bpjs)->first();
+             if($cekNIK)
+             {
+                 $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'error','text'=>'Nomor BPJS Telah digunakan !!!']);
+                 return back();
+             }
+ 
+         }
+         // === //
+        
         if(!empty($this->bpjs) && empty($this->nik))
         {
-            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'NIK Wajib Diisi !!!']);
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien telah memiliki nomor BPJS pastikan NIK Pasien telah diisi !!!']);
             return back();
         }
     }
