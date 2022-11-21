@@ -65,7 +65,7 @@
                         <div class="form-group row">
                             <label class="form-control-label text-sm col-md-4">Jenis Kunjungan</label>
                             <div class="col-md-6">
-                                <select class="form-control form-control-sm text-sm rounded-0 @error('jeniskunjungan') is-invalid @enderror" wire:model="jeniskunjungan">
+                                <select @disabled($form) class="form-control form-control-sm text-sm rounded-0  @error('jeniskunjungan') is-invalid @enderror" wire:model="jeniskunjungan">
                                     <option value="" selected> --Pilih Salah Satu--</option>
                                     @foreach ($jaminans as $data)
                                         <option value="{{$data->id_jaminan}}">{{$data->jaminan}}</option>

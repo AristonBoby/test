@@ -21,7 +21,7 @@ Route::post('logout',[LoginController::class,'logout'])->middleware('auth')->nam
 Route::get('/laporan',[App\Http\Livewire\Laporan\Home::class,'index'])->middleware('auth')->name('laporan');
 
 /// Route Petugas Pendaftaran ///
-Route::group(['prefix'=>'pendaftaran','middleware'=>'auth','pendaftaran'],function(){
+Route::group(['prefix'=>'pendaftaran','middleware'=>'pendaftaran'],function(){
 Route::get('/daftar',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru::class, 'index']) ->name('pendaftaranPasien');
 Route::get('/datapasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Datapasien::class,'show'])->name('showdatapasien');
 Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::class,'cetak'])->name('printPasien');
@@ -31,9 +31,9 @@ Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Edit
 });
 /////END////
 
-Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function(){
-    Route::get('/daftar',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru::class, 'index']) ->name('pendaftaranPasien');
+Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/datapasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Datapasien::class,'show'])->name('showdatapasien');
+    Route::get('/daftar',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru::class, 'index']) ->name('pendaftaranPasien');
     Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::class,'cetak'])->name('printPasien');
     Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->name('Kunjungan');
     Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('updatePasien');
