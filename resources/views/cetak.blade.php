@@ -145,7 +145,7 @@
             <td class="text-center borderright" style="text-align:left;">&nbsp; Alamat</td>
             <td class="text-center bordernone" style="text-align:center; width:1%">:</td>
             <td class="text-center borderleft uppercase" style="text-align:left;">{{$data->alamat}}@if($data->kel_name), Kelurahan {{$data->kel_name}}, 
-                Kecamatan {{$data->kec_name}}, Kab/Kota {{$data->kota_name}}, provinsi {{$data->prov_name}}@endif</td>
+                 {{$data->kec_name}}, Kab/Kota {{$data->kota_name}}@endif</td>
         </tr>
         <tr height="22">
             <td class="text-center borderright" style="text-align:left;">&nbsp; No. Tlpn./HP</td>
@@ -308,7 +308,10 @@
             <td>a. Data yang saya/pengantar saya isi adalah benar.</td>
         </tr>
         <tr>
-            <td>b. Telah mendapatkan penjelasan serta mendapatkan leaflet tentang hak dan kewajiban pasien di &nbsp;&nbsp;&nbsp;&nbsp;Puskesmas Segiri seperti tercantum dalam lembar ini.</td>
+            <td>b. Telah mendapatkan penjelasan serta mendapatkan leaflet tentang hak dan kewajiban</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;pasien di Puskesmas Segiri seperti tercantum dalam lembar ini.</td>
         </tr>
 
     </table>
@@ -425,7 +428,10 @@
         </tr>
     </table>
     <footer class="footer2">
-        02/100.02.014/RM/2022 
+        <div class="row">
+            <div class="col-md-4">02/100.02.014/RM/2022 </div>
+            <span style="font-size: 7pt"><u>{{$data->name}}</u></span>
+        </div>
     </footer>
     </div>
 </body>    

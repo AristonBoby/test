@@ -269,10 +269,10 @@
                 <td>1. Data yang saya/pengantar saya isi adalah benar.</td>
             </tr>
             <tr>
-                <td>2. Telah mendapatkan penjelasan serta mendapatkan leaflet tentang hak dan kewajiban pasien di Puskesmas Segiri</td>
+                <td>2. Telah mendapatkan penjelasan serta mendapatkan leaflet tentang hak dan kewajiban pasien di Puskesmas Segiri seperti tercantum dalam lembar ini.</td>
             </tr>
             <tr>
-                <td> &nbsp;&nbsp;&nbsp;&nbsp;seperti tercantum dalam lembar ini.</td>
+                <td></td>
             </tr>
         </table>
         <table border="1" style="width:100%; border-collapse: collapse; margin-top:20px;" collapse="0">

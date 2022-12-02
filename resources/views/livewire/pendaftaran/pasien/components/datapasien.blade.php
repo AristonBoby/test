@@ -6,7 +6,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-8">
-                    <code>* Pencarian Pasien dapat menggunakan : NAMA, NIK, BPJS</code>
+                    <code>* Pencarian Pasien dapat menggunakan : Nomor Rekam Medis, Nama, NIK, BPJS</code>
                 </div>
                 <div class="col-md-4 mb-3 float-right">
                     <div class="form-group row">
@@ -28,9 +28,12 @@
                         <th class="text-center">Nama</th>
                         <th class="text-center">Tanggal Lahir</th>
                         <th class="text-center">Kelamin</th>
+                        <th class="text-center">No. Telepon / HP</th>
                         <th class="text-center">NIK</th>
                         <th class="text-center">BPJS</th>
-                        <th class="text-center">User</th>
+                        <th class="text-center">Alamat</th>
+                        <th class="text-center">Petugas Pendaftar</th>
+                        <th class="text-center">Tanggal Daftar</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -39,12 +42,15 @@
                         <tr style=" overflow-y: scroll;">
                             <td>{{$pasien->firstItem() + $index}}.</td>
                             <td>{{$query->no_Rm}}</td>
-                            <td>{{$query->nama}}</td>
+                            <td class="text-left text-uppercase">{{$query->nama}}</td>
                             <td>{{$query->tanggal_Lahir}}</td>
                             <td text-center>{{$query->jenkel}}</td>
+                            <td>{{$query->no_tlpn}}</td>
                             <td>{{$query->nik}}</td>
                             <td>{{$query->bpjs}}</td>
-                            <td>{{$query->name}}</td>
+                            <td class="text-left text-uppercase">{{$query->alamat}} Kelurahan {{$query->kel_name}} Kecamatan {{$query->kec_name}} kota {{$query->kota_name}}</td>
+                            <td class="text-center text-left text-uppercase">{{$query->name}}</td>
+                            <td>{{$query->created_at}}</td>
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-sm btn-info   "  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="far fa-eye"></i></a>

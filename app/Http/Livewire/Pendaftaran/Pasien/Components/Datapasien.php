@@ -49,7 +49,24 @@ class Datapasien extends Component
         return view('livewire..pendaftaran.pasien.components.datapasien',[
         'pasien'=> DB::table('pasiens')
                                     ->join('users','pasiens.id_user','users.id')
-                                    ->select('pasiens.id','pasiens.no_Rm','pasiens.nama','tanggal_Lahir','jenkel','nik','bpjs','users.name')
+                                    ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
+                                    ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
+                                    ->join('kotas','kecamatans.kota_id','kotas.kota_id')
+                                    ->select('pasiens.id',
+                                             'pasiens.no_Rm',
+                                             'pasiens.nama',
+                                             'pasiens.created_at',
+                                             'tanggal_Lahir',
+                                             'jenkel',
+                                             'no_tlpn',
+                                             'nik',
+                                             'kecamatans.kec_name',
+                                             'kotas.kota_name',
+                                             'bpjs',
+                                             'users.name',
+                                             'pasiens.alamat',
+                                             'kelurahans.kel_name'
+                                             )
                                     ->where('nama', 'like', '%' .$this->caripasien. '%')
                                     ->orWhere('no_Rm',$this->caripasien)
                                     ->orWhere('nik',$this->caripasien)

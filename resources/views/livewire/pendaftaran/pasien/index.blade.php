@@ -9,12 +9,16 @@
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Pendaftaran Pasien</li>
           </ol>
-    </div>
+        </div>
       </div>
 @endsection
 @section('content')
 <div class="content">
   <div class="container-fluid">
+    <div class="callout callout-warning bg-warning">
+      <h3 class="text-center"><u>PERHATIAN !</u></h3>
+      <p class="text-center"><b>Untuk Alamat Pasien Mencantumkan RT dan Nomor Rumah & Nomor Telepon / Hp Pasien Wajib di isi</b></p>
+      </div>
     <div class="row">
       <livewire:pendaftaran.pasien.components.pasienbaru>
       <livewire:pendaftaran.pasien.components.editdata-pasien>
