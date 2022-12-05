@@ -56,7 +56,7 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{route('diagnosa')}}" class="nav-link">
+            <a href="{{route('admin.diagnosa')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-danger"></i>
               <p>INPUT DIAGNOSA</p>
             </a>
