@@ -1,8 +1,8 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-      <!-- Add icons to the links using the .nav-icon class
-           with font-awesome or any other icon font library -->
-        <li class="nav-header">@if(Auth::user()->role==='1') Petugas Pendaftaran @elseif(Auth::user()->role==='4')Administrator @endif </li>
+        <li class="nav-header">
+          @if(Auth::user()->role==='1') Petugas Pendaftaran @elseif(Auth::user()->role==='4')Administrator @endif 
+        </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-file-medical"></i>
@@ -76,7 +76,7 @@
       </li>
       @if (Auth::user()->role === '4')
       <li class="nav-item">
-        <a class="nav-link" href="{{route('tambahuser')}}">
+        <a class="nav-link" href="{{route('admin.tambahuser')}}">
           <i class="nav-icon fa-solid fas fa-hospital-user"></i>
           <p>
             MANAJEMEN USER
@@ -84,22 +84,26 @@
         </a>
       </li>
       @endif
+
+
       @if (Auth::user()->role === '4')
       <li class="nav-item">
-        <a href="{{route('poli')}}" class="nav-link">
+        <a href="{{route('admin.poli')}}" class="nav-link">
           <i class="nav-icon fas fa-clinic-medical"></i>
           <p>MANAJEMEN POLI</p>
         </a>
       </li>
       @endif
+
       @if (Auth::user()->role === '4')
       <li class="nav-item">
-        <a href="{{route('jaminan')}}" class="nav-link">
+        <a href="{{route('admin.jaminan')}}" class="nav-link">
           <i class="nav-icon fas fa-hospital"></i>
           <p>MANAJEMEN JAMINAN</p>
         </a>
       </li>
       @endif
+
       <li class="nav-item">
         <a href="" class="nav-link">
           <i class="nav-icon fa-solid fas fa-solid fas fa-receipt"></i>
