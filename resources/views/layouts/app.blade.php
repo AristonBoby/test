@@ -69,6 +69,7 @@
       </div>
       <strong>Copyright &copy; 2022 <a href="/">UPTD Puskesmas</a>.</strong> SEGIRI 
     </footer>
+    @stack('js')
 <!-- jQuery -->
 <script src=" {{asset('AdminLTE/plugins/jquery/jquery.min.js')}} "></script>
 <!-- Bootstrap 4 -->
