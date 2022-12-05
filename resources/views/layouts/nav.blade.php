@@ -13,13 +13,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{Route('pendaftaranPasien')}}" class="nav-link">
+            <a href="{{Route('pendaftaran.pendaftaranPasien')}}" class="nav-link">
               <i class="fas fa-notes-medical nav-icon text-success"></i>
               <p>PENDAFTARAN PASIEN</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{Route('showdatapasien')}}" class="nav-link">
+            <a href="{{Route('pendaftaran.showdatapasien')}}" class="nav-link">
               <i class="fas fa-search nav-icon text-warning"></i>
               <p>PENCARIAN DATA PASIEN</p>
             </a>
@@ -37,13 +37,14 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{route('Kunjungan')}}" class="nav-link">
+            <a href="{{route('pendaftaran.Kunjungan')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-success"></i>
               <p>KUNJUNGAN</p>
             </a>
           </li>
         </ul>
       </li>
+
       @if (Auth::user()->role === '3' || Auth::user()->role === '4'  )
       <li class="nav-item">
         <a href="#" class="nav-link">
