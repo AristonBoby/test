@@ -18,7 +18,7 @@ use Symfony\Component\Mailer\Transport\Smtp\Auth\LoginAuthenticator;
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
 Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('ubah.password');
 Route::post('logout',[LoginController::class,'logout'])->middleware('auth')->name('logout');
-Route::get('/laporan',[App\Http\Livewire\Laporan\Home::class,'index'])->middleware('auth')->name('laporan');
+
 
 /// Route Petugas Pendaftaran ///
 Route::group(['prefix'=>'pendaftaran','middleware'=>'pendaftaran'],function(){
@@ -27,6 +27,7 @@ Route::get('/datapasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Datapa
 Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::class,'cetak'])->name('pendaftaran.printPasien');
 Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->name('pendaftaran.Kunjungan');
 Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('pendaftaran.updatePasien');
+Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('pendaftaran.password');
 });
 /////END////
 
@@ -40,7 +41,8 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/tambahuser',[App\Http\Livewire\Tambahuser\Index::class,'index'])->name('admin.tambahuser');
     Route::get('/poli',[App\Http\Livewire\Poli\index::class,'show'])->name('admin.poli');
     Route::get('/jaminan',[App\Http\Livewire\Jaminan\Index::class,'show'])->name('admin.jaminan');
-
+    Route::get('/laporan',[App\Http\Livewire\Laporan\Home::class,'index'])->middleware('auth')->name('admin.laporan');
+    Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('admin.password');
     });
 
 //sistem login//
