@@ -3,7 +3,7 @@ namespace App\Http\Livewire\Pendaftaran\Pasien\Components;
 use App\Models\pasien;
 use Livewire\Component;
 use Livewire\WithPagination;
-use  App\Models\provinsi;
+use App\Models\provinsi;
 use App\Models\kecamatan;
 use App\Models\kelurahan;
 use App\Models\kota;
