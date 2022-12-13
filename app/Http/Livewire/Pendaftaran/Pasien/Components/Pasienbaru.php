@@ -10,7 +10,7 @@ use App\Models\kecamatan;
 use App\Models\kelurahan;
 use Illuminate\Support\Facades\Auth;
 class Pasienbaru extends Component
-{   
+{
     public $no_Rm;
     public $nama;
     public $tempat_Lahir;
@@ -23,7 +23,7 @@ class Pasienbaru extends Component
     public $nik ='';
     public $bpjs='';
     public $alamat;
-    public $prov; // Variabel Provinsi 
+    public $prov; // Variabel Provinsi
     public $kotas; //Vairabel Kota
     public $kecamatan;  //Variabel Kelurahan
     public $kelurahan; //Variabel Kelurahan
@@ -43,7 +43,7 @@ class Pasienbaru extends Component
             'kel'       =>  kelurahan::where('kec_id',$this->kelurahan)->get()
         ]);
     }
-    
+
     public function index ()
     {
         return view('livewire.pendaftaran.pasien.index');
@@ -58,7 +58,6 @@ class Pasienbaru extends Component
         'jenkel'            => 'required',
         'agama'             => 'required',
         'no_tlpn'           => 'required',
-        'nik'               => 'unique:pasiens',
         'bpjs'              => 'unique:pasiens',
         'pekerjaan'         => 'required',
         'alamat'            => 'required',
@@ -82,22 +81,69 @@ class Pasienbaru extends Component
         'bpjs.unique'               =>'Nomor BPJS Pasien telah digunakan',
         'idkelurahan.required'      => 'Kelurahan tidak boleh kosong',
     ];
-  
-    public function store(){
-       
-        if(!empty($this->bpjs) && empty($this->nik))
-        {
-            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien telah memiliki nomor BPJS pastikan NIK Pasien telah diisi!!!']);
-            return false;
-        }
-        elseif(!empty($this->no_Rm))
-        {   $cekNoRekamMedis=Pasien::where('no_Rm',$this->no_Rm)->first();
-            if(!empty($cekNoRekamMedis))
-            {
-                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Telah Digunakan']);
-                return false;        }
-        else{
+    // Proses Validasi Data Inputan Pasien Baru //
+    private function validasi_data(){
+
+        // Proses Validasi No RM Ganda & dan Jumlah Karakter //
+            if(!empty($this->no_Rm)){
+                // Cek Nomor Rekam Medis Unique //
+                $cekNoRekamMedis=Pasien::where('no_Rm',$this->no_Rm)->first();
+                // End //
+                // Cek Panjang Inputan Nomor rekam Medis //
+                // Minimal 8 Karakter //
+                $noRm_Panjang=strlen($this->no_Rm);
+                // End //
+                // Proses Validasi  Jika Nomor Rekam Medis Ganda tampilkan Tanpilkan Message //
+                if(!empty($cekNoRekamMedis)){
+                    $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Telah digunakan Atas Nama [ '.$cekNoRekamMedis->nama.' ]']);
+                    return back();
+                }
+                // End //
+                // Proses Validasi panjang Nomor Rekam Medis  Jika Kurang Dari 5 Tampilkan Message //
+                if($noRm_Panjang < 8){
+                    $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Minimal 8 ']);
+                    return back();
+                }
+                // End //
+            }
+            // End Validasi No RM Ganda & dan Jumlah Karakter //
+
+            if(!empty($this->bpjs) && empty($this->nik)){
+                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien telah memiliki nomor BPJS pastikan NIK Pasien telah diisi!!!']);
+                return back();
+            }
+
+            if(!empty($this->nik)){
+                $nik_panjang = strlen($this->nik);
+                if($nik_panjang < 16){
+                    $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'NIK Minimal 16 Angka']);
+                    return back();
+                }
+            }
+
+            if(!empty($this->bpjs)){
+                $bpjs_panjang = strlen($this->bpjs);
+                if($bpjs_panjang < 13){
+                    $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'BPJS Minimal 13 Angka']);
+                    return back();
+                }
+            }
+            if(!empty($this->no_tlpn)){
+                $tlpn_panjang = strlen($this->no_tlpn);
+                if($tlpn_panjang < 13){
+                    $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Telepon / HP Minimal 10 Angka']);
+                    return back();
+                }
+            }
             $this->validate();
+    }
+    // End Validasi Data Pasien Baru //
+
+    public function store(){
+
+
+        if (!$this->validasi_data(false)){
+
             $query = pasien::create([
                 'no_Rm'             => $this->no_Rm,
                 'nama'              => $this->nama,
@@ -107,7 +153,7 @@ class Pasienbaru extends Component
                 'jenkel'            => $this->jenkel,
                 'agama'             => $this->agama,
                 'pekerjaan'         => $this->pekerjaan,
-                'no_tlpn'           => $this->no_tlpn,    
+                'no_tlpn'           => $this->no_tlpn,
                 'nik'               => $this->nik,
                 'bpjs'              => $this->bpjs,
                 'kel_id'            => $this->idkelurahan,
@@ -118,7 +164,7 @@ class Pasienbaru extends Component
                 $this->no_Rm           = "";
                 $this->nama            = "";
                 $this->tempat_Lahir    = "";
-                $this->tanggal_Lahir   = date('Y-m-d');  
+                $this->tanggal_Lahir   = date('Y-m-d');
                 $this->kepala_keluarga = "";
                 $this->jenkel          = "";
                 $this->agama           = "";
@@ -132,13 +178,9 @@ class Pasienbaru extends Component
                 $this->kecamatan       = "";
                 $this->kelurahan       = "";
                 $this->render();
-
             $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','icon'=>'success','text'=>'Data Berhasil Tersimpan']);
-        }
-        
+            }
         }
 
     }
-
-}
 }
