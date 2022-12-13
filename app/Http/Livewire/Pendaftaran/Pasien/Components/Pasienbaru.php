@@ -82,63 +82,7 @@ class Pasienbaru extends Component
         'bpjs.unique'               =>'Nomor BPJS Pasien telah digunakan',
         'idkelurahan.required'      => 'Kelurahan tidak boleh kosong',
     ];
-    private function validasi(){
-        
-        // Pengecekan Nomor Rekam Medis Yang Ganda //
-        if(!empty($this->no_Rm))
-        {
-            $cekNoRm = pasien::where('no_Rm',$this->no_Rm)->first();
-            if($cekNoRm)
-            {
-                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'error','text'=>'Nomor Rekam Medis telah digunakan !!!']);
-                return false;
-            }
-        }
-        // === //
-        
-        // Pengecekan Nomor Rekam medis Jika Tidak Diisi //
-        if(empty($this->no_Rm))
-        {
-            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis wajib diisi !!!']);
-            return false;
-        }
-        // === //
-        
-        // Cek NIK Ganda // 
-        if(!empty($this->nik))
-        {
-            $cekNIK = pasien::where('nik',$this->nik)->first();
-            if($cekNIK)
-            {
-                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'error','text'=>'NIK Telah digunakan !!!']);
-                return false;
-            }
-        }
-        // === //
-
-         // Cek BPJS Ganda // 
-         if(!empty($this->bpjs))
-         {
-             $cekNIK = pasien::where('bpjs',$this->bpjs)->first();
-             if($cekNIK)
-             {
-                 $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'error','text'=>'Nomor BPJS Telah digunakan !!!']);
-                 return false;
-             }
- 
-         }
-         // === //
-        
-        if(!empty($this->bpjs))
-        {
-            if(empty($this->nik))
-            {
-                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien telah memiliki nomor BPJS pastikan NIK Pasien telah diisi !!!']);
-                return false;
-            }
-        }
-    }
-
+  
     public function store(){
        
         if(!empty($this->bpjs) && empty($this->nik))
@@ -146,6 +90,12 @@ class Pasienbaru extends Component
             $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien telah memiliki nomor BPJS pastikan NIK Pasien telah diisi!!!']);
             return false;
         }
+        elseif(!empty($this->no_Rm))
+        {   $cekNoRekamMedis=Pasien::where('no_Rm',$this->no_Rm)->first();
+            if(!empty($cekNoRekamMedis))
+            {
+                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Telah Digunakan']);
+                return false;        }
         else{
             $this->validate();
             $query = pasien::create([
@@ -190,5 +140,5 @@ class Pasienbaru extends Component
 
     }
 
-    
+}
 }
