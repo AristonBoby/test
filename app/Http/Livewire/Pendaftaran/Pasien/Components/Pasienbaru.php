@@ -58,6 +58,7 @@ class Pasienbaru extends Component
         'jenkel'            => 'required',
         'agama'             => 'required',
         'no_tlpn'           => 'required',
+        'nik'               => 'unique:pasiens',
         'bpjs'              => 'unique:pasiens',
         'pekerjaan'         => 'required',
         'alamat'            => 'required',
