@@ -91,7 +91,7 @@ class Pasienbaru extends Component
             if($cekNoRm)
             {
                 $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'error','text'=>'Nomor Rekam Medis telah digunakan !!!']);
-                return back();
+                return false;
             }
         }
         // === //
@@ -100,9 +100,8 @@ class Pasienbaru extends Component
         if(empty($this->no_Rm))
         {
             $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis wajib diisi !!!']);
-            return back();
+            return false;
         }
-
         // === //
         
         // Cek NIK Ganda // 
@@ -112,7 +111,7 @@ class Pasienbaru extends Component
             if($cekNIK)
             {
                 $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'error','text'=>'NIK Telah digunakan !!!']);
-                return back();
+                return false;
             }
         }
         // === //
@@ -124,58 +123,69 @@ class Pasienbaru extends Component
              if($cekNIK)
              {
                  $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'error','text'=>'Nomor BPJS Telah digunakan !!!']);
-                 return back();
+                 return false;
              }
  
          }
          // === //
         
-        if(!empty($this->bpjs) && empty($this->nik))
+        if(!empty($this->bpjs))
         {
-            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien telah memiliki nomor BPJS pastikan NIK Pasien telah diisi !!!']);
-            return back();
+            if(empty($this->nik))
+            {
+                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien telah memiliki nomor BPJS pastikan NIK Pasien telah diisi !!!']);
+                return false;
+            }
         }
     }
 
     public function store(){
-        $this->validasi();
-        $this->validate();
-        $query = pasien::create([
-                    'no_Rm'             => $this->no_Rm,
-                    'nama'              => $this->nama,
-                    'tempat_Lahir'      => $this->tempat_Lahir,
-                    'tanggal_Lahir'     => $this->tanggal_Lahir,
-                    'kepala_keluarga'   => $this->kepala_keluarga,
-                    'jenkel'            => $this->jenkel,
-                    'agama'             => $this->agama,
-                    'pekerjaan'         => $this->pekerjaan,
-                    'no_tlpn'           => $this->no_tlpn,    
-                    'nik'               => $this->nik,
-                    'bpjs'              => $this->bpjs,
-                    'kel_id'            => $this->idkelurahan,
-                    'alamat'            => $this->alamat,
-                    'id_user'           => Auth::id(),
-            ]);
-        if($query){
-                    $this->no_Rm           = "";
-                    $this->nama            = "";
-                    $this->tempat_Lahir    = "";
-                    $this->tanggal_Lahir   = date('Y-m-d');  
-                    $this->kepala_keluarga = "";
-                    $this->jenkel          = "";
-                    $this->agama           = "";
-                    $this->pekerjaan       = "";
-                    $this->nik             = "";
-                    $this->no_tlpn         = "";
-                    $this->bpjs            = "";
-                    $this->alamat          = "";
-                    $this->prov            = "";
-                    $this->kotas           = "";
-                    $this->kecamatan       = "";
-                    $this->kelurahan       = "";
-                    $this->render();
+       
+        if(!empty($this->bpjs) && empty($this->nik))
+        {
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien telah memiliki nomor BPJS pastikan NIK Pasien telah diisi!!!']);
+            return false;
+        }
+        else{
+            $this->validate();
+            $query = pasien::create([
+                'no_Rm'             => $this->no_Rm,
+                'nama'              => $this->nama,
+                'tempat_Lahir'      => $this->tempat_Lahir,
+                'tanggal_Lahir'     => $this->tanggal_Lahir,
+                'kepala_keluarga'   => $this->kepala_keluarga,
+                'jenkel'            => $this->jenkel,
+                'agama'             => $this->agama,
+                'pekerjaan'         => $this->pekerjaan,
+                'no_tlpn'           => $this->no_tlpn,    
+                'nik'               => $this->nik,
+                'bpjs'              => $this->bpjs,
+                'kel_id'            => $this->idkelurahan,
+                'alamat'            => $this->alamat,
+                'id_user'           => Auth::id(),
+        ]);
+    if($query){
+                $this->no_Rm           = "";
+                $this->nama            = "";
+                $this->tempat_Lahir    = "";
+                $this->tanggal_Lahir   = date('Y-m-d');  
+                $this->kepala_keluarga = "";
+                $this->jenkel          = "";
+                $this->agama           = "";
+                $this->pekerjaan       = "";
+                $this->nik             = "";
+                $this->no_tlpn         = "";
+                $this->bpjs            = "";
+                $this->alamat          = "";
+                $this->prov            = "";
+                $this->kotas           = "";
+                $this->kecamatan       = "";
+                $this->kelurahan       = "";
+                $this->render();
 
-                $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','icon'=>'success','text'=>'Data Berhasil Tersimpan']);
+            $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','icon'=>'success','text'=>'Data Berhasil Tersimpan']);
+        }
+        
         }
 
     }
