@@ -18,13 +18,13 @@
   <div class="content">
     <div class="container-fluid">  
       <div class="row">
-        <div class="col-md-4 col-lg-4 col-sm-12">
+        <div class="col-md-12 col-lg-4 col-sm-12">
           <livewire:laporan.daftarpasien.pencarian>
         </div>
-        <div class="col-md-4 col-lg-8 col-sm-12">
+        <div class="col-md-12 col-lg-8 col-sm-12">
           <livewire:laporan.daftarpasien.tabel>
         </div>
-        <div class="col-md-4 col-lg-12 col-sm-12">
+        <div class="col-md-8 col-lg-12 col-sm-12">
           <livewire:laporan.daftarpasien.pasien>
         </div>
       </div>

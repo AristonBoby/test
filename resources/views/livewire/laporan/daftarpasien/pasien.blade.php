@@ -3,16 +3,17 @@
             <h5 class="card-title">Chart Laporan Pendaftaran Pasien</h5>
         </div>
         <div class="card-body">
-          <canvas id="myChart"></canvas>
+          <canvas class="col-lg-12 col-md-12 col-sm-12" id="myChart"  height="200"></canvas>
         </div>
       </div>
     @push('js')
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <script>
-      var chartData = JSON.parse('<?php echo $pasien ?>');
+      setInterval(() => Livewire.emit('ubahData'),3000);  
+     /* var chartData = JSON.parse('<?php echo $pasien ?>');
       console.log(chartData);
       const ctx = document.getElementById('myChart');
-      new Chart(ctx, {
+      const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: chartData.label,
@@ -21,6 +22,9 @@
             data: chartData.data,
           }]
         },
+      });*/
+      window.addEventListener('berhasilUpdate', event => {
+        alert('event');
       });
     </script>
      @endpush

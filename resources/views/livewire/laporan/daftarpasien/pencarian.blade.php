@@ -1,4 +1,4 @@
-<div class='card '>
+<div class='card'>
     <div class="card-body">
         <form wire:submit.prevent='cari' class="form-horizontal text-sm">
             <div class="form-group row">
