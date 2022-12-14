@@ -124,9 +124,17 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{route('admin.laporan')}}" class="nav-link">
+            <a href="" class="nav-link">
               <i class="far fa-circle nav-icon text-info"></i>
-              <p>Laporan Kunjungan Poli</p>
+              <p>Laporan Pasien </p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{{route('admin.laporanPetugas')}}" class="nav-link">
+              <i class="far fa-circle nav-icon text-info"></i>
+              <p>Laporan Petugas Pendaftaran</p>
             </a>
           </li>
         </ul>

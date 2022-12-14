@@ -115,7 +115,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-4  rounded-0">NIK<code>*</code></label>
                                     <div class="col-md-8">
-                                        <input type="text" wire:model='nik' class="@error('nik')is-invalid @enderror number form-control form-control-sm  rounded-0" placeholder="Nomor Induk Kependudukan" maxlength="16">
+                                        <input type="text" wire:model.defer='nik' class="@error('nik')is-invalid @enderror number form-control form-control-sm  rounded-0" placeholder="Nomor Induk Kependudukan" maxlength="16">
                                         @error('nik')<span class="invalid-feedback">{{$message}}</span>@enderror
                                         <span class="text-xs text-red">*Kosongkan Jika Pasien Tidak Memiliki NIK</span>
                                     </div>
@@ -126,7 +126,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-4 ">No. BPJS <code>*</code></label>
                                     <div class="col-md-8">
-                                        <input type="text" wire:model='bpjs' class=" number @error('bpjs')is-invalid @enderror form-control form-control-sm  rounded-0" placeholder="Nomor BPJS" maxlength="13">
+                                        <input type="text" wire:model.defer='bpjs' class=" number @error('bpjs')is-invalid @enderror form-control form-control-sm  rounded-0" placeholder="Nomor BPJS" maxlength="13">
                                         @error('bpjs')<span class="invalid-feedback">{{$message}}</span>@enderror 
                                         <span class="text-xs text-red">*Kosongkan Jika Pasien Tidak Memiliki BPJS</span>
                                     </div>

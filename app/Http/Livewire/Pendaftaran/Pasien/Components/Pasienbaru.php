@@ -57,7 +57,7 @@ class Pasienbaru extends Component
         'kepala_keluarga'   => 'required',
         'jenkel'            => 'required',
         'agama'             => 'required',
-        'no_tlpn'           => 'required',
+        'no_tlpn'           => 'required||min:10',
         'nik'               => 'unique:pasiens',
         'bpjs'              => 'unique:pasiens',
         'pekerjaan'         => 'required',
@@ -77,6 +77,7 @@ class Pasienbaru extends Component
         'agama.required'            =>'Agama Pasien wajib diisi',
         'pekerjaan.required'        =>'Pekerjaan Pasien wajib diisi',
         'no_tlpn.required'          =>'Nomor Telepon / Hp Pasien wajib diisi',
+        'no_tlpn.min'               =>'Nomor Telepon / Hp Minimal 10 Angka',
         'alamat.required'           =>'Alamat Pasien wajib diisi',
         'nik.unique'                =>'NIK Pasien telah digunakan',
         'bpjs.unique'               =>'Nomor BPJS Pasien telah digunakan',
@@ -129,9 +130,9 @@ class Pasienbaru extends Component
                     return back();
                 }
             }
-            if(!empty($this->no_tlpn)){
+            if(!empty($this->no_tlpn) || $this->no_tlpn == 0){
                 $tlpn_panjang = strlen($this->no_tlpn);
-                if($tlpn_panjang < 13){
+                if($tlpn_panjang < 10 ){
                     $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Telepon / HP Minimal 10 Angka']);
                     return back();
                 }

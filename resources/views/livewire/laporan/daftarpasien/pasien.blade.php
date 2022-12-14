@@ -8,8 +8,7 @@
       </div>
     @push('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-    <script>
-      setInterval(() => Livewire.emit('ubahData'),3000);  
+    <script> 
      /* var chartData = JSON.parse('<?php echo $pasien ?>');
       console.log(chartData);
       const ctx = document.getElementById('myChart');

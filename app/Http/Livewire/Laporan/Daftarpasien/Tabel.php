@@ -23,9 +23,12 @@ class Tabel extends Component
         ->selectRaw('count(pasiens.id_user) as jumlah , users.name')
         ->where('users.role',1)
         ->whereBetween('pasiens.created_at',[$tglmulai,$tglselesai])
-        ->groupBy('users.name')->get();
-        json_encode($table);
-        $this->pasien = $table;
-        //dd($this->pasien);
+        ->groupBy('users.name')->orderBy('jumlah','desc')->get();
+        
+        if($table)
+        { 
+            $this->pasien = $table;
+        }
+
     }
 }

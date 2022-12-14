@@ -1,4 +1,7 @@
-<div class='card'>
+<div class='card card-primary card-outline'>
+    <div class="card-header">
+        <h5 class="card-title">Tanggal Laporan</h5>
+    </div>
     <div class="card-body">
         <form wire:submit.prevent='cari' class="form-horizontal text-sm">
             <div class="form-group row">
@@ -13,7 +16,7 @@
                     <input wire:model.defer='tglsampai' class="form-control rounded-0 form-control-sm" type="date">
                 </div>
             </div>
-            <button class="btn btn-primary btn-sm  float-right btn-flat`"><i class="fas fa-print"></i> Cari</button>
+            <button class="btn btn-primary btn-sm  float-right btn-flat`"><i class="fas fa-search"></i> Cari</button>
         </form>
     </div>
 </div>

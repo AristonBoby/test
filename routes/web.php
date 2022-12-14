@@ -41,7 +41,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/tambahuser',[App\Http\Livewire\Tambahuser\Index::class,'index'])->name('admin.tambahuser');
     Route::get('/poli',[App\Http\Livewire\Poli\index::class,'show'])->name('admin.poli');
     Route::get('/jaminan',[App\Http\Livewire\Jaminan\Index::class,'show'])->name('admin.jaminan');
-    Route::get('/laporan',[App\Http\Livewire\Laporan\laporanPasienBaru::class,'index'])->middleware('auth')->name('admin.laporan');
+    Route::get('/laporanPetugas',[App\Http\Livewire\Laporan\laporanPasienBaru::class,'index'])->middleware('auth')->name('admin.laporanPetugas');
     Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('admin.password');
     });
 

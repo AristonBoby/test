@@ -3,12 +3,12 @@
 <div class="container-fluid">
     <div class="row" style="margin-bottom:-5px;">
       <div class="col-sm-6 ">
-        <h5>LAPORAN PASIEN BARU</h5>
+        <h5>LAPORAN PETUGAS PENDAFTARAN</h5>
       </div>
       <div class="col-lg-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Laporan Pasien</li>
+          <li class="breadcrumb-item active">Laporan Petugas Pendaftaran</li>
       </ol>
       </div>
     </div>
@@ -25,7 +25,7 @@
           <livewire:laporan.daftarpasien.tabel>
         </div>
         <div class="col-md-8 col-lg-12 col-sm-12">
-          <livewire:laporan.daftarpasien.pasien>
+          <!--<livewire:laporan.daftarpasien.pasien> -->
         </div>
       </div>
     </div>    

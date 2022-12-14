@@ -222,7 +222,7 @@ class Datapasien extends Component
                 $this->dispatchBrowserEvent('hapus');
                 $this->render();
             }else{
-                dd('error');
+           
             }
     }
 
