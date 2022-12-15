@@ -126,8 +126,19 @@
           <li class="nav-item">
             <a href="" class="nav-link">
               <i class="far fa-circle nav-icon text-info"></i>
-              <p>Laporan Pasien </p>
+              <p>
+                Laporan Pasien
+                <i class="fas fa-angle-left right"></i>
+              </p>
             </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('admin.laporanDomisili')}}">
+                    <i class="far fa-circle nav-icon text-danger"></i>
+                    <p>Wilayah</p>
+                  </a>
+                <li>
+              </ul>
           </li>
         </ul>
         <ul class="nav nav-treeview">

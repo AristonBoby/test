@@ -42,7 +42,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <tr wire:loading>
+                            <tr wire:click.remove>
                                 <td colspan="9" class="text-sm">Loading...</td>
                             </tr>
                             @if($query->isEmpty())
