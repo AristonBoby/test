@@ -19,8 +19,6 @@ class Table extends Component
                 ->where('tanggal','2202/12/16')
                 ->orderBy('polis.nama_poli','desc')
                 ->paginate(10);
-        return view('livewire.laporan.kunjungan.table'['
-            
-        ']);
+        
     }
 }
