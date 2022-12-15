@@ -14,4 +14,8 @@ class laporan extends Component
     public function laporanDomisili(){
         return view('laporanDomisili');
     }
+
+    public function laporanKunjungan(){
+        return view('laporanKunjungan');
+    }
 }

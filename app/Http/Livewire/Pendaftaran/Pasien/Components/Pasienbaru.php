@@ -50,7 +50,7 @@ class Pasienbaru extends Component
     }
 
     protected $rules =([
-        'no_Rm'             => 'required|unique:pasiens|max:8',
+        'no_Rm'             => 'required|unique:pasiens|max:15',
         'nama'              => 'required',
         'tempat_Lahir'      => 'required',
         'tanggal_Lahir'     => 'required',
@@ -68,7 +68,7 @@ class Pasienbaru extends Component
     protected $messages =[
         'no_Rm.required'            =>'Nomor Rekam Medis wajib di isi',
         'no_Rm.unique'              =>'Nomor Rekam Medis telah digunakan',
-        'max'                       =>'Nomor Rekam Medis Maksimal 8 Karakter',
+        'max'                       =>'Nomor Rekam Medis Maksimal 7 Karakter',
         'nama.required'             =>'Nama Pasien wajib diisi',
         'tempat_Lahir.required'     =>'Tempat lahir Pasien wajib diisi',
         'tanggal_Lahir.required'    =>'Tanggal lahir Pasien wajib diisi',
@@ -102,8 +102,8 @@ class Pasienbaru extends Component
                 }
                 // End //
                 // Proses Validasi panjang Nomor Rekam Medis  Jika Kurang Dari 5 Tampilkan Message //
-                if($noRm_Panjang < 8){
-                    $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Minimal 8 ']);
+                if($noRm_Panjang < 7){
+                    $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Minimal 7 Karakter']);
                     return back();
                 }
                 // End //
@@ -127,13 +127,6 @@ class Pasienbaru extends Component
                 $bpjs_panjang = strlen($this->bpjs);
                 if($bpjs_panjang < 13){
                     $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'BPJS Minimal 13 Angka']);
-                    return back();
-                }
-            }
-            if(!empty($this->no_tlpn) || $this->no_tlpn == 0){
-                $tlpn_panjang = strlen($this->no_tlpn);
-                if($tlpn_panjang < 10 ){
-                    $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Telepon / HP Minimal 10 Angka']);
                     return back();
                 }
             }

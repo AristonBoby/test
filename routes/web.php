@@ -28,6 +28,10 @@ Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::clas
 Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->name('pendaftaran.Kunjungan');
 Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('pendaftaran.updatePasien');
 Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('pendaftaran.password');
+Route::get('/laporanPetugas',[App\Http\Livewire\Laporan\laporan::class,'laporanPasienBaru'])->middleware('auth')->name('pendaftaran.laporanPetugas');
+Route::get('/laporanPasien',[App\Http\Livewire\Laporan\laporan::class,'laporanKunjungan'])->middleware('auth')->name('pendaftaran.laporanDomisili');
+Route::get('/laporanKunjungan',[App\Http\Livewire\Laporan\laporan::class,'laporanKunjungan'])->middleware('auth')->name('pendaftaran.laporanKunjungan');
+
 });
 /////END////
 
@@ -42,7 +46,8 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/poli',[App\Http\Livewire\Poli\index::class,'show'])->name('admin.poli');
     Route::get('/jaminan',[App\Http\Livewire\Jaminan\Index::class,'show'])->name('admin.jaminan');
     Route::get('/laporanPetugas',[App\Http\Livewire\Laporan\laporan::class,'laporanPasienBaru'])->middleware('auth')->name('admin.laporanPetugas');
-    Route::get('/laporanPasien',[App\Http\Livewire\Laporan\laporan::class,'laporanDomisili'])->middleware('auth')->name('admin.laporanDomisili');
+    Route::get('/laporanKunjungan',[App\Http\Livewire\Laporan\laporan::class,'laporanKunjungan'])->middleware('auth')->name('admin.laporanKunjungan');
+    Route::get('/laporanPasien',[App\Http\Livewire\Laporan\laporan::class,'laporanKunjungan'])->middleware('auth')->name('admin.laporanDomisili');
     Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('admin.password');
     });
 

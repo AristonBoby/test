@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Pendaftaran\Kunjungan;
 
 use Livewire\Component;
 use App\Models\kunjungan;
+use Illuminate\Support\Facades\DB;
 use Livewire\WithPagination;
 class Tabelkunjungan extends Component
 {   
@@ -22,10 +23,18 @@ class Tabelkunjungan extends Component
     }
     //end//
     public function render()
-    {
+    {   $data = DB::table('kunjungans')
+                ->join('jaminans','kunjungans.id_jaminan','jaminans.id_jaminan')
+                ->join('pasiens','kunjungans.id_pasien','pasiens.id')
+                ->join('polis','kunjungans.id_poli','polis.id_poli')
+                ->select('kunjungans.id','pasiens.no_Rm','pasiens.nama','pasiens.tanggal_Lahir','pasiens.jenkel','pasiens.nik','pasiens.bpjs','polis.nama_poli','jaminans.jaminan','tanggal','pasiens.no_tlpn')
+                ->where('tanggal',$this->tanggal)
+                ->orderBy('polis.nama_poli','desc')
+                ->paginate(10);
+        
         return view('livewire.pendaftaran.kunjungan.tabelkunjungan',
         [
-            'query' => kunjungan::where('tanggal',$this->tanggal)->orderby('created_at','desc')->orderby('created_at','desc')->paginate(10)
+            'query' => $data
         ]);
         
     }

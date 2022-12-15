@@ -36,13 +36,16 @@
                             <th class="text-center">Nama</th>
                             <th class="text-center">Tgl Lahir</th>
                             <th class="text-center">Kelamin</th>
+                            <th class="text-center">No Telepon / HP</th>
                             <th class="text-center">NIK</th>
+                            <th class="text-center">BPJS</th>
                             <th class="text-center">Poli</th>
+                            <th class="text-center">Jaminan</th>
                             <th class="text-center">Tanggal</th>
                         </tr>
                     </thead>
                     <tbody>
-                            <tr wire:click.remove>
+                            <tr wire:loading>
                                 <td colspan="9" class="text-sm">Loading...</td>
                             </tr>
                             @if($query->isEmpty())
@@ -54,12 +57,15 @@
                                 </tr>
                                 <tr wire:click.remove>
                                     <td>{{$query->firstItem() + $no}}</td>
-                                    <td>@if(!empty($data->pasien['no_Rm'])){{$data->pasien['no_Rm']}} @endif</td>
-                                    <td>@if(!empty($data->pasien['nama'])){{$data->pasien['nama']}} @endif</td>
-                                    <td>@if(!empty($data->pasien['tanggal_Lahir'])){{$data->pasien['tanggal_Lahir']}}@endif</td>
-                                    <td>@if(!empty($data->pasien['jenkel'])){{$data->pasien['jenkel']}}@endif</td>
-                                    <td>@if(!empty($data->pasien['nik'])){{$data->pasien['nik']}}@endif</td>
-                                    <td>{{$data->poli['nama_poli']}}</td>
+                                    <td>{{$data->no_Rm}}</td>
+                                    <td>{{$data->nama}}</td>
+                                    <td>{{$data->tanggal_Lahir}}</td>
+                                    <td>{{$data->jenkel}}</td>
+                                    <td>{{$data->no_tlpn}}</td>
+                                    <td>{{$data->nik}}</td>
+                                    <td>{{$data->bpjs}}</td>
+                                    <td>{{$data->nama_poli}}</td>
+                                    <td>{{$data->jaminan}}</td>
                                     <td>{{$data->tanggal}}</td>
                                     <td>
                                         <a class="btn btn-xs btn-danger" wire:click="konfirmasihapus({{$data->id}})"><i class="fas fa-light fa-trash-alt"></i></a>

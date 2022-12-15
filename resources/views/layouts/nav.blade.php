@@ -39,6 +39,50 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="" class="nav-link">
+            <i class="nav-icon fa-solid fas fa-solid fas fa-receipt"></i>
+            <p>
+              Laporan
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="" class="nav-link">
+                <i class="far fa-circle nav-icon text-info"></i>
+                <p>
+                  Laporan Pasien
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{route('pendaftaran.laporanDomisili')}}">
+                      <i class="far fa-circle nav-icon text-danger"></i>
+                      <p>Wilayah</p>
+                    </a>
+                  <li>
+                </ul>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('pendaftaran.laporanKunjungan')}}" class="nav-link">
+                <i class="far fa-circle nav-icon text-info"></i>
+                <p>Laporan Kunjungan</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('pendaftaran.laporanPetugas')}}" class="nav-link">
+                <i class="far fa-circle nav-icon text-info"></i>
+                <p>Laporan Petugas Pendaftaran</p>
+              </a>
+            </li>
+          </ul>
+        </li>
       @endif
       <!--End Pendaftaran -->
 
@@ -139,6 +183,14 @@
                   </a>
                 <li>
               </ul>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{{route('admin.laporanKunjungan')}}" class="nav-link">
+              <i class="far fa-circle nav-icon text-info"></i>
+              <p>Laporan Kunjungan</p>
+            </a>
           </li>
         </ul>
         <ul class="nav nav-treeview">

@@ -8,7 +8,7 @@
                                 <div class="form-group row ">
                                     <label class="col-md-4 col-form-label ">No. Rekam Medis</label>
                                     <div class="col-md-8">
-                                        <input id="noRm" type="text" wire:model="no_Rm"class="form-control form-control-sm  rounded-0 @error('no_Rm') is-invalid @enderror " placeholder="Nomor Rekam Medis" maxlength="8">
+                                        <input id="noRm" type="text" wire:model="no_Rm"class="form-control form-control-sm  rounded-0 @error('no_Rm') is-invalid @enderror " placeholder="Nomor Rekam Medis" maxlength="15">
                                         @error('no_Rm')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
