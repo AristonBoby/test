@@ -19,6 +19,7 @@ class Jaminan extends Component
         $jumlahJaminan = DB::table('kunjungans')
                     ->join('jaminans','kunjungans.id_jaminan','jaminans.id_jaminan')
                     ->selectRaw('count(kunjungans.id_jaminan) as jumlah, jaminans.jaminan')
+                    ->groupBy('kunjungans.id_jaminan')
                     ->whereBetween('tanggal',[$tanggalMulai,$tanggalSelesai])
                     ->orderBy('jumlah','desc')->paginate(10);
         $this->jumlah = $jumlahJaminan;

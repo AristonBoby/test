@@ -25,11 +25,13 @@ class Cetakpdf extends Component
       $jumlahPoli = DB::table('kunjungans')
                   ->join('polis','kunjungans.id_poli','polis.id_poli')
                   ->selectRaw('count(kunjungans.id_poli) as jumlahPoli, polis.nama_poli')
+                  ->groupBy('kunjungans.id_poli')
                   ->orderBy('jumlahPoli','desc')
                   ->get();
       $jumlahjaminan = DB::table('kunjungans')
                   ->join('jaminans','kunjungans.id_jaminan','jaminans.id_jaminan')
                   ->selectRaw('count(jaminans.id_jaminan) as jumlahJaminan, jaminans.jaminan')
+                  ->groupBy('jaminans.id_jaminan')
                   ->orderBy('jumlahJaminan','desc')
                   ->get();
       $dompdf = pdf::loadView('cetakPdf',['dataKunjungan'=> $query,'tglMulai'=>$tanggalMulai,'tglSampai'=>$tanggalSampai,'jumlahPoli'=>$jumlahPoli,'jaminan'=>$jumlahjaminan]);

@@ -29,7 +29,7 @@
             @empty(!$varLaporanPasien)
                 @foreach ($varLaporanPasien as $no=>$data)
                     <tr wire:loading.remove>
-                        <td>{{$varLaporanPasien->firstItem()+$no}}</td>
+                        <td>{{$no+1}}</td>
                         <td>{{$data->no_Rm}}</td>
                         <td>{{$data->nama}}</td>
                         <td>{{$data->tanggal_Lahir}}</td>
@@ -41,7 +41,6 @@
                     </tr>   
                 @endforeach
             @endempty           
-          
            </tbody>
         </table>
        

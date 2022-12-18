@@ -20,8 +20,9 @@ class Poli extends Component
         $jumlahPoli = DB::table('kunjungans')
                     ->join('polis','kunjungans.id_poli','polis.id_poli')
                     ->selectRaw('count(kunjungans.id_poli) as jumlah, polis.nama_poli')
+                    ->groupBy('kunjungans.id_poli')
                     ->whereBetween('tanggal',[$tanggalMulai,$tanggalSelesai])
-                    ->orderBy('jumlah','desc')->paginate(10);
+                    ->orderBy('jumlah','desc')->paginate(5);
         $this->jumlah = $jumlahPoli;
     }
 }

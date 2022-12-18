@@ -48,7 +48,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/laporanPetugas',[App\Http\Livewire\Laporan\laporan::class,'laporanPasienBaru'])->middleware('auth')->name('admin.laporanPetugas');
     Route::get('/laporanKunjungan',[App\Http\Livewire\Laporan\laporan::class,'laporanKunjungan'])->middleware('auth')->name('admin.laporanKunjungan');
     Route::get('/laporanPasien',[App\Http\Livewire\Laporan\laporan::class,'laporanDomisili'])->middleware('auth')->name('admin.laporanDomisili');
-    Route::get('/cetakKunjungan/{tglMulai}/{tglSampai}',[App\Http\Livewire\Laporan\kunjungan\Cetakpdf::class,'cetakPdf'])->middleware('auth')->name('admin.cetakKunjungan');
+    Route::get('/cetakKunjungan/{tglMulai}/{tglSampai}',[App\Http\Livewire\Laporan\Kunjungan\Cetakpdf::class,'cetakPdf'])->middleware('auth')->name('admin.cetakKunjungan');
     Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('admin.password');
     });
 

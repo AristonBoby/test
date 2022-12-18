@@ -33,7 +33,7 @@ class Table extends Component
             ->select('kunjungans.id','pasiens.no_Rm','pasiens.nama','pasiens.tanggal_Lahir','pasiens.alamat','pasiens.jenkel','pasiens.nik','pasiens.bpjs','polis.nama_poli','jaminans.jaminan','tanggal','pasiens.no_tlpn')
             ->whereBetween('tanggal',[$tanggalMulai,$tanggalSelesai])
             ->orderBy('polis.nama_poli','desc')
-            ->paginate(10);
+            ->get();
             $this->LaporanPasien = $pasien;
     }
 }
