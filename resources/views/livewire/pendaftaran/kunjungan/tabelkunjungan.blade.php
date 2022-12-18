@@ -1,4 +1,4 @@
-    <div class="col-md-12 col-sm-12 col-lg-8">
+    <div class="col-md-12 col-sm-12 col-lg-8 ">
         <div class="card card-info card-outline">
             <div class="card-header">
                 <h3 class="card-title">Data Kunjungan Pasien</h3>
@@ -11,7 +11,7 @@
                     </button>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body table-responsive">
                 <div class="row">
                     <div class="col-md-8">
                         <p class="text-sm text-danger">* Data Kunjungan yang ditampilkan berdasarkan tanggal Kunjungan</p>
@@ -28,7 +28,8 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered table-hover text-xs mb-2 table-striped text-center table-sm" style="margin-top:-20px;">
+                <div>
+                <table class="table table-bordered table-hover text-xs mb-2 table-striped text-center table-sm" style="margin-top:-20px; table-responsive">
                     <thead>
                         <tr>
                             <th class=" ">No</th>
@@ -71,6 +72,7 @@
                     </tbody>
                        
                 </table>
+                </div>
                 <div class=" text-xs btn-flat btn-xs">
                     <span class="text-sm"><i>Total {{$query->total()}}</i>
                     <span class="float-right btn-xs text-xs ">{{$query->links()}}</span>

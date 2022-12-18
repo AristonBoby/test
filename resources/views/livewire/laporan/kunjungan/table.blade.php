@@ -1,12 +1,13 @@
-<div class="card card-warning card-outline">
+<div class="card card-warning card-outline table-responsive">
     <div class="card-header">
         <h5 class="card-title">Daftar Pasien</h5>
     </div>
-    <div class="card-body text-sm text-center">
+    <div class="card-body text-sm text-center ">
         <table class="table table-bordered table-sm text-sm table-hover table-striped">
            <thead>
                 <tr>
                     <th>No.</th>
+                    <th>Tanggal</th>
                     <th>No Rekam Medis</th>
                     <th>Nama</th>
                     <th>Tanggal Lahir</th>
@@ -19,17 +20,18 @@
            </thead>
            <tbody>
             <tr wire:loading>
-                <td colspan="9">Loading...</td>
+                <td colspan="10">Loading...</td>
             </tr>  
             @if(empty($varLaporanPasien))
                 <tr wire:loading.remove>
-                    <td colspan="9" class="text-center"><i>Data Tidak Ditemukan</i></td>
+                    <td colspan="10" class="text-center"><i>Data Tidak Ditemukan</i></td>
                 </tr>
             @endif
             @empty(!$varLaporanPasien)
                 @foreach ($varLaporanPasien as $no=>$data)
                     <tr wire:loading.remove>
                         <td>{{$no+1}}</td>
+                        <td>{{$data->tanggal}}</td>
                         <td>{{$data->no_Rm}}</td>
                         <td>{{$data->nama}}</td>
                         <td>{{$data->tanggal_Lahir}}</td>
@@ -51,4 +53,4 @@
         </div>
     </div>
 </div>
-</div>
+

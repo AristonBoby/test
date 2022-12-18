@@ -20,6 +20,7 @@ class Cetakpdf extends Component
                ->join('jaminans','kunjungans.id_jaminan','jaminans.id_jaminan')
                ->whereBetween('kunjungans.tanggal',[$tanggalMulai,$tanggalSampai])
                ->select('pasiens.jenkel','pasiens.nik','pasiens.tanggal_Lahir','pasiens.no_Rm','pasiens.nama','pasiens.alamat','jaminans.jaminan','polis.nama_poli','kelurahans.kel_name','kec_name','kota_name','tanggal')
+               ->orderBy('tanggal','asc')
               // ->select('tanggal','pasiens.no_Rm','pasiens.nama','pasiens.tanggal_Lahir','pasiens.jenkel','pasiens.nik','polis.nama_poli','jaminans.jaminan','pasiens.alamat')
                ->get();
       $jumlahPoli = DB::table('kunjungans')
