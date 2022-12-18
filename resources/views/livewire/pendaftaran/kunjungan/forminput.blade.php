@@ -88,7 +88,7 @@
                                 @error("poli")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror
                             </div>
                         </div> 
-                    <button type="submit" class="btn btn-sm btn-primary btn-flat float-right" @disabled($form)>Simpan</button> 
+                    <button type="submit" class="btn btn-sm btn-primary float-right text-xs" @disabled($form)><i class="far fa-save text-xs"></i> Simpan</button> 
                 </div>
             </div>
     </div>

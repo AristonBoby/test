@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-sm table-bordered table-hover text-sm text-center">
+            <table class="table table-sm table-bordered table-hover text-xs table-striped text-center">
                 <thead>
                     <tr>
                         <th class="text-center">No</th>
@@ -52,10 +52,10 @@
                             <td class="text-center text-left text-uppercase">{{$query->name}}</td>
                             <td>{{$query->created_at}}</td>
                             <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-sm btn-info   "  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="far fa-eye"></i></a>
-                                    <a class="btn btn-sm btn-warning"  data-toggle="modal" data-target="#edit" wire:click="edit({{$query->id}})"><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-sm btn-danger" href="javascript:void(0)" wire:click.prevent='deleteConfirmation({{$query->id}})' target="blank_"><i class="fas fa-light fa-trash-alt"></i></a>
+                                <div class="btn-group text-xs">
+                                    <a class="btn btn-sm btn-info   "  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="text-xs far fa-eye"></i></a>
+                                    <a class="btn btn-sm btn-warning"  data-toggle="modal" data-target="#edit" wire:click="edit({{$query->id}})"><i class="text-xs fa fa-edit"></i></a>
+                                    <a class="btn btn-sm btn-danger" href="javascript:void(0)" wire:click.prevent='deleteConfirmation({{$query->id}})' target="blank_"><i class="text-xs fas fa-light fa-trash-alt"></i></a>
                                 </div>
                             </td>                  
                         </tr>

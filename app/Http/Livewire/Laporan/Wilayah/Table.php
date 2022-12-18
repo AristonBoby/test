@@ -16,7 +16,7 @@ class Table extends Component
                          ->join('provinsis','kotas.prov_id','provinsis.prov_id')
                          ->select('kelurahans.kel_name','kecamatans.kec_name','kotas.kota_name','provinsis.prov_name')
                          ->selectRaw('count(pasiens.kel_id) as jumlah')
-                         ->groupBy('pasiens.kel_id')->orderBy('jumlah','desc')->paginate(10);
+                         ->groupBy('pasiens.kel_id')->orderBy('jumlah','desc')->paginate(20);
         //dd($wilayahPasien);
         return view('livewire.laporan.wilayah.table',[
             'jumlah' => $wilayahPasien,

@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}">
   @livewireStyles
 </head>
-<body class="sidebar-mini sidebar- footer-fixed layout-fixed" style="height: auto;">
+<body class="sidebar-mini sidebar-collapse footer-fixed layout-fixed" style="height: auto;">
   <div class="wrapper">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->

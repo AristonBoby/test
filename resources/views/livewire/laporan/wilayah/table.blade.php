@@ -3,7 +3,7 @@
         <h5 class="card-title">Laporan Pasien Berdasarkan Wilayah</h5>
     </div>
     <div class="card-body">
-        <table class="table table-bordered table-sm text-sm">
+        <table class="table table-bordered table-hover table-sm text-xs table-striped text-center">
            <thead>
                 <tr>
                     <th>No.</th>
@@ -20,7 +20,7 @@
                         </tr>
                 @foreach ($jumlah as $no=>$data) 
                         <tr wire:loading.remove>
-                            <td>{{$jumlah->firstItem()+$no}}</td>
+                            <td>{{$jumlah->firstItem()+$no}}.</td>
                             <td>{{$data->prov_name}}</td>
                             <td>{{$data->kota_name}}</td>
                             <td>{{$data->kec_name}}</td>

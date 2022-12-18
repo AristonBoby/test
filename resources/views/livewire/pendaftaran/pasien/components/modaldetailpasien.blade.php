@@ -9,10 +9,10 @@
             </button>
           </div>
           <div class="modal-body">
-              <table class="table table-sm table-bordered text-sm">
+              <table class="table table-sm table-hover table-bordered text-xs">
                       <tbody>
                           <tr>
-                              <td>NOMOR REKAM MEDIS</td>
+                              <td width="150">NO. REKAM MEDIS</td>
                               <td>{{$no_Rm}}</td>
                           </tr>
                           <tr>
@@ -63,8 +63,8 @@
               </table>
           </div>
           <div class="modal-footer">
-              <a class="btn btn-primary btn-sm" href="printpasien/{{$no_Rm}}"  target="_blank"><i class="fas fa-print"></i> Print</a>
-              <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><b>X</b> Tutup</button>
+              <a class="btn  btn-primary text-xs btn-sm" href="printpasien/{{$no_Rm}}"  target="_blank"><i class="text-xs fas fa-print"></i> Print</a>
+              <button type="button" class="btn btn-danger btn-sm text-xs" data-dismiss="modal"><i class="text-xs fas fa-times"></i> Tutup</button>
           </div>
         </div>
       </div>

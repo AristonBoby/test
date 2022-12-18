@@ -29,7 +29,7 @@ Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'i
 Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('pendaftaran.updatePasien');
 Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('pendaftaran.password');
 Route::get('/laporanPetugas',[App\Http\Livewire\Laporan\laporan::class,'laporanPasienBaru'])->middleware('auth')->name('pendaftaran.laporanPetugas');
-Route::get('/laporanPasien',[App\Http\Livewire\Laporan\laporan::class,'laporanKunjungan'])->middleware('auth')->name('pendaftaran.laporanDomisili');
+Route::get('/laporanPasien',[App\Http\Livewire\Laporan\laporan::class,'laporanDomisili'])->middleware('auth')->name('pendaftaran.laporanDomisili');
 Route::get('/laporanKunjungan',[App\Http\Livewire\Laporan\laporan::class,'laporanKunjungan'])->middleware('auth')->name('pendaftaran.laporanKunjungan');
 
 });
@@ -47,7 +47,8 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/jaminan',[App\Http\Livewire\Jaminan\Index::class,'show'])->name('admin.jaminan');
     Route::get('/laporanPetugas',[App\Http\Livewire\Laporan\laporan::class,'laporanPasienBaru'])->middleware('auth')->name('admin.laporanPetugas');
     Route::get('/laporanKunjungan',[App\Http\Livewire\Laporan\laporan::class,'laporanKunjungan'])->middleware('auth')->name('admin.laporanKunjungan');
-    Route::get('/laporanPasien',[App\Http\Livewire\Laporan\laporan::class,'laporanKunjungan'])->middleware('auth')->name('admin.laporanDomisili');
+    Route::get('/laporanPasien',[App\Http\Livewire\Laporan\laporan::class,'laporanDomisili'])->middleware('auth')->name('admin.laporanDomisili');
+    Route::get('/cetakKunjungan/{tglMulai}/{tglSampai}',[App\Http\Livewire\Laporan\kunjungan\Cetakpdf::class,'cetakPdf'])->middleware('auth')->name('admin.cetakKunjungan');
     Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('admin.password');
     });
 

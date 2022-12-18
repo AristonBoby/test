@@ -19,7 +19,7 @@ class Laporan extends Component
     
 
     public function laporanpoli(){
-        //$query = DB::table('kunjungans')->get();
+
         dd('ddd');
     }
 }

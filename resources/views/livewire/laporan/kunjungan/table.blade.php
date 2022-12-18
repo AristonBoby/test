@@ -1,36 +1,46 @@
 <div class="card card-warning card-outline">
     <div class="card-header">
-        <h5 class="card-title">Laporan Kunjungan Pasien</h5>
+        <h5 class="card-title">Daftar Pasien</h5>
     </div>
-    <div class="card-body">
-        <div class="col-md-12 col-sm-12 col-lg-12 ">
-            <div class="form-group row">
-                <span class="col-md-1 form-label">Tanggal</span>
-                <div class="col-md-2 col-sm-4 col-lg-2">
-                    <input type="date" wire:model='tanggalMulai'> -
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-2 col-sm-4 col-lg-2">
-                        <input type="date" wire:model='tanggalSelesai'>
-                </div>
-
-            </div>
-        </div>
-        <table class="table table-bordered table-sm text-sm">
+    <div class="card-body text-sm text-center">
+        <table class="table table-bordered table-sm text-sm table-hover table-striped">
            <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Provinsi</th>
-                    <th>Kota</th>
-                    <th>Kecamatan</th>
-                    <th>Kelurahan</th>
-                    <th>Jumlah</th>
+                    <th>No Rekam Medis</th>
+                    <th>Nama</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Kelamin</th>
+                    <th>NIK</th>
+                    <th>Poli</th>
+                    <th>Jaminan</th>
+                    <th>Alamat</th>
                 </tr>
            </thead>
            <tbody>
-                        <tr wire:loading>
-                            <td colspan="5">Loading...</td>
-                        </tr>
+            <tr wire:loading>
+                <td colspan="9">Loading...</td>
+            </tr>  
+            @if(empty($varLaporanPasien))
+                <tr wire:loading.remove>
+                    <td colspan="9" class="text-center"><i>Data Tidak Ditemukan</i></td>
+                </tr>
+            @endif
+            @empty(!$varLaporanPasien)
+                @foreach ($varLaporanPasien as $no=>$data)
+                    <tr wire:loading.remove>
+                        <td>{{$varLaporanPasien->firstItem()+$no}}</td>
+                        <td>{{$data->no_Rm}}</td>
+                        <td>{{$data->nama}}</td>
+                        <td>{{$data->tanggal_Lahir}}</td>
+                        <td>{{$data->jenkel}}</td>
+                        <td>{{$data->nik}}</td>
+                        <td>{{$data->nama_poli}}</td>
+                        <td>{{$data->jaminan}}</td>
+                        <td>{{$data->alamat }}</td>
+                    </tr>   
+                @endforeach
+            @endempty           
           
            </tbody>
         </table>
@@ -41,5 +51,5 @@
 
         </div>
     </div>
-
+</div>
 </div>

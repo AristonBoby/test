@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-sm table- table-hover text-sm text-center">
+                <table class="table table-sm table-bordered table-hover table-striped text-sm text-center">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
@@ -27,7 +27,6 @@
                             <th class="text-center">Kelamin</th>
                             <th class="text-center">NIK</th>
                             <th class="text-center">BPJS</th>
-                            <th class="text-center">User</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -40,25 +39,26 @@
                         @endif
                         @foreach ($pasien as $index => $query)
                             <tr>
-                                <td>{{$pasien->firstItem() + $index}}</td>
+                                <td>{{$pasien->firstItem() + $index}}.</td>
                                 <td>{{$query->no_Rm}}</td>
                                 <td>{{$query->nama}}</td>
                                 <td>{{$query->tanggal_Lahir}}</td>
                                 <td text-center>{{$query->jenkel}}</td>
                                 <td>{{$query->nik}}</td>
                                 <td>{{$query->bpjs}}</td>
-                                <td>{{$query->name}}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-info"  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="far fa-eye"></i></a>
+                                    <a class="btn btn-sm btn-info"  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="text-xs far fa-eye"></i></a>
                                 </td>                  
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+
                 <div  class="text-center" wire:loading>
                     <p >Loading...</p>
                 </div>
-                <div class="btn-sm rounded-0 btn-flat">
+
+                <div class="btn-xs text-xs rounded-0 btn-flat mt-4">
                     {{$pasien->links()}}
             </div>
             </div>  

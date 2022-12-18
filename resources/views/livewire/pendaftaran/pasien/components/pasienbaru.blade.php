@@ -200,8 +200,8 @@
                             </div>
                         </div>
                         <div class="col-md-12">    
-                            <a class="btn btn-danger btn-sm float-right " href="{{url('/pendaftaran/daftar')}}" style="margin-left:5px;"><b class="fas fa-times"></b> Batal</a>
-                            <button type="submit" class="btn btn-success btn-sm float-right active"><i class="far fa-save"></i> Simpan</button>
+                            <a class="btn btn-danger btn-xs float-right " href="{{url('/pendaftaran/daftar')}}" style="margin-left:5px;"><b class="text-xs fas fa-times"></b> <span class="text-xs">Batal</span></a>
+                            <button type="submit" class="btn btn-success btn-xs float-right active"><i class="text-xs far fa-save"></i> <span class="text-xs">Simpan</span></button>
                         </div>
                     </div>
                 </form>
