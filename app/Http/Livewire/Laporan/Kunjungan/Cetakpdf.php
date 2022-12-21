@@ -10,8 +10,19 @@ use Illuminate\Support\Facades\DB;
 class Cetakpdf extends Component
 {
    public function cetakPdf($tanggalMulai, $tanggalSampai)
-   {  
-      $query = DB::table('kunjungans')
+   {     $jumlahPoli = DB::table('kunjungans')
+            ->join('polis','kunjungans.id_poli','polis.id_poli')
+            ->selectRaw('count(kunjungans.id_poli) as jumlahPoli, polis.nama_poli')
+            ->groupBy('kunjungans.id_poli')
+            ->orderBy('jumlahPoli','desc')
+            ->get();
+         $jumlahjaminan = DB::table('kunjungans')
+                  ->join('jaminans','kunjungans.id_jaminan','jaminans.id_jaminan')
+                  ->selectRaw('count(jaminans.id_jaminan) as jumlahJaminan, jaminans.jaminan')
+                  ->groupBy('jaminans.id_jaminan')
+                  ->orderBy('jumlahJaminan','desc')
+                  ->get();
+         $query = DB::table('kunjungans')
                ->Join('pasiens','kunjungans.id_pasien','pasiens.id')
                ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
                ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
@@ -23,23 +34,11 @@ class Cetakpdf extends Component
                ->orderBy('tanggal','asc')
               // ->select('tanggal','pasiens.no_Rm','pasiens.nama','pasiens.tanggal_Lahir','pasiens.jenkel','pasiens.nik','polis.nama_poli','jaminans.jaminan','pasiens.alamat')
                ->get();
-      $jumlahPoli = DB::table('kunjungans')
-                  ->join('polis','kunjungans.id_poli','polis.id_poli')
-                  ->selectRaw('count(kunjungans.id_poli) as jumlahPoli, polis.nama_poli')
-                  ->groupBy('kunjungans.id_poli')
-                  ->orderBy('jumlahPoli','desc')
-                  ->get();
-      $jumlahjaminan = DB::table('kunjungans')
-                  ->join('jaminans','kunjungans.id_jaminan','jaminans.id_jaminan')
-                  ->selectRaw('count(jaminans.id_jaminan) as jumlahJaminan, jaminans.jaminan')
-                  ->groupBy('jaminans.id_jaminan')
-                  ->orderBy('jumlahJaminan','desc')
-                  ->get();
       $dompdf = pdf::loadView('cetakPdf',['dataKunjungan'=> $query,'tglMulai'=>$tanggalMulai,'tglSampai'=>$tanggalSampai,'jumlahPoli'=>$jumlahPoli,'jaminan'=>$jumlahjaminan]);
       $dompdf->setPaper('A4','landscape');
      // $dompdf->save('myfile.pdf');
      // $dompdf->render();   
-      //$dompdf->stream('Laporan_Kunjungan.pdf'); 
-      return $dompdf->download('Laporan_Kunjungan_'.$tanggalMulai.'/'.$tanggalSampai.'.pdf');
+      return $dompdf->stream('Laporan_Kunjungan.pdf'); 
+     // return $dompdf->download('Laporan_Kunjungan_'.$tanggalMulai.'/'.$tanggalSampai.'.pdf');
    }
 }

@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Livewire\Laporan\Kunjungan;
-
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-
+use PDF;
 class Formtanggal extends Component
 {
     public $tanggalMulai;
@@ -27,5 +27,16 @@ class Formtanggal extends Component
     {
         $this->emit('laporanKunjungan',$this->tanggalMulai, $this->tanggalSampai);
     }
+
+    public function cetakKunjungan()
+    {  
+        $pdf = \PDF::loadHTML('contact')->setOptions(['defaultFont' => 'sans-serif']); 
+        
+        return $pdf->download('invoice.pdf');
+    }
+    
     
 }
+        // $dompdf->save('myfile.pdf');
+        // $dompdf->render();   
+        //$dompdf->stream('Laporan_Kunjungan.pdf'); 

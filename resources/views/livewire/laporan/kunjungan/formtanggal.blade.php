@@ -27,10 +27,10 @@
     <div class="card-footer">
             <div class="col-md-12 col-lg-12 col-sm-12 form-group row">
                 <div class="col-md-12 col-sm-12 col-lg-3">
-                        <a class="col-md-12 col-sm-12 col-lg-12 btn btn-danger float-left btn-sm text-sm float-left" href="cetakKunjungan/{{$tanggalMulai}}/{{$tanggalSampai}}"><i class="fa fa-print text-xs"></i>  PDF</a>
+                        <button type="button" class="col-md-12 col-sm-12 col-lg-12 btn btn-danger float-left btn-sm text-sm float-left" wire:click="cetakKunjungan()"><i class="fa fa-print text-xs"></i>  PDF</button>
                 </div>
                 <div class="col-md-12 col-lg-9 col-sm-12">
-                        <Button class="col-md-12 col-lg-4 col-sm-12 btn float-right btn-primary  btn-sm text-sm"><i class="fas fa-search text-xs"></i> Cari</Button>
+                        <Button type="submit" class="col-md-12 col-lg-4 col-sm-12 btn float-right btn-primary  btn-sm text-sm"><i class="fas fa-search text-xs"></i> Cari</Button>
                 </div>
             </div>
         </form>
