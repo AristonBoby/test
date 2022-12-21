@@ -19,6 +19,7 @@
   <div class="container-fluid">
     <div class="row">
         <livewire:pendaftaran.kunjungan.forminput>
+        <livewire:pendaftaran.kunjungan.riwayat-kunjungan>
         <livewire:pendaftaran.kunjungan.tabelkunjungan>
         <livewire:pendaftaran.kunjungan.modalcaripasien>
     </div>

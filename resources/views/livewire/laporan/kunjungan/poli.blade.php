@@ -1,6 +1,9 @@
 <div class="card card-primary card-outline">
     <div class="card-header">
-        <h5 class="card-title"> Laporan Jumlah Poli</h5>
+        <h5 class="card-title"><b>Laporan Jumlah</b> Poli</h5>
+        <div wire:loading>
+            <span class="badge bg-success text-sm" style="margin-left:5px;"> <i class="text-sm fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+        </div>
     </div>
     <div class="card-body text-sm text-center">
             <table class="table table-bordered table-hover table-sm" >
@@ -12,18 +15,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr wire:loading>
-                        <td>Loading...</td>
-                    </tr>
                     @empty(!$jumlahPoli)
                         @foreach ($jumlahPoli as $no=>$data)
                         <tr wire:loading.remove>
                             <td>{{$no+1}}</td>
-                            <td>{{$data->nama_poli}}</td>
+                            <td class="text-left">{{$data->nama_poli}}</td>
                             <td>{{$data->jumlah}}</td> 
                         </tr>
                         @endforeach
                     @endempty
+
                 </tbody>
             </table>
     </div>

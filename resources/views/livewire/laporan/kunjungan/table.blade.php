@@ -1,9 +1,12 @@
 <div class="card card-warning card-outline table-responsive">
     <div class="card-header">
-        <h5 class="card-title">Daftar Pasien</h5>
+        <h5 class="card-title"><b>Table Daftar</b> Pasien</h5>
+        <div wire:loading>
+            <span class="badge bg-success text-sm" style="margin-left:5px;"> <i class="text-sm fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+        </div>
     </div>
     <div class="card-body text-sm text-center ">
-        <table class="table table-bordered table-sm text-sm table-hover table-striped">
+        <table class="table table-bordered table-sm text-xs table-hover table-striped">
            <thead>
                 <tr>
                     <th>No.</th>
@@ -19,9 +22,6 @@
                 </tr>
            </thead>
            <tbody>
-            <tr wire:loading>
-                <td colspan="10">Loading...</td>
-            </tr>  
             @if(empty($varLaporanPasien))
                 <tr wire:loading.remove>
                     <td colspan="10" class="text-center"><i>Data Tidak Ditemukan</i></td>
@@ -29,17 +29,17 @@
             @endif
             @empty(!$varLaporanPasien)
                 @foreach ($varLaporanPasien as $no=>$data)
-                    <tr wire:loading.remove>
-                        <td>{{$no+1}}</td>
+                    <tr>
+                        <td >{{$no+1}}</td>
                         <td>{{$data->tanggal}}</td>
                         <td>{{$data->no_Rm}}</td>
-                        <td>{{$data->nama}}</td>
+                        <td class="text-left">{{$data->nama}}</td>
                         <td>{{$data->tanggal_Lahir}}</td>
                         <td>{{$data->jenkel}}</td>
                         <td>{{$data->nik}}</td>
                         <td>{{$data->nama_poli}}</td>
                         <td>{{$data->jaminan}}</td>
-                        <td>{{$data->alamat }}</td>
+                        <td class="text-left">{{$data->alamat }}</td>
                     </tr>   
                 @endforeach
             @endempty           

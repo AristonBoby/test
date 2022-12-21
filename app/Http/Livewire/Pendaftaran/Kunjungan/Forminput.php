@@ -28,8 +28,8 @@ class Forminput extends Component
     public function render()
     {
         return view('livewire.pendaftaran.kunjungan.forminput',[
-            'pilihpoli' => poli::all(),
-            'jaminans'   => jaminan::all()
+            'pilihpoli' => poli::where('status',1)->orderBy('nama_poli','desc')->get(),
+            'jaminans'   => jaminan::where('status',1)->get()
         ]);
     }
 
@@ -67,6 +67,7 @@ class Forminput extends Component
             $this->nik              =   $query->nik;
             $this->no_tlpn          =   $query->no_tlpn;
             $this->form = false;
+            $this->emit('riwayatKunjungan',$this->id_pasien);
         }else{
             $this->dispatchBrowserEvent('dataTidakDitemukan');
             $this->form = true;

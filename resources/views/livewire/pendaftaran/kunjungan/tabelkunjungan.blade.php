@@ -1,7 +1,10 @@
-    <div class="col-md-12 col-sm-12 col-lg-8 ">
-        <div class="card card-info card-outline">
+    <div class="col-md-12 col-sm-12 col-lg-12">
+        <div class="card card-danger card-outline">
             <div class="card-header">
-                <h3 class="card-title">Data Kunjungan Pasien</h3>
+                <h5 class="card-title"><b>Data Kunjungan</b> Pasien</h5>
+                <div wire:loading>
+                    <span class="badge bg-success text-xs" style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+                </div>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                     <i class="fas fa-minus"></i>
@@ -27,6 +30,7 @@
                                 </div>
                         </div>
                     </div>
+                 
                 </div>
                 <div>
                 <table class="table table-bordered table-hover text-xs mb-2 table-striped text-center table-sm" style="margin-top:-20px; table-responsive">
@@ -44,17 +48,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <tr wire:loading>
-                                <td colspan="9" class="text-sm">Loading...</td>
-                            </tr>
+                       
                             @if($query->isEmpty())
-                            <tr wire:loading.remove>
+                            <tr>
                                 <td colspan="9" class="text-sm">Data Kosong</td>
                             </tr>
                             @endif
                             @foreach ($query as $no => $data)
                                 </tr>
-                                <tr wire:loading.remove>
+                                <tr>
                                     <td>{{$query->firstItem() + $no}}</td>
                                     <td>{{$data->no_Rm}}</td>
                                     <td>{{$data->nama}}</td>

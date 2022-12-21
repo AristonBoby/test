@@ -1,18 +1,22 @@
 <div class="col-lg-8">
-    <div class="card card-info">
+    <div class="card card-info card-outline">
         <div class="card-header">
-            <h5 class="card-title">Form Tambah User</h5>
+            <h5 class="card-title"><b>Form Tambah</b> User</h5>
+            <div wire:loading>
+                <span class="badge bg-success text-xs" style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+            </div>               
         </div>
         <div class="card-body">
             <div class="col-md-8">
                 <span class="text-sm text-danger">*User yang sudah tidak digunakan harus di nonaktikan</span>
             </div>
-            <div class="col-md-4 row float-right mb-4">
-                <label class="form-label text-sm col-md-3">Cari User</label>
-                <input type="text" class="col-md-7 form-control form-control-sm rounded-0" wire:model='cari'>
-                <button class="btn btn-sm btn-primary btn-flat">Cari</button>
+            <div class="input-group mb-3 col-lg-4 col-sm-12 float-right">
+                <div class="input-group-prepend">
+                    <span class="input-group-text btn-sm text-xs"><b>Cari</b></span>
+                </div>
+                    <input type="text" class="form-control form-control-sm" wire:model='cari' placeholder="Cari User">
             </div>
-           <table class="table table-bordered table-sm table-hover text-xs mb-2 text-center">
+           <table class="table table-bordered table-striped table-sm table-hover text-xs mb-2 text-center">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -26,9 +30,9 @@
                 <tbody>
                     @foreach ($user as $key=>$query )
                     <tr>
-                        <td>{{$user->firstItem()+$key}}</td>
-                        <td>{{$query->name}}</td>
-                        <td>{{$query->email}}</td>
+                        <td>{{$user->firstItem()+$key}}.</td>
+                        <td class="text-left">{{$query->name}}</td>
+                        <td class="text-left">{{$query->email}}</td>
 
                         <td>
                             @if($query->role == '1')
@@ -48,8 +52,11 @@
                             @endif   
                         </td>
                         <td >
-                            <a class="btn btn-xs btn-warning" data-toggle="modal" wire:click="$emit('edituser',{{$query->id}})" data-target="#edituser"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-xs btn-danger " wire:click="konfirmasihapususer('{{$query->id}}')"><i class="fa fa-trash"></i></a>
+                            <div class="btn-group"> 
+                                <a class="btn btn-sm btn-warning" data-toggle="modal" wire:click="$emit('edituser',{{$query->id}})" data-target="#edituser"><i class="text-xs fa fa-edit"></i></a>
+                                <a class="btn btn-sm btn-danger " wire:click="konfirmasihapususer('{{$query->id}}')"><i class="text-xs fas fa-light fa-trash-alt"></i></a>
+                            </div>
+                           
                         </td>
                     </tr>
                     @endforeach
@@ -57,7 +64,7 @@
            </table>
         </div>
         <div class="card-footer">
-            <div class="float-right">
+            <div class="float-left text-xs">
                 {{$user->links()}}
             </div>
         </div>

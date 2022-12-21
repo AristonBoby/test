@@ -21,7 +21,7 @@ class Jaminan extends Component
                     ->selectRaw('count(kunjungans.id_jaminan) as jumlah, jaminans.jaminan')
                     ->groupBy('kunjungans.id_jaminan')
                     ->whereBetween('tanggal',[$tanggalMulai,$tanggalSelesai])
-                    ->orderBy('jumlah','desc')->paginate(10);
+                    ->orderBy('jumlah','desc')->get();
         $this->jumlah = $jumlahJaminan;
     }
 }

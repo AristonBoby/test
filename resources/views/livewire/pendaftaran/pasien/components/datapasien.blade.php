@@ -1,7 +1,10 @@
 <div class="col-md-12 col-sm-12 col-lg-12">
     <div class="card card-danger card-outline">
         <div class="card-header">
-            <h5 class="card-title">Pencarian Data Pasien</h5>
+            <h5 class="card-title"><b>Pencarian Data</b> Pasien</h5>
+            <div wire:loading>
+                <span class="badge bg-success text-sm" style="margin-left:5px;"> <i class="text-sm fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+            </div>
         </div>
         <div class="card-body">
             <div class="row">
@@ -37,7 +40,8 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody  wire:loading.remove='table'>
+                <tbody>
+                  
                     @foreach ($pasien as $index => $query)
                         <tr style=" overflow-y: scroll;">
                             <td>{{$pasien->firstItem() + $index}}.</td>
@@ -62,9 +66,6 @@
                     @endforeach
                 </tbody>
             </table>
-            <div  class="text-center" wire:loading wire:loading.target='table'>
-                <p >Loading...</p>
-            </div>
         </div>  
         <div class="card-footer btn-sm text-sm rounded-0 btn-flat">
                 {{$pasien->links()}}

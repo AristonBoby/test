@@ -173,7 +173,7 @@ class Pasienbaru extends Component
                 $this->kecamatan       = "";
                 $this->kelurahan       = "";
                 $this->render();
-            $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','icon'=>'success','text'=>'Data Berhasil Tersimpan']);
+            $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','icon'=>'danger','text'=>'Data Berhasil Tersimpan','btnConfrim'=>'OK']);
             }
         }
 

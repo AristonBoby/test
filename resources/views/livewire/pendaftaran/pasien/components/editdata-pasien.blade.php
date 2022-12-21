@@ -1,5 +1,11 @@
     <div class="col-md-12 col-sm-12 col-lg-8">
         <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h5 class="card-title"><b>Table Pendaftaran</b> Pasien</h5> 
+                <div wire:loading>
+                    <span class="badge bg-success text-sm" style="margin-left:5px;"> <i class="text-sm fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+                </div>
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
@@ -31,7 +37,7 @@
                         </tr>
                     </thead>
                     
-                    <tbody  style="overflow:auto;" wire:loading.remove>
+                    <tbody  style="overflow:auto;">
                         @if($pasien->isEmpty())
                         <tr>
                             <td colspan="9">Data Kosong</td>
@@ -53,11 +59,6 @@
                         @endforeach
                     </tbody>
                 </table>
-
-                <div  class="text-center" wire:loading>
-                    <p >Loading...</p>
-                </div>
-
                 <div class="btn-xs text-xs rounded-0 btn-flat mt-4">
                     {{$pasien->links()}}
             </div>

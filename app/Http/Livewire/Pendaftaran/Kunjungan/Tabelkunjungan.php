@@ -29,7 +29,7 @@ class Tabelkunjungan extends Component
                 ->join('polis','kunjungans.id_poli','polis.id_poli')
                 ->select('kunjungans.id','pasiens.no_Rm','pasiens.nama','pasiens.tanggal_Lahir','pasiens.jenkel','pasiens.nik','pasiens.bpjs','polis.nama_poli','jaminans.jaminan','tanggal','pasiens.no_tlpn')
                 ->where('tanggal',$this->tanggal)
-                ->orderBy('polis.nama_poli','desc')
+                ->orderBy('kunjungans.tanggal','asc')
                 ->paginate(10);
         
         return view('livewire.pendaftaran.kunjungan.tabelkunjungan',
@@ -43,11 +43,6 @@ class Tabelkunjungan extends Component
     {
         $this->tanggal = date('Y-m-d');
     }
-
-    public function cari(){
-        dd('ddd');
-    }
-
     public function konfirmasihapus($id){
         $this->dispatchBrowserEvent('konfirmasihapus');
         $this->delete = $id;

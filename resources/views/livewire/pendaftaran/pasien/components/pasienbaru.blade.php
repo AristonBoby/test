@@ -1,10 +1,16 @@
     <div class="col-lg-4 col-md-8 col-sm-12 text-sm" style="font-family:sans-serif">   
             <div class="card card-primary card-outline">
-                    <div class="card-body">
+                    <div class="card-header">
+                        <h5 class="card-title"><b>Form Input</b> Pasien</h5>
+                        <div wire:loading>
+                            <span class="badge bg-success text-sm" style="margin-left:5px;"> <i class="text-sm fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+                        </div>
+                    </div>
+                    <div class="card-body text-xs">
                         <form wire:submit.prevent='store' class="form-horizontal">
                         <div class="row">
                             @csrf
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row ">
                                     <label class="col-md-4 col-form-label ">No. Rekam Medis</label>
                                     <div class="col-md-8">
@@ -14,7 +20,7 @@
                                 </div>
                             </div>
                             
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label ">Nama Lengkap</label>
                                     <div class="col-md-8">
@@ -24,8 +30,7 @@
                                 </div>
                             </div>
 
-
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4 col-from-label ">Tempat Lahir</label>
                                     <div class="col-md-8">
@@ -35,8 +40,7 @@
                                 </div>
                             </div>
 
-
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row rounded-0">
                                     <label class="col-md-4 col-form-label ">Tanggal Lahir</label>
                                     <div class="col-md-8">
@@ -46,8 +50,7 @@
                                 </div>
                             </div>
                             
-                            
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row rounded-0">
                                     <label class="col-md-4 col-form-label ">Kepala Keluarga</label>
                                     <div class="col-md-8">
@@ -57,8 +60,7 @@
                                 </div>
                             </div>
 
-
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4  rounded-0">Kelamin</label>
                                     <div class="col-md-8">
@@ -72,8 +74,7 @@
                                 </div>
                             </div>
 
-
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4  rounded-0">Agama</label>
                                     <div class="col-md-8">
@@ -91,7 +92,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4  rounded-0">Pekerjaan</label>
                                     <div class="col-md-8">
@@ -100,7 +101,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4  rounded-0">No. Telepon / HP</label>
                                     <div class="col-md-8">
@@ -110,8 +111,7 @@
                                 </div>
                             </div>
 
-
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4  rounded-0">NIK<code>*</code></label>
                                     <div class="col-md-8">
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4 ">No. BPJS <code>*</code></label>
                                     <div class="col-md-8">
@@ -133,7 +133,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4 ">Provinsi</label>
                                     <div class="col-md-8">
@@ -147,7 +147,7 @@
                                 </div>
                             </div>
                             
-                            <div class="col-lg-12">
+                            <div class="col-lg-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4 ">Kab/Kota</label>
                                     <div class="col-md-8">
@@ -161,7 +161,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4 ">Kecamatan</label>
                                     <div class="col-md-8">
@@ -175,7 +175,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4 ">Kelurahan / Desa</label>
                                     <div class="col-md-8">
@@ -189,7 +189,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4 ">Alamat</label>
                                     <div class="col-md-8">
@@ -199,7 +199,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">    
+                        <div class="col-md-12" style="margin-bottom:-8px;">    
                             <a class="btn btn-danger btn-xs float-right " href="{{url('/pendaftaran/daftar')}}" style="margin-left:5px;"><b class="text-xs fas fa-times"></b> <span class="text-xs">Batal</span></a>
                             <button type="submit" class="btn btn-success btn-xs float-right active"><i class="text-xs far fa-save"></i> <span class="text-xs">Simpan</span></button>
                         </div>

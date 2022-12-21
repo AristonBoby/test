@@ -37,6 +37,9 @@ class Cetakpdf extends Component
                   ->get();
       $dompdf = pdf::loadView('cetakPdf',['dataKunjungan'=> $query,'tglMulai'=>$tanggalMulai,'tglSampai'=>$tanggalSampai,'jumlahPoli'=>$jumlahPoli,'jaminan'=>$jumlahjaminan]);
       $dompdf->setPaper('A4','landscape');
-      return $dompdf->stream('hghg.pdf');     
+     // $dompdf->save('myfile.pdf');
+     // $dompdf->render();   
+      //$dompdf->stream('Laporan_Kunjungan.pdf'); 
+      return $dompdf->download('Laporan_Kunjungan_'.$tanggalMulai.'/'.$tanggalSampai.'.pdf');
    }
 }

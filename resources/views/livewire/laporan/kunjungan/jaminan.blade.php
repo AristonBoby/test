@@ -1,6 +1,9 @@
 <div class="card card-success card-outline">
     <div class="card-header">
-        <h5 class="card-title"> Laporan Jumlah Jaminan</h5>
+        <h5 class="card-title"> <b>Laporan Jumlah</b> Jaminan</h5>
+                <div wire:loading>
+            <span class="badge bg-success text-sm" style="margin-left:5px;"> <i class="text-sm fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+        </div>
     </div>
     <div class="card-body text-sm text-center">
             <table class="table table-bordered table-hover table-sm" >
@@ -12,18 +15,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr wire:loading>
-                        <td>Loading...</td>
-                    </tr>
                     @empty(!$jumlahJaminan)
                         @foreach ($jumlahJaminan as $no=>$data )
                             <tr wire:loading.remove>
                                 <td>{{$no+1}}</td>
-                                <td>{{$data->jaminan}}</td>
+                                <td class="text-left">{{$data->jaminan}}</td>
                                 <td>{{$data->jumlah}}</td>
                             </tr>
                         @endforeach
                     @endempty
+                   
                 </tbody>
             </table>
     </div>

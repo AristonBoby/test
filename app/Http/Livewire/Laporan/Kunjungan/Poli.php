@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Livewire\Laporan\Kunjungan;
-
+use Livewire\WithPagination;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 
 class Poli extends Component
 {   public $listeners = ['laporanKunjungan'=>'cariLaporan'];
     protected $jumlah;
+    protected $paginationTheme = 'bootstrap';
+    use WithPagination;
     public function render()
     {
         return view('livewire.laporan.kunjungan.poli',[
@@ -22,7 +24,7 @@ class Poli extends Component
                     ->selectRaw('count(kunjungans.id_poli) as jumlah, polis.nama_poli')
                     ->groupBy('kunjungans.id_poli')
                     ->whereBetween('tanggal',[$tanggalMulai,$tanggalSelesai])
-                    ->orderBy('jumlah','desc')->paginate(5);
+                    ->orderBy('jumlah','desc')->get();
         $this->jumlah = $jumlahPoli;
     }
 }

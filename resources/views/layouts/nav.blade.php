@@ -30,6 +30,11 @@
                 <a href="{{route('pendaftaran.Kunjungan')}}" class="nav-link"><i class="far fa-circle nav-icon text-success"></i><p>KUNJUNGAN</p></a>
               </li>
             </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('pendaftaran.Kunjungan')}}" class="nav-link"><i class="far fa-circle nav-icon text-success"></i><p>PTM</p></a>
+              </li>
+            </ul>
         </li>
         <li class="nav-item">
           <a href="{{route('pendaftaran.password')}}" class="nav-link" >
@@ -110,6 +115,11 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="{{route('admin.Kunjungan')}}" class="nav-link"><i class="far fa-circle nav-icon text-success"></i><p>KUNJUNGAN</p></a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('pendaftaran.Kunjungan')}}" class="nav-link"><i class="far fa-circle nav-icon text-warning"></i><p>PTM</p></a>
             </li>
           </ul>
       </li>
