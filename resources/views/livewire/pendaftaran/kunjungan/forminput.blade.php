@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group row">
-                            <label class="col-md-4 col-sm-4 col-lg-4 text-sm text-right">No</label>
+                            <label class="col-md-4 col-sm-4 col-lg-4 text-sm ">No</label>
                             <div class="col-md-8 col-sm-8 col-lg-8 input-group input-group-sm">
                                 <input type="text" class="form-control input-group-sm text-sm" wire:model.defer="cari" placeholder="Nomor RM / NIK / BPJS" required maxlength="16">
                                 <span class="input-group-append">
@@ -36,37 +36,37 @@
                     @csrf
                         <input type="hidden" wire.model='id_pasien'>
                         <div class="form-group row"style="margin-bottom:-7px;">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm text-right">No Rekam Medis</label>
+                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">No Rekam Medis</label>
                             <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6 ">{{$no_Rm}}</label>
                         </div>
                         <div class="form-group row"style="margin-bottom:-7px;">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm text-right">Nama</label>
+                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">Nama</label>
                             <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$nama}}</label>
                         </div>
                         <div class="form-group row" style="margin-bottom:-7px;">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm text-right">Tanggal Lahir</label>
+                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">Tanggal Lahir</label>
                             <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$tanggal_Lahir}}</label>
                         </div>
                         <div class="form-group row" style="margin-bottom:-7px;">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm text-right">NIK</label>
+                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">NIK</label>
                             <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$nik}}</label>
                         </div>
                         <div class="form-group row" style="margin-bottom:-7px;">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm text-right">BPJS</label>
+                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">BPJS</label>
                             <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$bpjs}}</label>
                         </div>
                         <div class="form-group row" style="margin-bottom:-7px;">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm text-right">Telepon / HP</label>
+                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">Telepon / HP</label>
                             <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$no_tlpn}}</label>
                         </div>
                         <div class="form-group row"style="margin-top:12px; ">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm text-right">Tanggal Kunjungan</label>
+                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">Tanggal Kunjungan</label>
                             <div class="col-md-6">
                                 <input type="date"  wire:model='tanggal' class="form-control form-control-sm rounded-0" required @disabled($form) >
                             </div>
                         </div>
                         <div class="form-group row" style="margin-top:-10px;">
-                            <label class="form-control-label text-sm col-md-4 text-right">Jenis Kunjungan</label>
+                            <label class="form-control-label text-sm col-md-4 ">Jenis Kunjungan</label>
                             <div class="col-md-6">
                                 <select @disabled($form) class="form-control form-control-sm text-sm rounded-0  @error('jeniskunjungan') is-invalid @enderror" wire:model.defer="jeniskunjungan">
                                     <option value="" selected> --Pilih Salah Satu--</option>
@@ -78,7 +78,7 @@
                             </div>
                         </div> 
                         <div class="form-group row" style="margin-top:-10px;">
-                            <label class="form-control-label text-sm col-md-4 text-right">Poli</label>
+                            <label class="form-control-label text-sm col-md-4 ">Poli</label>
                             <div class="col-md-6">
                                 <select class="form-control form-control-sm text-sm rounded-0 @error('poli') is-invalid @enderror" wire:model.defer="poli" @disabled($form) >
                                     <option selected>Pilih Poli</option>

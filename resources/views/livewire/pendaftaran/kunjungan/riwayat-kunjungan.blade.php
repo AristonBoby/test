@@ -18,16 +18,24 @@
                 
             <div class="col-md-12 col-sm-12 col-lg-12">
                 @empty(!$riwayatKunjungan)
-                    @foreach ($riwayatKunjungan as $data )
-                        <table>
+                        <table class="table table-sm text-xs table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th width=10>No.</th>
+                                    <th width=70 align="center">Tanggal</th>
+                                    <th width=180>Jaminan</th>
+                                    <th width=180>Poli</th>
+                                </tr>
+                            </thead>
+                            @foreach ($riwayatKunjungan as $no=>$data )
                             <tr>
-                                <th>No.</th>
-                                <th>Tanggal</th>
-                                <th>Jaminan</th>
-                                <th>Poli</th>
+                                <td>{{$no+1}}.</td>
+                                <td>{{$data->tanggal}}</td>
+                                <td>{{$data->jaminan}}</td>
+                                <td>{{$data->nama_poli}}</td>
                             </tr>
+                            @endforeach
                         </table>
-                    @endforeach
                 @endempty
             </div>
         </div>

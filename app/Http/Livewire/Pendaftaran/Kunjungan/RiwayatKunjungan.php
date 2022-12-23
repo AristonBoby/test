@@ -14,7 +14,10 @@ class RiwayatKunjungan extends Component
     }
 
     public function kunjungan($id_pasien){
-        $query = DB::table('kunjungans')->where('id_pasien',$id_pasien)->get();
+        $query = DB::table('kunjungans')
+        ->join('jaminans','kunjungans.id_jaminan','jaminans.id_jaminan')
+        ->join('polis','kunjungans.id_poli','polis.id_poli')
+        ->where('id_pasien',$id_pasien)->get();
         $this->riwayatKunjungan = $query;
     }
 }

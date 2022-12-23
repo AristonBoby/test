@@ -2,7 +2,7 @@
     <div class="card-header">
         <h5 class="card-title"><b>Laporan Jumlah</b> Poli</h5>
         <div wire:loading>
-            <span class="badge bg-success text-sm" style="margin-left:5px;"> <i class="text-sm fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+            <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
         </div>
     </div>
     <div class="card-body text-sm text-center">

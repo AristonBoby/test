@@ -18,14 +18,16 @@
   <div class="content">
     <div class="container-fluid">  
       <div class="row">
-        <div class="col-sm-12 col-md-4 col-lg-4">
+        <div class="col-sm-12 col-md-3 col-lg-3">
           <livewire:laporan.kunjungan.formtanggal>
         </div>
-        <div class="col-sm-12 col-md-4 col-lg-4">
+        <div class="col-sm-12 col-md-3 col-lg-3">
           <livewire:laporan.kunjungan.poli>
         </div>
-        <div class="col-sm-12 col-md-4 col-lg-4">
+        <div class="col-sm-12 col-md-3 col-lg-3">
           <livewire:laporan.kunjungan.jaminan>
+        </div><div class="col-sm-12 col-md-3 col-lg-3">
+          <livewire:laporan.kunjungan.jenkel>
         </div>
         <div class="col-md-12 col-lg-12 col-sm-12">
           <livewire:laporan.kunjungan.table>

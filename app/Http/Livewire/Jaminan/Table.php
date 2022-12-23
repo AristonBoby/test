@@ -14,16 +14,18 @@ class Table extends Component
         return view('livewire.jaminan.table');
     }
     protected $rules = [
-        'id_jaminan'    =>  'required|unique:jaminans',
-        'jaminan'       =>  'required',
-        'status'        =>  'required'
+        'id_jaminan'    =>  'required|unique:jaminans|max:2',
+        'jaminan'       =>  'required|max:25',
+        'status'        =>  'required|max:1'
     ];
 
     protected $messages = [
-        'id_jaminan.required'    => 'ID Jaminan Wajib DIisi',
-        'id_jaminan.unique'      => 'ID Jaminan Telah Di Gunakan',
-        'jaminan.required'       => 'Jaminan Wajib Diisi',
-        'status.required'        => 'Status Wajib Diisi'
+        'id_jaminan.required'    => 'Id jaminan wajib dIisi',
+        'id_jaminan.max'         => 'Id Jaminan Mininmal 2 Karakter',
+        'jaminan.jaminan'        => 'Jaminan Mininmal 25 Karakter',
+        'id_jaminan.unique'      => 'Id jaminan telah digunakan',
+        'jaminan.required'       => 'Jaminan wajib diisi',
+        'status.required'        => 'Status wajib diisi'
     ];
     public function simpan(){
         $this->validate();

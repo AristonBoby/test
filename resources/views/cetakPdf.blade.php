@@ -46,7 +46,7 @@
                 <tr class="text">
                     <th>No</th>
                     <th width="50">Tanggal</th>
-                    <th>Nomor Rekam Medis</th>
+                    <th width="50">Rekam Medis</th>
                     <th width="120">Nama</th>
                     <th width="50">Tanggal Lahir</th>
                     <th>L/P</th>

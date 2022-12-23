@@ -1,9 +1,9 @@
-    <div class="col-lg-4 col-md-8 col-sm-12 text-sm" style="font-family:sans-serif">   
+    <div class="col-lg-4 col-md-8 col-sm-12 text-xs" style="font-family:sans-serif">   
             <div class="card card-primary card-outline">
                     <div class="card-header">
                         <h5 class="card-title"><b>Form Input</b> Pasien</h5>
                         <div wire:loading>
-                            <span class="badge bg-success text-sm" style="margin-left:5px;"> <i class="text-sm fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+                            <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
                         </div>
                     </div>
                     <div class="card-body text-xs">
@@ -14,7 +14,7 @@
                                 <div class="form-group row ">
                                     <label class="col-md-4 col-form-label ">No. Rekam Medis</label>
                                     <div class="col-md-8">
-                                        <input id="noRm" type="text" wire:model="no_Rm"class="form-control form-control-sm  rounded-0 @error('no_Rm') is-invalid @enderror " placeholder="Nomor Rekam Medis" maxlength="15">
+                                        <input id="noRm" type="text" wire:model.defer="no_Rm"class="form-control form-control-sm  rounded-0 @error('no_Rm') is-invalid @enderror " placeholder="Nomor Rekam Medis" maxlength="15">
                                         @error('no_Rm')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
