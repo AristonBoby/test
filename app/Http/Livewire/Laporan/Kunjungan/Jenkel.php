@@ -13,7 +13,8 @@ class Jenkel extends Component
         return view('livewire.laporan.kunjungan.jenkel',[
             'jenkel' => $this->jenkel
         ]);
-    }
+    
+
 
     public function cariLaporan($tanggalMulai,$tanggalSelesai)
     {
