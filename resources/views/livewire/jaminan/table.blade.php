@@ -26,8 +26,8 @@
                 <label class="col-md-4 col-sm-12 col-lg-4 col-form-label text-sm">Status Jaminan</label>
                 <div class="col-md-5 col-lg-7 col-sm-12">
                     <select wire:model.defer='status' class=" rounded-0 form-control form-control-sm  @error('jaminan')is-invalid @enderror">
-                        <option value="0">Aktif</option>
-                        <option value="1">Tidak Aktif</option>
+                        <option value="1">Aktif</option>
+                        <option value="2">Tidak Aktif</option>
                     </select>
                     @error('status') <span class="invalid-feedback"> {{$message}} </span> @enderror
                 </div>
