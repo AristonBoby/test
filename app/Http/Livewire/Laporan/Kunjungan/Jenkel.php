@@ -13,9 +13,9 @@ class Jenkel extends Component
         return view('livewire.laporan.kunjungan.jenkel',[
             'jenkel' => $this->jenkel
         ]);
-    
 
 
+    }
     public function cariLaporan($tanggalMulai,$tanggalSelesai)
     {
         $jumlahjenkel = DB::table('kunjungans')
@@ -26,5 +26,5 @@ class Jenkel extends Component
             ->orderBy('jumlah','desc')->get();
         $this->jenkel = $jumlahjenkel;
     }
-    
+
 }
