@@ -7,8 +7,8 @@ use App\Models\kunjungan;
 use Illuminate\Support\Facades\DB;
 use Livewire\WithPagination;
 class Tabelkunjungan extends Component
-{   
-    
+{
+
     public $tanggal;
     public $delate;
     use WithPagination;
@@ -29,14 +29,14 @@ class Tabelkunjungan extends Component
                 ->join('polis','kunjungans.id_poli','polis.id_poli')
                 ->select('kunjungans.id','pasiens.no_Rm','pasiens.nama','pasiens.tanggal_Lahir','pasiens.jenkel','pasiens.nik','pasiens.bpjs','polis.nama_poli','jaminans.jaminan','tanggal','pasiens.no_tlpn')
                 ->where('tanggal',$this->tanggal)
-                ->orderBy('kunjungans.tanggal','asc')
+                ->orderBy('kunjungans.created_at','desc')
                 ->paginate(10);
-        
+
         return view('livewire.pendaftaran.kunjungan.tabelkunjungan',
         [
             'query' => $data
         ]);
-        
+
     }
 
     public function mount()
@@ -56,5 +56,5 @@ class Tabelkunjungan extends Component
             $this->render();
         }
     }
-       
+
 }

@@ -12,18 +12,18 @@
            <div class="modal-body">
                <div class="row justify-content-md-center">
                    <div class=" col-md-6">
-                    
+
                        <div class="form-group row">
                              <label class="col-md-3 col-from-label text-xs">CARI PASIEN</label>
                              <div class="col-md-9 row">
                                    <input type="text" wire:model='cari' class="form-control form-control-sm rounded-0 text-sm col-md-9" id="recipient-name" placeholder="Pencarian Pasien">
-                                   
+
                                    <p class="text-xs text-danger">*Pencarian Pasien berdasarkan Nama, NIK, BPJS</p>
                            </div>
-                      
+
                    </div>
                </div>
-               <table class="table table-sm table-striped table-bordered table-hover">
+               <table class="table table-responsive table-sm table-striped table-bordered table-hover">
                  <thead>
                    <tr>
                      <th class="text-xs" width="10">No</th>
@@ -36,7 +36,7 @@
                    </tr>
                  </thead>
                  <tbody>
-                  
+
                    @foreach ($query as $id => $data)
                    <tr>
                      <td scope="row" class="text-xs">{{$id+1}}.</td>
@@ -46,9 +46,9 @@
                      <td class="text-xs text-center">{{$data->jenkel}}</td>
                      <td class="text-xs">{{$data->nik}}</td>
                      <td class="text-xs">{{$data->bpjs}}</td>
-                   </tr> 
+                   </tr>
                    @endforeach
-                  
+
                  </tbody>
                </table>
            </div>

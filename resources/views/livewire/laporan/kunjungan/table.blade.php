@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="card-body text-sm text-center ">
-        <table class="table table-bordered table-sm text-xs table-hover table-striped">
+        <table class="text-uppercase table table-bordered table-sm text-xs table-hover table-striped">
            <thead>
                 <tr>
                     <th>No.</th>
@@ -30,7 +30,7 @@
             @empty(!$varLaporanPasien)
                 @foreach ($varLaporanPasien as $no=>$data)
                     <tr>
-                        <td >{{$no+1}}</td>
+                        <td >{{$no+1}}.</td>
                         <td>{{$data->tanggal}}</td>
                         <td>{{$data->no_Rm}}</td>
                         <td class="text-left">{{$data->nama}}</td>
@@ -40,12 +40,12 @@
                         <td>{{$data->nama_poli}}</td>
                         <td>{{$data->jaminan}}</td>
                         <td class="text-left">{{$data->alamat }}</td>
-                    </tr>   
+                    </tr>
                 @endforeach
-            @endempty           
+            @endempty
            </tbody>
         </table>
-       
+
     </div>
     <div class="card-footer">
         <div class=" text-xs btn-flat btn-xs">

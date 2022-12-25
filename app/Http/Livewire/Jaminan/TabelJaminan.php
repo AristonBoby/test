@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Livewire\WithPagination;
 
 class TabelJaminan extends Component
-{  
+{
     use WithPagination;
     public $id_jaminan;
     public $status;
@@ -16,7 +16,7 @@ class TabelJaminan extends Component
     public $jamin;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['hapus'=>'hapus','restoreKunjungan'=>'restoreKunjungan'];
-    
+
     public function render()
     {
         return view('livewire.jaminan.tabel-jaminan',[
@@ -36,7 +36,7 @@ class TabelJaminan extends Component
         'jamin.required'       => 'Jaminan wajib diisi',
         'status.required'      => 'Status wajib diisi',
     ];
-     
+
     public function cariData($id){
         $this->id_jaminan = $id;
                 $query = DB::table('jaminans')
@@ -48,7 +48,7 @@ class TabelJaminan extends Component
             $this->status     = $query->status;
         }
     }
-    
+
     public function editKunjungan(){
         $this->validate();
         $query = DB::table('jaminans')
@@ -61,7 +61,7 @@ class TabelJaminan extends Component
             $this->dispatchBrowserEvent('berhasil',['title'=>'Berhasil','text'=>'Data Berhasil Tersimpan','icon'=>'success','btnTxt'=>'Ok']);
         }else{
             $this->dispatchBrowserEvent('berhasil',['title'=>'Berhasil','text'=>'Data Berhasil Tersimpan','icon'=>'error','btnTxt'=>'Ok']);
-        }   
+        }
     }
     public function hapusKunjungan($id){
         $this->cariData($id);
@@ -75,13 +75,13 @@ class TabelJaminan extends Component
         $query = DB::table('jaminans')
                 ->where('id_jaminan',$this->id_jaminan)
                 ->update([
-                    'status' => 3 
+                    'status' => 3
                 ]);
         if($query){
             $this->dispatchBrowserEvent('berhasil',['url'=>'hapus','title'=>'Berhasil','text'=>'Data Berhasil Tersimpan','icon'=>'success','btnTxt'=>'Ok']);
         }
     }
-  
+
     public function pilihHalaman($id)
     {
         $this->halaman = $id;
@@ -99,10 +99,10 @@ class TabelJaminan extends Component
         $query = DB::table('jaminans')
         ->where('id_jaminan',$this->id_jaminan)
         ->update([
-            'status' => 1 
+            'status' => 1
         ]);
         if($query){
             $this->dispatchBrowserEvent('berhasil',['url'=>'hapus','title'=>'Berhasil','text'=>'Data Berhasil Tersimpan','icon'=>'success','btnTxt'=>'Ok']);
-        } 
+        }
     }
 }

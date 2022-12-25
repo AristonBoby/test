@@ -30,10 +30,10 @@
                                 </div>
                         </div>
                     </div>
-                 
+
                 </div>
                 <div>
-                <table class="table table-bordered table-hover text-xs mb-2 table-striped text-center table-sm" style="margin-top:-20px; table-responsive">
+                <table class=" text-uppercase table table-bordered table-hover text-xs  mb-2 table-striped text-center table-sm" style="margin-top:-20px;">
                     <thead>
                         <tr>
                             <th class=" ">No</th>
@@ -42,13 +42,14 @@
                             <th class="text-center">Tgl Lahir</th>
                             <th class="text-center">Kelamin</th>
                             <th class="text-center">NIK</th>
+                            <th class="text-center">BPJS</th>
                             <th class="text-center">Poli</th>
                             <th class="text-center">Jaminan</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                       
+
                             @if($query->isEmpty())
                             <tr>
                                 <td colspan="9" class="text-sm">Data Kosong</td>
@@ -59,37 +60,38 @@
                                 <tr>
                                     <td>{{$query->firstItem() + $no}}</td>
                                     <td>{{$data->no_Rm}}</td>
-                                    <td>{{$data->nama}}</td>
+                                    <td class="text-left">{{$data->nama}}</td>
                                     <td>{{$data->tanggal_Lahir}}</td>
                                     <td>{{$data->jenkel}}</td>
                                     <td>{{$data->nik}}</td>
+                                    <td>{{$data->bpjs}}</td>
                                     <td>{{$data->nama_poli}}</td>
                                     <td>{{$data->jaminan}}</td>
                                     <td>
                                         <a class="btn btn-sm btn-danger text-xs" wire:click="konfirmasihapus({{$data->id}})"><i class="fas fa-light fa-trash-alt"></i></a>
-                                    </td>                  
+                                    </td>
                                 </tr>
                             @endforeach
-                            
+
                     </tbody>
-                       
+
                 </table>
                 </div>
                 <div class=" text-xs btn-flat btn-xs">
-                    <span class="text-sm"><i>Total {{$query->total()}}</i>
+                    <span class="text-sm">Showing {{$query->currentPage()}} - {{$query->lastPage()}} of {{$query->total()}}</span>
                     <span class="float-right btn-xs text-xs ">{{$query->links()}}</span>
-                   
+
                 </div>
-    
-            </div>  
-           
+
+            </div>
+
         </div>
         <style>
             nav svg{
                 height:20px;
             }
         </style>
-    </div>    
+    </div>
 
     <script>
         window.addEventListener('konfirmasihapus', event => {
@@ -124,5 +126,5 @@
                   icon: 'success',
                 })
           });
-        
+
   </script>

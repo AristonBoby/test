@@ -22,9 +22,9 @@ class Forminput extends Component
     public $id_pasien;
     public $jeniskunjungan;
     public $form = true;
-  
+
     public $cari_Pasien_no_RM;
-    
+
     public function render()
     {
         return view('livewire.pendaftaran.kunjungan.forminput',[
@@ -50,7 +50,7 @@ class Forminput extends Component
         $this->tanggal_Lahir    = "";
         $this->jeniskunjungan   = "";
         $this->form             = true;
-    } 
+    }
     // Method untuk mencek pasien ada atau tidak ada di database //
     public function cekpasien(){
         $query = pasien::where('nik',$this->cari)
@@ -105,7 +105,7 @@ class Forminput extends Component
                     $this->clear();
                 }
         }
-       
+
     }
 
 }

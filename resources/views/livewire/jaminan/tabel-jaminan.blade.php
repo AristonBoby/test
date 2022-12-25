@@ -6,17 +6,15 @@
                 <span class="badge bg-success text-xs "style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
             </div>
         </div>
-        <div class="card-body ">
-                <div class="col-md-12 col-sm-12 col-lg-12 row">
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a class=" nav-link text-white @if($halaman===1)active @endif btn-info btn-flat btn-xs btn" wire:click="pilihHalaman(1)" data-toggle="tab" href="#dataJaminan" data-toggle><i class="fa fa-hdd  text-xs"></i>  Data Jaminan</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white @if($halaman===2)active @endif btn-flat btn btn-danger btn-xs" wire:click="pilihHalaman(2)" data-toggle="tab" href="#dataJaminanHapus"> <i class="fas fa-light fa-trash-alt text-xs"></i> Riwayat Jaminan Terhapus</a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="card-body">
+               <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class=" nav-link text-white @if($halaman===1)active @endif btn-info btn-flat btn-xs btn" wire:click="pilihHalaman(1)" data-toggle="tab" href="#dataJaminan" data-toggle><i class="fa fa-hdd  text-xs"></i>  Data Jaminan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white @if($halaman===2)active @endif btn-flat btn btn-danger btn-xs" wire:click="pilihHalaman(2)" data-toggle="tab" href="#dataJaminanHapus"> <i class="fas fa-light fa-trash-alt text-xs"></i> Riwayat Jaminan Terhapus</a>
+                    </li>
+                </ul>
             <div class="tab-content row">
                 <div class="col-md-12 col-sm-12 col-lg-12 mt-3">
                     <div class="col-md-12">
@@ -27,7 +25,7 @@
                 <div class="col-md-12 col-sm-12 col-lg-12 mb-1 mt-" style="margin-top:-30px; ">
                     <button wire:click='render()' class="btn btn-primary float-right btn-sm text-xs btn-flat"><i class=" text-xs fa fa fa-sync-alt"></i> Refresh</button>
                 </div>
-                <div class="tab-pane @if($halaman===2)active @endif" id="dataJaminanHapus">
+                <div class="tab-pane table-responsive @if($halaman===2)active @endif" id="dataJaminanHapus">
                     <table class="table table-sm table-bordered text-sm table-hover table-striped">
                         <thead>
                             <tr>
@@ -57,7 +55,9 @@
                     </table>
                     <div class="mt-5 float-right">{{$jaminan->links()}}</div>
                 </div>
-                <div class="tab-pane @if($halaman===1)active @endif" id="dataJaminan">
+
+
+                <div class="tab-pane col-lg-12 col-sm-12 col-md-12 @if($halaman===1)active @endif" id="dataJaminan">
                     <table class="table table-sm table-bordered text-sm table-hover table-striped">
                         <thead>
                             <tr>
@@ -75,7 +75,7 @@
                                 <td class="text-center">
                                     @if ($data->status == '1')
                                         <span class="badge bg-success">Aktif</span>
-                                    @elseif($data->status=='2')   
+                                    @elseif($data->status=='2')
                                     <span class="badge bg-danger">Tidak Aktif</span>
                                     @endif
                                     </td>
@@ -91,9 +91,10 @@
                     </table>
                     <div class="mt-5 float-right">{{$jaminan->links()}}</div>
                 </div>
+            </div>
         </div>
-    </div> 
-    @include('livewire.jaminan.modalEdit') 
+    </div>
+    @include('livewire.jaminan.modalEdit')
 </div>
 
 <script>
@@ -104,7 +105,7 @@
              icon : event.detail.icon,
              confirmButtonColor:'#5cb85c',
              confirmButtonText:event.detail.btnTxt,
-            
+
            })
      });
 
