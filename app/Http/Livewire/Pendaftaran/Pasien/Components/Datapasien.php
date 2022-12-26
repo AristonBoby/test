@@ -37,8 +37,9 @@ class Datapasien extends Component
     use WithPagination;
     protected $listeners = ['deleteConfirmed' => 'hapusPasien'];
     protected $paginationTheme = 'bootstrap';
-
+    use WithPagination;
     //Reset Paginate//
+    
     public function updatingCaripasien()
     {
         $this->resetPage();
@@ -77,6 +78,10 @@ class Datapasien extends Component
         'kec'       =>  kecamatan::where('kota_id',$this->kotas)->get(),
         'kel'       =>  kelurahan::where('kec_id',$this->kecamatan)->get()
         ]);
+    }
+    public function caripasienUpdate()
+    {
+        $this->resetPage();
     }
 
     public function show()

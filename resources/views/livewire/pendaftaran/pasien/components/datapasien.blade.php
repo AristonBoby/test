@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-sm table-bordered table-hover text-xs table-striped text-center">
+            <table class="table text-uppercase table-sm table-bordered table-hover text-xs table-striped text-center">
                 <thead>
                     <tr>
                         <th class="text-center">No</th>

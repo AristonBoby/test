@@ -23,46 +23,55 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-sm table-bordered table-hover table-striped text-sm text-center">
-                    <thead>
-                        <tr>
-                            <th class="text-center">No</th>
-                            <th class="text-center">No Rekam Medis</th>
-                            <th class="text-center">Nama</th>
-                            <th class="text-center">Tanggal Lahir</th>
-                            <th class="text-center">Kelamin</th>
-                            <th class="text-center">NIK</th>
-                            <th class="text-center">BPJS</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody  style="overflow:auto;">
-                        @if($pasien->isEmpty())
-                        <tr>
-                            <td colspan="9">Data Kosong</td>
-                        </tr>
-                        @endif
-                        @foreach ($pasien as $index => $query)
+                <div class="table-responsive">
+                    <table class="table text-uppercase table-sm table-bordered table-hover table-striped text-sm text-center">
+                        <thead>
                             <tr>
-                                <td>{{$pasien->firstItem() + $index}}.</td>
-                                <td>{{$query->no_Rm}}</td>
-                                <td>{{$query->nama}}</td>
-                                <td>{{$query->tanggal_Lahir}}</td>
-                                <td text-center>{{$query->jenkel}}</td>
-                                <td>{{$query->nik}}</td>
-                                <td>{{$query->bpjs}}</td>
-                                <td>
-                                    <a class="btn btn-sm btn-info"  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="text-xs far fa-eye"></i></a>
-                                </td>                  
+                                <th class="text-center">No</th>
+                                <th class="text-center">No Rekam Medis</th>
+                                <th class="text-center">Nama</th>
+                                <th class="text-center">Tanggal Lahir</th>
+                                <th class="text-center">Kelamin</th>
+                                <th class="text-center">NIK</th>
+                                <th class="text-center">BPJS</th>
+                                <th></th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <div class="btn-xs text-xs rounded-0 btn-flat mt-4">
-                    {{$pasien->links()}}
-            </div>
-            </div>  
+                        </thead>
+                        
+                        <tbody  style="overflow:auto;">
+                            @if($pasien->isEmpty())
+                            <tr>
+                                <td colspan="9">Data Kosong</td>
+                            </tr>
+                            @endif
+                            @foreach ($pasien as $index => $query)
+                                <tr>
+                                    <td>{{$pasien->firstItem() + $index}}.</td>
+                                    <td>{{$query->no_Rm}}</td>
+                                    <td>{{$query->nama}}</td>
+                                    <td>{{$query->tanggal_Lahir}}</td>
+                                    <td text-center>{{$query->jenkel}}</td>
+                                    <td>{{$query->nik}}</td>
+                                    <td>{{$query->bpjs}}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-info"  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="text-xs far fa-eye"></i></a>
+                                    </td>                  
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+            <div class="card-footer">
+                <div class="row">
+                    <div class="float-left col-md-10  btn-xs text-xs rounded-0 btn-flat">
+                        {{$pasien->links()}}
+                    </div>
+                    <div class="col-md-2 float-left">
+                        <span>Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}}of {{$pasien->total()}}</span>
+                    </div>
+                </div>
+            </div> 
            
             @include('livewire.pendaftaran.pasien.components.modaldetailpasien')
         </div>
