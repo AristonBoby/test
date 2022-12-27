@@ -5,6 +5,9 @@
          <div class="modal-content ">
            <div class="modal-header">
              <h6 class="modal-title" id="staticBackdropLabel"><b>PENCARIAN DATA</b> PASIEN</h6>
+             <div wire:loading>
+              <span class="badge bg-success text-xs" style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+          </div>
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
              </button>
@@ -16,7 +19,7 @@
                         <div class="form-group row">
                             <label class="col-md-2 col-lg-2 col-sm-2 col-from-label text-sm">CARI PASIEN</label>
                             <div class="col-md-10 col-lg-10 col-sm-10 input-group">
-                              <input type="text" wire:model='cari' class="form-control" id="recipient-name" placeholder="Pencarian Pasien">
+                              <input type="text" wire:model.defer='cari' class="form-control" id="recipient-name" placeholder="Pencarian Pasien" required>
                               <span class="input-group-append">
                                 <button class="btn btn-primary ">Cari</button>
                               </span>

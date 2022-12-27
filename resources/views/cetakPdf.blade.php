@@ -71,34 +71,7 @@
                 @endforeach
         </table>    
            
-            <table  border=1 border-collapse=0 style="margin-top:30px;width:30%; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
-                <tr>
-                    <th>No</th>
-                    <th>Poli</th>
-                    <th>Jumlah</th>
-                </tr>
-                @foreach ($jumlahPoli as $no=>$data)
-                    <tr>
-                        <td>{{$no+1}}.</td>
-                        <td>{{$data->nama_poli}}</td>
-                        <td>{{$data->jumlahPoli}}</td>
-                    </tr>
-                @endforeach
-            </table>
-            <table  border=1 border-collapse=0 style="margin-top:30px;width:30%; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
-                <tr>
-                    <th>No</th>
-                    <th>Jaminan</th>
-                    <th>Jumlah</th>
-                </tr>
-                @foreach ($jaminan as $no=>$data)
-                    <tr>
-                        <td>{{$no+1}}.</td>
-                        <td>{{$data->jaminan}}</td>
-                        <td>{{$data->jumlahJaminan}}</td>
-                    </tr>
-                @endforeach
-            </table>
+            
     </div>
 </body>
 </html>

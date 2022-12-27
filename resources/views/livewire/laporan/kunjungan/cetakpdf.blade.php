@@ -20,10 +20,11 @@ table, tr, td {
         margin-left: 10px;
         margin-right: 10px;
         margin-top: 45px;
-        
-
 }
                 
+@media print {
+   .break{ page-break-before: always;}
+}
     </style>
     <title>Laporan Kunjungan</title>
 </head>
@@ -42,7 +43,7 @@ table, tr, td {
                 <td colspan="10" height="10" align="center" style="font-size:10pt; border-bottom:1px solid;">Jalan Ramania 2, RT.47, No.12, Kelurahan Sidodadi, Kecamatan Samarinda Ulu <br>HP : 081253721754, Email : pkmsegiri@yahoo.com </td>
             </tr>
         </table>
-        <table border=0 border-collapse=0 class="table table-sm" style="margin-bottom:10px;width:100%; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
+        <table border=0 border-collapse=0 class="table table-sm" style="margin-bottom:50px;width:100%; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
               <tr class="text" border=0>
                 <th colspan="10" height="30" style="font-size:12pt">LAPORAN KUNJUNGAN</th>
             </tr>
@@ -50,7 +51,56 @@ table, tr, td {
                 <td align="center"colspan="10"><i><b>Priode Tanggal : {{$tglMulai}}  s.d {{$tglSampai}}</b></i></td>
             </tr>
         </table>
-        <table border=1 border-collapse=0 border-style="dotted" class="  table table-sm table-striped" style="font-size:8pt; width:100%; font-family:Arial, Helvetica, sans-serif; font-size:9pt; text-transform: uppercase;">    
+        
+            <table  border=1 border-collapse=0 width="300" style=" margin-left:40px; float:left; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
+                <tr>
+                    <th>No</th>
+                    <th>Poli</th>
+                    <th>Jumlah</th>
+                </tr>
+                @foreach ($jumlahPoli as $no=>$data)
+                <tr>
+                    <th>{{$no+1}}.</th>
+                    <td><b>{{$data->nama_poli}}</b></td>
+                    <th>{{$data->jumlahPoli}}</th>
+                </tr>
+                @endforeach
+            </table>
+            <table  border=1 border-collapse=0 width="300" style="margin-bottom:-5px; margin-left:37%; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
+                <tr>
+                    <th>No</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Jumlah</th>
+                </tr>
+                @foreach ($jumlahPoli as $no=>$data)
+                <tr>
+                    <th>{{$no+1}}.</th>
+                    <td><b>{{$data->nama_poli}}</b></td>
+                    <th>{{$data->jumlahPoli}}</th>
+                </tr>
+                @endforeach
+            </table>
+
+            <table  border=1 border-collapse=0 width="300"  style="margin-left:70%; margin-top:-60px;float:left; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
+                <tr>
+                    <th>No</th>
+                    <th>Jaminan</th>
+                    <th>Jumlah</th>
+                </tr>
+                @foreach ($jaminan as $no=>$data)
+                    <tr>
+                        <th>{{$no+1}}.</th>
+                        <td><b>{{$data->jaminan}}</b></td>
+                        <th>{{$data->jumlahJaminan}}</th>
+                    </tr>
+                @endforeach
+                
+               
+            </table>
+
+        <div class="padding-top:30px;" style="page-break-before:always;">
+            <h3 style="text-align: center;  font-family:Arial, Helvetica, sans-serif; text-transform: uppercase;" >Daftar Nama Pasien</h3>
+        <table border=1 border-collapse=0 border-style="dotted" class=" margin-top:100px; table table-sm table-striped" style="margin-top:30px;font-size:8pt; width:100%; font-family:Arial, Helvetica, sans-serif; font-size:9pt; text-transform: uppercase;">    
           
                 <tr class="text">
                     <th style="font-size:8pt;" align="center">No</th>
@@ -77,41 +127,8 @@ table, tr, td {
                     <td align="center" >{{$data->jaminan}}</td>
                     <td style="font-size:8pt">{{$data->alamat}}, {{$data->kel_name}}, {{$data->kec_name}}, {{$data->kota_name}}</td>
                 </tr>
-                @endforeach
-               
+                @endforeach 
         </table>    
-        <div style="position: relative">
-            <table  border=1 border-collapse=0 style="font-size:8pt; position:relative; margin-top:30px;width:30%; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
-                <tr>
-                    <th>No</th>
-                    <th>Poli</th>
-                    <th>Jumlah</th>
-                </tr>
-                @foreach ($jumlahPoli as $no=>$data)
-                <tr>
-                    <th>{{$no+1}}.</th>
-                    <td><b>{{$data->nama_poli}}</b></td>
-                    <th>{{$data->jumlahPoli}}</th>
-                </tr>
-            @endforeach
-               
-            </table>
-            <table  border=1 border-collapse=0 style="position:relative; margin-top:-205px; margin-left: 420px; width:30%; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
-                <tr>
-                    <th>No</th>
-                    <th>Jaminan</th>
-                    <th>Jumlah</th>
-                </tr>
-                @foreach ($jaminan as $no=>$data)
-                    <tr>
-                        <th>{{$no+1}}.</th>
-                        <td><b>{{$data->jaminan}}</b></td>
-                        <th>{{$data->jumlahJaminan}}</th>
-                    </tr>
-                @endforeach
-                
-               
-            </table>
         </div>
     </div>
 </body>

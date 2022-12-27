@@ -7,7 +7,7 @@
       <!-- Nav User Role 1 (Pendaftaran) -->
       @if(Auth::user()->role==='1')
         <li class="nav-item">
-          <a href="#" class="nav-link bg-primary"><i class="nav-icon fas fa-file-medical"></i><p> PASIEN <i class="right fas fa-angle-left"></i></p></a>
+          <a href="#" class="nav-link"><i class="nav-icon fas fa-file-medical"></i><p> PASIEN <i class="right fas fa-angle-left"></i></p></a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="{{Route('pendaftaran.pendaftaranPasien')}}" class=" nav-link">
@@ -23,7 +23,7 @@
 
           </ul>
         </li>
-        <li class="nav-item bg-warning">
+        <li class="nav-item">
           <a href="{{route('pendaftaran.password')}}" class="nav-link" >
             <i class=" nav-icon fas fa-cog"></i>
             <p>
@@ -37,7 +37,7 @@
       <!-- Rekam Medis -->
       @if(Auth::user()->role==='2')
       <li class="nav-item">
-        <a href="#" class="nav-link bg-primary"><i class="nav-icon fas fa-file-medical"></i><p> PASIEN <i class="right fas fa-angle-left"></i></p></a>
+        <a href="#" class="nav-link "><i class="nav-icon fas fa-file-medical"></i><p> PASIEN <i class="right fas fa-angle-left"></i></p></a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="{{Route('rekamMedis.pendaftaranPasien')}}" class="nav-link">
@@ -53,7 +53,7 @@
 
         </ul>
       </li>
-      <li class="nav-item ">
+      <li class="nav-item">
         <a href="#" class="nav-link"><i class=" nav-icon fas fa-edit"></i><p>PENCATATAN<i class="fas fa-angle-left right"></i></p></a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
@@ -71,7 +71,7 @@
       </li>
       <li class="nav-item">
         <a href="" class="nav-link">
-          <i class="nav-icon fa-solid fas fa-solid far fa-file-chart-line"></i>
+          <i class="nav-icon fa fa-book text-success"></i>
           <p>
             Laporan
             <i class="fas fa-angle-left right"></i>
@@ -119,7 +119,7 @@
       <!-- Nav User Role 4 (Administrator) -->
       @if(Auth::user()->role==='4')
       <li class="nav-item">
-        <a href="#" class="nav-link bg-primary"><i class="nav-icon fa fa-file-medical"></i><p> PASIEN <i class="right fas fa-angle-left"></i></p></a>
+        <a href="#" class="nav-link"><i class="nav-icon fa fa-file-medical"></i><p> PASIEN <i class="right fas fa-angle-left"></i></p></a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="{{Route('admin.pendaftaranPasien')}}" class="nav-link">
@@ -127,7 +127,7 @@
             </a>
           </li>
 
-          <li class="nav-item bg-info">
+          <li class="nav-item">
             <a href="{{Route('admin.showdatapasien')}}" class="nav-link">
               <i class="fa  fa-database  nav-icon text-warning"></i><p>PENCARIAN DATA PASIEN</p>
             </a>
@@ -160,7 +160,7 @@
           </li>
         </ul>
       </li>
-      <li class="nav-item bg-warning">
+      <li class="nav-item">
         <a href="{{route('admin.password')}}" class="nav-link" >
           <i class=" nav-icon fas fa-cog"></i>
           <p>
@@ -199,7 +199,7 @@
         <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="" class="nav-link">
-              <i class="far fa-circle nav-icon text-info"></i>
+              <i class="fa fa-book nav-icon text-info"></i>
               <p>
                 Laporan Pasien
                 <i class="fas fa-angle-left right"></i>
