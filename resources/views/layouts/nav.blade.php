@@ -7,36 +7,23 @@
       <!-- Nav User Role 1 (Pendaftaran) -->
       @if(Auth::user()->role==='1')
         <li class="nav-item">
-          <a href="#" class="nav-link"><i class="nav-icon fas fa-file-medical"></i><p> PASIEN <i class="right fas fa-angle-left"></i></p></a>
+          <a href="#" class="nav-link bg-primary"><i class="nav-icon fas fa-file-medical"></i><p> PASIEN <i class="right fas fa-angle-left"></i></p></a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{Route('pendaftaran.pendaftaranPasien')}}" class="nav-link">
-                <i class="fas fa-notes-medical nav-icon text-success"></i><p>PENDAFTARAN PASIEN</p>
+              <a href="{{Route('pendaftaran.pendaftaranPasien')}}" class=" nav-link">
+                <i class="fa fa-user-plus nav-icon text-success"></i><p>PENDAFTARAN PASIEN</p>
               </a>
             </li>
 
             <li class="nav-item">
               <a href="{{Route('pendaftaran.showdatapasien')}}" class="nav-link">
-                <i class="fas fa-search nav-icon text-warning"></i><p>PENCARIAN DATA PASIEN</p>
+                <i class="fa fa-search nav-icon text-warning"></i><p>PENCARIAN DATA PASIEN</p>
               </a>
             </li>
 
           </ul>
         </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link"><i class=" nav-icon fas fa-edit"></i><p>PENCATATAN<i class="fas fa-angle-left right"></i></p></a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('pendaftaran.Kunjungan')}}" class="nav-link"><i class="far fa-circle nav-icon text-success"></i><p>KUNJUNGAN</p></a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('pendaftaran.Kunjungan')}}" class="nav-link"><i class="far fa-circle nav-icon text-success"></i><p>PTM</p></a>
-              </li>
-            </ul>
-        </li>
-        <li class="nav-item">
+        <li class="nav-item bg-warning">
           <a href="{{route('pendaftaran.password')}}" class="nav-link" >
             <i class=" nav-icon fas fa-cog"></i>
             <p>
@@ -44,85 +31,38 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="" class="nav-link">
-            <i class="nav-icon fa-solid fas fa-solid fas fa-receipt"></i>
-            <p>
-              Laporan
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="" class="nav-link">
-                <i class="far fa-circle nav-icon text-info"></i>
-                <p>
-                  Laporan Pasien
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{route('pendaftaran.laporanDomisili')}}">
-                      <i class="far fa-circle nav-icon text-danger"></i>
-                      <p>Wilayah</p>
-                    </a>
-                  <li>
-                </ul>
-            </li>
-          </ul>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{route('pendaftaran.laporanKunjungan')}}" class="nav-link">
-                <i class="far fa-circle nav-icon text-info"></i>
-                <p>Laporan Kunjungan</p>
-              </a>
-            </li>
-          </ul>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{route('pendaftaran.laporanPetugas')}}" class="nav-link">
-                <i class="far fa-circle nav-icon text-info"></i>
-                Laporan Petugas </br> Pendaftaran
-              </a>
-            </li>
-          </ul>
-        </li>
       @endif
       <!--End Pendaftaran -->
+
+      <!-- Rekam Medis -->
       @if(Auth::user()->role==='2')
       <li class="nav-item">
-        <a href="#" class="nav-link"><i class="nav-icon fas fa-file-medical"></i><p> PASIEN <i class="right fas fa-angle-left"></i></p></a>
+        <a href="#" class="nav-link bg-primary"><i class="nav-icon fas fa-file-medical"></i><p> PASIEN <i class="right fas fa-angle-left"></i></p></a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{Route('pendaftaran.pendaftaranPasien')}}" class="nav-link">
-              <i class="fas fa-notes-medical nav-icon text-success"></i><p>PENDAFTARAN PASIEN</p>
+            <a href="{{Route('rekamMedis.pendaftaranPasien')}}" class="nav-link">
+              <i class="fa fa-user-plus nav-icon text-success"></i><p>PENDAFTARAN PASIEN</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="{{Route('pendaftaran.showdatapasien')}}" class="nav-link">
-              <i class="fas fa-search nav-icon text-warning"></i><p>PENCARIAN DATA PASIEN</p>
+            <a href="{{Route('rekamMedis.showdatapasien')}}" class="nav-link">
+              <i class="fa fa-database nav-icon text-warning"></i><p>PENCARIAN DATA PASIEN</p>
             </a>
           </li>
 
         </ul>
       </li>
-      <li class="nav-item">
+      <li class="nav-item ">
         <a href="#" class="nav-link"><i class=" nav-icon fas fa-edit"></i><p>PENCATATAN<i class="fas fa-angle-left right"></i></p></a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{route('pendaftaran.Kunjungan')}}" class="nav-link"><i class="far fa-circle nav-icon text-success"></i><p>KUNJUNGAN</p></a>
-            </li>
-          </ul>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{route('pendaftaran.Kunjungan')}}" class="nav-link"><i class="far fa-circle nav-icon text-success"></i><p>PTM</p></a>
+              <a href="{{route('rekamMedis.Kunjungan')}}" class="nav-link"><i class="far fa-circle nav-icon text-success"></i><p>KUNJUNGAN</p></a>
             </li>
           </ul>
       </li>
       <li class="nav-item">
-        <a href="{{route('pendaftaran.password')}}" class="nav-link" >
+        <a href="{{route('rekamMedis.password')}}" class="nav-link" >
           <i class=" nav-icon fas fa-cog"></i>
           <p>
             UBAH PASSWORD
@@ -131,7 +71,7 @@
       </li>
       <li class="nav-item">
         <a href="" class="nav-link">
-          <i class="nav-icon fa-solid fas fa-solid fas fa-receipt"></i>
+          <i class="nav-icon fa-solid fas fa-solid far fa-file-chart-line"></i>
           <p>
             Laporan
             <i class="fas fa-angle-left right"></i>
@@ -148,7 +88,7 @@
             </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a class="nav-link" href="{{route('pendaftaran.laporanDomisili')}}">
+                  <a class="nav-link" href="{{route('rekamMedis.laporanDomisili')}}">
                     <i class="far fa-circle nav-icon text-danger"></i>
                     <p>Wilayah</p>
                   </a>
@@ -158,7 +98,7 @@
         </ul>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{route('pendaftaran.laporanKunjungan')}}" class="nav-link">
+            <a href="{{route('rekamMedis.laporanKunjungan')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-info"></i>
               <p>Laporan Kunjungan</p>
             </a>
@@ -166,7 +106,7 @@
         </ul>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{route('pendaftaran.laporanPetugas')}}" class="nav-link">
+            <a href="{{route('rekamMedis.laporanPetugas')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-info"></i>
               Laporan Petugas </br> Pendaftaran
             </a>
@@ -174,25 +114,22 @@
         </ul>
       </li>
     @endif
-      <!-- Nav User Role 1 (Rekam Medis) -->
-
-
-      <!--End Rekam Medis -->
+    <!--End Rekam Medis -->
 
       <!-- Nav User Role 4 (Administrator) -->
       @if(Auth::user()->role==='4')
       <li class="nav-item">
-        <a href="#" class="nav-link"><i class="nav-icon fas fa-file-medical"></i><p> PASIEN <i class="right fas fa-angle-left"></i></p></a>
+        <a href="#" class="nav-link bg-primary"><i class="nav-icon fa fa-file-medical"></i><p> PASIEN <i class="right fas fa-angle-left"></i></p></a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="{{Route('admin.pendaftaranPasien')}}" class="nav-link">
-              <i class="fas fa-notes-medical nav-icon text-success"></i><p>PENDAFTARAN PASIEN</p>
+              <i class="fa fa-user-plus nav-icon text-success"></i><p>PENDAFTARAN PASIEN</p>
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item bg-info">
             <a href="{{Route('admin.showdatapasien')}}" class="nav-link">
-              <i class="fas fa-search nav-icon text-warning"></i><p>PENCARIAN DATA PASIEN</p>
+              <i class="fa  fa-database  nav-icon text-warning"></i><p>PENCARIAN DATA PASIEN</p>
             </a>
           </li>
 
@@ -203,11 +140,6 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="{{route('admin.Kunjungan')}}" class="nav-link"><i class="far fa-circle nav-icon text-success"></i><p>KUNJUNGAN</p></a>
-            </li>
-          </ul>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{route('pendaftaran.Kunjungan')}}" class="nav-link"><i class="far fa-circle nav-icon text-warning"></i><p>PTM</p></a>
             </li>
           </ul>
       </li>
@@ -228,7 +160,7 @@
           </li>
         </ul>
       </li>
-      <li class="nav-item">
+      <li class="nav-item bg-warning">
         <a href="{{route('admin.password')}}" class="nav-link" >
           <i class=" nav-icon fas fa-cog"></i>
           <p>

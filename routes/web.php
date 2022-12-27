@@ -20,10 +20,10 @@ Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::cl
 Route::post('logout',[LoginController::class,'logout'])->middleware('auth')->name('logout');
 
 
-//sistem login//
+/// Sistem Login ///
 Route::get('/',[LoginController::class,'showLoginForm'])->middleware('guest')->name('login.redirect');
 Route::post('/login',[LoginController::class,'login'])->middleware('guest')->name('login');
-// end login
+/// end login ///
 
 
 
@@ -33,18 +33,12 @@ Route::group(['prefix'=>'pendaftaran','middleware'=>'pendaftaran'],function(){
     Route::get('/daftar',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru::class, 'index']) ->name('pendaftaran.pendaftaranPasien');
     Route::get('/datapasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Datapasien::class,'show'])->name('pendaftaran.showdatapasien');
     Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::class,'cetak'])->name('pendaftaran.printPasien');
-    Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->name('pendaftaran.Kunjungan');
     Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('pendaftaran.updatePasien');
     Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('pendaftaran.password');
-    Route::get('/laporanPetugas',[App\Http\Livewire\Laporan\laporan::class,'laporanPasienBaru'])->middleware('auth')->name('pendaftaran.laporanPetugas');
-    Route::get('/laporanPasien',[App\Http\Livewire\Laporan\laporan::class,'laporanDomisili'])->middleware('auth')->name('pendaftaran.laporanDomisili');
-    Route::get('/laporanKunjungan',[App\Http\Livewire\Laporan\laporan::class,'laporanKunjungan'])->middleware('auth')->name('pendaftaran.laporanKunjungan');
-    Route::get('/cetakKunjungan/{tglMulai}/{tglSampai}',[App\Http\Livewire\Laporan\Kunjungan\Cetakpdf::class,'cetakPdf'])->middleware('auth')->name('pendaftaran.cetakKunjungan');
-    Route::get('/laporanKunjungan',[App\Http\Livewire\Laporan\laporan::class,'laporanKunjungan'])->middleware('auth')->name('pendaftaran.laporanKunjungan');
-
 });
-/////END////
+/// END ///
 
+/// Administrator ///
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/datapasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Datapasien::class,'show'])->name('admin.showdatapasien');
     Route::get('/daftar',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru::class, 'index']) ->name('admin.pendaftaranPasien');
@@ -61,15 +55,22 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/cetakKunjungan/{tglMulai}/{tglSampai}',[App\Http\Livewire\Laporan\Kunjungan\Cetakpdf::class,'cetakPdf'])->middleware('auth')->name('admin.cetakKunjungan');
     Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('admin.password');
 });
+/// End ///
 
-
-// Petugas Rekam Medis //
-
-
-
-
-
-// END //
+/// Petugas Rekam Medis ///
+Route::group(['prefix'=>'rekamMedis','middleware'=>'rekamMedis'],function(){
+    Route::get('/daftar',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru::class, 'index']) ->name('rekamMedis.pendaftaranPasien');
+    Route::get('/datapasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Datapasien::class,'show'])->name('rekamMedis.showdatapasien');
+    Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::class,'cetak'])->name('rekamMedis.printPasien');
+    Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->name('rekamMedis.Kunjungan');
+    Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('rekamMedis.updatePasien');
+    Route::get('/ubahpassword', [App\Http\Livewire\Ubahpassword\Formubahpassword::class, 'show'])->middleware('auth')->name('rekamMedis.password');
+    Route::get('/laporanPetugas',[App\Http\Livewire\Laporan\laporan::class,'laporanPasienBaru'])->middleware('auth')->name('rekamMedis.laporanPetugas');
+    Route::get('/laporanPasien',[App\Http\Livewire\Laporan\laporan::class,'laporanDomisili'])->middleware('auth')->name('rekamMedis.laporanDomisili');
+    Route::get('/cetakKunjungan/{tglMulai}/{tglSampai}',[App\Http\Livewire\Laporan\Kunjungan\Cetakpdf::class,'cetakPdf'])->middleware('auth')->name('rekamMedis.cetakKunjungan');
+    Route::get('/laporanKunjungan',[App\Http\Livewire\Laporan\laporan::class,'laporanKunjungan'])->middleware('auth')->name('rekamMedis.laporanKunjungan');
+});
+/// END ///
 
 
 

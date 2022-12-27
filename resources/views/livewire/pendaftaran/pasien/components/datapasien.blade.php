@@ -67,8 +67,15 @@
                 </tbody>
             </table>
         </div>  
-        <div class="card-footer btn-sm text-sm rounded-0 btn-flat">
-                {{$pasien->links()}}
+        <div class="card-footer">
+            <div class="col-md-12 col-lg-12 col-sm-12 row">
+                <div class="col-md-6 col-lg-6 col-sm-6">
+                    <span class="text-sm">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-6">
+                    <span class="float-right btn-sm text-xs">{{$pasien->links()}}</span>
+                </div>
+            </div>
         </div>
         @include('livewire.pendaftaran.pasien.components.modal')
     </div>

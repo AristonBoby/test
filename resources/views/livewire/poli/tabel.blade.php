@@ -49,7 +49,13 @@
                             @elseif($data->status==3)
                                 <td><span class="badge bg-danger">Hapus</span></td>
                             @endif
-                            <td><a class="btn btn-sm btn-warning"  data-toggle="modal" wire:click='detailPoli({{$data->id_poli}})' data-target="#EditPoli"><i class="text-xs fa fa-edit"></i></a>
+                            <td width="80">
+                            <div class="btn-group">
+                                <a class="btn btn-sm btn-warning"  data-toggle="modal" wire:click='detailPoli({{$data->id_poli}})' data-target="#EditPoli"><i class="text-xs fa fa-edit"></i></a>
+                                <a class="btn btn-sm btn-danger"  data-toggle="modal" wire:click='detailPoli({{$data->id_poli}})' data-target="#EditPoli"><i class="text-xs fas fa-light fa-trash-alt"></i></a>
+                            </div>
+                            </td>
+                            
                         </tr>
                         @endforeach
                     </tbody>                      

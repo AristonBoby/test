@@ -8,6 +8,7 @@ use App\Models\kota;
 use App\Models\kecamatan;
 use App\Models\kelurahan;
 use Livewire\WithPagination;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 
 class Datapasien extends Component
@@ -27,6 +28,7 @@ class Datapasien extends Component
     public $caripasien;
     public $id_pasien;
     public $kel_name;
+    public $id_kel;
     public $prov;      
     public $kotas;     
     public $kelurahan; 
@@ -34,7 +36,6 @@ class Datapasien extends Component
     public $prov_name;
     public $kec_name;
     public $kota_name;
-    use WithPagination;
     protected $listeners = ['deleteConfirmed' => 'hapusPasien'];
     protected $paginationTheme = 'bootstrap';
     use WithPagination;
@@ -94,37 +95,37 @@ class Datapasien extends Component
         $this->caripasien = '';
     }
     protected $rules =([
-        'no_Rm'             => 'required|max:8',
+        'no_Rm'             => 'required',
         'nama'              => 'required',
         'tempat_Lahir'      => 'required',
         'tanggal_Lahir'     => 'required',
         'kepala_keluarga'   => 'required',
         'jenkel'            => 'required',
         'agama'             => 'required',
-        'no_tlpn'           => 'required',
-        'nik'               => 'max:16',
-        'bpjs'              => 'max:13',
+        'no_tlpn'           => 'required||min:10',
+        'nik'               => '',
+        'bpjs'              => '',
         'pekerjaan'         => 'required',
         'alamat'            => 'required',
         'kelurahan'         => 'required',
     ]);
     protected $messages =[
-        'no_Rm.required'=>'Nomor Rekam Medis wajib di isi',
-        'max'=>'Nomor Rekam Medis Maksimal 8 Karakter',
-        'nama.required'=>'Nama Pasien wajib diisi',
-        'tempat_Lahir.required'=>'Tempat lahir Pasien wajib diisi',
-        'tanggal_Lahir.required'=>'Tanggal lahir Pasien wajib diisi',
-        'kepala_keluarga.required'=>'Kepala keluarga Pasien wajib diisi',
-        'jenkel.required'=>'Jenis Kelamin Pasien wajib diisi',
-        'agama.required'=>'Agama Pasien wajib diisi',
-        'pekerjaan.required'=>'Pekerjaan Pasien wajib diisi',
-        'no_tlpn.required'=>'Nomor Telepon / Hp Pasien wajib diisi',
-        'alamat.required'=>'Alamat Pasien wajib diisi',
-        'nik.unique'=>'NIK Pasien telah digunakan',
-        'nik.max'=>'NIK Pasien Maksimal 16 karakter',
-        'bpjs.unique'=>'Nomor BPJS Pasien telah digunakan',
-        'bpjs.max'=>'Nomor BPJS Pasien Maksimal 13 Karakter',
-        'bpjs.min'=>'Nomor BPJS Pasien Minimal 13 Karakter',
+        'no_Rm.required'            =>'Nomor Rekam Medis wajib di isi',
+        'no_Rm.unique'              =>'Nomor Rekam Medis telah digunakan',
+        'max'                       =>'Nomor Rekam Medis Maksimal 7 Karakter',
+        'nama.required'             =>'Nama Pasien wajib diisi',
+        'tempat_Lahir.required'     =>'Tempat lahir Pasien wajib diisi',
+        'tanggal_Lahir.required'    =>'Tanggal lahir Pasien wajib diisi',
+        'kepala_keluarga.required'  =>'Kepala keluarga Pasien wajib diisi',
+        'jenkel.required'           =>'Jenis Kelamin Pasien wajib diisi',
+        'agama.required'            =>'Agama Pasien wajib diisi',
+        'pekerjaan.required'        =>'Pekerjaan Pasien wajib diisi',
+        'no_tlpn.required'          =>'Nomor Telepon / Hp Pasien wajib diisi',
+        'no_tlpn.min'               =>'Nomor Telepon / Hp Minimal 10 Angka',
+        'alamat.required'           =>'Alamat Pasien wajib diisi',
+        'nik.unique'                =>'NIK Pasien telah digunakan',
+        'bpjs.unique'               =>'Nomor BPJS Pasien telah digunakan',
+        'kelurahan.required'           => 'Kelurahan tidak boleh kosong',
 
     ];
 

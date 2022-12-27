@@ -63,12 +63,12 @@
                 </div>
             </div> 
             <div class="card-footer">
-                <div class="row">
-                    <div class="float-left col-md-10  btn-xs text-xs rounded-0 btn-flat">
-                        {{$pasien->links()}}
+                <div class="col-md-12 col-lg-12 col-sm-12 row">
+                    <div class="col-md-2 col-sm-2 col-lg-2">
+                        <span class="text-sm">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
                     </div>
-                    <div class="col-md-2 float-left">
-                        <span>Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}}of {{$pasien->total()}}</span>
+                    <div class="col-md-10 col-sm-10 col-lg-10">
+                        <span class="float-right btn-xs">{{$pasien->links()}}</span>
                     </div>
                 </div>
             </div> 

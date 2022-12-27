@@ -10,47 +10,51 @@
              </button>
            </div>
            <div class="modal-body">
-               <div class="row justify-content-md-center">
-                   <div class=" col-md-6">
-
-                       <div class="form-group row">
-                             <label class="col-md-3 col-from-label text-xs">CARI PASIEN</label>
-                             <div class="col-md-9 row">
-                                   <input type="text" wire:model='cari' class="form-control form-control-sm rounded-0 text-sm col-md-9" id="recipient-name" placeholder="Pencarian Pasien">
-
-                                   <p class="text-xs text-danger">*Pencarian Pasien berdasarkan Nama, NIK, BPJS</p>
-                           </div>
-
-                   </div>
-               </div>
-               <table class="table table-responsive table-sm table-striped table-bordered table-hover">
-                 <thead>
-                   <tr>
-                     <th class="text-xs" width="10">No</th>
-                     <th class="text-xs text-center" width="100">No Rekam Medis</th>
-                     <th class="text-xs text-center" width="200">Nama</th>
-                     <th class="text-xs text-center" width="70">Tanggal Lahir</th>
-                     <th class="text-xs text-center" width="25">Kelamin</th>
-                     <th class="text-xs text-center" width="80">NIK</th>
-                     <th class="text-xs text-center" width="80">BPJS</th>
-                   </tr>
-                 </thead>
-                 <tbody>
-
-                   @foreach ($query as $id => $data)
-                   <tr>
-                     <td scope="row" class="text-xs">{{$id+1}}.</td>
-                     <td scope="row text-center" class="text-xs">{{$data->no_Rm}}</td>
-                     <td class="text-xs">{{$data->nama}}</td>
-                     <td class="text-xs">{{$data->tanggal_Lahir}}</td>
-                     <td class="text-xs text-center">{{$data->jenkel}}</td>
-                     <td class="text-xs">{{$data->nik}}</td>
-                     <td class="text-xs">{{$data->bpjs}}</td>
-                   </tr>
-                   @endforeach
-
-                 </tbody>
-               </table>
+               <div class="row">
+                   <div class=" col-md-11 col-sm-11 col-lg-11">
+                      <form wire:submit.prevent='cariData'>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-lg-2 col-sm-2 col-from-label text-sm">CARI PASIEN</label>
+                            <div class="col-md-10 col-lg-10 col-sm-10 input-group">
+                              <input type="text" wire:model='cari' class="form-control" id="recipient-name" placeholder="Pencarian Pasien">
+                              <span class="input-group-append">
+                                <button class="btn btn-primary ">Cari</button>
+                              </span>
+                            </div>
+                        </div>
+                      </form>
+                       <p class="text-xs text-danger text-center">*Pencarian Pasien berdasarkan Nama, NIK, BPJS</p>
+                    </div>
+                <div class="table-responsive">
+                  <table class="table table-sm table-striped table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th class="text-xs" width="10">No</th>
+                        <th class="text-xs text-center" width="100">No Rekam Medis</th>
+                        <th class="text-xs text-center" width="200">Nama</th>
+                        <th class="text-xs text-center" width="70">Tanggal Lahir</th>
+                        <th class="text-xs text-center" width="25">Kelamin</th>
+                        <th class="text-xs text-center" width="80">NIK</th>
+                        <th class="text-xs text-center" width="80">BPJS</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @if($query)
+                        @foreach ($query as $id => $data)
+                        <tr>
+                          <td scope="row" class="text-xs">{{$id+1}}.</td>
+                          <td scope="row text-center" class="text-xs"><button data-dismiss="modal" wire:click="cariPasien('{{$data->no_Rm}}')" class="btn btn-default btn-xs"><b>{{$data->no_Rm}}</b></button></td>
+                          <td class="text-xs">{{$data->nama}}</td>
+                          <td class="text-xs">{{$data->tanggal_Lahir}}</td>
+                          <td class="text-xs text-center">{{$data->jenkel}}</td>
+                          <td class="text-xs">{{$data->nik}}</td>
+                          <td class="text-xs">{{$data->bpjs}}</td>
+                        </tr>
+                        @endforeach
+                      @endif
+                    </tbody>
+                  </table>
+                </div>
            </div>
            <div class="modal-footer">
              <button type="button" class="btn btn-danger btn-sm text-sm" wire:click='hapuscari' data-dismiss="modal"><i class="text-xs fa fa-times"></i> Tutup</button>

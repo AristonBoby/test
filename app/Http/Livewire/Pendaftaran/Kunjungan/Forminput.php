@@ -25,6 +25,8 @@ class Forminput extends Component
 
     public $cari_Pasien_no_RM;
 
+    public $listeners = ['cariDataPasien' => 'cariDataPasien'];
+
     public function render()
     {
         return view('livewire.pendaftaran.kunjungan.forminput',[
@@ -51,6 +53,14 @@ class Forminput extends Component
         $this->jeniskunjungan   = "";
         $this->form             = true;
     }
+
+    public function cariDataPasien($idData){
+        $this->cari = $idData;
+        $this->cekpasien();
+    }
+
+
+
     // Method untuk mencek pasien ada atau tidak ada di database //
     public function cekpasien(){
         $query = pasien::where('nik',$this->cari)
