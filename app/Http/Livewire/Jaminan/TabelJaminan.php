@@ -20,7 +20,10 @@ class TabelJaminan extends Component
     public function render()
     {
         return view('livewire.jaminan.tabel-jaminan',[
-            'jaminan'   => jaminan::where('status','1' || 'status','2')->orderBy('status','asc')->paginate(5),
+            'jaminan'   => jaminan::where('status','1')
+                                    ->orWhere('status','2')
+                                    ->orderBy('status','asc')
+                                    ->paginate(5),
             'halaman'   =>  $this->halaman,
             'dataHapus' => jaminan::where('status',3)->paginate(5)
         ]);
@@ -50,17 +53,18 @@ class TabelJaminan extends Component
     }
 
     public function editKunjungan(){
+        
         $this->validate();
         $query = DB::table('jaminans')
                  ->where('id_jaminan',$this->id_jaminan)
                  ->update([
                     'jaminan'   => $this->jamin,
-                    'status'    => $this->status
+                    'status'    => $this->status,
                  ]);
         if($query){
             $this->dispatchBrowserEvent('berhasil',['title'=>'Berhasil','text'=>'Data Berhasil Tersimpan','icon'=>'success','btnTxt'=>'Ok']);
         }else{
-            $this->dispatchBrowserEvent('berhasil',['title'=>'Berhasil','text'=>'Data Berhasil Tersimpan','icon'=>'error','btnTxt'=>'Ok']);
+            $this->dispatchBrowserEvent('berhasil',['title'=>'Perhatian','text'=>'Data Tidak Tersimapan ','icon'=>'error','btnTxt'=>'Ok']);
         }
     }
     public function hapusKunjungan($id){

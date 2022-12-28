@@ -74,9 +74,9 @@
                                 <td  class="text-center">{{$jaminan->firstItem()+$no}}.</td>
                                 <td >{{$data->jaminan}}</td>
                                 <td class="text-center">
-                                    @if ($data->status == '1')
+                                    @if ($data->status == 1)
                                         <span class="badge bg-success">Aktif</span>
-                                    @elseif($data->status=='2')
+                                    @elseif($data->status==2)
                                     <span class="badge bg-danger">Tidak Aktif</span>
                                     @endif
                                     </td>

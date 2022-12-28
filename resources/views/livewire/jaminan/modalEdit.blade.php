@@ -17,7 +17,7 @@
                               <div class="form-group row">
                                   <label class="col-md-3 col-from-label text-sm">Kode Jaminan</label>
                                   <div class="col-md-9">
-                                      <input type="text"  wire:model.defer='id_jaminan' class="form-control"id="recipient-name" disabled>
+                                      <input type="text"  wire:model='id_jaminan' class="form-control"id="recipient-name" disabled>
                                   </div>
                               </div>
                           </div>
@@ -25,7 +25,7 @@
                               <div class="form-group row">
                                   <label class="col-md-3 col-from-label text-sm">Nama Poli</label>
                                   <div class="col-md-9">
-                                      <input type="text"  wire:model.defer='jamin' class="form-control @error('jamin')is-invalid @enderror" id="recipient-name">
+                                      <input type="text"  wire:model='jamin' class="form-control @error('jamin')is-invalid @enderror" id="recipient-name">
                                       @error('jamin') <span class="invalid-feedback"> {{$message}} </span> @enderror
                                   </div>
                               </div>
@@ -34,10 +34,10 @@
                               <div class="form-group row">
                                   <label class="col-md-3 col-from-label text-sm">Status</label>
                                   <div class="col-md-9">
-                                  <select class="form-control @error('status')is-invalid @enderror" wire:model.defer="status" required>
+                                  <select class="form-control @error('status')is-invalid @enderror" wire:model="status" required>
                                       <option>=== Pilih Salah Satu ===</option>
-                                      <option value="1">Aktif</option>
-                                      <option value="2">Tidak Aktif</option>
+                                      <option value=1>Aktif</option>
+                                      <option value=2>Tidak Aktif</option>
                                   </select>
                                   @error('status') <span class="invalid-feedback"> {{$message}} </span> @enderror
                                   </div>

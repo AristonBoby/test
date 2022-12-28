@@ -23,49 +23,51 @@
                     </div>
                 </div>
             </div>
-            <table class="table text-uppercase table-sm table-bordered table-hover text-xs table-striped text-center">
-                <thead>
-                    <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">No Rekam Medis</th>
-                        <th class="text-center">Nama</th>
-                        <th class="text-center">Tanggal Lahir</th>
-                        <th class="text-center">Kelamin</th>
-                        <th class="text-center">No. Telepon / HP</th>
-                        <th class="text-center">NIK</th>
-                        <th class="text-center">BPJS</th>
-                        <th class="text-center">Alamat</th>
-                        <th class="text-center">Petugas Pendaftar</th>
-                        <th class="text-center">Tanggal Daftar</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                  
-                    @foreach ($pasien as $index => $query)
-                        <tr style=" overflow-y: scroll;">
-                            <td>{{$pasien->firstItem() + $index}}.</td>
-                            <td>{{$query->no_Rm}}</td>
-                            <td class="text-left text-uppercase">{{$query->nama}}</td>
-                            <td>{{$query->tanggal_Lahir}}</td>
-                            <td text-center>{{$query->jenkel}}</td>
-                            <td>{{$query->no_tlpn}}</td>
-                            <td>{{$query->nik}}</td>
-                            <td>{{$query->bpjs}}</td>
-                            <td class="text-left text-uppercase">{{$query->alamat}} Kelurahan {{$query->kel_name}} Kecamatan {{$query->kec_name}} kota {{$query->kota_name}}</td>
-                            <td class="text-center text-left text-uppercase">{{$query->name}}</td>
-                            <td>{{$query->created_at}}</td>
-                            <td>
-                                <div class="btn-group text-xs">
-                                    <a class="btn btn-sm btn-info   "  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="text-xs far fa-eye"></i></a>
-                                    <a class="btn btn-sm btn-warning"  data-toggle="modal" data-target="#edit" wire:click="edit({{$query->id}})"><i class="text-xs fa fa-edit"></i></a>
-                                    <a class="btn btn-sm btn-danger" href="javascript:void(0)" wire:click.prevent='deleteConfirmation({{$query->id}})' target="blank_"><i class="text-xs fas fa-light fa-trash-alt"></i></a>
-                                </div>
-                            </td>                  
+            <div class="table-responsive">
+                <table class="table text-uppercase table-sm table-bordered table-hover text-sm table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th class="text-center">No Rekam Medis</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Tanggal Lahir</th>
+                            <th class="text-center">Kelamin</th>
+                            <th class="text-center">No. Telepon / HP</th>
+                            <th class="text-center">NIK</th>
+                            <th class="text-center">BPJS</th>
+                            <th class="text-center">Alamat</th>
+                            <th class="text-center">Petugas Pendaftar</th>
+                            <th class="text-center">Tanggal Daftar</th>
+                            <th></th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    
+                        @foreach ($pasien as $index => $query)
+                            <tr style=" overflow-y: scroll;">
+                                <td>{{$pasien->firstItem() + $index}}.</td>
+                                <td>{{$query->no_Rm}}</td>
+                                <td class="text-left text-uppercase">{{$query->nama}}</td>
+                                <td>{{$query->tanggal_Lahir}}</td>
+                                <td text-center>{{$query->jenkel}}</td>
+                                <td>{{$query->no_tlpn}}</td>
+                                <td>{{$query->nik}}</td>
+                                <td>{{$query->bpjs}}</td>
+                                <td class="text-left text-uppercase">{{$query->alamat}} Kelurahan {{$query->kel_name}} Kecamatan {{$query->kec_name}} kota {{$query->kota_name}}</td>
+                                <td class="text-center text-left text-uppercase">{{$query->name}}</td>
+                                <td>{{$query->created_at}}</td>
+                                <td>
+                                    <div class="btn-group text-xs">
+                                        <a class="btn btn-sm btn-info   "  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="text-xs far fa-eye"></i></a>
+                                        <a class="btn btn-sm btn-warning"  data-toggle="modal" data-target="#edit" wire:click="edit({{$query->id}})"><i class="text-xs fa fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-danger" href="javascript:void(0)" wire:click.prevent='deleteConfirmation({{$query->id}})' target="blank_"><i class="text-xs fas fa-light fa-trash-alt"></i></a>
+                                    </div>
+                                </td>                  
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>  
         <div class="card-footer">
             <div class="col-md-12 col-lg-12 col-sm-12 row">
