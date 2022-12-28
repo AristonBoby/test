@@ -6,7 +6,7 @@
             </div>
     </div>
     <div class="card-body text-sm text-center">
-            <table class="table table-bordered table-hover table-sm" >
+            <table class="table table-striped table-bordered table-hover table-sm" >
                 <thead>
                     <tr>
                         <th>No.</th>

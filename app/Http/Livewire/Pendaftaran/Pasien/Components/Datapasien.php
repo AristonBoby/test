@@ -73,6 +73,7 @@ class Datapasien extends Component
                                     ->orWhere('no_Rm',$this->caripasien)
                                     ->orWhere('nik',$this->caripasien)
                                     ->orWhere('bpjs',$this->caripasien)
+                                    ->orderBy('pasiens.no_Rm','asc')
                                     ->paginate(10),
         'provinsi'  =>  provinsi::all(),
         'kota'      =>  kota::where('prov_id',$this->prov)->get(),

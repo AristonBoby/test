@@ -12,7 +12,7 @@
                         <a class=" nav-link text-white @if($halaman===1)active @endif btn-info btn-flat btn-xs btn" wire:click="pilihHalaman(1)" data-toggle="tab" href="#dataJaminan" data-toggle><i class="fa fa-hdd  text-xs"></i>  Data Jaminan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white @if($halaman===2)active @endif btn-flat btn btn-danger btn-xs" wire:click="pilihHalaman(2)" data-toggle="tab" href="#dataJaminanHapus"> <i class="fas fa-light fa-trash-alt text-xs"></i> Riwayat Jaminan Terhapus</a>
+                        <a class="nav-link text-white @if($halaman===2)active @endif btn-flat btn btn-danger btn-xs" wire:click="pilihHalaman(2)" data-toggle="tab" href="#dataJaminanHapus"> <i class="fas fa-light fa-trash-alt text-xs"></i> Terhapus</a>
                     </li>
                 </ul>
             <div class="tab-content row">
@@ -25,6 +25,7 @@
                 <div class="col-md-12 col-sm-12 col-lg-12 mb-1 mt-" style="margin-top:-30px; ">
                     <button wire:click='render()' class="btn btn-primary float-right btn-sm text-xs btn-flat"><i class=" text-xs fa fa fa-sync-alt"></i> Refresh</button>
                 </div>
+                
                 <div class="tab-pane table-responsive @if($halaman===2)active @endif" id="dataJaminanHapus">
                     <table class="table table-sm table-bordered text-sm table-hover table-striped">
                         <thead>

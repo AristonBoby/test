@@ -44,7 +44,15 @@ class Cetakpdf extends Component
                   ->orderBy('jumlahJaminan','desc')
                   ->get();
          }
-         return view('livewire.laporan.kunjungan.cetakpdf',['dataKunjungan'=> $query,'tglMulai'=>$tanggalMulai,'tglSampai'=>$tanggalSampai,'jumlahPoli'=>$jumlahPoli,'jaminan'=>$jumlahjaminan]);
+         if($jumlahjaminan){
+            $jumlahjenkel = DB::table('kunjungans')
+               ->join('pasiens','kunjungans.id_pasien','pasiens.id')
+               ->selectRaw('count(pasiens.jenkel) as jumlah ,pasiens.jenkel')
+               ->groupBy('pasiens.jenkel')
+               ->whereBetween('kunjungans.tanggal',[$tanggalMulai,$tanggalSampai])
+               ->orderBy('jumlah','desc')->get();
+         }
+         return view('livewire.laporan.kunjungan.cetakpdf',['jumlahjenkel'=>$jumlahjenkel,'dataKunjungan'=> $query,'tglMulai'=>$tanggalMulai,'tglSampai'=>$tanggalSampai,'jumlahPoli'=>$jumlahPoli,'jaminan'=>$jumlahjaminan]);
 
    }
 }

@@ -8,20 +8,25 @@ use Illuminate\Support\Facades\DB;
 
 
 class Tabel extends Component
-{   protected $listeners = ['hapusPoli'=>'poliHapus'];
+{   
     use WithPagination; 
     public $editPoli;
     public $namaPoli;
     public $idPoli;
     public $status;
+    public $var_halaman;
     protected $paginationTheme = 'bootstrap';
-   
+    public $listeners = ['hapusPoli'=>'hapusPoli','poliRestore','poliRestore'];
     public function render()
     {  
         return view('livewire.poli.tabel',[
-            'query' => poli::orderBy('nama_poli','desc')->orderBy('status','asc')->paginate(10),
+            'query' => poli::orderBy('nama_poli','desc')->orderBy('status','asc')->get(),
             'editPoli' => $this->editPoli,
         ]);
+    }
+
+    public function mount(){
+        $this->var_halaman=1;
     }
 
     public function detailPoli($id)
@@ -50,4 +55,39 @@ class Tabel extends Component
             $this->idPoli="";
         }
     }
-}
+
+    public function halaman($id){
+        $this->var_halaman = $id;
+    }
+
+    public function confirmHapus($id){
+        $this->idPoli = $id;       
+        $this->dispatchBrowserEvent('confirmHapus',['title'=>'Hapus Poli','text'=>'Data poli yang dihapus dapat dikembalikan pada menu Riwayat Terhapus','icon'=>'warning']);
+    }
+    
+    public function restorePoli($id){
+        $this->idPoli = $id;       
+        $this->dispatchBrowserEvent('restorePoli',['title'=>'Perhatian','text'=>'Apakah anda ingin mengembalikan poli','icon'=>'warning']);
+    }
+
+    public function poliRestore()
+    {
+        $query = DB::table('polis')
+                ->where('id_poli',$this->idPoli)
+                ->update([
+                    'status' => 1,
+                ]);
+        $this->idPoli="";
+    }
+
+    
+    public function hapusPoli()
+    {
+        $query = DB::table('polis')
+                ->where('id_poli',$this->idPoli)
+                ->update([
+                    'status' => 3,
+                ]);
+        $this->idPoli="";
+    }
+}  

@@ -51,7 +51,7 @@ table, tr, td {
                 <td align="center"colspan="10"><i><b>Priode Tanggal : {{$tglMulai}}  s.d {{$tglSampai}}</b></i></td>
             </tr>
         </table>
-        
+        <div width=100%>
             <table  border=1 border-collapse=0 width="300" style=" margin-left:40px; float:left; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
                 <tr>
                     <th>No</th>
@@ -72,16 +72,16 @@ table, tr, td {
                     <th>Jenis Kelamin</th>
                     <th>Jumlah</th>
                 </tr>
-                @foreach ($jumlahPoli as $no=>$data)
+                @foreach ($jumlahjenkel as $no=>$data)
                 <tr>
                     <th>{{$no+1}}.</th>
-                    <td><b>{{$data->nama_poli}}</b></td>
-                    <th>{{$data->jumlahPoli}}</th>
+                    <td><b> @if($data->jenkel=='P')PEREMPUAN @elseif($data->jenkel=="L")LAKI-LAKI @endif</b></td>
+                    <th>{{$data->jumlah}}</th>
                 </tr>
                 @endforeach
             </table>
 
-            <table  border=1 border-collapse=0 width="300"  style="margin-left:70%; margin-top:-60px;float:left; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
+            <table  border=1 border-collapse=0 width="300"  style="margin-left:70%; margin-top:-210px;float:left; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
                 <tr>
                     <th>No</th>
                     <th>Jaminan</th>
@@ -97,7 +97,9 @@ table, tr, td {
                 
                
             </table>
+        </div>
 
+        <div width="100%" style="margin-top:100px;">
         <div class="padding-top:30px;" style="page-break-before:always;">
             <h3 style="text-align: center;  font-family:Arial, Helvetica, sans-serif; text-transform: uppercase;" >Daftar Nama Pasien</h3>
         <table border=1 border-collapse=0 border-style="dotted" class=" margin-top:100px; table table-sm table-striped" style="margin-top:30px;font-size:8pt; width:100%; font-family:Arial, Helvetica, sans-serif; font-size:9pt; text-transform: uppercase;">    
@@ -129,6 +131,7 @@ table, tr, td {
                 </tr>
                 @endforeach 
         </table>    
+        </div>
         </div>
     </div>
 </body>

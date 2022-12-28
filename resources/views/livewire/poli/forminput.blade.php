@@ -7,24 +7,24 @@
             </div>
         </div>
         <div class="card-body"> 
-            <form wire:submit.prevent='simpanpoli' class="text-xs">
+            <form wire:submit.prevent='simpanpoli' class="text-sm">
                 <div class="col-md-12" >
                     <div class="form-group row" style="margin-bottom:5px">
-                        <label class="col-md-4 col-form-label">Kode Poli</label>
+                        <label class="col-md-3 col-form-label">Kode Poli</label>
                         <div class="col-md-7">
                             <input type="text" wire:model.defer='id_poli' class="form-control form-control-sm rounded-0 number @error('id_poli')is-invalid @enderror" maxlength="2" placeholder="Kode Poli">
                             @error('id_poli') <span class="invalid-feedback">{{ $message }}</span>@enderror
                         </div>
                     </div>
                     <div class="form-group row"style="margin-bottom:5px" >    
-                        <label class="col-md-4 col-from-label">Nama Poli</label>
+                        <label class="col-md-3 col-from-label">Nama Poli</label>
                         <div class="col-md-7">
                             <input type="text" wire:model.defer="namapoli" class="form-control form-control-sm rounded-0 @error('namapoli')is-invalid @enderror" placeholder="Nama Poli">
                             @error('namapoli')<span class="invalid-feedback">{{$message}}</span>@enderror
                         </div>
                     </div>
                     <div class="form-group row" >    
-                        <label class="col-md-4 col-from-label">Status</label>
+                        <label class="col-md-3 col-from-label">Status</label>
                         <div class="col-md-7">
                            <select class="form-control rounded-0 form-control-sm" wire:model.defer='status'>
                                 <option value="1">Aktif</option>

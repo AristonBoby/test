@@ -7,6 +7,7 @@
     </div>
     <div class="card-body text-sm text-center ">
         <div class="table-responsive">
+            
             <table class="text-uppercase table table-bordered table-sm text-xs table-hover table-striped">
             <thead>
                     <tr>

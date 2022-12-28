@@ -23,45 +23,88 @@
                 </form>
             </div>
             <div>
-                <table style="margin-top:10;margin-bottom:-10" class="table-striped table table-sm  table-hover text-sm table-bordered">
-                    <thead>
-                        <tr>
-                            <th width="10px">No.</th>
-                            <th>Nama Poli</th>
-                            <th width="20px">Status</th>
-                            <th width="10"></th>
-                        </tr>
-                    </thead>
-                    <tbody >
-                        @if($query->isEmpty())
-                        <tr>
-                            <td colspan=4>Data Kosong</td>
-                        </tr>
-                        @endif
-                        @foreach ($query as $index => $data )
-                        <tr>
-                            <td scoope="row">{{$query->firstItem() + $index}}.</td>
-                            <td>{{$data->nama_poli}}</td>
-                            @if($data->status==1)
-                                <td><span class="badge bg-success">Aktif</span></td>
-                            @elseif($data->status==2)
-                                <td><span class="badge bg-warning">Tidak Aktif</span></td>
-                            @elseif($data->status==3)
-                                <td><span class="badge bg-danger">Hapus</span></td>
-                            @endif
-                            <td width="80">
-                            <div class="btn-group">
-                                <a class="btn btn-sm btn-warning"  data-toggle="modal" wire:click='detailPoli({{$data->id_poli}})' data-target="#EditPoli"><i class="text-xs fa fa-edit"></i></a>
-                                <a class="btn btn-sm btn-danger"  data-toggle="modal" wire:click='detailPoli({{$data->id_poli}})' data-target="#EditPoli"><i class="text-xs fas fa-light fa-trash-alt"></i></a>
-                            </div>
-                            </td>
-                            
-                        </tr>
-                        @endforeach
-                    </tbody>                      
-                </table>
-                <div class="text-xs btn-xs ">
-                    {{$query->links()}}
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class=" nav-link text-white  btn-info btn-flat btn-xs btn" wire:click="halaman(1)" data-toggle="tab" href="#dataHapus" data-toggle><i class="fa fa-hdd  text-xs"></i>  Data Jaminan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white  btn-flat btn btn-danger btn-xs" wire:click="halaman(2)" data-toggle="tab" href="#dataHapus"> <i class="fas fa-light fa-trash-alt text-xs"></i> Riwayat Terhapus</a>
+                    </li>
+                </ul>
+                <div class="col-md-12 mt-2 mb-2">
+                    @if($var_halaman===1) <code class="text-sm">* Data yang dihapus dapat dibatalkan pada menu Riwayat Terhapus</code> @endif
+                    @if($var_halaman===2) <code class="text-sm">* Data pasien yang terhapus </code> @endif
+                </div>
+                <div class="tab-content row">
+                    <div class="tab-pane table-responsive @if($var_halaman===1)active @endif" id="dataHapus">
+                        <table style="margin-top:10;margin-bottom:-10" class="table-striped table table-sm  table-hover text-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th width="20px">Status</th>
+                                    <th>Nama Poli</th>
+                                    <th width="10">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                @if($query->isEmpty())
+                                <tr>
+                                    <td colspan=4>Data Kosong</td>
+                                </tr>
+                                @endif
+                                @foreach ($query as $index => $data)
+                                @if($data->status==1 || $data->status==2)
+                                    <tr>
+                                        @if($data->status==1)
+                                            <td><span class="badge bg-success">Aktif</span></td>
+                                        @elseif($data->status==2)
+                                            <td><span class="badge bg-warning">Tidak Aktif</span></td>
+                                        @endif
+                                        <td>{{$data->nama_poli}}</td>
+                                        <td width="80">
+                                            <div class="btn-group">
+                                                <a class="btn btn-sm btn-warning"  data-toggle="modal" wire:click='detailPoli({{$data->id_poli}})' data-target="#EditPoli"><i class="text-xs fa fa-edit"></i></a>
+                                                <a class="btn btn-sm btn-danger" wire:click='confirmHapus({{$data->id_poli}})'><i class="text-xs fas fa-light fa-trash-alt"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endif
+                                @endforeach
+                            </tbody>                    
+                        </table>
+                    </div>
+                    <div class="tab-pane table-responsive @if($var_halaman===2)active @endif" id="dataHapus">
+                        <table style="margin-top:10;margin-bottom:-10" class="table-striped table table-sm  table-hover text-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th width="20px">Status</th>
+                                    <th>Nama Poli</th>
+                                    <th width="5">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                @if($query->isEmpty())
+                                <tr>
+                                    <td colspan=4>Data Kosong</td>
+                                </tr>
+                                @endif
+                                @foreach ($query as $index => $data )
+                                    @if($data->status==3)
+                                        <tr>
+                                            @if($data->status==3)
+                                                <td><span class="badge bg-danger">Hapus</span></td>
+                                            @endif
+                                            <td>{{$data->nama_poli}}</td>
+                                            <td width="80">
+                                            <div class="btn-group">
+                                                <a class="btn btn-sm btn-warning"  wire:click='restorePoli({{$data->id_poli}})'><i class="text-xs fa fa-undo"></i></a>
+                                            </div>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            </tbody>                      
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,7 +149,6 @@
                                             <option value="">=== Pilih Salah Satu ===</option>
                                             <option value="1">Aktif</option>
                                             <option value="2">Tidak Aktif</option>
-                                            <option value="3">Hapus</option>
                                         </select>
                                         </div>
                                     </div>
@@ -137,4 +179,36 @@
              
             })
       });
+      window.addEventListener('confirmHapus', event => {
+                  Swal.fire({
+                  title: event.detail.title,
+                  text: event.detail.text,
+                  icon: event.detail.icon,
+                  showCancelButton: true,
+                  confirmButtonColor: '#d33',
+                  cancelButtonColor: '#3085d6',
+                  cancelButtonText : 'Tidak',
+                  confirmButtonText: 'YA',
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                      Livewire.emit('hapusPoli')
+                  }
+                })
+          });
+          window.addEventListener('restorePoli', event => {
+                  Swal.fire({
+                  title: event.detail.title,
+                  text: event.detail.text,
+                  icon: event.detail.icon,
+                  showCancelButton: true,
+                  confirmButtonColor: '#d33',
+                  cancelButtonColor: '#3085d6',
+                  cancelButtonText : 'Tidak',
+                  confirmButtonText: 'YA',
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                      Livewire.emit('poliRestore')
+                  }
+                })
+          });
 </script>

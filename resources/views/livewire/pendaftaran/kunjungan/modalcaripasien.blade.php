@@ -18,7 +18,7 @@
                       <form wire:submit.prevent='cariData'>
                         <div class="form-group row">
                             <label class="col-md-2 col-lg-2 col-sm-2 col-from-label text-sm">CARI PASIEN</label>
-                            <div class="col-md-10 col-lg-10 col-sm-10 input-group">
+                            <div class="col-md-10 col-lg-10 col-sm-8 input-group">
                               <input type="text" wire:model.defer='cari' class="form-control" id="recipient-name" placeholder="Pencarian Pasien" required>
                               <span class="input-group-append">
                                 <button class="btn btn-primary ">Cari</button>
@@ -29,7 +29,7 @@
                        <p class="text-xs text-danger text-center">*Pencarian Pasien berdasarkan Nama, NIK, BPJS</p>
                     </div>
                 <div class="table-responsive">
-                  <table class="table table-sm table-striped table-bordered table-hover">
+                  <table class="table table-sm table-hover">
                     <thead>
                       <tr>
                         <th class="text-xs" width="10">No</th>
