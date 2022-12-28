@@ -24,7 +24,7 @@
                             </tr>
                         @endforeach
                             <tr>
-                                <th colspan="2" class="text-center">Total</th>
+                                <th colspan="2" class="text-center">TOTAL</th>
                                 <th>{{$totalJaminan}}</th>                             
                             </tr>
                     @endempty
