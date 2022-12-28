@@ -19,11 +19,15 @@
                     @empty(!$jumlahPoli)
                         @foreach ($jumlahPoli as $no=>$data)
                         <tr wire:loading.remove>
-                            <td>{{$no+1}}</td>
+                            <td>{{$no+1}}.</td>
                             <td class="text-left">{{$data->nama_poli}}</td>
                             <td>{{$data->jumlah}}</td> 
                         </tr>
                         @endforeach
+                        <tr>
+                            <th colspan='2'><b>TOTAL</b></th>
+                            <th><b>{{$total}}</b></th>
+                        </tr>
                     @endempty
 
                 </tbody>

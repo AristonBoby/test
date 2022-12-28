@@ -17,12 +17,16 @@
             <tbody>
                 @empty(!$jenkel)
                     @foreach ($jenkel as $no=>$data)
-                        <tr>
+                        <tr class="text-center">
                             <td>{{$no+1}}.</td>
-                            <td>@if($data->jenkel == 'L') Laki-laki @elseif($data->jenkel == 'P') Perempuan @endif</td>
+                            <td class="text-left">@if($data->jenkel == 'L') Laki-laki @elseif($data->jenkel == 'P') Perempuan @endif</td>
                             <td>{{$data->jumlah}}</td>
                         </tr>
                     @endforeach
+                        <tr class="text-center">
+                            <th colspan="2">TOTAL</th>
+                            <th>{{$total}}</th>
+                        </tr>
                 @endempty
             </tbody>
         </table>

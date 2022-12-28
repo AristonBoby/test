@@ -22,6 +22,10 @@ class Jaminan extends Component
                     ->groupBy('kunjungans.id_jaminan')
                     ->whereBetween('tanggal',[$tanggalMulai,$tanggalSelesai])
                     ->orderBy('jumlah','desc')->get();
+        $totalJaminan = DB::table('kunjungans')
+                    ->whereBetween('tanggal',[$tanggalMulai,$tanggalSelesai])
+                    ->count();
+        $this->totalJaminan = $totalJaminan;
         $this->jumlah = $jumlahJaminan;
     }
 }

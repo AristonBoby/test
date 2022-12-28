@@ -24,6 +24,11 @@ class Jenkel extends Component
             ->groupBy('pasiens.jenkel')
             ->whereBetween('kunjungans.tanggal',[$tanggalMulai,$tanggalSelesai])
             ->orderBy('jumlah','desc')->get();
+        $totalJenkel = DB::table('kunjungans')
+            ->join('pasiens','kunjungans.id_pasien','pasiens.id')
+            ->whereBetween('kunjungans.tanggal',[$tanggalMulai,$tanggalSelesai])
+            ->count();
+        $this->total = $totalJenkel;    
         $this->jenkel = $jumlahjenkel;
     }
 

@@ -18,11 +18,15 @@
                     @empty(!$jumlahJaminan)
                         @foreach ($jumlahJaminan as $no=>$data )
                             <tr wire:loading.remove>
-                                <td>{{$no+1}}</td>
+                                <td>{{$no+1}}.</td>
                                 <td class="text-left">{{$data->jaminan}}</td>
                                 <td>{{$data->jumlah}}</td>
                             </tr>
                         @endforeach
+                            <tr>
+                                <th colspan="2" class="text-center">Total</th>
+                                <th>{{$totalJaminan}}</th>                             
+                            </tr>
                     @endempty
                    
                 </tbody>

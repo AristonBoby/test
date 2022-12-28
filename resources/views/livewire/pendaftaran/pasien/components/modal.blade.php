@@ -66,8 +66,8 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-primary btn-sm" href="printpasien/{{$no_Rm}}"  target="_blank"><i class="fa fa-print"></i> Print</a>
-                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><b>X</b> Tutup</button>
+                    <a class="btn btn-primary btn-sm" href="printpasien/{{$no_Rm}}"  target="_blank"><i class="text-xs fa fa-print"></i> Print</a>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="text-xs fas fa-times"></i> Tutup</button>
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@
                             <div class="form-group row">
                                 <label class="col-md-4 col-from-label text-sm">Nomor Rekam Medis</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control form-control-sm rounded-0 @error('no_Rm') is-invalid @enderror" wire:model.defer='no_Rm' id="recipient-name" maxlength="8">
+                                    <input type="text" class="form-control form-control-sm rounded-0 @error('no_Rm') is-invalid @enderror" wire:model.defer='no_Rm' id="recipient-name" maxlength="50">
                                     @error('no_Rm')<span class="invalid-feedback">{{$message}}</span> @enderror
                                 </div>
                             </div>
@@ -259,8 +259,8 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary btn-sm btn-flat">Ubah Data</button>
-                  <a type="button" class="btn btn-secondary btn-sm btn-flat" data-dismiss="modal">Batal</a>
+                  <button type="submit" class="btn btn-primary btn-sm"><i class="text-xs fa fa-save"></i> Ubah data</button>
+                  <a type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="text-xs fas fa-times"></i> Batal</a>
                 </div>
               </form>
               </div>
