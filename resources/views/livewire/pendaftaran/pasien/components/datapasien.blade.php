@@ -24,10 +24,10 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table text-uppercase table-sm table-bordered table-hover text-sm table-striped text-center">
+                <table class="table  bg-dak table-sm table-hover text-sm text-center">
                     <thead>
-                        <tr>
-                            <th class="text-center">No</th>
+                        <tr class="text-uppercase">
+                            <th class="text-center">No.</th>
                             <th class="text-center">No Rekam Medis</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Tanggal Lahir</th>
@@ -38,13 +38,12 @@
                             <th class="text-center">Alamat</th>
                             <th class="text-center">Petugas Pendaftar</th>
                             <th class="text-center">Tanggal Daftar</th>
-                            <th></th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                    
                         @foreach ($pasien as $index => $query)
-                            <tr style=" overflow-y: scroll;">
+                            <tr class="text-uppercase" style=" overflow-y: scroll;">
                                 <td>{{$pasien->firstItem() + $index}}.</td>
                                 <td>{{$query->no_Rm}}</td>
                                 <td class="text-left text-uppercase">{{$query->nama}}</td>
@@ -66,19 +65,25 @@
                             </tr>
                         @endforeach
                     </tbody>
+                    <tfoot>
+                        <div class="col-md-12 col-lg-12 col-sm-12 row">
+                            <tr>
+                                <td colspan='3'>
+                                <div>
+                                    <span class=" mt-2 text-sm float-left">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
+                                </div>
+                                </td>
+                                <td colspan='9'>
+                                    <div class="float-right mt-2">
+                                        <p class=" mt-4  btn-sm float-right">{{$pasien->links()}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </div>
+                    </tfoot>
                 </table>
             </div>
         </div>  
-        <div class="card-footer">
-            <div class="col-md-12 col-lg-12 col-sm-12 row">
-                <div class="col-md-6 col-lg-6 col-sm-6">
-                    <span class="text-sm">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
-                </div>
-                <div class="col-md-6 col-lg-6 col-sm-6">
-                    <span class="float-right btn-sm text-xs">{{$pasien->links()}}</span>
-                </div>
-            </div>
-        </div>
         @include('livewire.pendaftaran.pasien.components.modal')
     </div>
     <style>

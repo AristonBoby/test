@@ -19,10 +19,10 @@
                 <div class="col-md-4 col-lg-4 col-sm-12">
                     <p class="text-sm text-danger">* Data Kunjungan yang ditampilkan berdasarkan tanggal Kunjungan</p>
                 </div>
-                <div class="form-group float-left col-md-8 col-sm-8 col-lg-8">
+                <div class="form-group float-left col-md-8col-sm-8 col-lg-8">
                     <div class="col-md-12 col-lg-4 col-sm-12 float-right row">
-                        <label class="form-label col-md-3 col-sm-3 col-lg-3 text-sm"> Tanggal</label>
-                            <div class="input-group col-md-8 col-lg-8 col-sm-8 mb-3">
+                        <label class="form-label col-md-3 col-sm-3 col-lg-4 text-sm"> Tanggal</label>
+                            <div class="input-group col-md-4 col-lg-8 col-sm-4 mb-3">
                                 <input type="date"  wire:model="tanggal" class=" form-control form-control-sm">
                                 <button class="btn btn-primary btn-sm btn-flat" wire:click='render'>Refresh</button>
                             </div>
@@ -30,13 +30,13 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class=" text-uppercase table  table-hover text-sm  text-center table-sm">
-                    <thead>  
+                <table class=" table  table-hover text-sm  text-center table-sm">
+                    <thead class="text-uppercase">
                         <tr>
                             <th class=" ">No</th>
                             <th class="text-center">No Rekam Medis</th>
                             <th class="text-center">Nama</th>
-                            <th class="text-center">Tgl Lahir</th>
+                            <th class="text-center">Tanggal Lahir</th>
                             <th class="text-center">Kelamin</th>
                             <th class="text-center">NIK</th>
                             <th class="text-center">BPJS</th>
@@ -45,15 +45,15 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         @if($query->isEmpty())
-                            <tr>
+                            <tr class="text-uppercase">
                                 <td colspan="10" class="text-sm">Data Kosong</td>
                             </tr>
                         @endif
                         @foreach ($query as $no => $data)
                             <tr>
-                                <td>{{$query->firstItem() + $no}}</td>
+                                <td>{{$query->firstItem() + $no}}.</td>
                                 <td>{{$data->no_Rm}}</td>
                                 <td class="text-left">{{$data->nama}}</td>
                                 <td>{{$data->tanggal_Lahir}}</td>
@@ -68,19 +68,30 @@
                             </tr>
                         @endforeach
                     </tbody>
+                    <tfoot>
+                        <div class=" text-sm btn-flat btn-xs">
+                            <div class="col-lg-12 col-md-12 col-sm-12 row">
+                                <tr>
+                                    <td colspan="3">
+                                            <div class="mt-3 col-md-12 col-sm-12">
+                                                <p class=" text-left text-sm col-lg-12 col-md-12 col-sm-12">Showing {{$query->currentPage()}} - {{$query->lastPage()}} of {{$query->total()}}</p>
+                                            </div>
+                                    </td>
+                                    <td colspan='8'>
+                                        <div class="col-lg-12 col-md-12 col-sm-12" >
+                                            <div class="float-right mt-3">
+                                                <span>{{$query->links()}}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </div>
+                        </div>
+                    </tfoot>
                 </table>
             </div>
         </div>
-                <div class=" text-xs btn-flat btn-xs">
-                    <div class="col-lg-12 col-md-12 col-sm-12 row">
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <span class="text-sm col-lg-3 col-md-3 col-sm-3">Showing {{$query->currentPage()}} - {{$query->lastPage()}} of {{$query->total()}}</span>
-                        </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9">
-                            <span class="float-right ">{{$query->links()}}</span>
-                        </div>
-                    </div>
-                </div>
+                
         </div>
     </div>
 </div>

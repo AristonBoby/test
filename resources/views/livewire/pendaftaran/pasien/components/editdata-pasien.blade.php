@@ -24,31 +24,30 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table text-uppercase table-sm table-bordered table-hover table-striped text-sm text-center">
-                        <thead>
+                    <table class="table table-xs table-hover  text-sm text-center">
+                        <thead class="text-uppercase">
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">No Rekam Medis</th>
+                                <th class="text-center">No. RM</th>
                                 <th class="text-center">Nama</th>
                                 <th class="text-center">Tanggal Lahir</th>
                                 <th class="text-center">Kelamin</th>
                                 <th class="text-center">NIK</th>
                                 <th class="text-center">BPJS</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
-                        
-                        <tbody  style="overflow:auto;">
+                        <tbody >
                             @if($pasien->isEmpty())
                             <tr>
                                 <td colspan="9">Data Kosong</td>
                             </tr>
                             @endif
                             @foreach ($pasien as $index => $query)
-                                <tr>
+                                <tr class="text-uppercase">
                                     <td>{{$pasien->firstItem() + $index}}.</td>
-                                    <td>{{$query->no_Rm}}</td>
-                                    <td>{{$query->nama}}</td>
+                                    <td class="text-left">{{$query->no_Rm}}</td>
+                                    <td class="text-left">{{$query->nama}}</td>
                                     <td>{{$query->tanggal_Lahir}}</td>
                                     <td text-center>{{$query->jenkel}}</td>
                                     <td>{{$query->nik}}</td>
@@ -59,19 +58,24 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="float-left">
+                                        <span class="text-lefttext-sm mt-6">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
+                                    </div>
+                                </td>
+                                <td colspan="8">
+                                    <div class="">
+                                        <span class="btn-sm float-right">{{$pasien->links()}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div> 
-            <div class="card-footer">
-                <div class="col-md-12 col-lg-12 col-sm-12 row">
-                    <div class="col-md-2 col-sm-2 col-lg-2">
-                        <span class="text-sm">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
-                    </div>
-                    <div class="col-md-10 col-sm-10 col-lg-10">
-                        <span class="float-right btn-xs">{{$pasien->links()}}</span>
-                    </div>
-                </div>
-            </div> 
+           
            
             @include('livewire.pendaftaran.pasien.components.modaldetailpasien')
         </div>
