@@ -2,6 +2,9 @@
         <div class="card card-danger card-outline">
             <div class="card-header">
                 <h3 class="card-title">Input Diagnosa Penyakit</h3>
+                <div wire:loading>
+                    <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-sm fas fa fa-spinner fa-spin"></i> &nbsp; Loading...</span>
+                </div>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                     <i class="fas fa-minus"></i>
@@ -20,13 +23,13 @@
                             <div class="form-group row">
                                 <label class="col-md-4 text-sm">Tanggal Kunjungan</label>
                                 <div class="col-md-8 input-group input-group-sm">
-                                <input type="date" class="form-control input-group-sm text-sm @error('tanggal')is-invalid @enderror" wire:model='tanggal'>
+                                <input type="date" class="form-control input-group-sm text-sm @error('tanggal')is-invalid @enderror" wire:model.defer='tanggal'>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-4 text-sm">No</label>
                                 <div class="col-md-8 input-group input-group-sm">
-                                    <input type="text" class="form-control input-group-sm text-sm @error('cari')is-invalid @enderror "wire:model="cari" placeholder="Nomor RM / NIK" required maxlength="16">
+                                    <input type="text" class="form-control input-group-sm text-sm @error('cari')is-invalid @enderror "wire:model.defer="cari" placeholder="Nomor RM / NIK" required maxlength="16">
                                     <span class="input-group-append">
                                         <button wire:click="cekpasien" type="button" class="btn btn-info" >Cari</button>
                                     </span>
@@ -57,23 +60,32 @@
                             </div>
                             
                                 <label class="control-label">Diagnosa</label>
-                                <form wire:submit.prevent='store'> 
-                                    <div class="col-md-12" style="padding-right: 18px;margin-top:1px;">
-                                        <div class="input-group">
-                                            <div class="col-md-3">
-                                                <input type="text" maxlength="6" @disabled($form) wire:model="diagnosa" class="form-control rounded-0 form-control-sm" required >
-                                            </div>   
-                                          
-                                                <input class="form-control form-control-sm"  wire:model="nama_diagnosa" type="text"  style="margin-left:-10px;" disabled required>
-                                                <a  wire:click.prevent="cek" @disabled($form) class="btn btn-default btn-sm rounded-0" >
-                                                    <i>Cari</i>
-                                                </a>
-                                                <a data-target="#modalcaridiagnosa" data-toggle="modal" class="btn btn-default btn-sm rounded-0">
-                                                    ...
-                                                </a>
-                                        </div>
-                                    </div>
-
+                                <form wire:submit.prevent='test'> 
+                                    @foreach($diagnosas as $no => $diagnosa)
+                                        <div class="col-md-12 col-sm-12 " style="padding-right18px;margin-top:4px;">
+                                            <div class="input-group">
+                                                <div class="col-md-2 col-sm-2">
+                                                    <input type="text" maxlength="6"  wire:model="diagnosa.{{$no}}" class="form-control rounded-0 form-control-sm"  >
+                                                </div>   
+                                                    <input class="form-control form-control-sm"  wire:model="diagnosaName.{{$no}}" type="text"  style="margin-left:-10px;" required disabled>
+                                                        <a  wire:click="cek({{$no}})" @disabled($form) class="btn btn-default btn-sm rounded-0 text-xs" >
+                                                            Cari
+                                                        </a>
+                                                        <a data-target="#modalcaridiagnosa" wire:click="modalCari({{$no}})" data-toggle="modal" class="btn btn-default btn-sm">
+                                                            ...
+                                                        </a>
+                                                    @if($no===0)
+                                                        <a wire:click="addDiagnosa({{$no}})" class="btn btn-default btn-sm rounded-0">
+                                                            <b>+</b>
+                                                        </a>
+                                                    @else
+                                                        <a wire:click="removeDiagnosa({{$no}})" class="btn btn-default btn-sm rounded-0">
+                                                            <i class="fa fa-times text-xs bg-denger"></i>
+                                                        </a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                    @endforeach
                                     <label>Dokter</label>
                                     <div class="col-md-8 mt-12">  
                                         <select placeholder="Pilih Dokter" wire:model="id_dokter" class="form-control form-control-sm  rounded-0" @disabled($form) required>
@@ -83,13 +95,13 @@
                                             @endforeach
                                         </select>
                                     </div>
-                            </div>
+                                    </div>
                                     <input type="text" wire:model="id_kunjungan" hidden>
                                     <input type="text" wire:model="id_pasien" hidden>
                                     <div class="col-md-12">
                                         <button class="btn btn-primary btn-sm mt-3 float-right mt-50 btn-flat" type="submit" @disabled($form)>Simpan</button>
                                     </div>
-                                    </form>
+                                </form>
                                 </div>       
                                 <button wire:click="city_change(5)">Cek</button>
         </div>              

@@ -11,7 +11,8 @@ use App\Models\dokter;
 class Formdiagnosa extends Component
 {
     public $cari;
-    public $diagnosa;
+    public $diagnosa=[];
+    public $diagnosaName=[];
     public $query;
     public $tanggal;
     public $nama;
@@ -25,6 +26,9 @@ class Formdiagnosa extends Component
     public $form = true;
     public $id_dokter;
 
+    public $i=1;
+    public $diagnosas=[1];
+
     protected $listeners = ['tambahdiagnosa' => 'store','city_change' => 'city_change'];
 
     public function render()
@@ -33,28 +37,39 @@ class Formdiagnosa extends Component
             'dokter'=>dokter::all()
         ]);
     }
+
     public function mount()
     {
         $this->tanggal = date('Y-m-d');
     }
 
+    public function modalCari($no)
+    {
+        dd($no);
+    }
 
+    public function addDiagnosa($no)
+    {
+        $no = $no + 1;
+        $this->i = $no;
+        array_push($this->diagnosas ,$no);
+    }
 
-    public function cek(){
-        
-        if(!empty($this->diagnosa))
+    public function removeDiagnosa($no)
+    {
+        unset($this->diagnosas[$no]);
+        array_push($this->diagnosas);
+    }
+
+    public function cek($id){
+        $data = icd::where('icd_code', $this->diagnosa[$id])->first(); 
+        if ($data)
         {
-            $q = icd::where('icd_code',$this->diagnosa)->first();
-            if($q)
-            {
-                $this->nama_diagnosa = $q->diagnosa;
-            }
+            $this->diagnosaName[$id] = $data->diagnosa;
         }
     }
 
-
     public function clear(){
-
         $this->diagnosa         ="";
         $this->query            ="";
         $this->nama             ="";
@@ -68,9 +83,6 @@ class Formdiagnosa extends Component
         $this->form             = false;
         $this->id_dokter        ="";
     }
-
-
-
 
     public function cekpasien()
     {   $this->clear();
@@ -109,13 +121,19 @@ class Formdiagnosa extends Component
 
     }
 
+    public function test(){
+        for ($i = 0; $i < count($this->diagnosa); $i++)
+        {
+            $query = diagnosa::create([
+                'id_dokter'     =>  $this->id_dokter,
+                'id_kunjungan'  =>  $this->id_kunjungan,
+                'id_icd'        =>  $this->diagnosa[$i],
+            ]);
+        }
+    }
+
     public function store()
-    {
-        $query = diagnosa::create([
-            'id_dokter'     =>  $this->id_dokter,
-            'id_kunjungan'  =>  $this->id_kunjungan,
-            'id_icd'        =>  $this->diagnosa,
-        ]);
+    {        
         if($query){
             $this->dispatchBrowserEvent('diagnosa');
             $this->no_Rm        = '';

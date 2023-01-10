@@ -30,7 +30,7 @@ class Tabel extends Component
                 ->join('pasiens','kunjungans.id_pasien','pasiens.id')
                 ->join('polis','kunjungans.id_poli','polis.id_poli')
                 ->where('kunjungans.tanggal',$this->tanggal)
-                ->select('diagnosas.id_diag',DB::raw('group_concat(diagnosas.id_icd)as icd'),DB::raw('group_concat(icd10.diagnosa)as diagnosa')
+                ->select('diagnosas.id_diag',DB::raw('group_concat(diagnosas.id_icd)as icd'), DB::raw('group_concat(icd10.diagnosa) as diagnosa')
                         ,'pasiens.nama' 
                         ,'pasiens.no_Rm'
                         ,'pasiens.tanggal_Lahir'

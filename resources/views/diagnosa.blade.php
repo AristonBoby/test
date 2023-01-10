@@ -11,7 +11,6 @@
 @section('content')
 <div class="row">
     <livewire:diagnosa.formdiagnosa>
-    <livewire:pendaftaran.kunjungan.tabelkunjungan>
     <livewire:diagnosa.tabel>
     <livewire:diagnosa.modalcari>
 
