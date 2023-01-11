@@ -65,23 +65,23 @@
                                         <div class="col-md-12 col-sm-12 " style="padding-right18px;margin-top:4px;">
                                             <div class="input-group">
                                                 <div class="col-md-2 col-sm-2">
-                                                    <input type="text" maxlength="6"  wire:model="diagnosa.{{$no}}" class="form-control rounded-0 form-control-sm"  >
+                                                    <input type="text"  @disabled($form) wire:model="diagnosa.{{$no}}" class="form-control rounded-0 form-control-sm"  >
                                                 </div>   
                                                     <input class="form-control form-control-sm"  wire:model="diagnosaName.{{$no}}" type="text"  style="margin-left:-10px;" required disabled>
-                                                        <a  wire:click="cek({{$no}})" @disabled($form) class="btn btn-default btn-sm rounded-0 text-xs" >
+                                                        <button type="button"  @disabled($form) class="btn btn-default btn-sm rounded-0 text-xs" >
                                                             Cari
-                                                        </a>
-                                                        <a data-target="#modalcaridiagnosa" wire:click="modalCari({{$no}})" data-toggle="modal" class="btn btn-default btn-sm">
+                                                        </button>
+                                                        <a data-target="#modalcaridiagnosa" @disabled($form) wire:click="modalCari({{$no}})" data-toggle="modal" class="btn btn-default btn-sm">
                                                             ...
                                                         </a>
                                                     @if($no===0)
-                                                        <a wire:click="addDiagnosa({{$no}})" class="btn btn-default btn-sm rounded-0">
+                                                        <button  type="button" wire:click="addDiagnosa('{{$no}}')"  class="btn btn-default btn-sm rounded-0">
                                                             <b>+</b>
-                                                        </a>
+                                                        </button>
                                                     @else
-                                                        <a wire:click="removeDiagnosa({{$no}})" class="btn btn-default btn-sm rounded-0">
+                                                        <button type="button"  wire:click="removeDiagnosa('{{$no}}')" @disabled($form) class="btn btn-default btn-sm rounded-0">
                                                             <i class="fa fa-times text-xs bg-denger"></i>
-                                                        </a>
+                                                        </button>
                                                     @endif
                                                 </div>
                                             </div>

@@ -11,6 +11,7 @@ use App\Models\dokter;
 class Formdiagnosa extends Component
 {
     public $cari;
+    public $idModal;
     public $diagnosa=[];
     public $diagnosaName=[];
     public $query;
@@ -29,7 +30,7 @@ class Formdiagnosa extends Component
     public $i=1;
     public $diagnosas=[1];
 
-    protected $listeners = ['tambahdiagnosa' => 'store','city_change' => 'city_change'];
+    protected $listeners = ['tambahdiagnosa' => 'store','pencarianDiagnosa' => 'pencarianDiagnosa'];
 
     public function render()
     {
@@ -45,7 +46,16 @@ class Formdiagnosa extends Component
 
     public function modalCari($no)
     {
-        dd($no);
+        $this->idModal = $no;
+    }
+
+    public function pencarianDiagnosa($id){
+        $data = icd::where('icd_code', $id)->first();
+            $this->diagnosa[$this->idModal] = $id;
+            $this->diagnosaName[$this->idModal] = $data->diagnosa;
+            $this->dispatchBrowserEvent('closeModal'); 
+        // dd($data->icd_code);
+
     }
 
     public function addDiagnosa($no)
@@ -61,16 +71,8 @@ class Formdiagnosa extends Component
         array_push($this->diagnosas);
     }
 
-    public function cek($id){
-        $data = icd::where('icd_code', $this->diagnosa[$id])->first(); 
-        if ($data)
-        {
-            $this->diagnosaName[$id] = $data->diagnosa;
-        }
-    }
-
     public function clear(){
-        $this->diagnosa         ="";
+        
         $this->query            ="";
         $this->nama             ="";
         $this->no_Rm            ="";
@@ -87,6 +89,7 @@ class Formdiagnosa extends Component
     public function cekpasien()
     {   $this->clear();
         $data = pasien::where('no_Rm', $this->cari)->first();
+        $cari = kunjungan::where('id_pasien',$data->id)->where('tanggal',$this->tanggal)->first();
         if($data===NULL)
         {
             $this->dispatchBrowserEvent('datatidakditemukan');
@@ -97,7 +100,6 @@ class Formdiagnosa extends Component
             $this->nik          ='';
             $this->jenkel       ='';
         }else{
-            $cari = kunjungan::where('id_pasien',$data->id)->where('tanggal',$this->tanggal)->first();
             if($cari)
             {
                 $this->id_pasien    =   $data->id;
@@ -133,7 +135,7 @@ class Formdiagnosa extends Component
     }
 
     public function store()
-    {        
+    { 
         if($query){
             $this->dispatchBrowserEvent('diagnosa');
             $this->no_Rm        = '';

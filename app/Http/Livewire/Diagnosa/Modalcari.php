@@ -6,21 +6,26 @@ use Livewire\Component;
 use App\Models\icd;
 use Illuminate\support\Facades\DB;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Concerns\ToArray;
+
 class Modalcari extends Component
 {
-    public $cariicd =" ";
-    use WithPagination;
-    protected $paginationTheme = 'bootstrap';
+    public $cariicd;
+    public $codeDiagnosa;
+
+    
+
     public function render()
     {
         return view('livewire.diagnosa.modalcari',[
-            'diag' => icd::where('icd_code','like','%'.$this->cariicd.'%')->orwhere('diagnosa','like','%'.$this->cariicd.'%')->paginate(10)
+            'diag'=>icd::where('icd_code',$this->cariicd)->orWhere('diagnosa','LIKE','%'.$this->cariicd.'%')->paginate(10)
         ]);
     }
 
-    public function mount()
+    public function dataDiagnosa($id)
     {
-        $this->cariicd; 
+        $this->emit('pencarianDiagnosa',$id);
+        $this->cariicd ='';
     }
-
+   
 }
