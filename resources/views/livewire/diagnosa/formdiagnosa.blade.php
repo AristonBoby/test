@@ -65,7 +65,7 @@
                                         <div class="col-md-12 col-sm-12 " style="padding-right18px;margin-top:4px;">
                                             <div class="input-group">
                                                 <div class="col-md-2 col-sm-2">
-                                                    <input type="text"  @disabled($form) wire:model="diagnosa.{{$no}}" class="form-control rounded-0 form-control-sm"  >
+                                                    <input type="text"  @disabled($form) wire:model="diagnosa.{{$no}}" class="form-control rounded-0 form-control-sm"  disabled>
                                                 </div>   
                                                     <input class="form-control form-control-sm"  wire:model="diagnosaName.{{$no}}" type="text"  style="margin-left:-10px;" required disabled>
                                                         <button type="button"  @disabled($form) class="btn btn-default btn-sm rounded-0 text-xs" >

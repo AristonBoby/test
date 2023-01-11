@@ -71,8 +71,9 @@ class Formdiagnosa extends Component
         array_push($this->diagnosas);
     }
 
-    public function clear(){
-        
+    public function clear()
+    {   $this->diagnosa=[];
+        $this->diagnosaName=[];
         $this->query            ="";
         $this->nama             ="";
         $this->no_Rm            ="";
@@ -87,7 +88,7 @@ class Formdiagnosa extends Component
     }
 
     public function cekpasien()
-    {   $this->clear();
+    {  
         $data = pasien::where('no_Rm', $this->cari)->first();
         $cari = kunjungan::where('id_pasien',$data->id)->where('tanggal',$this->tanggal)->first();
         if($data===NULL)
@@ -101,7 +102,7 @@ class Formdiagnosa extends Component
             $this->jenkel       ='';
         }else{
             if($cari)
-            {
+            {   $this->clear();
                 $this->id_pasien    =   $data->id;
                 $this->no_Rm        =   $data->no_Rm;
                 $this->nama         =   $data->nama;
