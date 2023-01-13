@@ -91,7 +91,7 @@ class Formdiagnosa extends Component
     public function cekpasien()
     {  
         $data = pasien::where('no_Rm', $this->cari)->first();
-        $cari = kunjungan::where('id_pasien',$data->id)->where('tanggal',$this->tanggal)->first();
+
         if($data===NULL)
         {
             $this->dispatchBrowserEvent('datatidakditemukan');
@@ -102,8 +102,15 @@ class Formdiagnosa extends Component
             $this->nik          ='';
             $this->jenkel       ='';
         }else{
+
+            $cari = kunjungan::where('id_pasien',$data->id)->where('tanggal',$this->tanggal)->first();
+
             if($cari)
-            {   $this->clear();
+            { 
+            
+                $this->cekDiagnosa($cari->id_kunjungan);
+
+                $this->clear();
                 $this->id_pasien    =   $data->id;
                 $this->no_Rm        =   $data->no_Rm;
                 $this->nama         =   $data->nama;
@@ -125,18 +132,36 @@ class Formdiagnosa extends Component
 
     }
 
+    private function cekDiagnosa($id)
+    {
+        $var_cekDiagnosa = diagnosa::where('id_kunjungan',$id)->first();
+    }
+
     public function test(){
-        for ($i = 0; $i < count($this->diagnosa); $i++)
+        // Proses Cek Data Kunjungan pada table diagnosas Apakah telah di input // 
+        $cek_Kunjungan = diagnosa::where('id_kunjungan',$this->id_kunjungan)->first();
+        dd($cek_Kunjungan);
+        // proses cek jika diagnosa tidak ada kosong //
+        if(empty($cek_Kunjungan))
         {
-            $query = diagnosa::create([
-                'id_dokter'     =>  $this->id_dokter,
-                'id_kunjungan'  =>  $this->id_kunjungan,
-                'id_icd'        =>  $this->diagnosa[$i],
-            ]);
+            for ($i = 0; $i < count($this->diagnosa); $i++)
+                {
+                    $query = diagnosa::create([
+                        'id_dokter'     =>  $this->id_dokter,
+                        'id_kunjungan'  =>  $this->id_kunjungan,
+                        'id_icd'        =>  $this->diagnosa[$i],
+                    ]);
+                }
+
             if($query)
-            {
-                $this->clear();
-            }
+                {
+                    $this->clear();
+                    $this->dispatchBrowserEvent('diagnosa');
+                }
+        }
+        // Jika diagnosa telah di input //
+        else{
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian']);
         }
     }
 

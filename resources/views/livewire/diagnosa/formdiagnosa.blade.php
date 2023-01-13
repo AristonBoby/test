@@ -20,20 +20,20 @@
                         <div class="row">
                         <div class="col-md-12">
                             <form wire:submit.prevent='cekpasien'>
-                            <div class="form-group row">
-                                <label class="col-md-4 text-sm">Tanggal Kunjungan</label>
-                                <div class="col-md-8 input-group input-group-sm">
-                                    <input type="date" class="form-control input-group-sm text-sm @error('tanggal')is-invalid @enderror" wire:model.defer='tanggal'>
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-sm">Tanggal Kunjungan</label>
+                                    <div class="col-md-8 input-group input-group-sm">
+                                        <input type="date" class="form-control input-group-sm text-sm @error('tanggal')is-invalid @enderror" wire:model.defer='tanggal'>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-4 text-sm">No</label>
-                                <div class="col-md-8 input-group input-group-sm">
-                                    <input type="text" class="form-control input-group-sm text-sm @error('cari')is-invalid @enderror "wire:model.defer="cari" placeholder="Nomor RM / NIK" required maxlength="16">
-                                    <span class="input-group-append">
-                                        <button wire:click="cekpasien" type="button" class="btn btn-info"> Cari</button>
-                                    </span>
-                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-sm">No</label>
+                                    <div class="col-md-8 input-group input-group-sm">
+                                        <input type="text" autofocus class="form-control input-group-sm text-sm @error('cari')is-invalid @enderror "wire:model.defer="cari" placeholder="Nomor RM / NIK / BPJS" required maxlength="16">
+                                        <span class="input-group-append">
+                                            <button wire:click="cekpasien" type="button" class="btn btn-info"> Cari</button>
+                                        </span>
+                                    </div>
                             </form>
                             </div>
                         </div>
@@ -66,11 +66,11 @@
                                             <input type="text" class="form-control form-control-sm col-md-2  col-sm-2 col-lg-2 rounded-0" wire:model="diagnosa.{{$no}}" disabled>
                                             <input type="text" class="form-control form-control-sm col-md-9 col-sm-9 col-lg-9 rounded-0"  wire:model="diagnosaName.{{$no}}" disabled>
                                             <div class="input-group-append">
-                                                <button type="button" class="btn btn-success btn-sm" data-target="#modalcaridiagnosa"  wire:click="modalCari({{$no}})" data-toggle="modal">...</button>
+                                                <button type="button" class="btn btn-success btn-sm" data-target="#modalcaridiagnosa"  wire:click="modalCari({{$no}})" data-toggle="modal"@disabled($form) >...</button>
                                             </div>
                                             <div class="input-group-append">
                                                 @if($no===0)
-                                                    <button class="btn btn-primary btn-sm btn-flat" type="button" wire:click="addDiagnosa('{{$no}}')">
+                                                    <button class="btn btn-primary btn-sm btn-flat" type="button" wire:click="addDiagnosa('{{$no}}')" @disabled($form)>
                                                         <b>+</b>
                                                     </button>
                                                 @else
@@ -109,30 +109,14 @@
             text: "Data Kunjungan Pasien tidak ditemukan Pada tanggal tersebut",
         })
     });
-    window.addEventListener('diagnosa', event => {
+
+    window.addEventListener('alert', event => {
         Swal.fire({
-            title: 'Berhasil',
+            title: event.detail.title,
             text: "Data Pasien tidak ditemukan",
             icon: 'success',
         })
     });
-    window.addEventListener('tambahdiagnosa', event => {
-                  Swal.fire({
-                  title: 'Tambah Diagnosa Penyakit',
-                  text: "Hapus Data",
-                  icon: 'warning',
-                  showCancelButton: true,
-                  confirmButtonColor: '#d33',
-                  cancelButtonColor: '#3085d6',
-                  confirmButtonText: 'YA'
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                      Livewire.emit('tambahdiagnosa')
-                  }else{
-                        Livewire.emit('clear')
-                  }
-                })
-          });
     
     </script>
 </div>

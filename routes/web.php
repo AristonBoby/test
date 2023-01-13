@@ -39,13 +39,13 @@ Route::group(['prefix'=>'pendaftaran','middleware'=>'pendaftaran'],function(){
 /// END ///
 
 /// Administrator ///
-Route::group(['prefix'=>'admin','middleware'=>'admin','middleware'=>'auth'],function(){
+Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/datapasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Datapasien::class,'show'])->name('admin.showdatapasien');
     Route::get('/daftar',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru::class, 'index']) ->name('admin.pendaftaranPasien');
     Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::class,'cetak'])->name('admin.printPasien');
     Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->name('admin.Kunjungan');
     Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('admin.updatePasien');
-    Route::get('/diagnosa',[App\Http\Livewire\Diagnosa\Index::class,'index'])->name('admin.diagnosa');
+    Route::get('/diagnosa',[App\Http\Livewire\Diagnosa\Index::class,'index'])->middleware('auth')->name('admin.diagnosa');
     Route::get('/tambahuser',[App\Http\Livewire\Tambahuser\Index::class,'index'])->name('admin.tambahuser');
     Route::get('/poli',[App\Http\Livewire\Poli\index::class,'show'])->name('admin.poli');
     Route::get('/jaminan',[App\Http\Livewire\Jaminan\Index::class,'show'])->name('admin.jaminan');

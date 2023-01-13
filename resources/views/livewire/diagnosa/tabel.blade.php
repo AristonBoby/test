@@ -25,22 +25,23 @@
                                 <div class="col-lg-9 col-md-12 col-sm-12">
                                     <div class="input-group mb-3">
                                         <input type="date"  wire:model="tanggal" class=" form-control form-control-sm text-sm rounded-0">
-                                        <button class="btn btn-sm btn-primary btn-flat" wire:click="pasienDiagnosa">CEK</button>
+                                        <button class="btn btn-sm btn-primary btn-flat" wire:click="pasienDiagnosa">Cari</button>
                                     </div>
                                 </div>
                         </div>
                     </div>
                 </div>
-                <table class="table-sm table table-bordered table-hover text-sm text-center">
+                <table class="table-sm table table-hover text-sm table-striped text-uppercase">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
-                            <th class="text-center">No Rekam Medis</th>
+                            <th class="text-center">Rekam Medis</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Tanggal Lahir</th>
                             <th class="text-center">Kelamin</th>
                             <th class="text-center">Poli</th>
                             <th class="text-ceneter">Dokter</th>
+                            <th class="text-center">Code ICD</th>
                             <th  width="30%" class="text-center">Diagnosa</th>
                             <th></th>
                         </tr>
@@ -49,16 +50,17 @@
                         @if(!empty($pasiendiagnosa))
                             @foreach ($pasiendiagnosa as $no=>$data)
                             <tr height="5px">
-                                <td>{{$no+1}}</td>
+                                <td>{{$no+1}}.</td>
                                 <td>@if(!empty($data->no_Rm)){{$data->no_Rm}}@endif</td>
                                 <td>@if(!empty($data->nama)){{$data->nama}}@endif</td>
                                 <td>@if(!empty($data->tanggal_Lahir)){{$data->tanggal_Lahir}}@endif</td>
                                 <td>@if(!empty($data->jenkel)){{$data->jenkel}}@endif</td>
                                 <td>@if(!empty($data->nama_poli)){{$data->nama_poli}}@endif</td>
                                 <td>@if(!empty($data->dokter)){{$data->dokter}}@endif</td>
+                                <td>{{$data->icd}}</td>
                                 <td width="30%">{{$data->diagnosa}}</td>
 
-                                <td><a class="btn btn-xs btn-danger"><i class="fas fa-light fa-trash-alt"></i></a></td>
+                                <td><a class="btn btn-sm btn-danger"><i class="fas fa-light fa-trash-alt"></i></a></td>
                             </tr>
                             @endforeach
                         @endif 
@@ -93,9 +95,9 @@
                   }
                 })
           });
-          window.addEventListener('hapus', event => {
+          window.addEventListener('alert', event => {
             Swal.fire({
-                title: 'Berhasil',
+                title: event.detail.title,
                 text: "Data Berhasil di Hapus",
                 icon: 'success',
             })
