@@ -26,7 +26,6 @@ class Formdiagnosa extends Component
     public $jenkel;
     public $form = true;
     public $id_dokter;
-
     public $i=1;
     public $diagnosas=[1];
 
@@ -59,8 +58,7 @@ class Formdiagnosa extends Component
     }
 
     public function addDiagnosa($no)
-    {
-        $no = $no + 1;
+    {   $no = $no + 1;
         $this->i = $no;
         array_push($this->diagnosas ,$no);
     }
@@ -84,63 +82,67 @@ class Formdiagnosa extends Component
         $this->nik              ="";
         $this->id_kunjungan     ="";
         $this->jenkel           ="";
-        $this->form             = false;
+        $this->form             = true;
         $this->id_dokter        ="";
     }
 
+
+
+    // proses cek Pasien //
     public function cekpasien()
     {  
+        $this->cekDataPasien();
+    }
+    
+    private function cekDataPasien()
+    {
         $data = pasien::where('no_Rm', $this->cari)->first();
-
-        if($data===NULL)
-        {
-            $this->dispatchBrowserEvent('datatidakditemukan');
-            $this->no_Rm        = '';
-            $this->id_pasien    = '';
-            $this->nama         ="";
-            $this->tgl_lahir    ="";
-            $this->nik          ='';
-            $this->jenkel       ='';
-        }else{
-
-            $cari = kunjungan::where('id_pasien',$data->id)->where('tanggal',$this->tanggal)->first();
-
-            if($cari)
-            { 
-            
-                $this->cekDiagnosa($cari->id_kunjungan);
-
-                $this->clear();
-                $this->id_pasien    =   $data->id;
-                $this->no_Rm        =   $data->no_Rm;
-                $this->nama         =   $data->nama;
-                $this->tgl_lahir    =   $data->tanggal_Lahir;
-                $this->nik          =   $data->nik;
-                $this->jenkel       =   $data->jenkel;
-                $this->form         =   false;
-                $this->id_kunjungan =   $cari->id;
-            }else{
-                $this->no_Rm        = '';
-                $this->id_pasien    = '';
-                $this->nama         ="";
-                $this->tgl_lahir    ="";
-                $this->nik          ='';
-                $this->jenkel       ='';
-                $this->dispatchBrowserEvent('datatidakditemukan');
-            }
+        if(!empty($data)){
+            $this->nama  = $data->nama;
+            $this->no_Rm = $data->no_Rm;
+            $this->tgl_lahir = $data->tanggal_Lahir;
+            $this->jenkel = $data->jenkel;
+            $this->nik   = $data->nik;
+            $this->cekDataKunjungan($data->id);
         }
+        else{
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','text'=>'Pasien Tidak Terdaftar','icon'=>'warning']);
+            $this->clear();
+        }
+    }
 
+    private function cekDataKunjungan($id)
+    {
+        $kunjungan = kunjungan::where('id_pasien',$id)->where('tanggal',$this->tanggal)->first();
+        if(!empty($kunjungan)){
+          $this->id_kunjungan = $kunjungan->id;  
+          $this->cekDiagnosa($kunjungan->id);
+        }
+        else{
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','text'=>'Pasien Tidak Terdaftar Pada Tanggal Kunjungan Saat ini','icon'=>'warning']);
+            $this->clear();
+        }
     }
 
     private function cekDiagnosa($id)
     {
         $var_cekDiagnosa = diagnosa::where('id_kunjungan',$id)->first();
+        if(empty($var_cekDiagnosa)){
+            $this->form = false;
+            
+        }
+        else{
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','text'=>'Pasien Telah Dilayani','icon'=>'warning']);
+            $this->clear();
+        }
+
     }
+    //end cek Pasien //
+
 
     public function test(){
         // Proses Cek Data Kunjungan pada table diagnosas Apakah telah di input // 
         $cek_Kunjungan = diagnosa::where('id_kunjungan',$this->id_kunjungan)->first();
-        dd($cek_Kunjungan);
         // proses cek jika diagnosa tidak ada kosong //
         if(empty($cek_Kunjungan))
         {
@@ -164,22 +166,4 @@ class Formdiagnosa extends Component
             $this->dispatchBrowserEvent('alert',['title'=>'Perhatian']);
         }
     }
-
-    public function store()
-    { 
-        if($query){
-            $this->dispatchBrowserEvent('diagnosa');
-            $this->no_Rm        = '';
-            $this->id_pasien    = '';
-            $this->id_kunjungan    = '';
-            $this->nama_diagnosa    = '';
-            $this->diagnosa    = '';
-            $this->nama         ="";
-            $this->tgl_lahir    ="";
-            $this->nik          ='';
-            $this->jenkel       ='';
-            $this->form = true;
-        }
-    }
-    
 }
