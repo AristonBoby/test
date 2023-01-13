@@ -73,6 +73,7 @@ class Formdiagnosa extends Component
 
     public function clear()
     {   $this->diagnosa=[];
+        $this->diagnosas=[1];
         $this->diagnosaName=[];
         $this->query            ="";
         $this->nama             ="";
@@ -132,6 +133,10 @@ class Formdiagnosa extends Component
                 'id_kunjungan'  =>  $this->id_kunjungan,
                 'id_icd'        =>  $this->diagnosa[$i],
             ]);
+            if($query)
+            {
+                $this->clear();
+            }
         }
     }
 

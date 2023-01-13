@@ -1,4 +1,4 @@
-    <div class="col-lg-4 col-md-8 col-sm-12">   
+    <div class="col-lg-4 col-md-12 col-sm-12">   
         <div class="card card-danger card-outline">
             <div class="card-header">
                 <h3 class="card-title">Input Diagnosa Penyakit</h3>
@@ -17,13 +17,13 @@
                 <div class="card-body">
                    
                         @csrf
-                    <div class="row">
+                        <div class="row">
                         <div class="col-md-12">
                             <form wire:submit.prevent='cekpasien'>
                             <div class="form-group row">
                                 <label class="col-md-4 text-sm">Tanggal Kunjungan</label>
                                 <div class="col-md-8 input-group input-group-sm">
-                                <input type="date" class="form-control input-group-sm text-sm @error('tanggal')is-invalid @enderror" wire:model.defer='tanggal'>
+                                    <input type="date" class="form-control input-group-sm text-sm @error('tanggal')is-invalid @enderror" wire:model.defer='tanggal'>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -31,7 +31,7 @@
                                 <div class="col-md-8 input-group input-group-sm">
                                     <input type="text" class="form-control input-group-sm text-sm @error('cari')is-invalid @enderror "wire:model.defer="cari" placeholder="Nomor RM / NIK" required maxlength="16">
                                     <span class="input-group-append">
-                                        <button wire:click="cekpasien" type="button" class="btn btn-info" >Cari</button>
+                                        <button wire:click="cekpasien" type="button" class="btn btn-info"> Cari</button>
                                     </span>
                                 </div>
                             </form>
@@ -62,29 +62,24 @@
                                 <label class="control-label">Diagnosa</label>
                                 <form wire:submit.prevent='test'> 
                                     @foreach($diagnosas as $no => $diagnosa)
-                                        <div class="col-md-12 col-sm-12 " style="padding-right18px;margin-top:4px;">
-                                            <div class="input-group">
-                                                <div class="col-md-2 col-sm-2">
-                                                    <input type="text"  @disabled($form) wire:model="diagnosa.{{$no}}" class="form-control rounded-0 form-control-sm"  disabled>
-                                                </div>   
-                                                    <input class="form-control form-control-sm"  wire:model="diagnosaName.{{$no}}" type="text"  style="margin-left:-10px;" required disabled>
-                                                        <button type="button"  @disabled($form) class="btn btn-default btn-sm rounded-0 text-xs" >
-                                                            Cari
-                                                        </button>
-                                                        <a data-target="#modalcaridiagnosa" @disabled($form) wire:click="modalCari({{$no}})" data-toggle="modal" class="btn btn-default btn-sm">
-                                                            ...
-                                                        </a>
-                                                    @if($no===0)
-                                                        <button  type="button" wire:click="addDiagnosa('{{$no}}')"  class="btn btn-default btn-sm rounded-0">
-                                                            <b>+</b>
-                                                        </button>
-                                                    @else
-                                                        <button type="button"  wire:click="removeDiagnosa('{{$no}}')" @disabled($form) class="btn btn-default btn-sm rounded-0">
-                                                            <i class="fa fa-times text-xs bg-denger"></i>
-                                                        </button>
-                                                    @endif
-                                                </div>
+                                        <div class="input-group row mt-1">
+                                            <input type="text" class="form-control form-control-sm col-md-2  col-sm-2 col-lg-2 rounded-0" wire:model="diagnosa.{{$no}}" disabled>
+                                            <input type="text" class="form-control form-control-sm col-md-9 col-sm-9 col-lg-9 rounded-0"  wire:model="diagnosaName.{{$no}}" disabled>
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-success btn-sm" data-target="#modalcaridiagnosa"  wire:click="modalCari({{$no}})" data-toggle="modal">...</button>
                                             </div>
+                                            <div class="input-group-append">
+                                                @if($no===0)
+                                                    <button class="btn btn-primary btn-sm btn-flat" type="button" wire:click="addDiagnosa('{{$no}}')">
+                                                        <b>+</b>
+                                                    </button>
+                                                @else
+                                                    <button type="button" class="btn btn-danger btn-sm btn-flat" wire:click="removeDiagnosa('{{$no}}')" @disabled($form)>
+                                                        <i class="fa fa-times text-xs bg-denger"></i>
+                                                    </button>
+                                                @endif
+                                            </div>
+                                        </div>
                                     @endforeach
                                     <label>Dokter</label>
                                     <div class="col-md-8 mt-12">  

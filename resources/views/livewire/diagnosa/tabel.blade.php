@@ -1,8 +1,10 @@
-
-    <div class="col-md-12 col-sm-12 col-lg-12">
-        <div class="card card-info card">
+    <div class="col-md-12 col-sm-12 col-lg-8">
+        <div class="card card-info card-outline">
             <div class="card-header">
                 <h3 class="card-title ">Data Pasien Yang Telah Dilayani</h3>
+                <div wire:loading>
+                    <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-sm fas fa fa-spinner fa-spin"></i> &nbsp; Loading...</span>
+                </div>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                     <i class="fas fa-minus"></i>
@@ -17,7 +19,7 @@
                     <div class="col-md-8">
                         <p class="text-sm text-danger">* Data Pasien yang ditampilkan berdasarkan tanggal terdaftar pasien</p>
                     </div>
-                    <div class="col-md-12 col-lg-2 col-sm-12 mb-3 float-right">
+                    <div class="col-md-12 col-lg-4 col-sm-12 mb-3 float-right">
                         <div class="form-group row">
                             <label class="form-label col-md-12 col-lg-3 col-sm-12 text-xs"> Tanggal </label>
                                 <div class="col-lg-9 col-md-12 col-sm-12">
@@ -45,8 +47,7 @@
                     </thead>
                     <tbody>
                         @if(!empty($pasiendiagnosa))
-                        {
-                            @foreach ($pasiendiagnosa as $no=>$data )
+                            @foreach ($pasiendiagnosa as $no=>$data)
                             <tr height="5px">
                                 <td>{{$no+1}}</td>
                                 <td>@if(!empty($data->no_Rm)){{$data->no_Rm}}@endif</td>
@@ -60,7 +61,6 @@
                                 <td><a class="btn btn-xs btn-danger"><i class="fas fa-light fa-trash-alt"></i></a></td>
                             </tr>
                             @endforeach
-                        }
                         @endif 
                     </tbody>
                 </table>

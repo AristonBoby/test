@@ -8,11 +8,15 @@
     </div>
   </div><!-- /.container-fluid -->
 @endsection
+
 @section('content')
-<div class="row">
-    <livewire:diagnosa.formdiagnosa>
-    <livewire:diagnosa.tabel>
-    <livewire:diagnosa.modalcari>
-
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <livewire:diagnosa.formdiagnosa>
+                <livewire:diagnosa.tabel>
+                <livewire:diagnosa.modalcari>
+            </div>
+        </div>
+    </div>
 @endsection
-
