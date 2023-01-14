@@ -95,6 +95,7 @@ class Pasienbaru extends Component
                 // Minimal 8 Karakter //
                 $noRm_Panjang=strlen($this->no_Rm);
                 // End //
+                
                 // Proses Validasi  Jika Nomor Rekam Medis Ganda tampilkan Tanpilkan Message //
                 if(!empty($cekNoRekamMedis)){
                     $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Telah digunakan Atas Nama [ '.$cekNoRekamMedis->nama.' ]']);

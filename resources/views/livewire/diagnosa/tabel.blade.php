@@ -32,17 +32,17 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table-sm table table-hover text-sm table-striped text-uppercase">
+                    <table class="table-sm table table-hover text-sm table-striped text-uppercase text-center">
                         <thead>
                             <tr>
                                 <th class="text-center">No</th>
                                 <th class="text-center">Rekam Medis</th>
                                 <th class="text-center">Nama</th>
-                                <th class="text-center">Tanggal Lahir</th>
+                                <th class="text-center">TGL Lahir</th>
                                 <th class="text-center">Kelamin</th>
                                 <th class="text-center">Poli</th>
                                 <th class="text-ceneter">Dokter</th>
-                                <th class="text-center">Code ICD</th>
+                                <th class="text-center"> ICD</th>
                                 <th  width="30%" class="text-center">Diagnosa</th>
                                 <th>Action</th>
                             </tr>
@@ -60,7 +60,6 @@
                                     <td>@if(!empty($data->dokter)){{$data->dokter}}@endif</td>
                                     <td>{{$data->icd}}</td>
                                     <td width="30%">{{$data->diagnosa}}</td>
-
                                     <td><a class="btn btn-sm btn-danger"><i class="fas fa-light fa-trash-alt"></i></a></td>
                                 </tr>
                                 @endforeach

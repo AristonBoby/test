@@ -48,6 +48,15 @@ class Formdiagnosa extends Component
         $this->idModal = $no;
     }
 
+    protected $rules = [
+        'cari'              => 'required',
+
+    ];
+
+    protected $messages = [
+        'cari.required' =>  'Data ',
+    ];
+
     public function pencarianDiagnosa($id){
         $data = icd::where('icd_code', $id)->first();
             $this->diagnosa[$this->idModal] = $id;
@@ -69,10 +78,10 @@ class Formdiagnosa extends Component
         array_push($this->diagnosas);
     }
 
-    public function clear()
-    {   $this->diagnosa=[];
-        $this->diagnosas=[1];
-        $this->diagnosaName=[];
+    private function clear()
+    {   $this->diagnosa         =[];
+        $this->diagnosas        =[1];
+        $this->diagnosaName     =[];
         $this->query            ="";
         $this->nama             ="";
         $this->no_Rm            ="";
@@ -90,7 +99,7 @@ class Formdiagnosa extends Component
 
     // proses cek Pasien //
     public function cekpasien()
-    {  
+    {   $this->validate();
         $this->cekDataPasien();
     }
     
@@ -129,7 +138,6 @@ class Formdiagnosa extends Component
         $var_cekDiagnosa = diagnosa::where('id_kunjungan',$id)->first();
         if(empty($var_cekDiagnosa)){
             $this->form = false;
-            
         }
         else{
             $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','text'=>'Pasien Telah Dilayani','icon'=>'warning']);
@@ -143,9 +151,11 @@ class Formdiagnosa extends Component
     public function test(){
         // Proses Cek Data Kunjungan pada table diagnosas Apakah telah di input // 
         $cek_Kunjungan = diagnosa::where('id_kunjungan',$this->id_kunjungan)->first();
+        $this->validate();
         // proses cek jika diagnosa tidak ada kosong //
         if(empty($cek_Kunjungan))
-        {
+        {   
+            
             for ($i = 0; $i < count($this->diagnosa); $i++)
                 {
                     $query = diagnosa::create([
@@ -158,7 +168,7 @@ class Formdiagnosa extends Component
             if($query)
                 {
                     $this->clear();
-                    $this->dispatchBrowserEvent('diagnosa');
+                    $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','text'=>'Pasien Telah Dilayani','icon'=>'success']);
                 }
         }
         // Jika diagnosa telah di input //
