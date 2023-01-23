@@ -28,11 +28,12 @@ class Pasienbaru extends Component
     public $kecamatan;  //Variabel Kelurahan
     public $kelurahan; //Variabel Kelurahan
     public $idkelurahan;
+    public $dataProv;
 
 
     public function mount(){
         $this->tanggal_Lahir = date('Y-m-d');
-        $this->prov;
+    
     }
     public function render()
     {
@@ -42,6 +43,7 @@ class Pasienbaru extends Component
             'kec'       =>  kecamatan::where('kota_id',$this->kotas)->get(),
             'kel'       =>  kelurahan::where('kec_id',$this->kelurahan)->get()
         ]);
+
     }
 
     public function index ()
@@ -136,10 +138,7 @@ class Pasienbaru extends Component
     // End Validasi Data Pasien Baru //
 
     public function store(){
-
-
         if (!$this->validasi_data(false)){
-
             $query = pasien::create([
                 'no_Rm'             => $this->no_Rm,
                 'nama'              => $this->nama,

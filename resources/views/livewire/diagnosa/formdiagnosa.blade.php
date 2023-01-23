@@ -254,7 +254,51 @@
                             </div>
                         </div>  
                     </div>
-                 
+                    <div class="callout callout-success" style="margin-top:15px;">
+                        <label class="control-label " style="margin-top:-17px;">PEMERIKSAAN IVA</label>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3 text-sm form-control-sm" >Hasil IVA</label>  
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm">
+                            </div>
+                            <label class="control-label col-md-3 text-sm form-control-sm" >Tindak Lanjut IVA Positif</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <label class="control-label " style="margin-top:-17px;">PEMERIKSAAN SADANIS</label>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3 text-sm form-control-sm" >Hasil SADANIS</label>  
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm">
+                            </div>
+                            <label class="control-label col-md-3 text-sm form-control-sm" >Tindak Lanjut SADANIS</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="callout callout-success" style="margin-top:15px;">
+                        <label class="control-label " style="margin-top:-17px;">FORM UBM</label>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3 text-sm form-control-sm" >Konseling</label>  
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm">
+                            </div>
+                            <label class="control-label col-md-3 text-sm form-control-sm" >CAR</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control">
+                            </div>
+                            <label class="control-label col-md-3 text-sm form-control-sm" >Rujuk UBM</label>  
+                            <div class="col-md-9">
+                                <input type="text" class="form-control form-control-sm">
+                            </div>
+                            <label class="control-label col-md-3 text-sm form-control-sm" >Kondisi</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
                     <label class="control-label" style="margin-top:-17px;">Diagnosa</label>
                         @foreach($diagnosas as $no => $diagnosa)
                             <div class="input-group row mt-1">

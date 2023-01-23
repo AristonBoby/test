@@ -14,7 +14,6 @@
                 <i class="fa fa-user-plus nav-icon text-success"></i><p>PENDAFTARAN PASIEN</p>
               </a>
             </li>
-
             <li class="nav-item">
               <a href="{{Route('pendaftaran.showdatapasien')}}" class="nav-link">
                 <i class="fa fa-search nav-icon text-warning"></i><p>PENCARIAN DATA PASIEN</p>
@@ -132,7 +131,21 @@
               <i class="fa  fa-database  nav-icon text-warning"></i><p>PENCARIAN DATA PASIEN</p>
             </a>
           </li>
-
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link"><i class="nav-icon fa fa-file-medical"></i><p> PENYAKIT TIDAK MENULAR <i class="right fas fa-angle-left"></i></p></a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{{Route('admin.pendaftaranPtm')}}" class=" nav-link">
+              <i class="fa fa-user-plus nav-icon text-info"></i><p>PENDAFTARAN PTM</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{Route('admin.showdatapasien')}}" class="nav-link">
+              <i class="fa  fa-database  nav-icon text-warning"></i><p>PENCARIAN DATA PTM</p>
+            </a>
+          </li>
         </ul>
       </li>
       <li class="nav-item">
@@ -155,7 +168,15 @@
           <li class="nav-item">
             <a href="{{route('admin.diagnosa')}}" class="nav-link">
               <i class="far fa-circle nav-icon text-danger"></i>
-              <p>INPUT DIAGNOSA</p>
+              <p>INPUT DIAGNOSIS</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{{route('admin.ptm')}}" class="nav-link">
+              <i class="far fa-circle nav-icon text-info"></i>
+              <p>PTM</p>
             </a>
           </li>
         </ul>
