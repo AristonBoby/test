@@ -33,7 +33,7 @@ class Pasienbaru extends Component
 
     public function mount(){
         $this->tanggal_Lahir = date('Y-m-d');
-    
+
     }
     public function render()
     {
@@ -70,7 +70,7 @@ class Pasienbaru extends Component
     protected $messages =[
         'no_Rm.required'            =>'Nomor Rekam Medis wajib di isi',
         'no_Rm.unique'              =>'Nomor Rekam Medis telah digunakan',
-        'max'                       =>'Nomor Rekam Medis Maksimal 7 Karakter',
+        'no_Rm.max'                       =>'Nomor Rekam Medis Maksimal 7 Karakter',
         'nama.required'             =>'Nama Pasien wajib diisi',
         'tempat_Lahir.required'     =>'Tempat lahir Pasien wajib diisi',
         'tanggal_Lahir.required'    =>'Tanggal lahir Pasien wajib diisi',
@@ -97,7 +97,7 @@ class Pasienbaru extends Component
                 // Minimal 8 Karakter //
                 $noRm_Panjang=strlen($this->no_Rm);
                 // End //
-                
+
                 // Proses Validasi  Jika Nomor Rekam Medis Ganda tampilkan Tanpilkan Message //
                 if(!empty($cekNoRekamMedis)){
                     $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Telah digunakan Atas Nama [ '.$cekNoRekamMedis->nama.' ]']);

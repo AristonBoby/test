@@ -8,8 +8,7 @@ use App\Models\kecamatan;
 use App\Models\kelurahan;
 use App\Models\kota;
 class Forminput extends Component
-{   
-    protected $listeners= ['ptmData'=>'form'];
+{
     public $form = true;
     public $kelurahan;
     public $prov;
@@ -26,6 +25,8 @@ class Forminput extends Component
     public $kota_id;
     public $prov_id;
 
+    protected $listeners = ['formAktif' => 'aktifForm','ptmData'=>'form'];
+
     public function render()
     {
         return view('livewire.pendaftaran.ptm.forminput',[
@@ -34,6 +35,10 @@ class Forminput extends Component
             'kec'       =>  kecamatan::where('kota_id',$this->kota_id)->get(),
             'kel'       =>  kelurahan::where('kec_id',$this->id_kec)->get()
         ]);
+    }
+
+    public function aktifForm(){
+        $this->form = false;
     }
 
     public function form($id)

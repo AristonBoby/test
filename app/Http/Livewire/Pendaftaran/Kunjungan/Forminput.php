@@ -25,7 +25,6 @@ class Forminput extends Component
 
     public $cari_Pasien_no_RM;
 
-    public $listeners = ['cariDataPasien' => 'cariDataPasien'];
 
     public function render()
     {
