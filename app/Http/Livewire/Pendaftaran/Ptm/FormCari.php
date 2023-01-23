@@ -16,11 +16,7 @@ class FormCari extends Component
     public $prov;
     public $provinsi;
     public $kotas;
-    public $cities = [
-        'Rajkot',
-        'Surat',
-        'Baroda',
-    ]; 
+
 
 
     public function render()
@@ -30,47 +26,27 @@ class FormCari extends Component
     }
 
     protected $rules=([
-        'cari' => 'required',
+        'cari' => 'required||min:16',
     ]);
 
     protected $messages = ([
-        'cari.required' => 'NIK Tidak Boleh Kosong'
+        'cari.min'      => 'NIK Tidak Boleh Kosong',
+        'cari.required' => 'NIK Minimal 16',
+
     ]);
 
     public function cek_ptm()
     {
         $this->validate();
-        $ptm = pasienPtm::where('nik',$this->cari)->first();
-        if(!null==$ptm){
-            $this->ptmCek($id);
+        $ptm = pasien::where('nik',$this->cari)->first();
+
+        if(!empty($ptm))
+        {
+
         }else{
-            $this->pasienCek($this->cari);
+            $this->emit('formAktif');
         }
 
-    }
 
-    private function ptmCek ($id)
-    {   
-        $this->emit('ptmData');
-        
-    }
-
-    private function pasienCek($id)
-    {
-        $id = DB::table('pasiens')
-            ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
-            ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
-            ->join('kotas','kecamatans.kota_id','kotas.kota_id')
-            ->join('provinsis','kotas.prov_id','provinsis.prov_id')
-            ->select(['pasiens.*','kelurahans.kel_name','kecamatans.id_kec','kecamatans.kec_name','kotas.kota_id','kotas.kota_name','provinsis.prov_id','provinsis.prov_name'])
-            ->where('nik',$id)->first();
-        if(!null==$id)
-        {      
-                
-                $this->emit('ptmData',$id);
-        }
-        else{
-            $this->emit('ptmData',$id);
-        }
     }
 }
