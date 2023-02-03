@@ -7,23 +7,22 @@
             </div>
         </div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-8">
-                    <code>* Pencarian Pasien dapat menggunakan : Nomor Rekam Medis, Nama, NIK, BPJS</code>
-                </div>
-                <div class="col-md-4 mb-3 float-right">
-                    <div class="form-group row">
-                        <label class="form-label col-md-4 text-sm"> Pencarian Pasien</label>
-                            <div class="col-md-8">
-                                <div class="input-group mb-3">
-                                    <input type="text"  wire:model.lazy="caripasien" class=" form-control form-control-sm rounded-0" placeholder="Pencarian Pasien">
-                                </div>
+            <a href="" class="btn btn-primary mb-4 btn-sm">+ Tambah Data Pasien</a>
+            <div class="callout callout-danger col-lg-12 mb-3">
+                <div class="col-md-12 ">
+                    <div class="form-group">
+                        <h5 class=" col-md-2 col-lg-2"> Pencarian Pasien</h5>
+                            <div class="col-md-12 col-lg-12">
+                                <input type="text"  wire:model.lazy="caripasien" class=" form-control " placeholder="Pencarian Data Pasien">
                             </div>
                     </div>
                 </div>
+                <p class="text-danger col-md-8 col-sm-12 col-lg-6">
+                    * Pencarian Pasien dapat menggunakan : Nomor Rekam Medis, Nama, NIK, BPJS
+                </p>
             </div>
-            <div class="table-responsive">
-                <table class="table  bg-dak table-sm table-hover text-sm text-center">
+            <div class="table-responsive mt-3">
+                <table class="table table-bordered table-sm table-hover text-sm text-center">
                     <thead>
                         <tr class="text-uppercase">
                             <th class="text-center">No.</th>
@@ -60,7 +59,7 @@
                                         <a class="btn btn-sm btn-warning"  data-toggle="modal" data-target="#edit" wire:click="edit({{$query->id}})"><i class="text-xs fa fa-edit"></i></a>
                                         <a class="btn btn-sm btn-danger" href="javascript:void(0)" wire:click.prevent='deleteConfirmation({{$query->id}})' target="blank_"><i class="text-xs fas fa-light fa-trash-alt"></i></a>
                                     </div>
-                                </td>                  
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -82,7 +81,7 @@
                     </tfoot>
                 </table>
             </div>
-        </div>  
+        </div>
         @include('livewire.pendaftaran.pasien.components.modal')
     </div>
     <style>
@@ -90,7 +89,7 @@
             height:20px;
         }
     </style>
-</div>    
+</div>
 
 <script>
     window.addEventListener('show-delete-confirmation', event => {
@@ -123,5 +122,5 @@
               icon: 'success',
             })
       });
-    
+
 </script>
