@@ -16,8 +16,7 @@
                         <label class="form-label col-md-4 text-sm"> Pencarian Pasien</label>
                             <div class="col-md-8">
                                 <div class="input-group mb-3">
-                                    <input type="text"  wire:model="caripasien" class=" form-control form-control-sm rounded-0" placeholder="Pencarian Pasien">
-                                    <a class="btn btn-primary btn-sm" wire:click="render()" wire:loading.target='table'>Cari</a>
+                                    <input type="text"  wire:model.lazy="caripasien" class=" form-control form-control-sm rounded-0" placeholder="Pencarian Pasien">
                                 </div>
                             </div>
                     </div>
