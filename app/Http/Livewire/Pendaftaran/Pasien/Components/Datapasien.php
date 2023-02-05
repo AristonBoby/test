@@ -17,7 +17,7 @@ class Datapasien extends Component
     public $nama;
     public $no_Rm;
     public $tempat_Lahir;
-    public $tanggal_Lahir; 
+    public $tanggal_Lahir;
     public $kepala_keluarga;
     public $pekerjaan;
     public $jenkel;
@@ -29,18 +29,19 @@ class Datapasien extends Component
     public $id_pasien;
     public $kel_name;
     public $id_kel;
-    public $prov;      
-    public $kotas;     
-    public $kelurahan; 
-    public $kecamatan; 
+    public $prov;
+    public $kotas;
+    public $kelurahan;
+    public $kecamatan;
     public $prov_name;
     public $kec_name;
     public $kota_name;
+    public $status=1;
     protected $listeners = ['deleteConfirmed' => 'hapusPasien'];
     protected $paginationTheme = 'bootstrap';
     use WithPagination;
     //Reset Paginate//
-    
+
     public function updatingCaripasien()
     {
         $this->resetPage();
@@ -130,7 +131,7 @@ class Datapasien extends Component
 
     ];
 
-    
+
     public function edit ($data){
         $this->detailPasien($data);
     }
@@ -146,10 +147,10 @@ class Datapasien extends Component
                     ->join('provinsis','kotas.prov_id','provinsis.prov_id')
                     ->select('*','kelurahans.id_kel','kecamatans.id_kec','kotas.kota_id','provinsis.prov_id')
                     ->where('pasiens.id',$data)->first();
-                
+
            if($query){
             $this->id_pasien        =   $query->id;
-            $this->nama             =   $query->nama; 
+            $this->nama             =   $query->nama;
             $this->no_Rm            =   $query->no_Rm;
             $this->agama            =   $query->agama;
             $this->tempat_Lahir     =   $query->tempat_Lahir;
@@ -159,8 +160,8 @@ class Datapasien extends Component
             $this->pekerjaan        =   $query->pekerjaan;
             $this->nik              =   $query->nik;
             $this->bpjs             =   $query->bpjs;
-            $this->alamat           =   $query->alamat;   
-            $this->no_tlpn          =   $query->no_tlpn; 
+            $this->alamat           =   $query->alamat;
+            $this->no_tlpn          =   $query->no_tlpn;
             $this->kelurahan        =   $query->kel_id;
             $this->kel_nama         =   $query->kel_name;
             $this->prov             =   $query->prov_id;
@@ -174,7 +175,7 @@ class Datapasien extends Component
 
             $query = pasien::find($data);
             $this->id_pasien        =   $query->id;
-            $this->nama             =   $query->nama; 
+            $this->nama             =   $query->nama;
             $this->no_Rm            =   $query->no_Rm;
             $this->agama            =   $query->agama;
             $this->tempat_Lahir     =   $query->tempat_Lahir;
@@ -184,7 +185,7 @@ class Datapasien extends Component
             $this->pekerjaan        =   $query->pekerjaan;
             $this->nik              =   $query->nik;
             $this->bpjs             =   $query->bpjs;
-            $this->alamat           =   $query->alamat;   
+            $this->alamat           =   $query->alamat;
             $this->no_tlpn          =   $query->no_tlpn;
             $this->kelurahan        =   "";
             $this->prov             =   "";
@@ -229,7 +230,7 @@ class Datapasien extends Component
                 $this->dispatchBrowserEvent('hapus');
                 $this->render();
             }else{
-           
+
             }
     }
 

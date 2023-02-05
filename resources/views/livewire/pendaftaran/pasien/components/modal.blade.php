@@ -131,6 +131,15 @@
                           </div>
                         </div>
                         <div class="col-md-12">
+                            <div class="form-group row">
+                                <label class="col-md-4 col-from-label text-sm">Kepala Keluarga</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control form-control-sm rounded-0  @error('kepala_keluarga') is-invalid @enderror" wire:model.defer="kepala_keluarga" id="recipient-name" >
+                                    @error('kepala_keluarga')<span class="invalid-feedback">{{$message}}</span> @enderror
+                                </div>
+                            </div>
+                          </div>
+                        <div class="col-md-12">
                           <div class="form-group row">
                             <label class="col-md-4 text-sm ">Jenis Kelamin</label>
                             <div class="col-md-8">
@@ -201,8 +210,8 @@
                                 <select id="test" wire:model="prov" class="rounded-0 form-control form-control-sm">
                                   <option value="">-- Pilih Provinsi --</option>
                                   @foreach ($provinsi as $data)
-                                      <option value="{{$data->prov_id}}">{{$data->prov_name}}</option>   
-                                  @endforeach                                     
+                                      <option value="{{$data->prov_id}}">{{$data->prov_name}}</option>
+                                  @endforeach
                               </select>
                               </div>
                           </div>
@@ -214,8 +223,8 @@
                                   <select id="test" wire:model="kotas" class="rounded-0 form-control form-control-sm">
                                     <option value="">-- Pilih Kota --</option>
                                     @foreach ($kota as $data)
-                                        <option value="{{$data->kota_id}}">{{$data->kota_name}}</option>   
-                                    @endforeach                                     
+                                        <option value="{{$data->kota_id}}">{{$data->kota_name}}</option>
+                                    @endforeach
                                 </select>
                                 </div>
                             </div>
@@ -227,8 +236,8 @@
                                     <select id="test" wire:model="kecamatan" class="rounded-0 form-control form-control-sm">
                                       <option value="">-- Pilih Kecamatan --</option>
                                       @foreach ($kec as $data)
-                                          <option value="{{$data->id_kec}}">{{$data->kec_name}}</option>   
-                                      @endforeach                                     
+                                          <option value="{{$data->id_kec}}">{{$data->kec_name}}</option>
+                                      @endforeach
                                   </select>
                                   </div>
                               </div>
@@ -240,8 +249,8 @@
                                       <select id="test" wire:model="kelurahan" class="rounded-0 form-control form-control-sm">
                                         <option value="">-- Pilih Kelurahan --</option>
                                         @foreach ($kel as $data)
-                                            <option value="{{$data->id_kel}}">{{$data->kel_name}}</option>   
-                                        @endforeach                                     
+                                            <option value="{{$data->id_kel}}">{{$data->kel_name}}</option>
+                                        @endforeach
                                     </select>
                                     </div>
                                 </div>

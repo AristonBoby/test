@@ -5,33 +5,38 @@ namespace App\Http\Livewire\Pendaftaran\Ptm;
 use Livewire\Component;
 use App\Models\provinsi;
 use App\Models\kecamatan;
+use Illuminate\Support\Facades\DB;
 use App\Models\kelurahan;
 use App\Models\kota;
+use Illuminate\Support\Facades\Auth;
 class Forminput extends Component
 {
     public $form = true;
     public $kelurahan;
-    public $prov;
     public $kotas;
     public $nama;
-    public $tgl_lahir;
+    public $tanggal_Lahir;
     public $jenkel;
     public $agama;
     public $pekerjaan;
     public $no_tlpn;
     public $id_kel;
-    public $kel_id;
+    public $idkelurahan;
     public $id_kec;
     public $kota_id;
-    public $prov_id;
+    public $prov;
+    public $alamat;
+    public $nik;
 
-    protected $listeners = ['formAktif' => 'aktifForm','ptmData'=>'form'];
+
+
+    protected $listeners = ['formAktif' => 'aktifForm','formTidakAktif'=>'tidakAktif'];
 
     public function render()
     {
         return view('livewire.pendaftaran.ptm.forminput',[
             'provinsi'  =>  provinsi::all(),
-            'kota'      =>  kota::where('prov_id',$this->prov_id)->get(),
+            'kota'      =>  kota::where('prov_id',$this->prov)->get(),
             'kec'       =>  kecamatan::where('kota_id',$this->kota_id)->get(),
             'kel'       =>  kelurahan::where('kec_id',$this->id_kec)->get()
         ]);
@@ -41,27 +46,24 @@ class Forminput extends Component
         $this->form = false;
     }
 
-    public function form($id)
-    {
-       if(!empty($id))
-       {
-        $this->dispatchBrowserEvent('alert',['title'=>'Data Pasien Ditemukan Pada Databases Pasien','icon'=>'success','text'=>'Data Pasien Berhasil Ditemukan','btnConfrim'=>'OK']);
-        $this->form = false;
-        $this->nama = $id['nama'];
-        $this->tgl_lahir = $id['tanggal_Lahir'];
-        $this->jenkel = $id['jenkel'];
-        $this->agama = $id['agama'];
-        $this->pekerjaan = $id['pekerjaan'];
-        $this->no_tlpn = $id['no_tlpn'];
-        $this->nik = $id['nik'];
-        $this->alamat = $id['alamat'];
-        $this->kel_id = $id['kel_id'];
-        $this->prov_id = $id['prov_id'];
-        $this->id_kec = $id['id_kec'];
-        $this->kota_id = $id['kota_id'];
-       }else{
-        $this->form = false;
-       }
+    public function tidakAktif(){
+        $this->form = true;
+    }
 
+    public function simpanPtm()
+    {
+        $query = DB::table('pasiens')
+                ->insert([
+                'nama'              => $this->nama,
+                'tanggal_Lahir'     => $this->tanggal_Lahir,
+                'jenkel'            => $this->jenkel,
+                'agama'             => $this->agama,
+                'pekerjaan'         => $this->pekerjaan,
+                'no_tlpn'           => $this->no_tlpn,
+                'nik'               => $this->nik,
+                'kel_id'            => $this->idkelurahan,
+                'alamat'            => $this->alamat,
+                'id_user'           => Auth::id(),
+        ]);
     }
 }

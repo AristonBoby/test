@@ -66,12 +66,10 @@
                     <tfoot>
                         <div class="col-md-12 col-lg-12 col-sm-12 row">
                             <tr>
-                                <td colspan='3'>
+                                <td colspan='12'>
                                 <div>
                                     <span class=" mt-2 text-sm float-left">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
                                 </div>
-                                </td>
-                                <td colspan='9'>
                                     <div class="float-right mt-2">
                                         <p class=" mt-4  btn-sm float-right">{{$pasien->links()}}</p>
                                     </div>

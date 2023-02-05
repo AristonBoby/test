@@ -40,7 +40,7 @@ class FormCari extends Component
         $ptm = pasien::where('nik',$this->cari)->first();
 
         if(!empty($ptm))
-        {
+        {   $this->emit('formTidakAktif');
             $this->dispatchBrowserEvent('alert',['title'=>'Data Pasien Telah Terdaftar','icon'=>'warning','btnConfrim'=>'OK']);
         }else{
             $this->emit('formAktif');
