@@ -1,19 +1,17 @@
-<div class="card card-warning card-outline">
+<div class="card card-warning card-outline ">
     <div class="card-header">
-        <h3 class="card-title"><b>Pencarian</b> Data</h3>
+        <h3 class="card-title"><b>Pendaftaran </b>Pasien</h3>
     </div>
     <div class="card-body">
         <div class="col-md-12 col-sm-12 mb-1 col-lg-12">
-            <span class="text-danger">* Pencarian Data Melalui Database Pasien Berobat</span><br>
-            <span class="text-danger">* Jika Pasien Tidak Ditemukan Pada Database Pasien, Data di Input Secara Manual</span>
-
+            <span class="text-danger">* Pendaftaran Pasien PTM</span><br>
         </div>
         <form class="form-horizontal" wire:submit.prevent='cek_ptm'>
             <div class="form-group row">
-                <label class=" col-md-2 col-sm-2 text-sm col-lg-2">NIK</label>
+                <label class="text-sm form-control-label col-md-2 col-sm-2 col-lg-2">NIK</label>
                 <div class="col-md-10 col-lg-10 col-sm-10">
-                    <input type="text" maxlength="16" class="text-sm form-control form-control-sm rounded-0 @error('cari')is-invalid @enderror" wire:model.defer='cari' placeholder="Masukan NIK">
-                    @error('cari') <span class="invalid-feedback">NIK Tidak Boleh Kosong</span> @enderror
+                    <input type="text" maxlength="16" class=" form-control rounded-0 form-control-sm @error('cari')is-invalid @enderror" wire:model.defer='cari' placeholder="NIK">
+                    @error('cari') <span class="text-sm invalid-feedback">{{$message}}</span> @enderror
                 </div>
             </div>
             <div class="form-group row">
@@ -24,3 +22,13 @@
         </form>
     </div>
 </div>
+<script>
+    window.addEventListener('dataGanda', event => {
+               Swal.fire({
+                   title: event.detail.title,
+                   text: event.detail.text,
+                   icon: event.detail.icon,
+               })
+           });
+
+</script>

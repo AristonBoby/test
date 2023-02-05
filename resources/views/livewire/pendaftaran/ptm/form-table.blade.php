@@ -1,9 +1,8 @@
-<div class="col-lg-8 col-md-8 col-sm-12">
     <div class="card card-danger card-outline">
         <div class="card-header">
             <span class="card-title"><b> Data Pendaftaran Pasien</b> PTM</span>
         </div>
-        <div class="card-body table-responsive">  
+        <div class="card-body table-responsive">
             <table class="table table-sm table-striped">
                 <thead>
                     <tr>
@@ -37,4 +36,3 @@
 
         </div>
     </div>
-</div>

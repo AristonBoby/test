@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row" style="margin-bottom:-5px;">
       <div class="col-sm-6">
-        <h5><b>PENDAFTARAN</b> PENYAKIT TIDAK MENULAR</h5>
+        <h5><b>PENDAFTARAN</b> PTM</h5>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -20,10 +20,11 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-4 col-md-8 col-sm-12 text-xs" style="font-family:sans-serif">  
-                    <livewire:pendaftaran.ptm.form-cari>
-                    <livewire:pendaftaran.ptm.forminput>
-                    <livewire:pendaftaran.ptm.form-table>
+                <div style="font-family:sans-serif row">
+                    <div class="col-lg-3 col-sm-12 col-md-12">
+                        <livewire:pendaftaran.ptm.form-cari>
+                        <livewire:pendaftaran.ptm.forminput>
+                    </div>
                 </div>
             </div>
         </div>

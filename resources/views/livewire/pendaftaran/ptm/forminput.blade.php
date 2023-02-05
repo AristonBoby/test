@@ -2,10 +2,10 @@
             <div class="card-header">
                 <h5 class="card-title"><b>Form Input</b> PTM</h5>
                 <div wire:loading>
-                    <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+                    <span class="badge bg-success text-sm"style="margin-left:5px;"> <i class="text-sm fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
                 </div>
             </div>
-            <div class="card-body text-xs">
+            <div class="card-body text-sm">
                 <form wire:submit.prevent='store' class="form-horizontal">
                 <div class="row">
                     @csrf
@@ -13,7 +13,7 @@
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label">Nama Lengkap</label>
                             <div class="col-md-8">
-                                <input type="text" @disabled($form) wire:model.defer="nama" class="form-control form-control-sm  rounded-0 @error('nama') is-invalid @enderror" placeholder="Nama Lengkap">
+                                <input type="text" @disabled($form) wire:model.defer="nama" class="form-control form-control-sm rounded-0 @error('nama') is-invalid @enderror" placeholder="Nama Lengkap">
                                 @error('nama')<span class="invalid-feedback">{{$message}} {{$this->dispatchBrowserEvent('no_Rm_Ganda');}}</span>@enderror
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-12" style="margin-bottom:-8px;">
                         <div class="form-group row">
                             <label class="col-md-4  rounded-0">Kelamin</label>
@@ -97,8 +97,8 @@
                                 <select id="test" wire:model.lazy="prov" class="rounded-0 form-control form-control-sm" @disabled($form)>
                                     <option value="">-- Pilih Provinsi --</option>
                                     @foreach ($provinsi as $data)
-                                        <option value=""></option>   
-                                    @endforeach                                     
+                                        <option value=""></option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -110,8 +110,8 @@
                                 <select id="test" class="form-control form-control-sm rounded-0" wire:model.lazy="kota_id" @disabled($form)>
                                     <option selected>-- Pilih Kab/Kota --</option>
                                     @foreach ($kota as $data)
-                                        <option value="{{$data->kota_id}}" >{{$data->kota_name}}</option>   
-                                    @endforeach                                     
+                                        <option value="{{$data->kota_id}}" >{{$data->kota_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -124,8 +124,8 @@
                                 <select id="test"class="form-control form-control-sm rounded-0" wire:model.lazy="id_kec" @disabled($form)>
                                     <option selected>-- Pilih Kecamatan --</option>
                                     @foreach ($kec as $data)
-                                        <option value="{{$data->id_kec}}" >{{$data->kec_name}}</option>   
-                                    @endforeach                                     
+                                        <option value="{{$data->id_kec}}" >{{$data->kec_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -138,8 +138,8 @@
                                 <select id="test"class="form-control form-control-sm rounded-0" wire:model.lazy="kel_id" @disabled($form)>
                                     <option selected>-- Pilih Kelurahan / Desa --</option>
                                     @foreach ($kel as $data)
-                                        <option value="{{$data->id_kel}}" >{{$data->kel_name}}</option>   
-                                    @endforeach                                     
+                                        <option value="{{$data->id_kel}}" >{{$data->kel_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -150,12 +150,12 @@
                             <label class="col-md-4 ">Alamat</label>
                             <div class="col-md-8">
                                 <textarea @disabled($form) placeholder="Alamat" class="form-control form-control-sm  btn-flat @error('alamat') is-invalid @enderror" wire:model.defer='alamat'></textarea>
-                                @error("alamat")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror
+                                @error("alamat")<span class="invalid-feedback text-sm">{{$message}}</span> @enderror
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12" style="margin-top:12px;">    
+                <div class="col-md-12" style="margin-top:12px;">
                     <a @disabled($form) class="btn btn-danger btn-sm float-right " data-toggle="modal" data-target="#riwayatDialog" style="margin-left:5px;"><b class="text-sm fas fa-times"></b> <span class="text-sm">Batal</span></a>
                     <button type="button" wire:click="modal"  data-toggle="modal" data-target="#riwayatDialog" class="btn btn-success btn-sm float-right"><i class="text-sm fas fa-save"></i> <span class="text-sm">Simpan</span></button>
                 </div>
@@ -171,5 +171,5 @@
                     icon: event.detail.icon,
                 })
             });
-    
+
 </script>

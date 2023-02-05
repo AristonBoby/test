@@ -30,9 +30,8 @@ class FormCari extends Component
     ]);
 
     protected $messages = ([
-        'cari.min'      => 'NIK Tidak Boleh Kosong',
-        'cari.required' => 'NIK Minimal 16',
-
+        'cari.min'      => 'NIK Minimal 16',
+        'cari.required' => 'NIK Wajib diisi',
     ]);
 
     public function cek_ptm()
@@ -42,7 +41,7 @@ class FormCari extends Component
 
         if(!empty($ptm))
         {
-
+            $this->dispatchBrowserEvent('alert',['title'=>'Data Pasien Telah Terdaftar','icon'=>'warning','btnConfrim'=>'OK']);
         }else{
             $this->emit('formAktif');
         }
