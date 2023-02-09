@@ -1,85 +1,78 @@
-    <div class="col-lg-4 col-md-8 col-sm-12 text-xs" style="font-family:sans-serif">   
-            <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        <h5 class="card-title"><b>Form Input</b> Pasien</h5>
-                        <div wire:loading>
-                            <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
-                        </div>
-                    </div>
-                    <div class="card-body text-xs">
-                        <form wire:submit.prevent='store' class="form-horizontal">
+    <div style="font-family:'Arial';">  
+            <div class="card card-default card-outline">
+                <div class="card-body text-sm">
+                    <form @if($modeUpdate==1) wire:submit.prevent="store" @elseif($modeUpdate==0) wire:submit.prevent="updateData" @endif class="form-horizontal">
                         <div class="row">
-                            @csrf
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row ">
-                                    <label class="col-md-4 col-form-label ">No. Rekam Medis</label>
+                                    <label class="col-md-4 control-label">No. Rekam Medis</label>
                                     <div class="col-md-8">
-                                        <input id="noRm" type="text" wire:model.defer="no_Rm"class="form-control form-control-sm   @error('no_Rm') is-invalid @enderror " placeholder="Nomor Rekam Medis" maxlength="15">
-                                        @error('no_Rm')<span class="invalid-feedback">{{$message}}</span>@enderror
+                                        <input @disabled($form) id="noRm" type="text" wire:model.lazy="pasien.varRm"class="form-control form-control-sm   @error('pasien.varRm') is-invalid @enderror " placeholder="Nomor Rekam Medis" maxlength="15">
+                                        @error('pasien.varRm')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
-                                    <label class="col-md-4 col-form-label ">Nama Lengkap</label>
+                                    <label class="col-md-4 control-label">Nama Lengkap</label>
                                     <div class="col-md-8">
-                                        <input type="text" wire:model.defer="nama" class="form-control form-control-sm   @error('nama') is-invalid @enderror" placeholder="Nama Lengkap">
-                                        @error('nama')<span class="invalid-feedback">{{$message}} {{$this->dispatchBrowserEvent('no_Rm_Ganda');}}</span>@enderror
+                                        <input @disabled($form) type="text" wire:model.lazy="pasien.varNama" class="form-control form-control-sm @error('pasien.varNama') is-invalid @enderror" placeholder="Nama Lengkap">
+                                        @error('pasien.varNama')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
-                                    <label class="col-md-4 col-from-label ">Tempat Lahir</label>
+                                    <label class="col-md-4 control-label ">Tempat Lahir</label>
                                     <div class="col-md-8">
-                                        <input type="text" wire:model.defer="tempat_Lahir" class="form-control form-control-sm   @error('tempat_Lahir')is-invalid @enderror" placeholder="Tempat Lahir"> 
-                                        @error('tempat_Lahir')<span class="invalid-feedback">{{$message}}</span>@enderror
+                                        <input @disabled($form) type="text" wire:model.lazy="pasien.varTmplahir" class="form-control form-control-sm   @error('pasien.varTmplahir')is-invalid @enderror" placeholder="Tempat Lahir"> 
+                                        @error('pasien.varTmplahir')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row ">
-                                    <label class="col-md-4 col-form-label ">Tanggal Lahir</label>
+                                    <label class="col-md-4 control-label ">Tanggal Lahir</label>
                                     <div class="col-md-8">
-                                        <input type="date"  wire:model.defer="tanggal_Lahir" value="{{$tanggal_Lahir}}" placeholder="Tanggal lahir" class=" form-control form-control-sm   @error('tanggal_Lahir') is-invalid @enderror" placeholder="Tanggal Lahir">
-                                        @error('tanggal_Lahir')<span class="invalid-feedback">{{$message}}</span> @enderror
+                                        <input @disabled($form) type="date"  wire:model.lazy="pasien.varTgllahir" placeholder="Tanggal lahir" class=" form-control form-control-sm  @error('pasien.varTgllahir') is-invalid @enderror">
+                                        @error('pasien.varTgllahir')<span class="invalid-feedback">{{$message}}</span> @enderror
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row ">
-                                    <label class="col-md-4 col-form-label ">Kepala Keluarga</label>
+                                    <label class="col-md-4 control-label">Kepala Keluarga</label>
                                     <div class="col-md-8">
-                                        <input type="text" wire:model.defer="kepala_keluarga" class="form-control form-control-sm   @error('kepala_keluarga') is-invalid @enderror" placeholder="Kepala Keluarga">
-                                        @error('kepala_keluarga')<span class="invalid-feedback">{{$message}}</span> @enderror
+                                        <input @disabled($form) type="text" wire:model.lazy="pasien.varKepalakeluarga" class="form-control form-control-sm @error('pasien.varKepalakeluarga') is-invalid @enderror" placeholder="Kepala Keluarga">
+                                        @error('pasien.varKepalakeluarga')<span class="invalid-feedback">{{$message}}</span> @enderror
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
-                                    <label class="col-md-4  ">Kelamin</label>
+                                    <label class="col-md-4 control-label">Kelamin</label>
                                     <div class="col-md-8">
-                                        <select class="form-control form-control-sm   @error('jenkel') is-invalid @enderror " wire:model.defer="jenkel" >
-                                            <option>Pilih Salah Satu</option>
+                                        <select @disabled($form) class="form-control form-control-sm @error('pasien.varKelamin') is-invalid @enderror " wire:model.lazy="pasien.varKelamin" >
+                                            <option value="">Pilih Salah Satu</option>
                                             <option value="L">Laki-Laki</option>
                                             <option value="P">Perempuan</option>
                                         </select>
-                                        @error('jenkel')<span class="invalid-feedback">{{$message}}</span> @enderror
+                                        @error('pasien.varKelamin')<span class="invalid-feedback">{{$message}}</span> @enderror
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
-                                    <label class="col-md-4  ">Agama</label>
+                                    <label class="col-md-4 control-label">Agama</label>
                                     <div class="col-md-8">
-                                        <select class="form-control form-control-sm   @error('agama')is-invalid @enderror" wire:model.defer='agama'>
-                                            <option>Pilih Salah Satu</option>
+                                        <select @disabled($form) class="form-control form-control-sm @error('pasien.varAgama')is-invalid @enderror" wire:model.lazy='pasien.varAgama'>
+                                            <option value="">Pilih Salah Satu</option>
                                             <option>Islam</option>
                                             <option>Kristen</option>
                                             <option>Khatolik</option>
@@ -87,124 +80,129 @@
                                             <option>Buddha</option>
                                             <option>Konghucu</option>
                                         </select>
-                                        @error('agama')<span class="invalid-feedback">{{$message}}</span> @enderror
+                                        @error('pasien.varAgama')<span class="invalid-feedback">{{$message}}</span> @enderror
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
-                                    <label class="col-md-4  ">Pekerjaan</label>
+                                    <label class="col-md-4 control-label">Pekerjaan</label>
                                     <div class="col-md-8">
-                                        <input type="text" wire:model.defer='pekerjaan' class="form-control form-control-sm   @error('pekerjaan') is-invalid @enderror" placeholder="Pekerjaan" maxlength="50">
-                                        @error('pekerjaan')<span class="invalid-feedback">{{$message}}</span>@enderror
+                                        <input @disabled($form) type="text" wire:model.lazy='pasien.varPekerjaan' class="form-control form-control-sm @error('pasien.varPekerjaan') is-invalid @enderror" placeholder="Pekerjaan" maxlength="50">
+                                        @error('pasien.varPekerjaan')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
-                                    <label class="col-md-4  ">No. Telepon / HP</label>
+                                    <label class="col-md-4 control-label">No. Telepon / HP</label>
                                     <div class="col-md-8">
-                                        <input type="text" wire:model.defer='no_tlpn' class=" number form-control form-control-sm   @error('no_tlpn') is-invalid @enderror" placeholder="Nomor Telepon" maxlength="13">
-                                        @error('no_tlpn')<span class="invalid-feedback">{{$message}}</span>@enderror
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12" style="margin-bottom:-8px;">
-                                <div class="form-group row">
-                                    <label class="col-md-4  ">NIK<code>*</code></label>
-                                    <div class="col-md-8">
-                                        <input type="text" wire:model.defer='nik' class="@error('nik')is-invalid @enderror number form-control form-control-sm  " placeholder="Nomor Induk Kependudukan" maxlength="16">
-                                        @error('nik')<span class="invalid-feedback">{{$message}}</span>@enderror
-                                        <span class="text-xs text-red">*Kosongkan Jika Pasien Tidak Memiliki NIK</span>
+                                        <input @disabled($form) type="text" wire:model.lazy='pasien.varHp' class=" number form-control form-control-sm @error('pasien.varHp') is-invalid @enderror" placeholder="Nomor Telepon" maxlength="13">
+                                        @error('pasien.varHp')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
-                                    <label class="col-md-4 ">No. BPJS <code>*</code></label>
+                                    <label class="col-md-4 control-label">NIK<code>*</code></label>
                                     <div class="col-md-8">
-                                        <input type="text" wire:model.defer='bpjs' class=" number @error('bpjs')is-invalid @enderror form-control form-control-sm  " placeholder="Nomor BPJS" maxlength="13">
-                                        @error('bpjs')<span class="invalid-feedback">{{$message}}</span>@enderror 
-                                        <span class="text-xs text-red">*Kosongkan Jika Pasien Tidak Memiliki BPJS</span>
+                                        <input @disabled($form) type="text" wire:model.lazy='pasien.varNik' class="@error('pasien.varNik')is-invalid @enderror number form-control form-control-sm  " placeholder="Nomor Induk Kependudukan" maxlength="16">
+                                        @error('pasien.varNik')<span class="invalid-feedback">{{$message}}</span>@enderror
+                                        <span class="text-xs">*Kosongkan Jika Pasien Tidak Memiliki NIK</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12" style="margin-bottom:-8px;">
+                                <div class="form-group row">
+                                    <label class="col-md-4 control-label">No. BPJS <code>*</code></label>
+                                    <div class="col-md-8">
+                                        <input @disabled($form) type="text" wire:model.lazy='pasien.varBpjs' class=" number @error('pasien.varBpjs')is-invalid @enderror form-control form-control-sm  " placeholder="Nomor BPJS" maxlength="13">
+                                        @error('pasien.varBpjs')<span class="invalid-feedback">{{$message}}</span>@enderror 
+                                        <span class="text-xs">*Kosongkan Jika Pasien Tidak Memiliki BPJS</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
-                                    <label class="col-md-4 ">Provinsi</label>
+                                    <label class="col-md-4 control-label">Provinsi</label>
                                     <div class="col-md-8">
-                                        <select id="test" wire:model.lazy="prov" class=" form-control form-control-sm">
+                                        <select @disabled($form) id="test" wire:model.lazy="pasien.varProvinsi" class=" form-control form-control-sm @error('pasien.varProvinsi')is-invalid @enderror">
                                             <option value="">-- Pilih Provinsi --</option>
                                             @foreach ($provinsi as $data)
                                                 <option value="{{$data->prov_id}}">{{$data->prov_name}}</option>   
                                             @endforeach                                     
                                         </select>
+                                        @error('pasien.varProvinsi')<span class="invalid-feedback">{{$message}}</span>@enderror 
                                     </div>
                                 </div>
                             </div>
-                            
+            
                             <div class="col-lg-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
-                                    <label class="col-md-4 ">Kab/Kota</label>
+                                    <label class="col-md-4 control-label">Kab/Kota</label>
                                     <div class="col-md-8">
-                                        <select id="test" class="form-control form-control-sm " wire:model.lazy="kotas" @empty($kota) disabled @endempty>
+                                        <select @disabled($form) id="test" class="form-control form-control-sm @error('pasien.varKota')is-invalid @enderror" wire:model.lazy="pasien.varKota" @empty($kota) disabled @endempty>
                                             <option selected>-- Pilih Kab/Kota --</option>
                                             @foreach ($kota as $data)
                                                 <option value="{{$data->kota_id}}" >{{$data->kota_name}}</option>   
                                             @endforeach                                     
                                         </select>
+                                        @error('pasien.varKota')<span class="invalid-feedback">{{$message}}</span>@enderror 
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
-                                    <label class="col-md-4 ">Kecamatan</label>
+                                    <label class="col-md-4 control-label">Kecamatan</label>
                                     <div class="col-md-8">
-                                        <select id="test"class="form-control form-control-sm " wire:model.lazy="kelurahan" @empty($kota) disabled @endempty>
+                                        <select @disabled($form) id="test"class="form-control form-control-sm @error('pasien.varKecamatan')is-invalid @enderror" wire:model.lazy="pasien.varKecamatan" >
                                             <option selected>-- Pilih Kecamatan --</option>
                                             @foreach ($kec as $data)
                                                 <option value="{{$data->id_kec}}" >{{$data->kec_name}}</option>   
                                             @endforeach                                     
                                         </select>
+                                        @error('pasien.varKecamatan')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
-                                    <label class="col-md-4 ">Kelurahan / Desa</label>
+                                    <label class="col-md-4 control-label">Kelurahan / Desa</label>
                                     <div class="col-md-8">
-                                        <select id="test"class="form-control form-control-sm " wire:model.lazy="idkelurahan" @empty($kota) disabled @endempty>
+                                        <select @disabled($form) id="test"class="form-control form-control-sm @error('pasien.varKecamatan')is-invalid @enderror" wire:model.lazy="pasien.varKelurahan">
                                             <option selected>-- Pilih Kelurahan / Desa --</option>
                                             @foreach ($kel as $data)
                                                 <option value="{{$data->id_kel}}" >{{$data->kel_name}}</option>   
                                             @endforeach                                     
                                         </select>
+                                        @error('pasien.varKelurahan')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
                             </div>               
 
                             <div class="col-md-12" style="margin-bottom:-8px;">
-                                <div wire:ignore class="form-group row">
-                                    <label class="col-md-4 ">Alamat</label>
+                                <div class="form-group row">
+                                    <label class="col-md-4 control-label">Alamat</label>
                                     <div class="col-md-8">
-                                        <textarea placeholder="Alamat" class="form-control form-control-sm  btn-flat @error('alamat') is-invalid @enderror"wire:model.defer='alamat'></textarea>
-                                        @error("alamat")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror
+                                        <textarea @disabled($form) type="text" wire:model.lazy='pasien.varAlamat' class="@error('pasien.varAlamat')is-invalid @enderror form-control form-control-sm" placeholder="Alamat Pasien"></textarea>
+                                        @error('pasien.varAlamat')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12" style="margin-top:12px;">    
-                            <a class="btn btn-danger btn-sm float-right " href="{{url('/pendaftaran/daftar')}}" style="margin-left:5px;"><b class="text-sm fas fa-times"></b> <span class="text-sm">Batal</span></a>
-                            <button type="submit" class="btn btn-success btn-sm float-right"><i class="text-sm fas fa-save"></i> <span class="text-sm">Simpan</span></button>
+                            <a @disabled($form)  class="btn btn-danger btn-sm float-right " href="{{url('/pendaftaran/daftar')}}" style="margin-left:5px;"><b class="text-sm fas fa-times"></b> <span class="text-sm">Batal</span></a>
+                            <button @disabled($form) type="submit" class="btn btn-success btn-sm float-right"><i class="text-sm fas fa-save"></i> <span class="text-sm">@if($modeUpdate==1) Simpan @elseif($modeUpdate==0) Edit Data @endif</span></button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+               
             </div>
         </div>
 
@@ -221,7 +219,10 @@
                 Swal.fire({
                     title: event.detail.title,
                     text: event.detail.text,
-                    icon: event.detail.icon,
+                    icon: event.detail.icon,   
+                    showConfirmButton: false, 
+                    timer: event.detail.timer,
+                    buttons: false,
                 });
                 
             });
@@ -230,50 +231,3 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
             <link href="{{asset('AdminLTE/plugins/select2/css/select2.min.css')}}" rel="stylesheet" />
             <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
-        <script>
-            document.addEventListener('livewire:load', function (event) {
-
-                Livewire.hook('message.processed', () => {  
-                    $('.select2').select2();
-                    $('#kelurahan').select2({
-                        theme: "bootstrap4",
-                        placeholder: "Pilih Kelurahan"
-                    })
-                    $('#kecamatan').select2({
-                        theme: "bootstrap4",
-                        
-                    })
-                    $('#kota').select2({
-                        theme: "bootstrap4",
-                        placeholder: "Pilih Kota"
-                    })
-                    $('#provinsi').select2({
-                        theme: "bootstrap4",
-                        placeholder: "Pilih Provinsi"
-                    })
-                });
-
-            });
-            $( document ).ready(function() {
-                $('.select2').select2();
-                $('#kelurahan').select2({
-                    theme: "bootstrap4",
-                    placeholder: "Pilih Kelurahan"
-                });
-                $('#kecamatan').select2({
-                            theme: "bootstrap4",
-                            placeholder: "Pilih Kecamatan"
-                        });
-                $('#Kota').select2({
-                    theme: "bootstrap4",
-                    placeholder: "Pilih Kota"
-                })
-                $('#provinsi').select2({
-                        theme: "bootstrap4",
-                        placeholder: "Pilih Provinsi"
-                    })       
-            });
-            
-            
-        
-        </script>

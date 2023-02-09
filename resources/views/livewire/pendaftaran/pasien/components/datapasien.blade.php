@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="card-body">
-            <a href="" class="btn btn-primary mb-4 btn-sm">+ Tambah Data Pasien</a>
+            <a href="daftar" class="btn btn-primary mb-4 btn-sm" >+ Tambah Data Pasien</a>
             <div class="callout callout-danger col-lg-12 mb-3">
                 <div class="col-md-12 ">
                     <div class="form-group">
