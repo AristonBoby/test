@@ -29,6 +29,7 @@
                             <th class="text-center">No Rekam Medis</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Tanggal Lahir</th>
+                            <th class="text-center">Umur</th>
                             <th class="text-center">Kelamin</th>
                             <th class="text-center">No. Telepon / HP</th>
                             <th class="text-center">NIK</th>
@@ -41,22 +42,23 @@
                     </thead>
                     <tbody>
                         @foreach ($pasien as $index => $query)
-                            <tr class="text-uppercase" style=" overflow-y: scroll;">
+                            <tr class="text-uppercase">
                                 <td>{{$pasien->firstItem() + $index}}.</td>
                                 <td>{{$query->no_Rm}}</td>
                                 <td class="text-left text-uppercase">{{$query->nama}}</td>
-                                <td>{{$query->tanggal_Lahir}}</td>
+                                <td>{{ \Carbon\Carbon::parse($query->tanggal_Lahir)->format('d-m-Y')}}</td>
+                                <td>{{ \Carbon\Carbon::parse($query->tanggal_Lahir)->age}}</td>
                                 <td text-center>{{$query->jenkel}}</td>
                                 <td>{{$query->no_tlpn}}</td>
                                 <td>{{$query->nik}}</td>
                                 <td>{{$query->bpjs}}</td>
-                                <td class="text-left text-uppercase">{{$query->alamat}} Kelurahan {{$query->kel_name}} Kecamatan {{$query->kec_name}} kota {{$query->kota_name}}</td>
+                                <td width=00 class="text-left text-uppercase">{{$query->alamat}} Kelurahan {{$query->kel_name}} Kecamatan {{$query->kec_name}} kota {{$query->kota_name}}</td>
                                 <td class="text-center text-left text-uppercase">{{$query->name}}</td>
-                                <td>{{$query->created_at}}</td>
+                                <td>{{\Carbon\Carbon::parse($query->created_at)->format('d-m-Y')}}</td>
                                 <td>
                                     <div class="btn-group text-xs">
-                                        <a class="btn btn-sm btn-info   "  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="text-xs far fa-eye"></i></a>
-                                        <a class="btn btn-sm btn-warning"  data-toggle="modal" data-target="#edit" wire:click="edit({{$query->id}})"><i class="text-xs fa fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-info" data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="text-xs far fa-eye"></i></a>
+                                        <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit" wire:click="edit({{$query->id}})"><i class="text-xs fa fa-edit"></i></a>
                                         <a class="btn btn-sm btn-danger" href="javascript:void(0)" wire:click.prevent='deleteConfirmation({{$query->id}})' target="blank_"><i class="text-xs fas fa-light fa-trash-alt"></i></a>
                                     </div>
                                 </td>
@@ -66,7 +68,7 @@
                     <tfoot>
                         <div class="col-md-12 col-lg-12 col-sm-12 row">
                             <tr>
-                                <td colspan='12'>
+                                <td colspan='13'>
                                 <div>
                                     <span class=" mt-2 text-sm float-left">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
                                 </div>

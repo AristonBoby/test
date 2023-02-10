@@ -1,7 +1,7 @@
     <div style="font-family:'Arial';">  
             <div class="card card-default card-outline">
                 <div class="card-body text-sm">
-                    <form @if($modeUpdate==1) wire:submit.prevent="store" @elseif($modeUpdate==0) wire:submit.prevent="updateData" @endif class="form-horizontal">
+                    <form @if($modeUpdate==1) wire:submit.prevent="store" @elseif($modeUpdate==0) wire:submit.prevent="updateData"@endif  class="form-horizontal">
                         <div class="row">
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row ">
@@ -37,7 +37,14 @@
                                 <div class="form-group row ">
                                     <label class="col-md-4 control-label ">Tanggal Lahir</label>
                                     <div class="col-md-8">
-                                        <input @disabled($form) type="date"  wire:model.lazy="pasien.varTgllahir" placeholder="Tanggal lahir" class=" form-control form-control-sm  @error('pasien.varTgllahir') is-invalid @enderror">
+                                        <div class="input-group">
+                                            <input @disabled($form) type="text" wire:model="pasien.varTgllahir" onchange='Livewire.emit("selectDate", this.value)' id="date" class=" form-control form-control-sm @error('pasien.varTgllahir') is-invalid @enderror" placeholder="dd-mm-yyyy" readonly>
+                                            <span class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                </span>
+                                            </span>
+                                        </div>
                                         @error('pasien.varTgllahir')<span class="invalid-feedback">{{$message}}</span> @enderror
                                     </div>
                                 </div>
@@ -198,14 +205,15 @@
                         </div>
                         <div class="col-md-12" style="margin-top:12px;">    
                             <a @disabled($form)  class="btn btn-danger btn-sm float-right " href="{{url('/pendaftaran/daftar')}}" style="margin-left:5px;"><b class="text-sm fas fa-times"></b> <span class="text-sm">Batal</span></a>
-                            <button @disabled($form) type="submit" class="btn btn-success btn-sm float-right"><i class="text-sm fas fa-save"></i> <span class="text-sm">@if($modeUpdate==1) Simpan @elseif($modeUpdate==0) Edit Data @endif</span></button>
+                            <button @disabled($form) type="submit" class="btn btn-success btn-sm float-right"><i class="text-sm fas fa-save"></i> <span class="text-sm">@if($modeUpdate==1||$modeUpdate==2) Simpan @elseif($modeUpdate==0) Edit Data @endif</span></button>
                         </div>
                     </form>
                 </div>
                
             </div>
         </div>
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script type="text/javascript">
             $("#noRm").on({
 	            keypress: function(e) {
@@ -226,8 +234,12 @@
                 });
                 
             });
+            
+       </script>
+        <script type="text/javascript">
+            $(function () {
+                $('#date').datepicker({
+                    format: "dd-mm-yyyy"
+                });
+            });
         </script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-            <link href="{{asset('AdminLTE/plugins/select2/css/select2.min.css')}}" rel="stylesheet" />
-            <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">

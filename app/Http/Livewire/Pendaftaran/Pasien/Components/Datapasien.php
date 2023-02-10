@@ -47,6 +47,10 @@ class Datapasien extends Component
         $this->resetPage();
     }
     // end //
+
+    public function selectDate(){
+        dd('ddd');
+    }
     public function render()
     {
         return view('livewire..pendaftaran.pasien.components.datapasien',[

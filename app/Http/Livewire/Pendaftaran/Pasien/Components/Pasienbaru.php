@@ -9,6 +9,7 @@ use App\Models\kota;
 use App\Models\kecamatan;
 use App\Models\kelurahan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 class Pasienbaru extends Component
 {
@@ -26,26 +27,21 @@ class Pasienbaru extends Component
                     'varHp'             => '',
                     'varNik'            => '',
                     'varBpjs'           => '',
-                    'varProvinsi'        => '',
+                    'varProvinsi'       => '',
                     'varKota'           => '',
                     'varKecamatan'      => '',
                     'varKelurahan'      => '',
                     'varAlamat'         => '',
                 ];
     public $form = true;
-    public $alamat;
-    public $prov; // Variabel Provinsi
-    public $kotas; //Vairabel Kota
-    public $kecamatan;  //Variabel Kelurahan
-    public $kelurahan; //Variabel Kelurahan
-    public $idkelurahan;
-    public $dataProv;
     public $modeUpdate = 1;
-    public $listeners =[
-                        'pasienBelumLengkap'=>'dataBlmLengkap',
-                        'formAktif'=>'formAktif',
-                        'formUpdate'=>'formUpdate',
-                        'formReset'=>'formReset'
+    public $listeners = [
+                        'pasienBelumLengkap'    => 'dataBlmLengkap',
+                        'formAktif'             => 'formAktif',
+                        'formUpdate'            => 'formUpdate',
+                        'formReset'             => 'formReset',
+                        'selectDate'            => 'selectDate',
+                        'formReset'             => 'formReset',
                         ];
 
     public function render()
@@ -58,9 +54,12 @@ class Pasienbaru extends Component
         ]);
 
     }
-
+    public function selectDate($date)
+    {
+        $this->pasien['varTgllahir'] = $date;
+    }
     public function mount(){
-        $this->tanggal_Lahir = date('Y-m-d');
+    
     }
 
 
@@ -71,6 +70,7 @@ class Pasienbaru extends Component
 
     public function formAktif($data){
         $this->form = $data;
+        $this->modeUpdate=1;
     }
 
     // END //
@@ -86,7 +86,7 @@ class Pasienbaru extends Component
 
     // End //
 
-    public function dataBlmLengkap($query)
+    public function dataBlmLengkap($id)
     {   
         $data = DB::table('pasiens')
                     ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
@@ -94,23 +94,27 @@ class Pasienbaru extends Component
                     ->join('kotas','kecamatans.kota_id','kotas.kota_id')
                     ->join('provinsis','kotas.prov_id','provinsis.prov_id')
                     ->select('*','kelurahans.kel_name','kecamatans.kec_name','kotas.kota_name','provinsis.prov_name')
-                    ->where('nik',$query)->first();
-
-        $this->no_Rm            = $data->no_Rm;
-        $this->nama             = $data->nama;
-        $this->tempat_Lahir     = $data->tempat_Lahir;
-        $this->tanggal_Lahir    = $data->tanggal_Lahir;
-        $this->kepala_keluarga  = $data->kepala_keluarga;
-        $this->jenkel           = $data->jenkel;
-        $this->agama            = $data->agama;
-        $this->no_tlpn          = $data->no_tlpn;
-        $this->nik              = $data->nik;
-        $this->bpjs             = $data->bpjs;
-        $this->prov             = $data->prov_id;
-        $this->kotas            = $data->kota_id;
-        $this->kelurahan        = $data->kec_id;
-        $this->idkelurahan      = $data->id_kel;
-        $this->alamat           = $data->alamat;
+                    ->where('id',$id)->first();
+        if($data){
+            $this->pasien['varId']              = $data->id;
+            $this->pasien['varRm']              = $data->no_Rm;
+            $this->pasien['varNama']            = $data->nama;
+            $this->pasien['varTmplahir']        = $data->tempat_Lahir;
+            $this->pasien['varTgllahir']        = Carbon::parse($data->tanggal_Lahir)->format('d-m-Y');
+            $this->pasien['varKepalakeluarga']  = $data->kepala_keluarga;
+            $this->pasien['varKelamin']         = $data->jenkel;
+            $this->pasien['varAgama']           = $data->agama;
+            $this->pasien['varHp']              = $data->no_tlpn;
+            $this->pasien['varNik']             = $data->nik;
+            $this->pasien['varPekerjaan']       = $data->pekerjaan;
+            $this->pasien['varBpjs']            = $data->bpjs;
+            $this->pasien['varProvinsi']        = $data->prov_id;
+            $this->pasien['varKota']            = $data->kota_id;
+            $this->pasien['varKecamatan']       = $data->kec_id;
+            $this->pasien['varKelurahan']       = $data->id_kel;
+            $this->pasien['varAlamat']          = $data->alamat;     
+        }
+       
     }
 
     public function index ()
@@ -136,15 +140,13 @@ class Pasienbaru extends Component
         'pasien.varProvinsi'               => 'required',
         'pasien.varKota'                   => 'required',
         'pasien.varKecamatan'              => 'required',
-
-
     ]);
 
     protected $messages = [
         'pasien.varRm.required'             =>'Nomor Rekam Medis wajib di isi',
         'pasien.varRm.unique'               =>'Nomor Rekam Medis telah digunakan',
         'pasien.varRm.max'                  =>'Nomor Rekam Medis Maksimal 15 Karakter',
-        'pasien.varRm.max'                  =>'Nomor Rekam Medis Minimal 7 Karakter',
+        'pasien.varRm.min'                  =>'Nomor Rekam Medis Minimal 7 Karakter',
         'pasien.varNama.required'           =>'Nama Pasien wajib diisi',
         'pasien.varTmplahir.required'       =>'Tempat lahir Pasien wajib diisi',
         'pasien.varTgllahir.required'       =>'Tanggal lahir Pasien wajib diisi',
@@ -161,47 +163,33 @@ class Pasienbaru extends Component
         'pasien.varProvinsi.required'       =>'Provinsi tidak boleh kosong',
         'pasien.varKota.required'           =>'Kota tidak boleh kosong',
         'pasien.varKecamatan.required'      =>'Kecamatan tidak boleh kosong',
-
     ];
     
 
     public function store(){
+        $this->modeUpdate=1;
+        $date = Carbon::parse($this->pasien['varTgllahir'])->format('Y-m-d');
         if (!$this->validasi_data(false)){
             $query = pasien::create([
-                'no_Rm'             => $this->no_Rm,
-                'nama'              => $this->nama,
-                'tempat_Lahir'      => $this->tempat_Lahir,
-                'tanggal_Lahir'     => $this->tanggal_Lahir,
-                'kepala_keluarga'   => $this->kepala_keluarga,
-                'jenkel'            => $this->jenkel,
-                'agama'             => $this->agama,
-                'pekerjaan'         => $this->pekerjaan,
-                'no_tlpn'           => $this->no_tlpn,
-                'nik'               => $this->nik,
-                'bpjs'              => $this->bpjs,
-                'kel_id'            => $this->idkelurahan,
-                'alamat'            => $this->alamat,
+                'no_Rm'             => $this->pasien['varRm'],
+                'nama'              => $this->pasien['varNama'],
+                'tempat_Lahir'      => $this->pasien['varTmplahir'],
+                'tanggal_Lahir'     => $date,
+                'kepala_keluarga'   => $this->pasien['varKepalakeluarga'],
+                'jenkel'            => $this->pasien['varKelamin'],
+                'agama'             => $this->pasien['varAgama'],
+                'pekerjaan'         => $this->pasien['varPekerjaan'],
+                'no_tlpn'           => $this->pasien['varHp'],
+                'nik'               => $this->pasien['varNik'],
+                'bpjs'              => $this->pasien['varBpjs'],
+                'kel_id'            => $this->pasien['varKelurahan'],
+                'alamat'            => $this->pasien['varAlamat'],
                 'id_user'           => Auth::id(),
                 ]);
 
             if($query){
-                        $this->no_Rm           = "";
-                        $this->nama            = "";
-                        $this->tempat_Lahir    = "";
-                        $this->tanggal_Lahir   = date('Y-m-d');
-                        $this->kepala_keluarga = "";
-                        $this->jenkel          = "";
-                        $this->agama           = "";
-                        $this->pekerjaan       = "";
-                        $this->nik             = "";
-                        $this->no_tlpn         = "";
-                        $this->bpjs            = "";
-                        $this->alamat          = "";
-                        $this->prov            = "";
-                        $this->kotas           = "";
-                        $this->kecamatan       = "";
-                        $this->kelurahan       = "";
-                        $this->render();
+                    $this->formReset();
+                    $this->modeUpdate=1;
                     $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','icon'=>'success','text'=>'Data Berhasil Tersimpan','btnConfrim'=>'OK']);
             }        
         }
@@ -285,8 +273,10 @@ class Pasienbaru extends Component
     /* Method Reset Form */
 
     public function formReset(){
+        $this->form = true;
         $this->pasien= [
             'varRm'             => '',
+            'varId'             => '',
             'varNama'           => '',
             'varTmplahir'       => '',
             'varTgllahir'       => '',
@@ -297,7 +287,7 @@ class Pasienbaru extends Component
             'varHp'             => '',
             'varNik'            => '',
             'varBpjs'           => '',
-            'varProvinsi'        => '',
+            'varProvinsi'       => '',
             'varKota'           => '',
             'varKecamatan'      => '',
             'varKelurahan'      => '',
@@ -306,8 +296,50 @@ class Pasienbaru extends Component
     }
 
     public function updateData()
-    {
-        dd($this->update['nama']);
+    {   
+        $this->validate([
+            'pasien.varRm'                     => 'required|unique:pasiens,no_Rm|max:15|min:7',
+            'pasien.varNama'                   => 'required',
+            'pasien.varTmplahir'               => 'required',
+            'pasien.varTgllahir'               => 'required',
+            'pasien.varKepalakeluarga'         => 'required',
+            'pasien.varKelamin'                => 'required',
+            'pasien.varAgama'                  => 'required',
+            'pasien.varHp'                     => 'required||min:10',
+            'pasien.varNik'                    => 'max:16',
+            'pasien.varBpjs'                   => 'max:13',
+            'pasien.varPekerjaan'              => 'required',
+            'pasien.varAlamat'                 => 'required',
+            'pasien.varKelurahan'              => 'required',
+            'pasien.varProvinsi'               => 'required',
+            'pasien.varKota'                   => 'required',
+            'pasien.varKecamatan'              => 'required',
+        ]);
+        $query = pasien::find($this->pasien['varId']);
+
+        if($query)
+        {   $date = Carbon::parse($this->pasien['varTgllahir'])->format('Y-m-d');
+            $data = $query->update([
+                'no_Rm'             => $this->pasien['varRm'],
+                'nama'              => $this->pasien['varNama'],
+                'tempat_Lahir'      => $this->pasien['varTmplahir'],
+                'tanggal_Lahir'     => $date,
+                'kepala_keluarga'   => $this->pasien['varKepalakeluarga'],
+                'jenkel'            => $this->pasien['varKelamin'],
+                'agama'             => $this->pasien['varAgama'],
+                'pekerjaan'         => $this->pasien['varPekerjaan'],
+                'no_tlpn'           => $this->pasien['varHp'],
+                'nik'               => $this->pasien['varNik'],
+                'bpjs'              => $this->pasien['varBpjs'],
+                'kel_id'            => $this->pasien['varKelurahan'],
+                'alamat'            => $this->pasien['varAlamat'],
+            ]);
+            if($data)
+            {
+                $this->dispatchBrowserEvent('alert',['success'=>'Data Berhasil Tersimpan','icon'=>'success','timer'=>10000]);
+            }
+        }
+       
     }
 
 }

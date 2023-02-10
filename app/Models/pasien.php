@@ -30,4 +30,8 @@ class pasien extends Model
         return $this->hasMany(kunjungan::class,'id','id_pasien');
     }
 
+    public function addPasien(){
+        
+    }
+
 }

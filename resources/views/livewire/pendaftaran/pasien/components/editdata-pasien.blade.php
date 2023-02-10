@@ -31,6 +31,7 @@
                                 <th class="text-center">No. RM</th>
                                 <th class="text-center">Nama</th>
                                 <th class="text-center">Tanggal Lahir</th>
+                                <th class="text-center">Umur</th>
                                 <th class="text-center">Kelamin</th>
                                 <th class="text-center">NIK</th>
                                 <th class="text-center">BPJS</th>
@@ -49,6 +50,7 @@
                                     <td class="text-left">{{$query->no_Rm}}</td>
                                     <td class="text-left">{{$query->nama}}</td>
                                     <td>{{$query->tanggal_Lahir}}</td>
+                                    <td>{{\Carbon\Carbon::parse($query->tanggal_Lahir)->age}}</td>
                                     <td text-center>{{$query->jenkel}}</td>
                                     <td>{{$query->nik}}</td>
                                     <td>{{$query->bpjs}}</td>

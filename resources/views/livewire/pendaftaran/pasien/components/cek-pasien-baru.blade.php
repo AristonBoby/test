@@ -9,11 +9,12 @@
             <div class="form-group row mt-4">
                 <label class="form-label col-md-2 col-sm-2 col-lg-2">NIK</label>
                 <div class="col-md-8 col-sm-8 col-lg-8">
-                    <input type="text" wire:model.defer="nik" maxlength="16" class="form-control form-control-sm " placeholder="Masukan NIK Pasien">
+                    <input type="text" wire:model.defer="nik" maxlength="16" class="form-control form-control-sm number @error('nik') is-invalid @enderror" maxlength="16" placeholder="Masukan NIK Pasien">
+                    @error('nik')<span class="invalid-feedback">{{$message}}</span>@enderror
                 </div>
             </div>
             <div>
-                <button wire:click="tidakAdaNik" type="button" class="btn btn-warning btn-sm float-left" ><b>+</b> Tidak Memiliki NIK</button>
+                <button wire:click="tanpaNIK" type="button" class="btn btn-warning btn-sm float-left" ><b>+ Tidak Memiliki NIK</b></button>
                 <button type="submit" class="btn btn-primary btn-sm float-right"><i class="fa fa-search"></i> Cek</button>
             </div>
         </form>
