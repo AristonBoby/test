@@ -1,4 +1,4 @@
-<div wire:ignore.self class="modal fade" id="riwayatDialog" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="myModal" role="dialog" class="modal fade" id="riwayatDialog" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -443,24 +443,4 @@
             </div>
         </div>
     </div>
-</div>
-
-
-    <script>
-    window.addEventListener('datatidakditemukan', event => {
-        Swal.fire({
-            title: 'Perhatian',
-            text: "Data Kunjungan Pasien tidak ditemukan Pada tanggal tersebut",
-        })
-    });
-
-    window.addEventListener('alert', event => {
-        Swal.fire({
-            title: event.detail.title,
-            text : event.detail.text,
-            icon : event.detail.icon,
-        })
-    });
-    
-    </script>
 </div>
