@@ -38,7 +38,7 @@
                                     <label class="col-md-4 control-label ">Tanggal Lahir</label>
                                     <div class="col-md-8">
                                         <div class="input-group">
-                                            <input @disabled($form) type="text" wire:model="pasien.varTgllahir" onchange='Livewire.emit("selectDate", this.value)' id="date" class=" form-control form-control-sm @error('pasien.varTgllahir') is-invalid @enderror" placeholder="dd-mm-yyyy" readonly>
+                                            <input @disabled($form) type="text" onchange='Livewire.emit("selectDate", this.value)'  class="date form-control form-control-sm @error('pasien.varTgllahir') is-invalid @enderror" placeholder="dd-mm-yyyy" readonly>
                                             <span class="input-group-append">
                                                 <span class="input-group-text">
                                                     <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -238,7 +238,7 @@
        </script>
         <script type="text/javascript">
             $(function () {
-                $('#date').datepicker({
+                $('.date').datepicker({
                     format: "dd-mm-yyyy"
                 });
             });

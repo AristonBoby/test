@@ -16,7 +16,12 @@
                             <label class="form-label col-md-4 text-sm"> Tanggal</label>
                                 <div class="col-md-8">
                                     <div class="input-group">
-                                        <input type="date"  wire:model="tanggal" class=" form-control form-control-sm" wire.target="table">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            </span>
+                                        </span>
+                                        <input type="text" value="{{$tanggal}}"  onchange='Livewire.emit("tglKunjungan", this.value)' readonly class=" date form-control form-control-sm" wire.target="table">
                                         <a class="btn btn-primary btn-sm btn-flat" wire:click="render()"wire.target="table">Cari</a>
                                     </div>
                                 </div>

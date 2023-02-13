@@ -4,8 +4,9 @@
     </div>
     <div class="card-body">
         <form class="form-horizontal" wire:submit.prevent='cekPasien'>
+            <span class="text-danger">* Untuk Mendaftar Pasien Baru Masukan NIK Pasien</span><br>
             <span class="text-danger">* Untuk Cek Data Pasien Telah Terinput Masukan NIK</span><br>
-            <span class="text-danger">* Jika Pasien Tidak Memiliki NIK Pilih Tombol <b>Tidak Memiliki NIK</b></span>
+            <span class="text-danger">* Jika Pasien Tidak Memiliki NIK Pilih Tombol <b><a class="btn btn-warning btn-xs">+ Tidak Memiliki NIK </a> </br>Khusus Pasien Di bawah 5 < Tahun </b></span>
             <div class="form-group row mt-4">
                 <label class="form-label col-md-2 col-sm-2 col-lg-2">NIK</label>
                 <div class="col-md-8 col-sm-8 col-lg-8">

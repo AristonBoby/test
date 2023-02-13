@@ -40,7 +40,7 @@ class Pasienbaru extends Component
                         'formAktif'             => 'formAktif',
                         'formUpdate'            => 'formUpdate',
                         'formReset'             => 'formReset',
-                        'selectDate'            => 'selectDate',
+                        'selectDate'            => 'tglLahir',
                         'formReset'             => 'formReset',
                         ];
 
@@ -54,37 +54,35 @@ class Pasienbaru extends Component
         ]);
 
     }
-    public function selectDate($date)
+    public function tglLahir($date)
     {
         $this->pasien['varTgllahir'] = $date;
     }
-    public function mount(){
-    
-    }
 
 
-    // Untuk Mengaktifkan Form ketika data pasien tidak ada atau //
-    // Pasien Telah terdaftar tetapi pasien didaftar melalui PTM //
-    // Parameter dikirim CekPasienBaru.php Via emit //
-    // bernilai false maka form aktif //
+    /*==============================================================*/
+    /*  Untuk Mengaktifkan Form ketika data pasien tidak ada atau   */ 
+    /*  Pasien Telah terdaftar tetapi pasien didaftar melalui PTM   */ 
+    /*  Parameter dikirim CekPasienBaru.php Via emit                */
+    /*  bernilai false / true maka form aktif                       */
+    /*==============================================================*/
 
-    public function formAktif($data){
+    public function formAktif($data)
+    {
         $this->form = $data;
         $this->modeUpdate=1;
     }
 
-    // END //
 
-
-    // Method formUpdate digunakan Untuk Mengubah Form Ke Mode Update //
-    // parameter Menggunakan emit dari CekPasienBaru.php // 
+    /*==============================================================*/
+    /*  untuk Mengubah mode form pada cek-pasien.blade.php          */ 
+    /*==============================================================*/
 
     public function formUpdate($data)
     {
         $this->modeUpdate = $data;
     }
 
-    // End //
 
     public function dataBlmLengkap($id)
     {   
@@ -132,8 +130,6 @@ class Pasienbaru extends Component
         'pasien.varKelamin'                => 'required',
         'pasien.varAgama'                  => 'required',
         'pasien.varHp'                     => 'required||min:10',
-       // 'pasien.varNik'                    => 'unique:pasiens',
-        //'pasien.varBpjs'                   => 'unique:pasiens',
         'pasien.varPekerjaan'              => 'required',
         'pasien.varAlamat'                 => 'required',
         'pasien.varKelurahan'              => 'required',
@@ -166,9 +162,26 @@ class Pasienbaru extends Component
     ];
     
 
+    /*==============================================================*/
+    /*          Proses Penyimpanan data pasien Baru                 */ 
+    /*          Data diambil pada pasienbaru.balade.php             */ 
+    /*==============================================================*/
+    
+    
     public function store(){
-        $this->modeUpdate=1;
+
+        /*===================================================================*/
+        /* Mengubah varTgllahir ke format database pada pasienbaru.blade.php */ 
+        /*===================================================================*/
+
         $date = Carbon::parse($this->pasien['varTgllahir'])->format('Y-m-d');
+    
+        /*==============================================================*/
+        /*          Proses Pemanggilan Method Validasi data             */ 
+        /*          Jika data Pasien Berhasil di validasi lalu proses   */
+        /*          Penyimpanan data                                    */
+        /*==============================================================*/
+    
         if (!$this->validasi_data(false)){
             $query = pasien::create([
                 'no_Rm'             => $this->pasien['varRm'],
@@ -196,42 +209,54 @@ class Pasienbaru extends Component
 
     }
 
-    // Proses Validasi Data Inputan Pasien Baru //
+    
+    /*==============================================================*/
+    /*              Proses Validasi Data Pasien                     */ 
+    /*==============================================================*/
 
     private function validasi_data(){
-
-        // Proses Validasi No RM Ganda & dan Jumlah Karakter //
+        
+            /*==============================================================*/
+            /*           Proses Validasi Nomor Rekam Medis                  */ 
+            /*==============================================================*/
 
             if(!empty($this->pasien['varRm'])){
 
-                // Cek Nomor Rekam Medis Unique //
-                $cekNoRekamMedis=Pasien::where('no_Rm',$this->pasien['varRm'])->first();
-                // End //
+                /*==============================================================*/
+                /*      Proses pengecekan pada Database                         */
+                /*      nomor Rekam Medis                                       */ 
+                /*      Proses Pengecekan Panjang Minimal Karakter no RM 7      */
+                /*==============================================================*/
 
-                // Cek Panjang Inputan Nomor rekam Medis //
-                // Minimal 8 Karakter //
+                $cekNoRekamMedis=Pasien::where('no_Rm',$this->pasien['varRm'])->first();
 
                 $noRm_Panjang=strlen($this->pasien['varRm']);
 
-                // End //
 
-                // Proses Validasi  Jika Nomor Rekam Medis Ganda tampilkan Tanpilkan Message //
+                /*====================================================================*/
+                /* validasi Cek jika Rekam Medis telah digunakan maka tampilkan pesan */
+                /*====================================================================*/
 
                 if(!empty($cekNoRekamMedis)){
                     $this->dispatchBrowserEvent('alert',['title'=>'Nomor Rekam Medis Telah Terdaftar','icon'=>'warning','text'=>''.$cekNoRekamMedis->nama.'','timer'=>10000]);
                     $this->form = false;
                     return back();
                 }
-                // End //
-
-                // Proses Validasi panjang Nomor Rekam Medis  Jika Kurang Dari 5 Tampilkan Message //
+            
+                /*==================================================================*/
+                /*  validasi jika panjang Rekam Medis lebih dari 7 tampilakn pesan  */
+                /*==================================================================*/
+        
                 if($noRm_Panjang < 7){
                     $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Minimal 7 Karakter','timer'=>10000]);
                     return back();
                 }
-                // End //
+                
             }
-            /* End Validasi No RM Ganda & dan Jumlah Karakter */
+
+
+
+
 
             if(!empty($this->pasien['varBpjs']) && empty($this->pasien['varNik'])){
                 $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien telah memiliki nomor BPJS pastikan NIK Pasien telah diisi !!!','timer'=>10000]);
@@ -336,7 +361,8 @@ class Pasienbaru extends Component
             ]);
             if($data)
             {
-                $this->dispatchBrowserEvent('alert',['success'=>'Data Berhasil Tersimpan','icon'=>'success','timer'=>10000]);
+                $this->dispatchBrowserEvent('alert',['icon'=>'success','title'=>'Data Berhasil Tersimpan','timer'=>10000]);
+                $this->formReset();
             }
         }
        

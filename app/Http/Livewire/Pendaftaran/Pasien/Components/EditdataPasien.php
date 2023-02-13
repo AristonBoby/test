@@ -8,6 +8,7 @@ use App\Models\kecamatan;
 use App\Models\kelurahan;
 use App\Models\kota;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 class EditdataPasien extends Component
 {   
     
@@ -31,12 +32,18 @@ class EditdataPasien extends Component
     public $prov;
     public $kotas;
     public $kecamatan;
+    public $tglCari;
 
     use WithPagination; 
     protected $paginationTheme = 'bootstrap';
-    
+    protected $listeners= ['tglKunjungan'=>'tglKunjungan'];
     // Cara Reset Paginate LIVEWIRE//
     // updatingTanggal Merupakan method yang digabung dengan nama valiabel yang dicari contoh $tanggal //
+
+    public function tglKunjungan($date){
+         $this->tglCari = Carbon::parse($date)->format('Y-m-d');
+    }
+
     public function updatingTanggal()
     {
         $this->resetPage();
@@ -49,7 +56,7 @@ class EditdataPasien extends Component
                         'pasien'=> DB::table('pasiens')
                                     ->join('users','pasiens.id_user','users.id')
                                     ->select('pasiens.id','pasiens.no_Rm','pasiens.nama','tanggal_Lahir','jenkel','nik','bpjs','users.name')
-                                    ->where('pasiens.created_at','LIKE','%'.$this->tanggal.'%')->orderBy('pasiens.no_Rm','desc')->paginate(10),
+                                    ->where('pasiens.created_at','LIKE','%'.$this->tglCari.'%')->orderBy('pasiens.no_Rm','desc')->paginate(10),
                         'provinsi'  =>  provinsi::all(),
                         'kota'      =>  kota::where('prov_id',$this->prov)->get(),
                         'kec'       =>  kecamatan::where('kota_id',$this->kotas)->get(),
@@ -67,9 +74,12 @@ class EditdataPasien extends Component
         $this->resetPage();
     }
     
+
+
+
     public function mount(){
         $this->tanggal_Lahir = date('Y-m-d');
-        $this->tanggal = date('Y-m-d');
+        $this->tanggal = date('d-m-Y');
     }
 
     public function detailPasien($data){

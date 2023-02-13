@@ -8,8 +8,7 @@
         </div>
         <div class="card-body">
             <a href="daftar" class="btn btn-primary mb-4 btn-sm" >+ Tambah Data Pasien</a>
-            <div class="callout callout-danger col-lg-12 mb-3">
-                <div class="col-md-12 ">
+                <div class="col-md-5">
                     <div class="form-group">
                         <h5 class=" col-md-2 col-lg-2"> Pencarian Pasien</h5>
                             <div class="col-md-12 col-lg-12">
@@ -20,7 +19,6 @@
                 <p class="text-danger col-md-8 col-sm-12 col-lg-6">
                     * Pencarian Pasien dapat menggunakan : Nomor Rekam Medis, Nama, NIK, BPJS
                 </p>
-            </div>
             <div class="table-responsive mt-3">
                 <table class="table table-bordered table-sm table-hover text-sm text-center">
                     <thead>
