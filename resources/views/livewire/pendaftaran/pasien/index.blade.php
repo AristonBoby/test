@@ -15,10 +15,6 @@
 @section('content')
 <div class="content">
   <div class="container-fluid">
-    <!--<div class="callout callout-warning bg-warning">
-      <h3 class="text-center"><u>PERHATIAN !</u></h3>
-      <p class="text-center"><b>Untuk Alamat Pasien Mencantumkan RT dan Nomor Rumah & Nomor Telepon / Hp Pasien Wajib di isi</b></p>
-    </div>-->
     <div class="row">
       <div class="col-md-4 col-lg-4 col-sm-12">
         <livewire:pendaftaran.pasien.components.cek-pasien-baru> 

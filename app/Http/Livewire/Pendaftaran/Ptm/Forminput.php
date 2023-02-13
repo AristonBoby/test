@@ -7,6 +7,7 @@ use App\Models\provinsi;
 use App\Models\kecamatan;
 use Illuminate\Support\Facades\DB;
 use App\Models\kelurahan;
+use App\Models\pasien;
 use App\Models\kota;
 use Illuminate\Support\Facades\Auth;
 class Forminput extends Component
@@ -50,12 +51,25 @@ class Forminput extends Component
         $this->form = true;
     }
     protected $rules=([
-        'nik'   => 'required||unique:pasiens',
+        'nik'           => 'required||unique:pasiens||max:16',
+        'nama'          => 'required',
+        'tanggal_Lahir' => 'required',
+        'jenkel'        => 'required',
+        'agama'         => 'required',
+        'pekerjaan'     => 'required',
+        'no_tlpn'       => 'required||min:10',
+        'idkelurahan'   => 'required',
+        'idkelurahan'   => 'required',
+        'id_kec'        => 'required',
+        'alamat'        => 'required',
+        'kota_id'       => 'required',
+        'prov'          => 'required',
+
+
     ]);
     public function simpanPtm()
-    {   
-        $query = DB::table('pasiens')
-                ->insert([
+    {   $this->validate();
+        $query = pasien::create([
                 'nama'              => $this->nama,
                 'tanggal_Lahir'     => $this->tanggal_Lahir,
                 'jenkel'            => $this->jenkel,
@@ -67,5 +81,10 @@ class Forminput extends Component
                 'alamat'            => $this->alamat,
                 'id_user'           => Auth::id(),
         ]);
+
+        if($query)
+        {
+            $this->dispatchBrowserEvent('riwayatPenyakit');
+        }
     }
 }

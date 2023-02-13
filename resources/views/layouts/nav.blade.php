@@ -134,7 +134,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link"><i class="nav-icon fa fa-file-medical"></i><p> PENYAKIT TIDAK MENULAR <i class="right fas fa-angle-left"></i></p></a>
+        <a href="#" class="nav-link"><i class="nav-icon fa fa-file-medical"></i><p> PTM <i class="right fas fa-angle-left"></i></p></a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="{{Route('admin.pendaftaranPtm')}}" class=" nav-link">

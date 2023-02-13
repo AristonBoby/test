@@ -56,7 +56,7 @@ class EditdataPasien extends Component
                         'pasien'=> DB::table('pasiens')
                                     ->join('users','pasiens.id_user','users.id')
                                     ->select('pasiens.id','pasiens.no_Rm','pasiens.nama','tanggal_Lahir','jenkel','nik','bpjs','users.name')
-                                    ->where('pasiens.created_at','LIKE','%'.$this->tglCari.'%')->orderBy('pasiens.no_Rm','desc')->paginate(10),
+                                    ->where('pasiens.updated_at','LIKE','%'.$this->tglCari.'%')->orderBy('pasiens.no_Rm','desc')->paginate(10),
                         'provinsi'  =>  provinsi::all(),
                         'kota'      =>  kota::where('prov_id',$this->prov)->get(),
                         'kec'       =>  kecamatan::where('kota_id',$this->kotas)->get(),

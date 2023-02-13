@@ -8,10 +8,10 @@
         </div>
         <div class="card-body">
             <a href="daftar" class="btn btn-primary mb-4 btn-sm" >+ Tambah Data Pasien</a>
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <h5 class=" col-md-2 col-lg-2"> Pencarian Pasien</h5>
-                            <div class="col-md-12 col-lg-12">
+                <div class="col-md-6 float-right">
+                    <div class="form-group row">
+                        <h5 class=" col-md-12 col-lg-3 col-sm-12"> Pencarian Pasien</h5>
+                            <div class="col-md-6 col-lg-8 col-sm-12">
                                 <input type="text"  wire:model.lazy="caripasien" class=" form-control " placeholder="Pencarian Data Pasien">
                             </div>
                     </div>

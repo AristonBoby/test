@@ -16,11 +16,6 @@
                             <label class="form-label col-md-4 text-sm"> Tanggal</label>
                                 <div class="col-md-8">
                                     <div class="input-group">
-                                        <span class="input-group-append">
-                                            <span class="input-group-text">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </span>
-                                        </span>
                                         <input type="text" value="{{$tanggal}}"  onchange='Livewire.emit("tglKunjungan", this.value)' readonly class=" date form-control form-control-sm" wire.target="table">
                                         <a class="btn btn-primary btn-sm btn-flat" wire:click="render()"wire.target="table">Cari</a>
                                     </div>
@@ -54,7 +49,7 @@
                                     <td>{{$pasien->firstItem() + $index}}.</td>
                                     <td class="text-left">{{$query->no_Rm}}</td>
                                     <td class="text-left">{{$query->nama}}</td>
-                                    <td>{{$query->tanggal_Lahir}}</td>
+                                    <td>{{\Carbon\Carbon::parse($query->tanggal_Lahir)->format('d-m-Y')}}</td>
                                     <td>{{\Carbon\Carbon::parse($query->tanggal_Lahir)->age}}</td>
                                     <td text-center>{{$query->jenkel}}</td>
                                     <td>{{$query->nik}}</td>
@@ -67,12 +62,12 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <div class="float-left">
                                         <span class="text-lefttext-sm mt-6">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
                                     </div>
                                 </td>
-                                <td colspan="8">
+                                <td colspan="7">
                                     <div class="">
                                         <span class="btn-sm float-right">{{$pasien->links()}}</span>
                                     </div>
