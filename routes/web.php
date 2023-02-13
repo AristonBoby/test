@@ -43,6 +43,8 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/datapasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\Datapasien::class,'show'])->name('admin.showdatapasien');
     Route::get('/daftar',[App\Http\Livewire\Pendaftaran\Pasien\Components\Pasienbaru::class, 'index']) ->name('admin.pendaftaranPasien');
     Route::get('/pendaftaranPtm',[App\Http\Livewire\Pendaftaran\Ptm\index::class, 'render']) ->name('admin.pendaftaranPtm');
+    Route::get('/ptm/pendaftaran',[App\Http\Livewire\Pendaftaran\Ptm\Dataptm\index::class,'render'])->middleware('auth')->name('admin.ptmPendaftaran');
+
     Route::get('/printpasien/{id}',[App\Http\Livewire\Pendaftaran\Pasien\Cetak::class,'cetak'])->name('admin.printPasien');
     Route::get('/kunjungan',[App\Http\Livewire\Pendaftaran\Kunjungan\Index::class,'index'])->name('admin.Kunjungan');
     Route::get('/updatePasien',[App\Http\Livewire\Pendaftaran\Pasien\Components\EditdataPasien::class,'index'])->name('admin.updatePasien');

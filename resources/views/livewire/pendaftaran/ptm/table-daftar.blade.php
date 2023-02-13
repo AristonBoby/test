@@ -35,6 +35,7 @@
                                 <th>Umur</th>
                                 <th>Kelamin</th>
                                 <th>NIK</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -53,6 +54,9 @@
                                 <td>
                                     @if($data->skrining == 0)<button class="btn btn-primary btn-xs text-xs">Skrining</button>@endif
                                     @if($data->skrining == 1)<button class="btn btn-success btn-xs text-xs">Sudah Skrining</button>@endif
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt fa-light "></i></button>
                                 </td>
                             </tr>
                         </tbody>

@@ -116,7 +116,7 @@
                             <div class="form-group row">
                                 <label class="col-md-4 col-from-label text-sm">Tempat Lahir</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control form-control-sm rounded-0 @error('tempat_Lahir') is-invalid @enderror" wire:model.defer='tempat_Lahir'" wire:model='tempat_Lahir' id="recipient-name" >
+                                    <input type="text" class="form-control form-control-sm rounded-0 @error('tempat_Lahir') is-invalid @enderror" wire:model.defer='tempat_Lahir' id="recipient-name" >
                                     @error('tempat_Lahir')<span class="invalid-feedback">{{$message}}</span> @enderror
                                 </div>
                             </div>

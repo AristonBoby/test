@@ -142,6 +142,11 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{Route('admin.ptmPendaftaran')}}" class="nav-link">
+              <i class="fa  fa-database  nav-icon text-warning"></i><p>DATA PTM</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{Route('admin.showdatapasien')}}" class="nav-link">
               <i class="fa  fa-database  nav-icon text-warning"></i><p>PENCARIAN DATA PTM</p>
             </a>

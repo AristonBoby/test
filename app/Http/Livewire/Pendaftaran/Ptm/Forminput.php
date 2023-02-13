@@ -51,10 +51,10 @@ class Forminput extends Component
         $this->form = true;
     }
     protected $rules=([
-        'nik'           => 'required||unique:pasiens||max:16',
+        'nik'           => 'required||unique:pasiens||min:16||max:16',
         'nama'          => 'required',
         'tanggal_Lahir' => 'required',
-        'jenkel'        => 'required',
+        'jenkel'        => 'required||min:1||max:1',
         'agama'         => 'required',
         'pekerjaan'     => 'required',
         'no_tlpn'       => 'required||min:10',
