@@ -21,7 +21,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div style="font-family:sans-serif row">
-                    <div class="col-lg-3 col-sm-12 col-md-12">
+                    <div class="col-lg-4 col-sm-12 col-md-12">
                         <livewire:pendaftaran.ptm.form-cari>
                         <livewire:pendaftaran.ptm.forminput>
                     </div>

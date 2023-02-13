@@ -49,9 +49,11 @@ class Forminput extends Component
     public function tidakAktif(){
         $this->form = true;
     }
-
+    protected $rules=([
+        'nik'   => 'required||unique:pasiens',
+    ]);
     public function simpanPtm()
-    {
+    {   
         $query = DB::table('pasiens')
                 ->insert([
                 'nama'              => $this->nama,
