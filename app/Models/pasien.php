@@ -23,6 +23,7 @@ class pasien extends Model
         'bpjs',
         'alamat',
         'id_user',
+        'status',
         'kel_id'
     ];
 

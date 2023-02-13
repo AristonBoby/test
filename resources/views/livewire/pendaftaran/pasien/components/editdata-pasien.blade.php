@@ -16,6 +16,11 @@
                             <label class="form-label col-md-4 text-sm"> Tanggal</label>
                                 <div class="col-md-8">
                                     <div class="input-group">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            </span>
+                                        </span>
                                         <input type="text" value="{{$tanggal}}"  onchange='Livewire.emit("tglKunjungan", this.value)' readonly class=" date form-control form-control-sm" wire.target="table">
                                         <a class="btn btn-primary btn-sm btn-flat" wire:click="render()"wire.target="table">Cari</a>
                                     </div>
@@ -39,13 +44,16 @@
                             </tr>
                         </thead>
                         <tbody >
+                            <tr wire:loading>
+                                <td>Loading...</td>
+                            </tr>
                             @if($pasien->isEmpty())
                             <tr>
                                 <td colspan="9">Data Kosong</td>
                             </tr>
                             @endif
                             @foreach ($pasien as $index => $query)
-                                <tr class="text-uppercase">
+                                <tr class="text-uppercase" wire:loading.remove>
                                     <td>{{$pasien->firstItem() + $index}}.</td>
                                     <td class="text-left">{{$query->no_Rm}}</td>
                                     <td class="text-left">{{$query->nama}}</td>

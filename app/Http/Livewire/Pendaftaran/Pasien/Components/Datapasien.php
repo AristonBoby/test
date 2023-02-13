@@ -40,17 +40,14 @@ class Datapasien extends Component
     protected $listeners = ['deleteConfirmed' => 'hapusPasien'];
     protected $paginationTheme = 'bootstrap';
     use WithPagination;
-    //Reset Paginate//
 
+    //Reset Paginate//
     public function updatingCaripasien()
     {
         $this->resetPage();
     }
     // end //
 
-    public function selectDate(){
-        dd('ddd');
-    }
     public function render()
     {
         return view('livewire..pendaftaran.pasien.components.datapasien',[
@@ -86,10 +83,7 @@ class Datapasien extends Component
         'kel'       =>  kelurahan::where('kec_id',$this->kecamatan)->get()
         ]);
     }
-    public function caripasienUpdate()
-    {
-        $this->resetPage();
-    }
+   
 
     public function show()
     {

@@ -184,7 +184,6 @@
   </div>
 
 <script>
-    $("#myModal").modal("show");
     window.addEventListener('alert', event => {
                 Swal.fire({
                     title: event.detail.title,

@@ -79,6 +79,7 @@ class Forminput extends Component
                 'nik'               => $this->nik,
                 'kel_id'            => $this->idkelurahan,
                 'alamat'            => $this->alamat,
+                'status'            => 1,
                 'id_user'           => Auth::id(),
         ]);
 

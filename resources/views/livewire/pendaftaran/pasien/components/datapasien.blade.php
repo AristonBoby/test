@@ -39,8 +39,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr wire:loading>
+                            <td>Loading...</td>
+                        </tr>
                         @foreach ($pasien as $index => $query)
-                            <tr class="text-uppercase">
+                            <tr class="text-uppercase" wire:loading.remove>
                                 <td>{{$pasien->firstItem() + $index}}.</td>
                                 <td>{{$query->no_Rm}}</td>
                                 <td class="text-left text-uppercase">{{$query->nama}}</td>

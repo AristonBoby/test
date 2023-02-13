@@ -32,7 +32,7 @@ class EditdataPasien extends Component
     public $prov;
     public $kotas;
     public $kecamatan;
-    public $tglCari;
+    public $tglcari;
 
     use WithPagination; 
     protected $paginationTheme = 'bootstrap';
@@ -41,7 +41,7 @@ class EditdataPasien extends Component
     // updatingTanggal Merupakan method yang digabung dengan nama valiabel yang dicari contoh $tanggal //
 
     public function tglKunjungan($date){
-         $this->tglCari = Carbon::parse($date)->format('Y-m-d');
+         $this->tglcari = Carbon::parse($date)->format('Y-m-d');
     }
 
     public function updatingTanggal()
@@ -56,12 +56,16 @@ class EditdataPasien extends Component
                         'pasien'=> DB::table('pasiens')
                                     ->join('users','pasiens.id_user','users.id')
                                     ->select('pasiens.id','pasiens.no_Rm','pasiens.nama','tanggal_Lahir','jenkel','nik','bpjs','users.name')
-                                    ->where('pasiens.updated_at','LIKE','%'.$this->tglCari.'%')->orderBy('pasiens.no_Rm','desc')->paginate(10),
+                                    ->where('pasiens.updated_at','LIKE','%'.$this->tglcari.'%')->where('status',0)->orderBy('pasiens.no_Rm','desc')->paginate(10),
                         'provinsi'  =>  provinsi::all(),
                         'kota'      =>  kota::where('prov_id',$this->prov)->get(),
                         'kec'       =>  kecamatan::where('kota_id',$this->kotas)->get(),
                         'kel'       =>  kelurahan::where('kec_id',$this->kecamatan)->get()
                     ]);
+    }
+    public function mount(){
+        $this->tanggal_Lahir = date('Y-m-d');
+        $this->tanggal = date('d-m-Y');
     }
     public function index ()
     { 
@@ -69,19 +73,11 @@ class EditdataPasien extends Component
         
     }
 
-    public function pasienUpdate()
+    public function Tglcari()
     {
         $this->resetPage();
     }
     
-
-
-
-    public function mount(){
-        $this->tanggal_Lahir = date('Y-m-d');
-        $this->tanggal = date('d-m-Y');
-    }
-
     public function detailPasien($data){
            
             $query = DB::table('pasiens')
