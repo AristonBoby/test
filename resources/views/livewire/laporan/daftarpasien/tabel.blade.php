@@ -15,9 +15,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($jumlah as $no=>$data )
+                @foreach ($jumlah as $no=> $data )
                     <tr>
-                        <td>{{$no+1}}.</td>
+                        <td>{{$jumlah->firstItem()+$no}}.</td>
                         <td class="text-left">{{$data->name}}</td>
                         <td >{{$data->jumlah}} Pasien</td>
                     </tr>

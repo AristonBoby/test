@@ -52,7 +52,7 @@
                                 <td>{{$data->jenkel}}</td>
                                 <td>{{$data->nik}}</td>
                                 <td>
-                                    @if($data->skrining == 0)<button class="btn btn-primary btn-xs text-xs">Skrining</button>@endif
+                                    @if($data->skrining == 0)<button class="btn btn-primary btn-xs text-xs" data-target="#riwayatDialog">Skrining</button>@endif
                                     @if($data->skrining == 1)<button class="btn btn-success btn-xs text-xs">Sudah Skrining</button>@endif
                                 </td>
                                 <td>

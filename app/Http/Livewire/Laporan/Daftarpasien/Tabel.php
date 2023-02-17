@@ -29,6 +29,7 @@ class Tabel extends Component
 
     public function cariLaporan($tglmulai,$tglselesai)
     {
+        //dd($tglselesai);
         $this->tglmulai = $tglmulai;
         $this->tglselesai = $tglselesai;
     }

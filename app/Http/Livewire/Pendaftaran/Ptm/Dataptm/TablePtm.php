@@ -6,24 +6,12 @@ use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 class TablePtm extends Component
 {   
-    public $caridata;
-    public $data =[
-                    'nama',
-                    'dm',
-                    'ht',
-                    'nik',
-    ];
+    public $caridata='';
     public function mount(){
-        $this->data =[
-            'nama',
-            'dm'    =>'',
-            'ht'    =>'',
-            'nik',
-];
     }
     public function render()
     {
-        return view('livewire..pendaftaran.ptm.dataptm.table-ptm',[
+        return view('livewire..pendaftaran.ptm.dataptm.table-ptm', [
              'pasien'=> DB::table('pasiens')
                 ->join('users','pasiens.id_user','users.id')
                 ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
@@ -49,11 +37,18 @@ class TablePtm extends Component
                         'ht'
                         )
                 ->where('nama', 'like', '%' .$this->caridata. '%')
-                ->where('DM',$this->data['dm'])
-                ->where('HT',$this->data['ht'])
                 ->orWhere('nik','like', '%' .$this->caridata. '%')
                 ->orderBy('pasiens.no_Rm','asc')
                 ->paginate(10),
         ]);
+    }
+    public function idPasien($id)
+    {
+        
+    }
+
+    public function riwayatPenyakit()
+    {
+        
     }
 }

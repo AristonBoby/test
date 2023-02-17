@@ -496,6 +496,7 @@
                         </div>
                     </div>  
                     </div>
+                    </div>
                         <div class="col-md-12">
                             <button class="btn btn-primary btn-sm mt-3 float-right mt-50 btn-flat" type="submit">Simpan</button>
                             <input type="text" wire:model="id_kunjungan" hidden>

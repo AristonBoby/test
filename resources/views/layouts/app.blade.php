@@ -55,6 +55,7 @@
         @include('layouts.nav')
       </div>
     </aside>
+    
     <div class="content-wrapper" style="min-height: 1000.8px;">
         <div class="content-header">
           @yield('breadcrumb')

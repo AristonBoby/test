@@ -1,10 +1,12 @@
 <div class="card card-primary card-outline">
+    
         <div class="card-header">
             <h5 class="card-title"><b>Form Input</b> PTM</h5>
             <div wire:loading>
                 <span class="badge bg-success text-sm"style="margin-left:5px;"> <i class="text-sm fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
             </div>
         </div>
+
         <div class="card-body text-sm">
             <form wire:submit.prevent='simpanPtm' class="form-horizontal">
             <div class="row">
