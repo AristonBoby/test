@@ -10,13 +10,14 @@
               <span aria-hidden="true">&times;</span>
             </a>
           </div>
-          <div class="modal-body">
-            <form wire:submit.prevent='riwayatPenyakit' class="form-horizontal"> 
+          <div class="modal-body" wire:loading.remove>
+            <h4 class="text-center"><u>SKRINING RIWAYAT PENYAKIT</u></h4>
+            <form wire:submit.prevent='riwayatPenyakit' class="form-horizontal">
               <div class="callout callout-danger" style="margin-top:15px;">
-                  <label class="control-label">Riwayat Penyakit Tidak Menular Pada Keluarga</label>
-                  <div class="form-group row text-xs">
-                      <label class="control-label col-md-2 col-lg-2 col-sm-2 text-md">Riwayat 1</label>
-                      <div class="col-md-9" >
+                  <h4 class="control-label mb-4"><u>Riwayat Penyakit Tidak Menular Pada Keluarga</u></h4>
+                  <div class="form-group text-xs row">
+                      <label class="control-label col-md-3 col-lg-2 col-sm-12 text-md">Riwayat 1</label>
+                      <div class="col-md-9 col-lg-9 col-sm-9">
                           <select class="form-control form-control-sm rounded-0">
                               <option>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
@@ -31,8 +32,8 @@
                       </div>
                   </div>
                   <div class="form-group row" style="margin-top:-9px;">
-                      <label class="control-label text-md col-md-2 col-lg-2 col-sm-2">Riwayat 2</label>
-                      <div class="col-md-9" >
+                      <label class="control-label col-md-3 col-lg-2 col-sm-12 text-md">Riwayat 2</label>
+                      <div class="col-md-9 col-lg-9 col-sm-9" >
                           <select class="form-control text-md form-control-sm rounded-0">
                               <option>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
@@ -47,8 +48,8 @@
                       </div>
                   </div>
                   <div class="form-group row" style="margin-top:-9px;">
-                      <label class="control-label text-md col-md-2 col-lg-2 col-sm-2">Riwayat 3</label>
-                      <div class="col-md-9">
+                      <label class="control-label col-md-3 col-lg-2 col-sm-12 text-md">Riwayat 3</label>
+                      <div class="col-md-9 col-lg-9 col-sm-12">
                           <select class="form-control text-md form-control-sm rounded-0">
                               <option>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
@@ -63,13 +64,13 @@
                       </div>
                   </div>
               </div>
-              <div class="callout callout-danger" style="margin-top:15px;">
+                <div class="callout callout-danger" style="margin-top:15px;">
                   <label class="control-label " style="margin-top:-17px;">Riwayat Penyakit Tidak Menular Pada Diri Sendiri</label>
                   <div class="form-group row">
-                      <label class="control-label text-md col-md-2 col-lg-2 col-sm-2">Riwayat 1</label>
-                      <div class="col-md-9">
-                          <select class="form-control form-control-md">
-                              <option>--- Pilih Salah Satu ---</option>
+                      <label class="control-label text-md col-md-3 col-lg-2 col-sm-2">Riwayat 1</label>
+                      <div class="col-md-9 col-lg-9 col-sm-9">
+                          <select class="form-control text-md form-control-sm rounded-0">
+                              <option selected>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
                               <option>Penyakit Hypertensi</option>
                               <option>Penyakit Jantung</option>
@@ -81,10 +82,10 @@
                       </div>
                   </div>
                   <div class="form-group row">
-                      <label class="control-label text-md col-md-2 col-lg-2 col-sm-2">Riwayat 2</label>
-                      <div class="col-md-9" style="margin-top:-9px;">
-                          <select class="form-control text-md form-control-md">
-                              <option>--- Pilih Salah Satu ---</option>
+                      <label class="control-label text-md col-md-3 col-lg-2 col-sm-2">Riwayat 2</label>
+                      <div class="col-md-9 col-lg-9 col-sm-9" style="margin-top:-9px;">
+                          <select class="form-control text-md form-control-sm rounded-0">
+                              <option selected>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
                               <option>Penyakit Hypertensi</option>
                               <option>Penyakit Jantung</option>
@@ -96,10 +97,10 @@
                       </div>
                   </div>
                   <div class="form-group row">
-                      <label class="control-label text-md col-md-2 col-lg-2 col-sm-2">Riwayat 3</label>
-                      <div class="col-md-9" style="margin-top:-9px;">
-                          <select class="form-control form-control-md">
-                              <option>--- Pilih Salah Satu ---</option>
+                      <label class="control-label text-md col-md-3 col-lg-2 col-sm-2">Riwayat 3</label>
+                      <div class="col-md-9 col-lg-9 col-sm-9" style="margin-top:-12px;">
+                          <select class="form-control text-md form-control-sm rounded-0">
+                              <option selected>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
                               <option>Penyakit Hypertensi</option>
                               <option>Penyakit Jantung</option>
@@ -110,73 +111,67 @@
                           </select>
                       </div>
                   </div>
-              </div>
+                </div>
               <div class="callout callout-warning text-sm">
                   <label class="control-label ">Faktor Risiko</label>
-                  <div class="form-group row">
-                      <div class="col-lg-12 form-horizontal row">
-                        <label class="control-label col-md-2 col-lg-1 col-sm-1 text-sm">Merokok</label>
-                        <div class="col-md-2">
-                            <select class="form-control form-control-sm rounded-0 text-sm">
+                    <div class="col-lg-12 col-sm-12 col-md-12 form-horizontal row">
+                        <label class="control-label col-md-12 col-lg-2 col-sm-12 text-sm">Merokok</label>
+                        <div class="col-md-12 col-sm-12 col-lg-2">
+                            <select class="form-control form-control-sm rounded-0 text-xs">
                                 <option>--- Pilih Salah Satu ---</option>
                                 <option>YA</option>
                                 <option>TIDAK</option>
                             </select>
                         </div>
-                        <label class="control-label col-md-2 text-sm">Kurang Aktifitas Fisik</label>
-                        <div class="col-md-2">
+                        <label class="control-label col-md-12 col-lg-2 col-sm-12 text-sm">Kurang Aktifitas Fisik</label>
+                        <div class="col-md-12 col-sm-12 col-lg-2">
                             <select class="form-control text-xs form-control-sm rounded-0">
                                 <option>--- Pilih Salah Satu ---</option>
                                 <option>YA</option>
                                 <option>TIDAK</option>
                             </select>
                         </div>
-                        <label class="control-label col-md-2 text-sm">Gula Berlebihan</label>
-                        <div class="col-md-2">
+                        <label class="control-label col-md-12 col-lg-2 col-sm-12 text-sm">Gula Berlebihan</label>
+                        <div class="col-md-12 col-sm-12 col-lg-2">
                             <select class="form-control text-xs form-control-sm rounded-0">
                                 <option>--- Pilih Salah Satu ---</option>
                                 <option>YA</option>
                                 <option>TIDAK</option>
                             </select>
                         </div>
-                      </div>
-                      <div class="col-lg-12 form-horizontal row mt-2">
-                      <label class="control-label col-md-1 text-sm">Garam Berlebihan</label>
-                      <div class="col-md-2">
-                          <select class="form-control text-xs form-control-sm">
-                              <option>--- Pilih Salah Satu ---</option>
-                              <option>YA</option>
-                              <option>TIDAK</option>
-                          </select>
-                      </div>
-                      <label class="control-label col-md-2 text-sm">Lemak Berlebihan</label>
-                      <div class="col-md-2">
+                      <label class="control-label col-md-12 col-lg-2 col-sm-12 text-sm">Garam Berlebihan</label>
+                      <div class="col-md-12 col-sm-12 col-lg-2">
                           <select class="form-control text-xs form-control-sm rounded-0">
                               <option>--- Pilih Salah Satu ---</option>
                               <option>YA</option>
                               <option>TIDAK</option>
                           </select>
                       </div>
-                      <label class="control-label col-md-2 text-sm ">Kurang Makan Buah dan Sayur</label>
-                      <div class="col-md-2">
+                      <label class="ccontrol-label col-md-12 col-lg-2 col-sm-12 text-sm">Lemak Berlebihan</label>
+                      <div class="col-md-12 col-sm-12 col-lg-2">
                           <select class="form-control text-xs form-control-sm rounded-0">
                               <option>--- Pilih Salah Satu ---</option>
                               <option>YA</option>
                               <option>TIDAK</option>
                           </select>
                       </div>
-                    </div>
-                    <div class="col-lg-12 form-horizontal row">
-                      <label class="control-label col-md-1 text-sm">Konsumsi Alkohol</label>
-                      <div class="col-md-2">
-                          <select class="form-control text-xs form-control-sm">
+                      <label class="control-label col-md-12 col-lg-2 col-sm-12 text-sm">Kurang Makan Buah dan Sayur</label>
+                      <div class="col-md-12 col-sm-12 col-lg-2">
+                          <select class="form-control text-sm form-control-sm rounded-0">
                               <option>--- Pilih Salah Satu ---</option>
                               <option>YA</option>
                               <option>TIDAK</option>
                           </select>
                       </div>
-                    </div>
-                  </div>  
+                      <label class="control-label col-md-12 col-lg-2 col-sm-12 text-sm">Konsumsi Alkohol</label>
+                      <div class="col-md-12 col-sm-12 col-lg-2">
+                          <select class="form-control text-xs form-control-sm rounded-0">
+                              <option>--- Pilih Salah Satu ---</option>
+                              <option>YA</option>
+                              <option>TIDAK</option>
+                          </select>
+                      </div>
+                  </div>
               </div>
               <div class="callout callout-info" style="margin-top:15px;">
                   <label class="control-label " style="margin-top:-17px;">Tekanan Darah</label>
@@ -189,7 +184,7 @@
                           <div class="col-md-1">
                               <input type="text" class="form-control">
                           </div>
-                      </div>  
+                      </div>
               </div>
               <div class="callout callout-info" style="margin-top:15px;">
                   <label class="control-label " style="margin-top:-17px; ">IMT</label>
@@ -202,40 +197,40 @@
                           <div class="col-md-1">
                               <input type="text" class="form-control">
                           </div>
-                      </div>  
-              </div>  
+                      </div>
+              </div>
               <div class="callout callout-success" style="margin-top:15px;">
-                      <div class="form-group row col-md-12">
-                          <div class="col-md-3 col-sm-3 col-lg-3 row"> 
+
+                          <div class="col-md-3 col-sm-3 col-lg-3 row">
                               <label class="control-label col-md-8 text-md">Lingkar Perut</label>
                               <div class="col-md-4">
                                   <input type="text" class="form-control form-control-md">
                               </div>
                           </div>
-                          <div class="col-md-3 col-sm-3 col-lg-3 row"> 
+                          <div class="col-md-3 col-sm-3 col-lg-3 row">
                               <label class="control-label col-md-8 text-md form-control-md">Pemeriksaan Gula</label>
                               <div class="col-md-4">
                                   <input type="text" class="form-control">
                               </div>
                           </div>
-                          <div class="col-md-3 col-sm-3 col-lg-3 row"> 
+                          <div class="col-md-3 col-sm-3 col-lg-3 row">
                               <label class="control-label col-md-8 text-md form-control-md">HBA1C</label>
                               <div class="col-md-4">
                                   <input type="text" class="form-control">
                               </div>
                           </div>
-                          <div class="col-md-3 col-sm-3 col-lg-3 row"> 
+                          <div class="col-md-3 col-sm-3 col-lg-3 row">
                               <label class="control-label col-md-8 text-md form-control-md">Rujuk RS</label>
                               <div class="col-md-4">
                                   <input type="text" class="form-control">
                               </div>
                           </div>
-                      </div>  
-              </div>  
+
+              </div>
               <div class="callout callout-success" style="margin-top:15px;">
                   <label class="control-label " style="margin-top:-17px;">Diagnosis</label>
                   <div class="form-group row">
-                      <label class="control-label col-md-3 text-md form-control-md">Diagnosis 1</label>  
+                      <label class="control-label col-md-3 text-md form-control-md">Diagnosis 1</label>
                       <div class="col-md-9">
                           <select class=" form-control">
                               <option>--- Pilih Salah Satu ---</option>
@@ -275,7 +270,7 @@
                               <option>TIROID</option>
                               <option>TULI KONGENITAL</option>
                               <option>LESI PRAKANKER SERVIKS</option>
-                              <option>RETINOPATI DIABETIK</option>    
+                              <option>RETINOPATI DIABETIK</option>
                               <option>KEBUTAAN PADA ANAK</option>
                               <option>LOW VISION</option>
                               <option>GANGGUAN PENDEGARAN AKIBAT BISING</option>
@@ -322,7 +317,7 @@
                               <option>TIROID</option>
                               <option>TULI KONGENITAL</option>
                               <option>LESI PRAKANKER SERVIKS</option>
-                              <option>RETINOPATI DIABETIK</option>    
+                              <option>RETINOPATI DIABETIK</option>
                               <option>KEBUTAAN PADA ANAK</option>
                               <option>LOW VISION</option>
                               <option>GANGGUAN PENDEGARAN AKIBAT BISING</option>
@@ -369,7 +364,7 @@
                               <option>TIROID</option>
                               <option>TULI KONGENITAL</option>
                               <option>LESI PRAKANKER SERVIKS</option>
-                              <option>RETINOPATI DIABETIK</option>    
+                              <option>RETINOPATI DIABETIK</option>
                               <option>KEBUTAAN PADA ANAK</option>
                               <option>LOW VISION</option>
                               <option>GANGGUAN PENDEGARAN AKIBAT BISING</option>
@@ -381,7 +376,7 @@
                           <select class="form-control">
                               <option>--- Pilih Salah Satu ---</option>
                               <option>Diberikan Obat<option>
-                              <option>Tidak Diberikan Obat</option>    
+                              <option>Tidak Diberikan Obat</option>
                           </select>
                       </div>
                       <label class="control-label col-md-3 text-md form-control-md">Konseling, Informasi dan Edukasi Kesehatan</label>
@@ -389,22 +384,22 @@
                           <select class="form-control">
                               <option>--- Pilih Salah Satu ---</option>
                               <option>Gizi<option>
-                              <option>Aktifitas Fisik</option>    
+                              <option>Aktifitas Fisik</option>
                           </select>
                       </div>
-                  </div>  
+                  </div>
               </div>
               <div class="callout callout-success" style="margin-top:15px;">
                   <label class="control-label " style="margin-top:-17px;">PEMERIKSAAN IVA</label>
                   <div class="row">
                       <div class="form-group row col-md-6">
-                          <label class="control-label col-md-6 text-md form-control-md">Hasil IVA</label>  
+                          <label class="control-label col-md-6 text-md form-control-md">Hasil IVA</label>
                           <div class="col-md-6">
                               <select class="form-control">
                                   <option>--- Pilih Salah Satu ---</option>
                                   <option>POSITIF</option>
                                   <option>NEGATIF</option>
-                                  <option>CURIGA KANKER</option>    
+                                  <option>CURIGA KANKER</option>
                               </select>
                           </div>
                       </div>
@@ -414,7 +409,7 @@
                               <select class="form-control">
                                   <option>--- Pilih Salah Satu ---</option>
                                   <option>KRIOTERAPI<option>
-                                  <option>RUJUK</option>    
+                                  <option>RUJUK</option>
                               </select>
                           </div>
                       </div>
@@ -422,16 +417,16 @@
                           <label class="control-label " style="margin-top:-17px;">PEMERIKSAAN SADANIS</label>
                       </div>
                       <div class="form-group row col-md-6">
-                          <label class="control-label col-md-6 text-md form-control-md">Hasil SADANIS</label>  
+                          <label class="control-label col-md-6 text-md form-control-md">Hasil SADANIS</label>
                           <div class="col-md-6">
                               <select class="form-control">
                                   <option>--- Pilih Salah Satu ---</option>
                                   <option>BENJOLAN</option>
                                   <option>TIDAK ADA BENJOLAN</option>
-                                  <option>CURIGA KANKER</option>    
+                                  <option>CURIGA KANKER</option>
                               </select>
                           </div>
-                      </div> 
+                      </div>
                       <div class="form-group row col-md-6">
                           <label class="control-label col-md-6 text-md form-control-md">Tindak Lanjut SADANIS</label>
                           <div class="col-md-6">
@@ -446,8 +441,8 @@
               <div class="callout callout-success" style="margin-top:15px;">
                   <label class="control-label " style="margin-top:-17px;">FORM UBM</label>
                   <div class="row col-md-12">
-                      <div class="form-group row col-md-4"> 
-                          <label class="control-label col-md-4 text-md form-control-md" >Konseling</label>  
+                      <div class="form-group row col-md-4">
+                          <label class="control-label col-md-4 text-md form-control-md" >Konseling</label>
                           <div class="col-lg-6">
                               <select class="form-control">
                                   <option>--- Pilih Salah Satu ---</option>
@@ -472,7 +467,7 @@
                           </div>
                       </div>
                       <div class="form-group row col-md-4">
-                          <label class="control-label col-md-4 text-md form-control-md" >Rujuk UBM</label>  
+                          <label class="control-label col-md-4 text-md form-control-md" >Rujuk UBM</label>
                           <div class="col-md-6">
                               <select class="form-control">
                                   <option>--- Pilih Salah Satu ---</option>
@@ -493,9 +488,9 @@
                           </div>
                       </div>
                   </div>
-              </div>  
+              </div>
                   <div class="col-md-12">
-                      <button class="btn btn-primary btn-sm mt-3 float-right mt-50 btn-flat" type="submit">Simpan</button>
+                      <button class="btn btn-success btn-md mt-2 float-right mt-50 btn-flat" type="submit"><i class="fas fa-save "></i> Simpan Skrining</button>
                       <input type="text" wire:model="id_kunjungan" hidden>
                       <input type="text" wire:model="id_pasien" hidden>
                   </div>

@@ -1,6 +1,6 @@
-<div>    
+<div>
     <div class="card card-primary card-outline">
-    <div class="card-header"> 
+    <div class="card-header">
             <h5 class="card-tile">Data PTM</h5>
     </div>
     <div class="card-body">
@@ -51,15 +51,25 @@
                             <td>{{$data->no_tlpn}}</td>
                             <td>{{$data->nik}}</td>
                             <td>{{$data->alamat}}</td>
-                            <td>@if($data->ht == 1)<span class="badge badge-warning right">Hipertensi</span>@endif<br>@if($data->dm == 1)<span class="badge badge-danger right">Diabetes Melitus</span>@endif</td>
-                            <td>@if($data->skrining == 0)<button data-toggle="modal"  wire:click="idPasien('{{$data->id}}')" data-target="#myModal"  class="btn btn-primary btn-xs">Skrining</button>@elseif($data->skrining == 1)<button class="btn btn-success btn-xs">Sudah Skrining</button>@endif</td>
+                            <td>@if($data->ht == 1)
+                                    <span class="badge badge-warning right">Hipertensi</span>
+                                @endif
+                                <br>
+                                @if($data->dm == 1)
+                                    <span class="badge badge-danger right">Diabetes Melitus</span>
+                                @endif</td>
+                            <td>@if($data->skrining == 0)
+                                    <button data-toggle="modal"  wire:click="idPasien('{{$data->id}}')" data-target="#myModal"  class="btn btn-primary btn-xs">Skrining</button>
+                                @elseif($data->skrining == 1)
+                                    <button class="btn btn-success btn-xs">Sudah Skrining</button>
+                                @endif</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-    
+
     </div>
-    @include('livewire.pendaftaran.ptm.modalRiwayat')
+    @include('livewire.pendaftaran.ptm.dataptm.modalRiwayat')
 </div>

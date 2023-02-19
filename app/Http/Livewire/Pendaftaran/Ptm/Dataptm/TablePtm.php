@@ -5,8 +5,9 @@ namespace App\Http\Livewire\Pendaftaran\Ptm\Dataptm;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 class TablePtm extends Component
-{   
+{
     public $caridata='';
+    public $varIdSkrining;
     public function mount(){
     }
     public function render()
@@ -44,11 +45,11 @@ class TablePtm extends Component
     }
     public function idPasien($id)
     {
-        
+        $this->varIdSkrining = $id;
     }
 
-    public function riwayatPenyakit()
+    public function riwayatPenyakit($id)
     {
-        
+
     }
 }
