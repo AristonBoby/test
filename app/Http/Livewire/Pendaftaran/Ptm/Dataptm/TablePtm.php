@@ -2,11 +2,40 @@
 
 namespace App\Http\Livewire\Pendaftaran\Ptm\Dataptm;
 
+use App\Models\pasien;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 class TablePtm extends Component
 {
     public $caridata='';
+    public $skrining=[
+        'riwayatKeluarga1'  =>  '',
+        'riwayatKeluarga2'  =>  '',
+        'riwayatKeluarga3'  =>  '',
+        'riwayatSendiri1'   =>  '',
+        'riwayatSendiri2'   =>  '',
+        'riwayatSendiri3'   =>  '',
+        'merokok'           =>  '',
+        'aktifitasFisik'    =>  '',
+        'gula'              =>  '',
+        'garam'             =>  '',
+        'lemak'             =>  '',
+        'sayur'             =>  '',
+        'alkohol'           =>  '',
+        'diagnosis1'        =>  '',
+        'diagnosis2'        =>  '',
+        'diagnosis3'        =>  '',
+        'terapiFarmakologi' =>  '',
+        'konseling'         =>  '',
+        'hasilIva'          =>  '',
+        'tindakLanjutIva'   =>  '',
+        'hasilSadanis'      =>  '',
+        'tidakLanjutSadanis'=>  '',
+        'konselingUbm'      =>  '',
+        'car'               =>  '',
+        'ubm'               =>  '',
+        'kondisi'           =>  '',
+    ];
     public $varIdSkrining;
     public function mount(){
     }
@@ -48,8 +77,11 @@ class TablePtm extends Component
         $this->varIdSkrining = $id;
     }
 
-    public function riwayatPenyakit($id)
-    {
-
+    public function riwayatPenyakit()
+    {   $id = pasien::findOrFail($this->varIdSkrining);
+        if(!empty($id))
+        {
+            dd($this->skrining);
+        }       
     }
 }

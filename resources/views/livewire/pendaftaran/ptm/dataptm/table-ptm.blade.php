@@ -15,11 +15,6 @@
                     </div>
                 </div>
             </div>
-            <div class="card-primary ">
-                <form wire:submit.prevent='cari'>
-                    <input class="form-control">
-                </form>
-            </div>
             <div class="table-responsive">
                 <table class="table table-stripped table-bordered table-sm text-center">
                     <thead>
