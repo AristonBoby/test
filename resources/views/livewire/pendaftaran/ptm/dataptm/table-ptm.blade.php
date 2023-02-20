@@ -24,6 +24,8 @@
                             <th>Tanggal Lahir</th>
                             <th>Umur</th>
                             <th>Kelamin</th>
+                            <th>Agama</th>
+                            <td>Pekerjaan</td>
                             <th>No/ Telepon / HP</th>
                             <th>NIK</th>
                             <th>Alamat</th>
@@ -37,27 +39,33 @@
                             <td>Loading ...</td>
                         </tr>
                         @foreach ($pasien as $no=>$data)
-                        <tr wire:loading.remove>
+                        <tr wire:loading.remove style='@if(\Carbon\Carbon::parse($data->tanggal_Lahir)->age >= 60 ) background-color:#ffffd6 @endif'>
                             <td>{{$pasien->firstItem()+$no}}</td>
                             <td>{{$data->nama}}</td>
                             <td>{{\Carbon\Carbon::parse($data->tanggal_Lahir)->format('d-m-Y')}}</td>
                             <td>{{\Carbon\Carbon::parse($data->tanggal_Lahir)->age}}</td>
                             <td>{{$data->jenkel}}</td>
+                            <td>{{$data->agama}}</td>
+                            <td>{{$data->pekerjaan}}</td>
                             <td>{{$data->no_tlpn}}</td>
                             <td>{{$data->nik}}</td>
-                            <td>{{$data->alamat}}</td>
-                            <td>@if($data->ht == 1)
+                            <td class="text-left">{{$data->alamat}}, {{$data->kel_name}},{{$data->kec_name}}, {{$data->kota_name}} </td>
+                            <td>@if(\Carbon\Carbon::parse($data->tanggal_Lahir)->age >= 60 )<span class="badge badge-warning right">Lansia</span>@endif
+                                <br>
+                                @if($data->ht == 1)
                                     <span class="badge badge-primary right">Hipertensi</span>
                                 @endif
                                 <br>
                                 @if($data->dm == 1)
                                     <span class="badge badge-danger right">Diabetes Melitus</span>
-                                @endif</td>
+                                @endif
+                            </td>
                             <td>@if($data->skrining == 0)
                                     <button data-toggle="modal" wire:click="idPasien('{{$data->id}}')" data-target="#myModal"  class="btn btn-primary btn-xs">Skrining</button>
                                 @elseif($data->skrining == 1)
                                     <button data-toggle="modal" class="btn btn-success btn-xs" data-target="#editMyModal" wire:click="updateIdPasien('{{$data->id}}')">Sudah Skrining</button>
-                                @endif</td>
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
