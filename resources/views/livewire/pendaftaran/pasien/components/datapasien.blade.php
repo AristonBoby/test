@@ -20,7 +20,7 @@
                     * Pencarian Pasien dapat menggunakan : Nomor Rekam Medis, Nama, NIK, BPJS
                 </p>
             <div class="table-responsive mt-3">
-                <table class="table table-bordered table-sm table-hover text-sm text-center">
+                <table class="table table-bordered table-sm table-hover text-sm text-center table-striped">
                     <thead>
                         <tr class="text-uppercase">
                             <th class="text-center">No.</th>
@@ -32,7 +32,7 @@
                             <th class="text-center">No. Telepon / HP</th>
                             <th class="text-center">NIK</th>
                             <th class="text-center">BPJS</th>
-                            <th class="text-center">Alamat</th>
+                            <th class="text-center" width="300">Alamat</th>
                             <th class="text-center">Petugas Pendaftar</th>
                             <th class="text-center">Tanggal Daftar</th>
                             <th>Action</th>
@@ -48,7 +48,7 @@
                                 <td>{{$query->no_Rm}}</td>
                                 <td class="text-left text-uppercase">{{$query->nama}}</td>
                                 <td>{{ \Carbon\Carbon::parse($query->tanggal_Lahir)->format('d-m-Y')}}</td>
-                                <td>{{ \Carbon\Carbon::parse($query->tanggal_Lahir)->age}}</td>
+                                <td>{{ \Carbon\Carbon::parse($query->tanggal_Lahir)->age}} @if(\Carbon\Carbon::parse($query->tanggal_Lahir)->age >= 60 )<span class="badge badge-warning right">Lansia</span>@endif</td>
                                 <td text-center>{{$query->jenkel}}</td>
                                 <td>{{$query->no_tlpn}}</td>
                                 <td>{{$query->nik}}</td>

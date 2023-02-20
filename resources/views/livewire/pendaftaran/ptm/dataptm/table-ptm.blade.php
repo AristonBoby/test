@@ -47,7 +47,7 @@
                             <td>{{$data->nik}}</td>
                             <td>{{$data->alamat}}</td>
                             <td>@if($data->ht == 1)
-                                    <span class="badge badge-warning right">Hipertensi</span>
+                                    <span class="badge badge-primary right">Hipertensi</span>
                                 @endif
                                 <br>
                                 @if($data->dm == 1)
