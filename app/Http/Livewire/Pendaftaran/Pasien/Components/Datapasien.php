@@ -58,6 +58,8 @@ class Datapasien extends Component
                                     ->join('kotas','kecamatans.kota_id','kotas.kota_id')
                                     ->select('pasiens.id',
                                              'pasiens.no_Rm',
+                                             'pasiens.dm',
+                                             'pasiens.ht',
                                              'pasiens.nama',
                                              'pasiens.created_at',
                                              'tanggal_Lahir',
@@ -83,7 +85,7 @@ class Datapasien extends Component
         'kel'       =>  kelurahan::where('kec_id',$this->kecamatan)->get()
         ]);
     }
-   
+
 
     public function show()
     {

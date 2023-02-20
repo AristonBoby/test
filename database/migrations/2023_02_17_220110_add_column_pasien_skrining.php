@@ -17,6 +17,7 @@ return new class extends Migration
             $table->char('skrining',1)->default(0)->after('id_user');
             $table->char('dm',1)->default(0)->after('skrining');
             $table->char('ht',1)->default(0)->after('dm');
+            $table->char('status',1)->default(0)->after('skrining');
         });
     }
 
@@ -31,6 +32,7 @@ return new class extends Migration
             $table->dropColumn('skrining');
             $table->dropColumn('dm');
             $table->dropColumn('ht');
+            $table->dropColumn('status');
         });
     }
 };

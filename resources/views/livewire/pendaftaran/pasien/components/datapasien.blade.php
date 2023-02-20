@@ -35,6 +35,7 @@
                             <th class="text-center" width="300">Alamat</th>
                             <th class="text-center">Petugas Pendaftar</th>
                             <th class="text-center">Tanggal Daftar</th>
+                            <th class="text-center">Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -43,12 +44,12 @@
                             <td>Loading...</td>
                         </tr>
                         @foreach ($pasien as $index => $query)
-                            <tr class="text-uppercase" wire:loading.remove>
+                            <tr class="text-uppercase" wire:loading.remove style='@if(\Carbon\Carbon::parse($query->tanggal_Lahir)->age >= 60 ) background-color:#ffffd6 @endif'>
                                 <td>{{$pasien->firstItem() + $index}}.</td>
-                                <td>{{$query->no_Rm}}</td>
+                                <td>@if(empty($query->no_Rm)) <span class="text-capitalize badge badge-danger text-xs right">Pasien di daftar Melalui PTM <br>Data Pasien Belum Lengkap</span> @else{{$query->no_Rm}}@endif</td>
                                 <td class="text-left text-uppercase">{{$query->nama}}</td>
                                 <td>{{ \Carbon\Carbon::parse($query->tanggal_Lahir)->format('d-m-Y')}}</td>
-                                <td>{{ \Carbon\Carbon::parse($query->tanggal_Lahir)->age}} @if(\Carbon\Carbon::parse($query->tanggal_Lahir)->age >= 60 )<span class="badge badge-warning right">Lansia</span>@endif</td>
+                                <td>{{ \Carbon\Carbon::parse($query->tanggal_Lahir)->age}}</td>
                                 <td text-center>{{$query->jenkel}}</td>
                                 <td>{{$query->no_tlpn}}</td>
                                 <td>{{$query->nik}}</td>
@@ -56,6 +57,16 @@
                                 <td width=00 class="text-left text-uppercase">{{$query->alamat}} Kelurahan {{$query->kel_name}} Kecamatan {{$query->kec_name}} kota {{$query->kota_name}}</td>
                                 <td class="text-center text-left text-uppercase">{{$query->name}}</td>
                                 <td>{{\Carbon\Carbon::parse($query->created_at)->format('d-m-Y')}}</td>
+                                <td>@if(\Carbon\Carbon::parse($query->tanggal_Lahir)->age >= 60 )<span class="badge badge-warning right">Lansia</span>@endif
+                                    <br>
+                                    @if($query->ht == 1)
+                                        <span class="badge badge-primary right">Hipertensi</span>
+                                    @endif
+                                    <br>
+                                    @if($query->dm == 1)
+                                        <span class="badge badge-danger right">Diabetes Melitus</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="btn-group text-xs">
                                         <a class="btn btn-sm btn-info" data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="text-xs far fa-eye"></i></a>
@@ -69,7 +80,7 @@
                     <tfoot>
                         <div class="col-md-12 col-lg-12 col-sm-12 row">
                             <tr>
-                                <td colspan='13'>
+                                <td colspan='14'>
                                 <div>
                                     <span class=" mt-2 text-sm float-left">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
                                 </div>

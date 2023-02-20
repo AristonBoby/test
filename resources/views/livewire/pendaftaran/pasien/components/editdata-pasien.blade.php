@@ -1,7 +1,7 @@
     <div class="col-md-12 col-sm-12 col-lg-8">
         <div class="card card-primary card-outline">
             <div class="card-header">
-                <h5 class="card-title"><b>Table Pendaftaran</b> Pasien</h5> 
+                <h5 class="card-title"><b>Table Pendaftaran</b> Pasien</h5>
                 <div wire:loading>
                     <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
                 </div>
@@ -64,7 +64,7 @@
                                     <td>{{$query->bpjs}}</td>
                                     <td>
                                         <a class="btn btn-sm btn-info"  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="text-xs far fa-eye"></i></a>
-                                    </td>                  
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -84,9 +84,9 @@
                         </tfoot>
                     </table>
                 </div>
-            </div> 
-           
-           
+            </div>
+
+
             @include('livewire.pendaftaran.pasien.components.modaldetailpasien')
         </div>
         <style>
@@ -94,4 +94,4 @@
                 height:20px;
             }
         </style>
-    </div>    
+    </div>
