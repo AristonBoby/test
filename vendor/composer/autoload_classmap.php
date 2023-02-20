@@ -89,6 +89,7 @@ return array(
     'App\\Models\\pasienPtm' => $baseDir . '/app/Models/pasienPtm.php',
     'App\\Models\\poli' => $baseDir . '/app/Models/poli.php',
     'App\\Models\\provinsi' => $baseDir . '/app/Models/provinsi.php',
+    'App\\Models\\skriningPtm' => $baseDir . '/app/Models/skriningPtm.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

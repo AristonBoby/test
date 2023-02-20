@@ -672,6 +672,7 @@ class ComposerStaticInit0bb9b2b464d3d18b779a4311c1da2163
         'App\\Models\\pasienPtm' => __DIR__ . '/../..' . '/app/Models/pasienPtm.php',
         'App\\Models\\poli' => __DIR__ . '/../..' . '/app/Models/poli.php',
         'App\\Models\\provinsi' => __DIR__ . '/../..' . '/app/Models/provinsi.php',
+        'App\\Models\\skriningPtm' => __DIR__ . '/../..' . '/app/Models/skriningPtm.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

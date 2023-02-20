@@ -54,9 +54,9 @@
                                     <span class="badge badge-danger right">Diabetes Melitus</span>
                                 @endif</td>
                             <td>@if($data->skrining == 0)
-                                    <button data-toggle="modal"  wire:click="idPasien('{{$data->id}}')" data-target="#myModal"  class="btn btn-primary btn-xs">Skrining</button>
+                                    <button data-toggle="modal" wire:click="idPasien('{{$data->id}}')" data-target="#myModal"  class="btn btn-primary btn-xs">Skrining</button>
                                 @elseif($data->skrining == 1)
-                                    <button class="btn btn-success btn-xs">Sudah Skrining</button>
+                                    <button data-toggle="modal" class="btn btn-success btn-xs" data-target="#editMyModal" wire:click="updateIdPasien('{{$data->id}}')">Sudah Skrining</button>
                                 @endif</td>
                         </tr>
                         @endforeach
@@ -67,4 +67,23 @@
 
     </div>
     @include('livewire.pendaftaran.ptm.dataptm.modalRiwayat')
+    @include('livewire.pendaftaran.ptm.dataptm.modalEditRiwayat')
 </div>
+<script>
+     window.addEventListener('alert', event => {
+                Swal.fire({
+                    title: event.detail.title,
+                    text: event.detail.text,
+                    icon: event.detail.icon,
+                    showConfirmButton: false,
+                    timer: event.detail.timer,
+                    buttons: false,
+                });
+
+            });
+     window.addEventListener('closeModalSimpan',event=>{
+        $('#myModal').modal('hide');
+    });
+
+
+</script>

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('skriningPtm',function(Blueprint $table){
+        Schema::create('skrining_ptms', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_pasien')->index()->unique()->unsigned();
             $table->string('riwayatKeluarga1',25)->nullable();
@@ -55,6 +55,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skriningPtm');
+        Schema::dropIfExists('skrining_ptms');
     }
 };

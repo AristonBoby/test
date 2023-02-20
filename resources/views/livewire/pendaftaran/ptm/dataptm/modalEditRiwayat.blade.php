@@ -1,8 +1,8 @@
-<div wire:ignore.self class="modal fade" id="myModal" role="dialog" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="editMyModal" role="dialog" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog  modal-xl" role="document">
       <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="edit">Input Skrining Penyakit</h5>
+            <h5 class="modal-title" id="edit">Edit Data Pasien</h5>
             <div wire:loading>
               <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
             </div>
@@ -11,7 +11,7 @@
             </a>
           </div>
           <div class="modal-body" wire:loading.remove>
-            <h4 class="text-center mb-3"><u>INPUT SKRINING RIWAYAT PENYAKIT</u></h4>
+            <h4 class="text-center mb-3"><u>EDIT SKRINING RIWAYAT PENYAKIT</u></h4>
             <form wire:submit.prevent='riwayatPenyakit' class="form-horizontal">
                 <div class="form-group row mt-5 mb-5">
                     <div class="col-md-12 col-sm-12 col-lg-12 row">
@@ -20,7 +20,7 @@
                             <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='skrining.ht'>
                                 <option>--- Pilih Salah Satu ---</option>
                                 <option value=1>Ya</option>
-                                <option value=0 selected>Tidak</option>
+                                <option value=0>Tidak</option>
                             </select>
                         </div>
 
@@ -29,7 +29,7 @@
                             <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='skrining.dm'>
                                 <option>--- Pilih Salah Satu ---</option>
                                 <option value=1>Ya</option>
-                                <option value=0 selected>Tidak</option>
+                                <option value=0>Tidak</option>
                             </select>
                         </div>
                     </div>

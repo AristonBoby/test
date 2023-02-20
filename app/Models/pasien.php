@@ -24,7 +24,10 @@ class pasien extends Model
         'alamat',
         'id_user',
         'status',
-        'kel_id'
+        'skrining',
+        'kel_id',
+        'dm',
+        'ht',
     ];
 
     public function kunjungan(){
@@ -32,7 +35,7 @@ class pasien extends Model
     }
 
     public function addPasien(){
-        
+
     }
 
 }

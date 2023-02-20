@@ -46,7 +46,7 @@
                             </tr>
                             <tr wire:loading.remove>
                                 <td>{{$ptm->firstItem()+$no}}.</td>
-                                <td class="">{{$data->nama}}</td>   
+                                <td class="">{{$data->nama}}</td>
                                 <td>{{\Carbon\Carbon::parse($data->tanggal_Lahir)->format('d-m-Y')}}</td>
                                 <td>{{\Carbon\Carbon::parse($data->tanggal_Lahir)->age}}</td>
                                 <td>{{$data->jenkel}}</td>
