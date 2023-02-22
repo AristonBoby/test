@@ -17,7 +17,7 @@
                     <div class="col-md-12 col-sm-12 col-lg-12 row">
                         <label class="control-label col-md-3 col-lg-2 col-sm-12 text-md"> Hipertensi</label>
                         <div class="col-md-6 col-lg-4 col-sm-6" >
-                            <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='data.ht'>
+                            <select class="form-control text-md form-control-sm rounded-0" value=0 wire:model.defer='data.ht'>
                                 <option>--- Pilih Salah Satu ---</option>
                                 <option value=1>Ya</option>
                                 <option value=0>Tidak</option>
@@ -39,7 +39,7 @@
                   <div class="form-group row">
                      <label class="control-label col-md-3 col-lg-3 col-sm-12 text-md">Riwayat 1</label>
                       <div class="col-md-9 col-lg-9 col-sm-9" >
-                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='skrining.riwayatKeluarga1'>
+                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataRiwayatKeluarga1' value="Penyakit Diabetes">
                               <option>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
                               <option>Penyakit Hypertensi</option>

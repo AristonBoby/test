@@ -5,40 +5,43 @@ namespace App\Http\Livewire\Pendaftaran\Ptm\Dataptm;
 use App\Models\pasien;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use Livewire\WithPagination;
 use App\Models\skriningPtm;
 class TablePtm extends Component
 {
-    public $caridata='';
-    public $skrining=[
-        'riwayatKeluarga1'  =>  '',
-        'riwayatKeluarga2'  =>  '',
-        'riwayatKeluarga3'  =>  '',
-        'riwayatSendiri1'   =>  '',
-        'riwayatSendiri2'   =>  '',
-        'riwayatSendiri3'   =>  '',
-        'merokok'           =>  '',
-        'aktifitasFisik'    =>  '',
-        'gula'              =>  '',
-        'garam'             =>  '',
-        'lemak'             =>  '',
-        'sayur'             =>  '',
-        'alkohol'           =>  '',
-        'diagnosis1'        =>  '',
-        'diagnosis2'        =>  '',
-        'diagnosis3'        =>  '',
-        'terapiFarmakologi' =>  '',
-        'konseling'         =>  '',
-        'hasilIva'          =>  '',
-        'tindakLanjutIva'   =>  '',
-        'hasilSadanis'      =>  '',
-        'tidakLanjutSadanis'=>  '',
-        'konselingUbm'      =>  '',
-        'car'               =>  '',
-        'ubm'               =>  '',
-        'kondisi'           =>  '',
-    ];
+    public $caridata              =  '';
+    public $dataRiwayatKeluarga1  =  '';
+    public $dataRiwayatKeluarga2  =  '';
+    public $dataRiwayatKeluarga3  =  '';
+    public $dataRiwayatSendiri1   =  '';
+    public $dataRiwayatSendiri2   =  '';
+    public $dataRiwayatSendiri3   =  '';
+    public $dataMerokok           =  '';
+    public $dataAktifitasFisik    =  '';
+    public $dataGula              =  '';
+    public $dataGaram             =  '';
+    public $dataLemak             =  '';
+    public $dataSayur             =  '';
+    public $dataAlkohol           =  '';
+    public $dataDiagnosis1        =  '';
+    public $dataDiagnosis2        =  '';
+    public $dataDiagnosis3        =  '';
+    public $dataTerapiFarmakologi =  '';
+    public $dataKonseling         =  '';
+    public $dataHasilIva          =  '';
+    public $dataTindakLanjutIva   =  '';
+    public $dataHasilSadanis      =  '';
+    public $dataTidakLanjutSadanis=  '';
+    public $dataKonselingUbm      =  '';
+    public $dataCar               =  '';
+    public $dataUbm               =  '';
+    public $dataKondisi           =  '';
+    public $dataDm                =  '';
+    public $dataHt                =  '';
+    public $updateSkrining        =  '';
     public $varIdSkrining;
-
+    protected $paginationTheme = 'bootstrap';
+    use WithPagination;
     public function resetVar()
     {   $skrining = [
         'riwayatKeluarga1'  =>  '',
@@ -67,62 +70,94 @@ class TablePtm extends Component
         'car'               =>  '',
         'ubm'               =>  '',
         'kondisi'           =>  '',
-        'dm'           =>  '',
-        'ht'           =>  '',
+        'dm'                =>  '',
+        'ht'                =>  '',
         ];
     }
     public function mount(){
+        $this->skrining = [
+            'riwayatKeluarga1'  =>  '',
+            'riwayatKeluarga2'  =>  '',
+            'riwayatKeluarga3'  =>  '',
+            'riwayatSendiri1'   =>  '',
+            'riwayatSendiri2'   =>  '',
+            'riwayatSendiri3'   =>  '',
+            'merokok'           =>  '',
+            'aktifitasFisik'    =>  '',
+            'gula'              =>  '',
+            'garam'             =>  '',
+            'lemak'             =>  '',
+            'sayur'             =>  '',
+            'alkohol'           =>  '',
+            'diagnosis1'        =>  '',
+            'diagnosis2'        =>  '',
+            'diagnosis3'        =>  '',
+            'terapiFarmakologi' =>  '',
+            'konseling'         =>  '',
+            'hasilIva'          =>  '',
+            'tindakLanjutIva'   =>  '',
+            'hasilSadanis'      =>  '',
+            'tidakLanjutSadanis'=>  '',
+            'konselingUbm'      =>  '',
+            'car'               =>  '',
+            'ubm'               =>  '',
+            'kondisi'           =>  '',
+        ];
     }
     public function render()
     {
+        $dat = DB::table('pasiens')
+        ->join('users','pasiens.id_user','users.id')
+        ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
+        ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
+
+        ->join('kotas','kecamatans.kota_id','kotas.kota_id')
+        ->select('pasiens.id',
+                'pasiens.no_Rm',
+                'pasiens.nama',
+                'pasiens.created_at',
+                'tanggal_Lahir',
+                'jenkel',
+                'no_tlpn',
+                'agama',
+                'nik',
+                'pekerjaan',
+                'kecamatans.kec_name',
+                'kotas.kota_name',
+                'bpjs',
+                'users.name',
+                'pasiens.alamat',
+                'kelurahans.kel_name',
+                'kecamatans.kec_name',
+                'kotas.kota_name',
+                'status',
+                'skrining',
+                'dm',
+                'ht',
+                )
+        ->where('pasiens.nama', 'like', '%' .$this->caridata. '%')
+        ->orWhere('pasiens.nik','like', '%' .$this->caridata. '%')
+        ->orderBy('pasiens.no_Rm','asc')
+        ->paginate(10);
         return view('livewire..pendaftaran.ptm.dataptm.table-ptm', [
-             'pasien'=> DB::table('pasiens')
-                ->join('users','pasiens.id_user','users.id')
-                ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
-                ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
-                ->join('kotas','kecamatans.kota_id','kotas.kota_id')
-                ->select('pasiens.id',
-                        'pasiens.no_Rm',
-                        'pasiens.nama',
-                        'pasiens.created_at',
-                        'tanggal_Lahir',
-                        'jenkel',
-                        'no_tlpn',
-                        'agama',
-                        'nik',
-                        'pekerjaan',
-                        'kecamatans.kec_name',
-                        'kotas.kota_name',
-                        'bpjs',
-                        'users.name',
-                        'pasiens.alamat',
-                        'kelurahans.kel_name',
-                        'kecamatans.kec_name',
-                        'kotas.kota_name',
-                        'status',
-                        'skrining',
-                        'dm',
-                        'ht',
-                        )
-                ->where('nama', 'like', '%' .$this->caridata. '%')
-                ->orWhere('nik','like', '%' .$this->caridata. '%')
-                ->orderBy('pasiens.no_Rm','asc')
-                ->paginate(10),
+             'pasien'=> $dat,
         ]);
     }
     public function updateIdPasien($id)
     {
         $this->varIdSkrining = $id;
         $skrining = skriningPtm::where('id_pasien',$this->varIdSkrining)->first();
-        dd($skrining);
+        $this->updateSkrining = $skrining;
         if(empty($skrining))
         {
             $id = pasien::where('id',$this->varIdSkrining)->first();
                 $id->update([
                     'skrining' => 0,
                 ]);
-
-
+        }
+        elseif(empty($skrining))
+        {
+            $this->updateSkrining = pasien::where('id',$this->varIdSkrining)->first();
         }
     }
 
@@ -136,46 +171,49 @@ class TablePtm extends Component
                 $id->update([
                     'skrining' => 0,
                 ]);
-            if($id){
-                $this->skrining = $skrining;
-            }
+        }
+        elseif(!empty($skrining))
+        {
+            $id = pasien::where('id',$this->varIdSkrining)->first();
+                $id->update([
+                    'skrining' => 1,
+                ]);
         }
     }
 
     public function riwayatPenyakit()
     {   $id = pasien::findOrFail($this->varIdSkrining);
         $skrining = skriningPtm::where('id_pasien',$this->varIdSkrining)->first();
-
         if( !empty($id) && empty($skrining) )
         {
            $createSkrining = skriningPtm::create([
                 'id_pasien'         => $this->varIdSkrining,
-                'riwayatKeluarga1'  => $this->skrining['riwayatKeluarga1'],
-                'riwayatKeluarga2'  => $this->skrining['riwayatKeluarga2'],
-                'riwayatKeluarga3'  => $this->skrining['riwayatKeluarga3'],
-                'riwayatSendiri1'   => $this->skrining['riwayatSendiri1'],
-                'riwayatSendiri2'   => $this->skrining['riwayatSendiri2'],
-                'riwayatSendiri3'   => $this->skrining['riwayatSendiri3'],
-                'merokok'           => $this->skrining['merokok'],
-                'aktifitasFisik'    => $this->skrining['aktifitasFisik'],
-                'gula'              => $this->skrining['gula'],
-                'garam'             => $this->skrining['garam'],
-                'lemak'             => $this->skrining['lemak'],
-                'sayur'             => $this->skrining['sayur'],
-                'alkohol'           => $this->skrining['alkohol'],
-                'diagnosis1'        => $this->skrining['diagnosis1'],
-                'diagnosis2'        => $this->skrining['diagnosis2'],
-                'diagnosis3'        => $this->skrining['diagnosis3'],
-                'terapiFarmakologi' => $this->skrining['terapiFarmakologi'],
-                'konseling'         => $this->skrining['konseling'],
-                'hasilIva'          => $this->skrining['hasilIva'],
-                'tindakLanjutIva'   => $this->skrining['tindakLanjutIva'],
-                'hasilSadanis'      => $this->skrining['hasilSadanis'],
-                'tidakLanjutSadanis'=> $this->skrining['tidakLanjutSadanis'],
-                'konselingUbm'      => $this->skrining['konselingUbm'],
-                'car'               => $this->skrining['car'],
-                'ubm'               => $this->skrining['ubm'],
-                'kondisi'           => $this->skrining['kondisi'],
+                'riwayatKeluarga1'  => $this->dataRiwayatKeluarga1,
+                'riwayatKeluarga2'  => $this->dataRiwayatKeluarga2,
+                'riwayatKeluarga3'  => $this->dataRiwayatKeluarga3,
+                'riwayatSendiri1'   => $this->dataRiwayatSendiri1,
+                'riwayatSendiri2'   => $this->dataRiwayatSendiri2,
+                'riwayatSendiri3'   => $this->dataRiwayatSendiri3,
+                'merokok'           => $this->dataMerokok,
+                'aktifitasFisik'    => $this->dataAktifitasFisik,
+                'gula'              => $this->dataGula,
+                'garam'             => $this->dataGaram,
+                'lemak'             => $this->dataLemak,
+                'sayur'             => $this->dataSayur,
+                'alkohol'           => $this->dataAlkohol,
+                'diagnosis1'        => $this->dataDiagnosis1,
+                'diagnosis2'        => $this->dataDiagnosis2,
+                'diagnosis3'        => $this->dataDiagnosis3,
+                'terapiFarmakologi' => $this->dataTerapiFarmakologi,
+                'konseling'         => $this->dataKonseling,
+                'hasilIva'          => $this->dataHasilIva,
+                'tindakLanjutIva'   => $this->dataTindakLanjutIva,
+                'hasilSadanis'      => $this->dataHasilSadanis,
+                'tidakLanjutSadanis'=> $this->dataTidakLanjutSadanis,
+                'konselingUbm'      => $this->dataKonselingUbm,
+                'car'               => $this->dataCar,
+                'ubm'               => $this->dataUbm,
+                'kondisi'           => $this->dataKondisi,
            ]);
 
            if($createSkrining)
@@ -183,8 +221,8 @@ class TablePtm extends Component
                 $id = pasien::where('id',$this->varIdSkrining)->first();
                 $id->update([
                     'skrining' => 1,
-                    'ht'       => $this->skrining['ht'],
-                    'dm'        => $this->skrining['dm'],
+                    'ht'       => $this->dataHt,
+                    'dm'       => $this->dataDm,
                 ]);
 
                 if($id)

@@ -25,7 +25,7 @@
                             <th>Umur</th>
                             <th>Kelamin</th>
                             <th>Agama</th>
-                            <td>Pekerjaan</td>
+                            <th>Pekerjaan</th>
                             <th>No/ Telepon / HP</th>
                             <th>NIK</th>
                             <th>Alamat</th>
@@ -38,6 +38,11 @@
                         <tr wire:loading>
                             <td>Loading ...</td>
                         </tr>
+                        @if($pasien->count() === 0)
+                            <tr>
+                                <td colspan=13 class="text-gray text-md">Pasien tidak ditemukan <span class="fa fa-database fa-light text-xs" aria-hidden="true"></span></td>
+                            </tr>
+                        @endif
                         @foreach ($pasien as $no=>$data)
                         <tr wire:loading.remove style='@if(\Carbon\Carbon::parse($data->tanggal_Lahir)->age >= 60 ) background-color:#ffffd6 @endif'>
                             <td>{{$pasien->firstItem()+$no}}</td>
@@ -69,12 +74,19 @@
                         </tr>
                         @endforeach
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan='13'>{{$pasien->links()}}</td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
 
     </div>
     @include('livewire.pendaftaran.ptm.dataptm.modalRiwayat')
+    @include('livewire.pendaftaran.ptm.dataptm.modalEditRiwayat')
+
    </div>
 <script>
      window.addEventListener('alert', event => {
