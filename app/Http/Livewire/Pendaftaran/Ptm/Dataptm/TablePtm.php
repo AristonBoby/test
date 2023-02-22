@@ -121,6 +121,7 @@ class TablePtm extends Component
                     'skrining' => 0,
                 ]);
 
+
         }
     }
 
@@ -134,7 +135,9 @@ class TablePtm extends Component
                 $id->update([
                     'skrining' => 0,
                 ]);
-
+            if($id){
+                $this->skrining = $skrining;
+            }
         }
     }
 

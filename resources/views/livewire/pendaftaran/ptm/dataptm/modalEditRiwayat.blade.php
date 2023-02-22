@@ -13,11 +13,12 @@
           <div class="modal-body" wire:loading.remove>
             <h4 class="text-center mb-3"><u>EDIT SKRINING RIWAYAT PENYAKIT</u></h4>
             <form wire:submit.prevent='riwayatPenyakit' class="form-horizontal">
+                @foreach ($skrining as $data)
                 <div class="form-group row mt-5 mb-5">
                     <div class="col-md-12 col-sm-12 col-lg-12 row">
                         <label class="control-label col-md-3 col-lg-2 col-sm-12 text-md"> Hipertensi</label>
                         <div class="col-md-6 col-lg-4 col-sm-6" >
-                            <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='skrining.ht'>
+                            <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='data.ht'>
                                 <option>--- Pilih Salah Satu ---</option>
                                 <option value=1>Ya</option>
                                 <option value=0>Tidak</option>
@@ -444,6 +445,7 @@
                   <div class="col-md-12">
                       <button class="btn btn-success btn-md mt-2 float-right mt-50 btn-flat" type="submit"><i class="fas fa-save "></i> Simpan Skrining</button>
                   </div>
+            @endforeach
           </form>
         </div>
       </div>
