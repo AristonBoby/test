@@ -75,8 +75,7 @@
 
     </div>
     @include('livewire.pendaftaran.ptm.dataptm.modalRiwayat')
-    @include('livewire.pendaftaran.ptm.dataptm.modalEditRiwayat')
-</div>
+   </div>
 <script>
      window.addEventListener('alert', event => {
                 Swal.fire({

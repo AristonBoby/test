@@ -10,7 +10,7 @@
               <span aria-hidden="true">&times;</span>
             </a>
           </div>
-          <div class="modal-body" wire:loading.remove>
+          <div class="modal-body">
             <h4 class="text-center mb-3"><u>INPUT SKRINING RIWAYAT PENYAKIT</u></h4>
             <form wire:submit.prevent='riwayatPenyakit' class="form-horizontal">
                 <div class="form-group row mt-5 mb-5">

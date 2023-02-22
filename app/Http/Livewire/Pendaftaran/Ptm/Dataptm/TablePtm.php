@@ -114,6 +114,7 @@ class TablePtm extends Component
     {
         $this->varIdSkrining = $id;
         $skrining = skriningPtm::where('id_pasien',$this->varIdSkrining)->first();
+        dd($skrining);
         if(empty($skrining))
         {
             $id = pasien::where('id',$this->varIdSkrining)->first();
