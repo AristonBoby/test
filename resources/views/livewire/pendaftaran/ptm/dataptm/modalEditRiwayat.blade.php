@@ -17,7 +17,7 @@
                     <div class="col-md-12 col-sm-12 col-lg-12 row">
                         <label class="control-label col-md-3 col-lg-2 col-sm-12 text-md"> Hipertensi</label>
                         <div class="col-md-6 col-lg-4 col-sm-6" >
-                            <select class="form-control text-md form-control-sm rounded-0" value=0 wire:model.defer='data.ht'>
+                            <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataHt'>
                                 <option>--- Pilih Salah Satu ---</option>
                                 <option value=1>Ya</option>
                                 <option value=0>Tidak</option>
@@ -26,7 +26,7 @@
 
                         <label class="control-label col-md-3 col-lg-2 col-sm-12 text-md"> Diabetes Melitus</label>
                         <div class="col-md-6 col-lg-4 col-sm-6" >
-                            <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='skrining.dm'>
+                            <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataDm'>
                                 <option>--- Pilih Salah Satu ---</option>
                                 <option value=1>Ya</option>
                                 <option value=0>Tidak</option>
@@ -39,7 +39,7 @@
                   <div class="form-group row">
                      <label class="control-label col-md-3 col-lg-3 col-sm-12 text-md">Riwayat 1</label>
                       <div class="col-md-9 col-lg-9 col-sm-9" >
-                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataRiwayatKeluarga1' value="Penyakit Diabetes">
+                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataRiwayatKeluarga1' >
                               <option>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
                               <option>Penyakit Hypertensi</option>
@@ -55,7 +55,7 @@
                   <div class="form-group row" style="margin-top:-9px;">
                       <label class="control-label col-md-3 col-lg-3 col-sm-12 text-md">Riwayat 2</label>
                       <div class="col-md-9 col-lg-9 col-sm-9" >
-                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='skrining.riwayatKeluarga2'>
+                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataRiwayatKeluarga2'>
                               <option>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
                               <option>Penyakit Hypertensi</option>
@@ -71,7 +71,7 @@
                   <div class="form-group row" style="margin-top:-9px;">
                       <label class="control-label col-md-3 col-lg-3 col-sm-12 text-md">Riwayat 3</label>
                       <div class="col-md-9 col-lg-9 col-sm-12">
-                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='skrining.riwayatKeluarga3'>
+                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataRiwayatKeluarga3'>
                               <option>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
                               <option>Penyakit Hypertensi</option>
@@ -90,7 +90,7 @@
                   <div class="form-group row">
                       <label class="control-label text-md col-md-3 col-lg-3 col-sm-2">Riwayat 1</label>
                       <div class="col-md-9 col-lg-9 col-sm-9">
-                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='skrining.riwayatSendiri1'>
+                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='riwayatSendiri1'>
                               <option selected>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
                               <option>Penyakit Hypertensi</option>

@@ -37,7 +37,6 @@ class TablePtm extends Component
     public $dataUbm               =  '';
     public $dataKondisi           =  '';
     public $dataDm                =  '';
-    public $dataHt                =  '';
     public $updateSkrining        =  '';
     public $varIdSkrining;
     protected $paginationTheme = 'bootstrap';
@@ -148,6 +147,7 @@ class TablePtm extends Component
         $this->varIdSkrining = $id;
         $skrining = skriningPtm::where('id_pasien',$this->varIdSkrining)->first();
         $this->updateSkrining = $skrining;
+
         if(empty($skrining))
         {
             $id = pasien::where('id',$this->varIdSkrining)->first();
@@ -155,9 +155,23 @@ class TablePtm extends Component
                     'skrining' => 0,
                 ]);
         }
-        elseif(empty($skrining))
+        elseif(!empty($skrining))
         {
-            $this->updateSkrining = pasien::where('id',$this->varIdSkrining)->first();
+            $data = DB::table('pasiens')
+                    ->join('skriningptm','pasiens.id','skriningptm.id_pasien')
+                    ->where('pasiens.id',$this->varIdSkrining)->first();
+            $this->dataHt                   = $data->ht;
+            $this->dataDm                   = $data->dm;
+            $this->dataRiwayatKeluarga1     = $data->riwayatKeluarga1;
+            $this->dataRiwayatKeluarga2     = $data->riwayatKeluarga2;
+            $this->dataRiwayatKeluarga3     = $data->riwayatKeluarga3;
+            $this->dataRiwayatSendiri1      = $data->riwayatSendiri1;
+            $this->dataRiwayatSendiri2      = $data->riwayatSendiri2;
+            $this->dataRiwayatSendiri3      = $data->riwayatSendiri3;
+            $this->dataMerokok              = $data->merokok;
+
+            //dd($this->updateSkrining);
+            //$this->updateSkrining = pasien::where('id',$this->varIdSkrining)->first();
         }
     }
 
