@@ -1,7 +1,7 @@
 <div>
     <div class="card card-primary card-outline">
     <div class="card-header">
-            <h5 class="card-tile">Data PTM</h5>
+        <h5 class="modal-title" id="edit">DATA <b>PASIEN</b></h5>
     </div>
     <div class="card-body">
             <div class="col-md-12 ">
@@ -45,7 +45,7 @@
                         @endif
                         @foreach ($pasien as $no=>$data)
                         <tr wire:loading.remove style='@if(\Carbon\Carbon::parse($data->tanggal_Lahir)->age >= 60 ) background-color:#ffffd6 @endif'>
-                            <td>{{$pasien->firstItem()+$no}}</td>
+                            <td>{{$pasien->firstItem()+$no}}.</td>
                             <td>{{$data->nama}}</td>
                             <td>{{\Carbon\Carbon::parse($data->tanggal_Lahir)->format('d-m-Y')}}</td>
                             <td>{{\Carbon\Carbon::parse($data->tanggal_Lahir)->age}}</td>
@@ -71,19 +71,20 @@
                                     <button data-toggle="modal" class="btn btn-success btn-xs" data-target="#editMyModal" wire:click="updateIdPasien('{{$data->id}}')">Sudah Skrining</button>
                                 @endif
                             </td>
+                            <td>@if($data->skrining == 1)<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusMyModal"  wire:click="deleteSkrining('{{$data->id}}')"><i class=" text-xs fa fa-trash-alt fa-light"></i></button>@endif</td>
                         </tr>
                         @endforeach
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan='13'>{{$pasien->links()}}</td>
-                        </tr>
-                    </tfoot>
                 </table>
+                <div class="col-lg-12 row">
+                    <div class="col-lg-7 col-sm-12 mt-3 text-sm ">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</div>
+                    <div class="col-lg-3 col-sm-12 mt-3 text-sm "><span class="float-left">{{$pasien->links()}}</span></div>
+                </div>
             </div>
         </div>
 
     </div>
+    @include('livewire.pendaftaran.ptm.dataptm.deleteSkrining')
     @include('livewire.pendaftaran.ptm.dataptm.modalRiwayat')
     @include('livewire.pendaftaran.ptm.dataptm.modalEditRiwayat')
 
@@ -102,6 +103,9 @@
             });
      window.addEventListener('closeModalSimpan',event=>{
         $('#myModal').modal('hide');
+    });
+    window.addEventListener('closeModalEdit',event=>{
+        $('#editMyModal').modal('hide');
     });
     window.addEventListener('alert', event => {
                 Swal.fire({

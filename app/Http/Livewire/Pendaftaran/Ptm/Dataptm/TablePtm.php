@@ -246,6 +246,10 @@ class TablePtm extends Component
     public function updateRiwayat()
     {
           $updateSkrining = skriningPtm::find($this->varIdSkrining);
+          $updatePasien   = pasien::find($this->updateSkrining['id_pasien']);
+          $updatePasien->update(['dm'=> $this->dataDm,
+                                 'ht'=> $this->dataHt,
+                                ]);
           $updateSkrining->update([
                 'riwayatKeluarga1'  => $this->dataRiwayatKeluarga1,
                 'riwayatKeluarga2'  => $this->dataRiwayatKeluarga2,
@@ -275,9 +279,19 @@ class TablePtm extends Component
                 'kondisi'           => $this->dataKondisi,
            ]);
 
-        if($updateSkrining)
-        {
+        if($updateSkrining && $updatePasien)
+        {   $this->dispatchBrowserEvent('closeModalEdit');
             $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','text'=>'Data Berhasil Tersimpan','icon'=>'success','timer'=>3000]);
         }
+
+
+    }
+    public function deleteSkrining($id)
+    {
+        $this->dispatchBrowserEvent('delete');
+    }
+    public function hapusSkrining()
+    {
+        $this->dispatchBrowserEvent('delete');
     }
 }

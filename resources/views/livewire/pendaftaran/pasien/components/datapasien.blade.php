@@ -1,4 +1,5 @@
 <div class="col-md-12 col-sm-12 col-lg-12">
+    @include('livewire.pendaftaran.pasien.components.modal')
     <div class="card card-danger card-outline">
         <div class="card-header">
             <h5 class="card-title"><b>Pencarian Data</b> Pasien</h5>
@@ -77,24 +78,23 @@
                             </tr>
                         @endforeach
                     </tbody>
-                    <tfoot>
-                        <div class="col-md-12 col-lg-12 col-sm-12 row">
-                            <tr>
-                                <td colspan='14'>
-                                <div>
-                                    <span class=" mt-2 text-sm float-left">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
-                                </div>
-                                    <div class="float-right mt-2">
-                                        <p class=" mt-4  btn-sm float-right">{{$pasien->links()}}</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </div>
-                    </tfoot>
                 </table>
             </div>
+            <div class="col-md-12 col-lg-12 col-sm-12 row">
+                <tr>
+                    <td colspan='14'>
+                    <div>
+                        <span class=" mt-2 text-sm float-left">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
+                    </div>
+                        <div class="float-right mt-2">
+                            <p class=" mt-4  btn-sm float-right">{{$pasien->links()}}</p>
+                        </div>
+                    </td>
+                </tr>
+            </div>
         </div>
-        @include('livewire.pendaftaran.pasien.components.modal')
+
+
     </div>
     <style>
         nav svg{

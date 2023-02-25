@@ -2,7 +2,7 @@
     <div class="modal-dialog  modal-xl" role="document">
       <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="edit">Input Skrining Penyakit</h5>
+            <h5 class="modal-title" id="edit">INPUT <b>SKRINING RIWAYAT PENYAKIT</b></h5>
             <div wire:loading>
               <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
             </div>
@@ -10,30 +10,29 @@
               <span aria-hidden="true">&times;</span>
             </a>
           </div>
-          <div class="modal-body">
-            <h4 class="text-center mb-3"><u>INPUT SKRINING RIWAYAT PENYAKIT</u></h4>
-            <form wire:submit.prevent='riwayatPenyakit' class="form-horizontal">
-                <div class="form-group row mt-5 mb-5">
-                    <div class="col-md-12 col-sm-12 col-lg-12 row">
-                        <label class="control-label col-md-3 col-lg-2 col-sm-12 text-md"> Hipertensi</label>
-                        <div class="col-md-6 col-lg-4 col-sm-6" >
-                            <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataHt'>
-                                <option value=''>--- Pilih Salah Satu ---</option>
-                                <option value=1>Ya</option>
-                                <option value=0>Tidak</option>
-                            </select>
-                        </div>
-
-                        <label class="control-label col-md-3 col-lg-2 col-sm-12 text-md"> Diabetes Melitus</label>
-                        <div class="col-md-6 col-lg-4 col-sm-6" >
-                            <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataDm'>
-                                <option value=''>--- Pilih Salah Satu ---</option>
-                                <option value=1>Ya</option>
-                                <option value=0>Tidak</option>
-                            </select>
-                        </div>
+          <div class="modal-body" wire:loading.remove>
+            <form wire:submit.prevent='riwayatPenyakit' class="form-horizontal mt-5">
+                <div class="col-lg-12 col-sm-12 col-md-12 form-group row">
+                    <label class="control-label col-md-3 col-lg-3 col-sm-12 text-md"> Hipertensi</label>
+                    <div class="col-md-6 col-lg-3 col-sm-6" >
+                        <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataHt'>
+                            <option value=''>--- Pilih Salah Satu ---</option>
+                            <option value=1>Ya</option>
+                            <option value=0>Tidak</option>
+                        </select>
                     </div>
                 </div>
+                <div class="col-lg-12 col-sm-12 col-md-12 form-group row">
+                    <label class="control-label col-md-3 col-lg-3 col-sm-12 text-md"> Diabetes Melitus</label>
+                    <div class="col-md-6 col-lg-3 col-sm-6" >
+                        <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataDm'>
+                            <option value=''>--- Pilih Salah Satu ---</option>
+                            <option value=1>Ya</option>
+                            <option value=0>Tidak</option>
+                        </select>
+                    </div>
+                </div>
+
               <div class="callout callout-danger" style="margin-top:-9px;">
                   <h4 class="control-label mb-4"><u>Riwayat Penyakit Tidak Menular Pada Keluarga</u></h4>
                   <div class="form-group row">

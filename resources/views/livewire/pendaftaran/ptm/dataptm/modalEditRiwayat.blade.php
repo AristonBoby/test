@@ -2,7 +2,7 @@
     <div class="modal-dialog  modal-xl" role="document">
       <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="edit">Edit Data Pasien</h5>
+            <h5 class="modal-title" id="edit"><b>EDIT</b> SKRINING RIWAYAT PENYAKIT</h5>
             <div wire:loading>
               <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
             </div>
@@ -11,7 +11,6 @@
             </a>
           </div>
           <div class="modal-body" wire:loading.remove>
-            <h4 class="text-center mb-3"><u>EDIT SKRINING RIWAYAT PENYAKIT</u></h4>
             <form wire:submit.prevent='updateRiwayat' class="form-horizontal">
                 <input class="form-control" type="text" wire:model='varIdSkrining' hidden>
                 <div class="form-group row mt-5 mb-5">
