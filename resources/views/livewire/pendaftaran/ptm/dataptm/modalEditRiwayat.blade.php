@@ -12,7 +12,8 @@
           </div>
           <div class="modal-body" wire:loading.remove>
             <h4 class="text-center mb-3"><u>EDIT SKRINING RIWAYAT PENYAKIT</u></h4>
-            <form wire:submit.prevent='riwayatPenyakit' class="form-horizontal">
+            <form wire:submit.prevent='updateRiwayat' class="form-horizontal">
+                <input class="form-control" type="text" wire:model='varIdSkrining' hidden>
                 <div class="form-group row mt-5 mb-5">
                     <div class="col-md-12 col-sm-12 col-lg-12 row">
                         <label class="control-label col-md-3 col-lg-2 col-sm-12 text-md"> Hipertensi</label>
@@ -90,7 +91,7 @@
                   <div class="form-group row">
                       <label class="control-label text-md col-md-3 col-lg-3 col-sm-2">Riwayat 1</label>
                       <div class="col-md-9 col-lg-9 col-sm-9">
-                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='riwayatSendiri1'>
+                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataRiwayatSendiri1'>
                               <option selected>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
                               <option>Penyakit Hypertensi</option>
@@ -105,7 +106,7 @@
                   <div class="form-group row">
                       <label class="control-label text-md col-md-3 col-lg-3 col-sm-2">Riwayat 2</label>
                       <div class="col-md-9 col-lg-9 col-sm-9" style="margin-top:-9px;">
-                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='skrining.riwayatSendiri2'>
+                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataRiwayatSendiri2'>
                               <option selected>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
                               <option>Penyakit Hypertensi</option>
@@ -120,7 +121,7 @@
                   <div class="form-group row">
                       <label class="control-label text-md col-md-3 col-lg-3 col-sm-2">Riwayat 3</label>
                       <div class="col-md-9 col-lg-9 col-sm-9" style="margin-top:-14px;">
-                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='skrining.riwayatSendiri3'>
+                          <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataRiwayatSendiri3'>
                               <option selected>--- Pilih Salah Satu ---</option>
                               <option>Penyakit Diabetes</option>
                               <option>Penyakit Hypertensi</option>
@@ -138,7 +139,7 @@
                 <div class="col-lg-12 col-sm-12 col-md-12 form-horizontal row">
                     <label class="control-label col-md-12 col-lg-1 col-sm-12">Merokok</label>
                     <div class="col-md-12 col-sm-12 col-lg-2 mb-1">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.merokok'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataMerokok'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>YA</option>
                             <option>TIDAK</option>
@@ -146,7 +147,7 @@
                     </div>
                     <label class="control-label col-md-12 col-lg-1 col-sm-12 text-sm">Kurang Aktifitas Fisik</label>
                     <div class="col-md-12 col-sm-12 col-lg-2">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.aktifitasFisik'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataAktifitasFisik'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>YA</option>
                             <option>TIDAK</option>
@@ -154,7 +155,7 @@
                     </div>
                     <label class="control-label col-md-12 col-lg-1 col-sm-12 text-sm">Gula Berlebihan</label>
                     <div class="col-md-12 col-sm-12 col-lg-2">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.gula'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataGula'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>YA</option>
                             <option>TIDAK</option>
@@ -162,7 +163,7 @@
                     </div>
                     <label class="control-label col-md-12 col-lg-1 col-sm-12 text-sm">Garam Berlebihan</label>
                     <div class="col-md-12 col-sm-12 col-lg-2">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.garam'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataGaram'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>YA</option>
                             <option>TIDAK</option>
@@ -170,7 +171,7 @@
                     </div>
                     <label class="ccontrol-label col-md-12 col-lg-1 col-sm-12 text-sm">Lemak Berlebihan</label>
                     <div class="col-md-12 col-sm-12 col-lg-2">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.lemak'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataLemak'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>YA</option>
                             <option>TIDAK</option>
@@ -178,7 +179,7 @@
                     </div>
                     <label class="control-label col-md-12 col-lg-1 col-sm-12 text-sm">Kurang Makan Buah dan Sayur</label>
                     <div class="col-md-12 col-sm-12 col-lg-2">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.sayur'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataSayur'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>YA</option>
                             <option>TIDAK</option>
@@ -186,7 +187,7 @@
                     </div>
                     <label class="control-label col-md-12 col-lg-1 col-sm-12 text-sm mt-1">Konsumsi Alkohol</label>
                     <div class="col-md-12 col-sm-12 col-lg-2">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.alkohol'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataAlkohol'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>YA</option>
                             <option>TIDAK</option>
@@ -199,7 +200,7 @@
                   <div class="form-group row">
                       <label class="control-label col-md-12 col-lg-3 col-sm-12 text-md">Diagnosis 1</label>
                       <div class="col-md-12 col-sm-12 col-lg-9 mb-1">
-                          <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.diagnosis1'>
+                          <select class="form-control form-control-sm rounded-0" wire:model.defer='dataDiagnosis1'>
                               <option>--- Pilih Salah Satu ---</option>
                               <option>ASMA BRONCHIALE</option>
                               <option>HIPER KOLESTEROL</option>
@@ -246,7 +247,7 @@
                       </div>
                       <label class="control-label col-md-12 col-lg-3 col-sm-12 text-md">Diagnosis 2</label>
                       <div class="col-md-12 col-sm-12 col-lg-9 mb-1">
-                          <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.diagnosis2'>
+                          <select class="form-control form-control-sm rounded-0" wire:model.defer='dataDiagnosis2'>
                               <option>--- Pilih Salah Satu ---</option>
                               <option>ASMA BRONCHIALE</option>
                               <option>HIPER KOLESTEROL</option>
@@ -293,7 +294,7 @@
                       </div>
                       <label class="control-label col-md-12 col-lg-3 col-sm-12 text-md">Diagnosis 3</label>
                       <div class="col-md-12 col-sm-12 col-lg-9 mb-1">
-                          <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.diagnosis3'>
+                          <select class="form-control form-control-sm rounded-0" wire:model.defer='dataDiagnosis3'>
                               <option>--- Pilih Salah Satu ---</option>
                               <option>ASMA BRONCHIALE</option>
                               <option>HIPER KOLESTEROL</option>
@@ -341,7 +342,7 @@
 
                       <label class="control-label col-md-12 col-lg-3 col-sm-12 text-md">Terapi Farmakologi</label>
                       <div class="col-md-12 col-sm-12 col-lg-9 mb-1">
-                          <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.terapiFarmakologi'>
+                          <select class="form-control form-control-sm rounded-0" wire:model.defer='dataTerapiFarmakologi'>
                               <option>--- Pilih Salah Satu ---</option>
                               <option>Diberikan Obat</option>
                               <option>Tidak Diberikan Obat</option>
@@ -349,7 +350,7 @@
                       </div>
                       <label class="control-label col-md-12 col-lg-3 col-sm-12 text-md">Konseling, Informasi dan Edukasi Kesehatan</label>
                       <div class="col-md-12 col-sm-12 col-lg-9 mb-1">
-                          <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.konseling'>
+                          <select class="form-control form-control-sm rounded-0" wire:model.defer='dataKonseling'>
                               <option>--- Pilih Salah Satu ---</option>
                               <option>Gizi</option>
                               <option>Aktifitas Fisik</option>
@@ -362,7 +363,7 @@
                   <div class="row">
                     <label class="control-label col-md-12 col-lg-2 col-sm-12 text-md">Hasil IVA</label>
                     <div class="col-md-12 col-sm-12 col-lg-4 mb-1">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.hasilIva'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataHasilIva'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>POSITIF</option>
                             <option>NEGATIF</option>
@@ -371,7 +372,7 @@
                     </div>
                     <label class="control-label col-md-12 col-lg-2 col-sm-12 text-md">Tindak Lanjut IVA Positif</label>
                     <div class="col-md-12 col-sm-12 col-lg-4 mb-1">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.tindakLanjutIva'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataTindakLanjutIva'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>KRIOTERAPI</option>
                             <option>RUJUK</option>
@@ -382,7 +383,7 @@
                       </div>
                         <label class="control-label col-md-12 col-lg-2 col-sm-12 text-md">Hasil SADANIS</label>
                         <div class="col-md-12 col-sm-12 col-lg-4 mb-1">
-                            <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.hasilSadanis'>
+                            <select class="form-control form-control-sm rounded-0" wire:model.defer='dataHasilSadanis'>
                                 <option>--- Pilih Salah Satu ---</option>
                                 <option>BENJOLAN</option>
                                 <option>TIDAK ADA BENJOLAN</option>
@@ -391,7 +392,7 @@
                         </div>
                         <label class="control-label col-md-12 col-lg-2 col-sm-12 text-md">Tindak Lanjut SADANIS</label>
                         <div class="col-md-12 col-sm-12 col-lg-4 mb-1">
-                            <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.tidakLanjutSadanis'>
+                            <select class="form-control form-control-sm rounded-0" wire:model.defer='dataTidakLanjutSadanis'>
                                 <option>--- Pilih Salah Satu ---</option>
                                 <option>RUJUK</option>
                             </select>
@@ -403,7 +404,7 @@
                   <div class="row col-md-12">
                     <label class="control-label col-md-12 col-lg-1 col-sm-12 text-md">Konseling</label>
                     <div class="col-md-12 col-sm-12 col-lg-2 mb-1">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.konselingUbm'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataKonselingUbm'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>KONSELING 1</option>
                             <option>KONSELING 2</option>
@@ -415,7 +416,7 @@
                     </div>
                     <label class="control-label col-md-12 col-lg-1 col-sm-12 text-md">CAR</label>
                     <div class="col-md-12 col-sm-12 col-lg-2 mb-1">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.car'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataCar'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>CAR 3</option>
                             <option>CAR 6</option>
@@ -424,7 +425,7 @@
                     </div>
                     <label class="control-label col-md-12 col-lg-1 col-sm-12 text-md">Rujuk UBM</label>
                     <div class="col-md-12 col-sm-12 col-lg-2 mb-1">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.ubm'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataUbm'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>YA</option>
                             <option>TIDAK</option>
@@ -432,7 +433,7 @@
                     </div>
                     <label class="ccontrol-label col-md-12 col-lg-1 col-sm-12 text-md">Kondisi</label>
                     <div class="col-md-12 col-sm-12 col-lg-2 mb-1">
-                        <select class="form-control form-control-sm rounded-0" wire:model.defer='skrining.kondisi'>
+                        <select class="form-control form-control-sm rounded-0" wire:model.defer='dataKondisi'>
                             <option>--- Pilih Salah Satu ---</option>
                             <option>SUKSES</option>
                             <option>KAMBUH</option>
@@ -442,7 +443,7 @@
                   </div>
               </div>
                   <div class="col-md-12">
-                      <button class="btn btn-success btn-md mt-2 float-right mt-50 btn-flat" type="submit"><i class="fas fa-save "></i> Simpan Skrining</button>
+                      <button class="btn btn-success btn-md mt-2 float-right mt-50 " type="submit"><i class="fas fa-save "></i> Update Skrining</button>
                   </div>
           </form>
         </div>

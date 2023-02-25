@@ -41,75 +41,47 @@ class TablePtm extends Component
     public $varIdSkrining;
     protected $paginationTheme = 'bootstrap';
     use WithPagination;
+
+
+
     public function resetVar()
-    {   $skrining = [
-        'riwayatKeluarga1'  =>  '',
-        'riwayatKeluarga2'  =>  '',
-        'riwayatKeluarga3'  =>  '',
-        'riwayatSendiri1'   =>  '',
-        'riwayatSendiri2'   =>  '',
-        'riwayatSendiri3'   =>  '',
-        'merokok'           =>  '',
-        'aktifitasFisik'    =>  '',
-        'gula'              =>  '',
-        'garam'             =>  '',
-        'lemak'             =>  '',
-        'sayur'             =>  '',
-        'alkohol'           =>  '',
-        'diagnosis1'        =>  '',
-        'diagnosis2'        =>  '',
-        'diagnosis3'        =>  '',
-        'terapiFarmakologi' =>  '',
-        'konseling'         =>  '',
-        'hasilIva'          =>  '',
-        'tindakLanjutIva'   =>  '',
-        'hasilSadanis'      =>  '',
-        'tidakLanjutSadanis'=>  '',
-        'konselingUbm'      =>  '',
-        'car'               =>  '',
-        'ubm'               =>  '',
-        'kondisi'           =>  '',
-        'dm'                =>  '',
-        'ht'                =>  '',
-        ];
+    {
+        $this->dataRiwayatKeluarga1 = '';
+        $this->dataRiwayatKeluarga2= '';
+        $this->dataRiwayatKeluarga3= '';
+        $this->dataRiwayatSendiri1= '';
+        $this->dataRiwayatSendiri2= '';
+        $this->dataRiwayatSendiri3= '';
+        $this->dataMerokok= '';
+        $this->dataAktifitasFisik= '';
+        $this->dataGula= '';
+        $this->dataGaram= '';
+        $this->dataLemak= '';
+        $this->dataSayur= '';
+        $this->dataAlkohol= '';
+        $this->dataDiagnosis1= '';
+        $this->dataDiagnosis2= '';
+        $this->dataDiagnosis3= '';
+        $this->dataTerapiFarmakologi= '';
+        $this->dataKonseling= '';
+        $this->dataHasilIva= '';
+        $this->dataTindakLanjutIva= '';
+        $this->dataHasilSadanis= '';
+        $this->dataTidakLanjutSadanis= '';
+        $this->dataKonselingUbm= '';
+        $this->dataCar= '';
+        $this->dataUbm= '';
+        $this->dataKondisi= '';
+        $this->dataHt ='';
+        $this->dataDm='';
     }
-    public function mount(){
-        $this->skrining = [
-            'riwayatKeluarga1'  =>  '',
-            'riwayatKeluarga2'  =>  '',
-            'riwayatKeluarga3'  =>  '',
-            'riwayatSendiri1'   =>  '',
-            'riwayatSendiri2'   =>  '',
-            'riwayatSendiri3'   =>  '',
-            'merokok'           =>  '',
-            'aktifitasFisik'    =>  '',
-            'gula'              =>  '',
-            'garam'             =>  '',
-            'lemak'             =>  '',
-            'sayur'             =>  '',
-            'alkohol'           =>  '',
-            'diagnosis1'        =>  '',
-            'diagnosis2'        =>  '',
-            'diagnosis3'        =>  '',
-            'terapiFarmakologi' =>  '',
-            'konseling'         =>  '',
-            'hasilIva'          =>  '',
-            'tindakLanjutIva'   =>  '',
-            'hasilSadanis'      =>  '',
-            'tidakLanjutSadanis'=>  '',
-            'konselingUbm'      =>  '',
-            'car'               =>  '',
-            'ubm'               =>  '',
-            'kondisi'           =>  '',
-        ];
-    }
+
     public function render()
     {
         $dat = DB::table('pasiens')
         ->join('users','pasiens.id_user','users.id')
         ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
         ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
-
         ->join('kotas','kecamatans.kota_id','kotas.kota_id')
         ->select('pasiens.id',
                 'pasiens.no_Rm',
@@ -143,7 +115,7 @@ class TablePtm extends Component
         ]);
     }
     public function updateIdPasien($id)
-    {
+    {   $this->resetVar();
         $this->varIdSkrining = $id;
         $skrining = skriningPtm::where('id_pasien',$this->varIdSkrining)->first();
         $this->updateSkrining = $skrining;
@@ -156,27 +128,46 @@ class TablePtm extends Component
                 ]);
         }
         elseif(!empty($skrining))
-        {
+        {   $this->resetVar();
             $data = DB::table('pasiens')
                     ->join('skriningptm','pasiens.id','skriningptm.id_pasien')
                     ->where('pasiens.id',$this->varIdSkrining)->first();
-            $this->dataHt                   = $data->ht;
-            $this->dataDm                   = $data->dm;
-            $this->dataRiwayatKeluarga1     = $data->riwayatKeluarga1;
-            $this->dataRiwayatKeluarga2     = $data->riwayatKeluarga2;
-            $this->dataRiwayatKeluarga3     = $data->riwayatKeluarga3;
-            $this->dataRiwayatSendiri1      = $data->riwayatSendiri1;
-            $this->dataRiwayatSendiri2      = $data->riwayatSendiri2;
-            $this->dataRiwayatSendiri3      = $data->riwayatSendiri3;
-            $this->dataMerokok              = $data->merokok;
-
+                    $this->varIdSkrining            = $data->id;
+                    $this->dataRiwayatKeluarga1     = $data->riwayatKeluarga1;
+                    $this->dataRiwayatKeluarga2     = $data->riwayatKeluarga2;
+                    $this->dataRiwayatKeluarga3     = $data->riwayatKeluarga3;
+                    $this->dataRiwayatSendiri1      = $data->riwayatSendiri1;
+                    $this->dataRiwayatSendiri2      = $data->riwayatSendiri2;
+                    $this->dataRiwayatSendiri3      = $data->riwayatSendiri3;
+                    $this->dataMerokok              = $data->merokok;
+                    $this->dataAktifitasFisik       = $data->aktifitasFisik;
+                    $this->dataGula                 = $data->gula;
+                    $this->dataGaram                = $data->garam;
+                    $this->dataLemak                = $data->lemak;
+                    $this->dataSayur                = $data->sayur;
+                    $this->dataAlkohol              = $data->alkohol;
+                    $this->dataDiagnosis1           = $data->diagnosis1;
+                    $this->dataDiagnosis2           = $data->diagnosis2;
+                    $this->dataDiagnosis3           = $data->diagnosis3;
+                    $this->dataTerapiFarmakologi    = $data->terapiFarmakologi;
+                    $this->dataKonseling            = $data->konseling;
+                    $this->dataHasilIva             = $data->hasilIva;
+                    $this->dataTindakLanjutIva      = $data->tindakLanjutIva;
+                    $this->dataHasilSadanis         = $data->hasilSadanis;
+                    $this->dataTidakLanjutSadanis   = $data->tidakLanjutSadanis;
+                    $this->dataKonselingUbm         = $data->konselingUbm;
+                    $this->dataCar                  = $data->car;
+                    $this->dataUbm                  = $data->ubm;
+                    $this->dataKondisi              = $data->kondisi;
+                    $this->dataHt                   = $data->ht;
+                    $this->dataDm                   = $data->dm;
             //dd($this->updateSkrining);
             //$this->updateSkrining = pasien::where('id',$this->varIdSkrining)->first();
         }
     }
 
     public function idPasien($id)
-    {
+    {   $this->resetVar();
         $this->varIdSkrining = $id;
         $skrining = skriningPtm::where('id_pasien',$this->varIdSkrining)->first();
         if(empty($skrining))
@@ -249,6 +240,44 @@ class TablePtm extends Component
                 }
            }
 
+        }
+    }
+
+    public function updateRiwayat()
+    {
+          $updateSkrining = skriningPtm::find($this->varIdSkrining);
+          $updateSkrining->update([
+                'riwayatKeluarga1'  => $this->dataRiwayatKeluarga1,
+                'riwayatKeluarga2'  => $this->dataRiwayatKeluarga2,
+                'riwayatKeluarga3'  => $this->dataRiwayatKeluarga3,
+                'riwayatSendiri1'   => $this->dataRiwayatSendiri1,
+                'riwayatSendiri2'   => $this->dataRiwayatSendiri2,
+                'riwayatSendiri3'   => $this->dataRiwayatSendiri3,
+                'merokok'           => $this->dataMerokok,
+                'aktifitasFisik'    => $this->dataAktifitasFisik,
+                'gula'              => $this->dataGula,
+                'garam'             => $this->dataGaram,
+                'lemak'             => $this->dataLemak,
+                'sayur'             => $this->dataSayur,
+                'alkohol'           => $this->dataAlkohol,
+                'diagnosis1'        => $this->dataDiagnosis1,
+                'diagnosis2'        => $this->dataDiagnosis2,
+                'diagnosis3'        => $this->dataDiagnosis3,
+                'terapiFarmakologi' => $this->dataTerapiFarmakologi,
+                'konseling'         => $this->dataKonseling,
+                'hasilIva'          => $this->dataHasilIva,
+                'tindakLanjutIva'   => $this->dataTindakLanjutIva,
+                'hasilSadanis'      => $this->dataHasilSadanis,
+                'tidakLanjutSadanis'=> $this->dataTidakLanjutSadanis,
+                'konselingUbm'      => $this->dataKonselingUbm,
+                'car'               => $this->dataCar,
+                'ubm'               => $this->dataUbm,
+                'kondisi'           => $this->dataKondisi,
+           ]);
+
+        if($updateSkrining)
+        {
+            $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','text'=>'Data Berhasil Tersimpan','icon'=>'success','timer'=>3000]);
         }
     }
 }

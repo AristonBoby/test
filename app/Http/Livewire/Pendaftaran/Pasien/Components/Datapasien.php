@@ -127,7 +127,7 @@ class Datapasien extends Component
         'alamat.required'           =>'Alamat Pasien wajib diisi',
         'nik.unique'                =>'NIK Pasien telah digunakan',
         'bpjs.unique'               =>'Nomor BPJS Pasien telah digunakan',
-        'kelurahan.required'           => 'Kelurahan tidak boleh kosong',
+        'kelurahan.required'        =>'Kelurahan tidak boleh kosong',
 
     ];
 
