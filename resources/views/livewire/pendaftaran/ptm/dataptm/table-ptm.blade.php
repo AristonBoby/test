@@ -70,9 +70,15 @@
                                 @elseif($data->skrining == 1)
                                     <button data-toggle="modal" class="btn btn-success btn-xs" data-target="#editMyModal" wire:click="updateIdPasien('{{$data->id}}')">Sudah Skrining</button>
                                 @endif
-                                @if($data->skrining == 1)<button class="btn btn-danger btn-sm text-xs mt-2 btn-sm" data-toggle="modal" data-target="#hapusMyModal"  wire:click="deleteSkrining('{{$data->id}}')">Hapus Skrining</button>@endif
+                                @if($data->skrining == 1)<button class="btn btn-danger text-xs mt-2 btn-sm" data-toggle="modal" data-target="#hapusMyModal"  wire:click="deleteSkrining('{{$data->id}}')">Hapus Skrining</button>@endif
                             </td>
-                            <td></td>
+                            <td>
+                                <div class="btn-group text-xs">
+                                    <button class="btn btn-primary btn-sm text-xs mt-2 btn-md" data-toggle="modal" data-target="#viewPasien"><i class="fa fa-eye"></i></button>
+                                    <button class="btn btn-warning btn-sm text-xs mt-2 btn-md" data-toggle="modal" data-target="#hapusPasien"><i class="fa fa-edit"></i></button>
+                                    <button class="btn btn-danger btn-sm text-xs mt-2 btn-md" data-toggle="modal" data-target="#hapusPasien"><i class="fa fa-trash-alt"></i></button>
+                                </div>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -88,6 +94,8 @@
     @include('livewire.pendaftaran.ptm.dataptm.deleteSkrining')
     @include('livewire.pendaftaran.ptm.dataptm.modalRiwayat')
     @include('livewire.pendaftaran.ptm.dataptm.modalEditRiwayat')
+    @include('livewire.pendaftaran.ptm.dataptm.deletePasien')
+    @include('livewire.pendaftaran.ptm.dataptm.viewPasien')
 
    </div>
 <script>
