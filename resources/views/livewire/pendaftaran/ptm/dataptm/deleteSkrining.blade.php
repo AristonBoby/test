@@ -13,9 +13,9 @@
           <div class="modal-body" wire:loading.remove>
             <span>Apakah anda ingin menghapus data Skrining ?</span>
         </div>
-        <div class="modal-footer" wire:loading.remove>
-            <button class="btn btn-default btn-flat btn-sm">Batal</button>
-            <button class="btn btn-danger btn-flat btn-sm"><i class="fa fa-trash-alt fa-light"></i> Hapus</button>
+        <div class="modal-footer" wire:loading.remove='targer'>
+            <button class="btn btn-default btn-sm" data-dismiss="modal">Batal</button>
+            <button class="btn btn-danger  btn-sm"><i class="fa fa-trash-alt fa-light"></i> Hapus</button>
         </div>
       </div>
     </div>

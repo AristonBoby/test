@@ -35,8 +35,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr wire:loading>
-                            <td>Loading ...</td>
+                        <tr wire:loading wire:target='caridata' >
+                            <td>Loading ...</td>cd
                         </tr>
                         @if($pasien->count() === 0)
                             <tr>
@@ -44,7 +44,7 @@
                             </tr>
                         @endif
                         @foreach ($pasien as $no=>$data)
-                        <tr wire:loading.remove style='@if(\Carbon\Carbon::parse($data->tanggal_Lahir)->age >= 60 ) background-color:#ffffd6 @endif'>
+                        <tr wire:loading.remove wire:target='caridata' style='@if(\Carbon\Carbon::parse($data->tanggal_Lahir)->age >= 60 ) background-color:#ffffd6 @endif'>
                             <td>{{$pasien->firstItem()+$no}}.</td>
                             <td>{{$data->nama}}</td>
                             <td>{{\Carbon\Carbon::parse($data->tanggal_Lahir)->format('d-m-Y')}}</td>
@@ -70,8 +70,9 @@
                                 @elseif($data->skrining == 1)
                                     <button data-toggle="modal" class="btn btn-success btn-xs" data-target="#editMyModal" wire:click="updateIdPasien('{{$data->id}}')">Sudah Skrining</button>
                                 @endif
+                                @if($data->skrining == 1)<button class="btn btn-danger btn-sm text-xs mt-2 btn-sm" data-toggle="modal" data-target="#hapusMyModal"  wire:click="deleteSkrining('{{$data->id}}')">Hapus Skrining</button>@endif
                             </td>
-                            <td>@if($data->skrining == 1)<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusMyModal"  wire:click="deleteSkrining('{{$data->id}}')"><i class=" text-xs fa fa-trash-alt fa-light"></i></button>@endif</td>
+                            <td></td>
                         </tr>
                         @endforeach
                     </tbody>
