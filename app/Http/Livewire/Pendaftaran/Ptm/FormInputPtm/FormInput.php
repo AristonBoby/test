@@ -25,6 +25,6 @@ class FormInput extends Component
 
     public function inputPtm()
     {
-        $this->emit('pencarian',[$this->varTanggal,$this->nik]);
+        $this->emit('pencarian',$this->nik,$this->varTanggal);
     }
 }
