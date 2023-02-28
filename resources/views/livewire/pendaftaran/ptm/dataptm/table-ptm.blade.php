@@ -36,7 +36,7 @@
                     </thead>
                     <tbody>
                         <tr wire:loading wire:target='caridata' >
-                            <td>Loading ...</td>cd
+                            <td>Loading ...</td>
                         </tr>
                         @if($pasien->count() === 0)
                             <tr>
@@ -68,15 +68,17 @@
                             <td>@if($data->skrining == 0)
                                     <button data-toggle="modal" wire:click="idPasien('{{$data->id}}')" data-target="#myModal"  class="btn btn-primary btn-xs">Skrining</button>
                                 @elseif($data->skrining == 1)
-                                    <button data-toggle="modal" class="btn btn-success btn-xs" data-target="#editMyModal" wire:click="updateIdPasien('{{$data->id}}')">Sudah Skrining</button>
+                                    <button data-toggle="modal" class="btn btn-success btn-xs" data-target="#editMyModal" wire:click="updateIdPasien('{{$data->id}}')">Sudah Skrining<br>Edit Skrining</button>
                                 @endif
-                                @if($data->skrining == 1)<button class="btn btn-danger text-xs mt-2 btn-sm" data-toggle="modal" data-target="#hapusMyModal"  wire:click="deleteSkrining('{{$data->id}}')">Hapus Skrining</button>@endif
+                                @if($data->skrining == 1)<button class="btn btn-danger text-xs mt-2 btn-sm" data-toggle="modal" data-target="#hapusSkrining"  wire:click="deleteId('{{$data->id}}')">Hapus Skrining</button>@endif
                             </td>
                             <td>
                                 <div class="btn-group text-xs">
-                                    <button class="btn btn-primary btn-sm text-xs mt-2 btn-md" data-toggle="modal" data-target="#viewPasien"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-warning btn-sm text-xs mt-2 btn-md" data-toggle="modal" data-target="#hapusPasien"><i class="fa fa-edit"></i></button>
-                                    <button class="btn btn-danger btn-sm text-xs mt-2 btn-md" data-toggle="modal" data-target="#hapusPasien"><i class="fa fa-trash-alt"></i></button>
+                                    @if($data->skrining ==1)
+                                        <button class="btn btn-primary btn-sm text-xs mt-2 btn-md" wire:click="viewPasien('{{$data->id}}')" data-toggle="modal" data-target="#viewPasien"><i class="fa fa-eye"></i></button>
+                                        <button class="btn btn-warning btn-sm text-xs mt-2 btn-md" data-toggle="modal" data-target="#hapusPasien"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-sm text-xs mt-2 btn-md" data-toggle="modal" data-target="#hapusPasien"><i class="fa fa-trash-alt"></i></button>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
@@ -110,23 +112,18 @@
                 });
 
             });
+
+
      window.addEventListener('closeModalSimpan',event=>{
         $('#myModal').modal('hide');
     });
+
+    windows/addEventListener('closeDeleteSkrining',event=>{
+        $('#hapusSkrining').modal('hide');
+    });
+
     window.addEventListener('closeModalEdit',event=>{
         $('#editMyModal').modal('hide');
     });
-    window.addEventListener('alert', event => {
-                Swal.fire({
-                    title: event.detail.title,
-                    text: event.detail.text,
-                    icon: event.detail.icon,
-                    showConfirmButton: false,
-                    timer: event.detail.timer,
-                    buttons: false,
-                });
-
-            });
-
 
 </script>

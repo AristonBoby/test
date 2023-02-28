@@ -16,7 +16,7 @@
         </div>
         <div class="modal-footer" wire:loading.remove='targer'>
             <button class="btn btn-default btn-sm" data-dismiss="modal">Batal</button>
-            <button class="btn btn-danger  btn-sm"><i class="fa fa-trash-alt fa-light"></i>Hapus</button>
+            <button class="btn btn-danger btn-sm"><i class="fa fa-trash-alt fa-light text-xs"></i> Hapus</button>
         </div>
       </div>
     </div>

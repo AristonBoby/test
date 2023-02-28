@@ -38,6 +38,9 @@ class TablePtm extends Component
     public $dataKondisi           =  '';
     public $dataDm                =  '';
     public $updateSkrining        =  '';
+    public $dataRm                =  '';
+    public $idDelete              =  '';
+    public $dataViewPasien;
     public $varIdSkrining;
     protected $paginationTheme = 'bootstrap';
     use WithPagination;
@@ -114,6 +117,18 @@ class TablePtm extends Component
              'pasien'=> $dat,
         ]);
     }
+    public function viewPasien($id){
+        $data = DB::table('pasiens')
+                ->join('skriningptm','pasiens.id','skriningptm.id_pasien')
+                ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
+                ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
+                ->join('kotas','kecamatans.kota_id','kotas.kota_id')
+                ->join('users','pasiens.id_user','users.id')
+                ->where('pasiens.id',$id)
+                ->get();
+        $this->dataViewPasien = $data;
+    }
+
     public function updateIdPasien($id)
     {   $this->resetVar();
         $this->varIdSkrining = $id;
@@ -283,15 +298,29 @@ class TablePtm extends Component
         {   $this->dispatchBrowserEvent('closeModalEdit');
             $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','text'=>'Data Berhasil Tersimpan','icon'=>'success','timer'=>3000]);
         }
-
-
     }
-    public function deleteSkrining($id)
+
+    public function deleteId($id)
     {
-        $this->dispatchBrowserEvent('delete');
+       $this->idDelete = $id;
     }
-    public function hapusSkrining()
-    {
-        $this->dispatchBrowserEvent('delete');
+
+    public function deleteSkrining()
+    {   $this->dispatchBrowserEvent('deleteSkrining');
+        $delete = skriningPtm::where('id_pasien',$this->idDelete)->delete();
+        if($delete)
+        {   $pasien = pasien::find($this->idDelete)->update([
+                'skrining' => 0,
+                'dm'       => 0,
+                'ht'       => 0,
+            ]);
+            if($pasien)
+            {
+                $this->idDelete = '';
+                $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','text'=>'Data Berhasil Di Hapus','icon'=>'success','timer'=>3000]);
+                $this->dispatchBrowserEvent('closeDeleteSkrining');
+            }
+
+        }
     }
 }
