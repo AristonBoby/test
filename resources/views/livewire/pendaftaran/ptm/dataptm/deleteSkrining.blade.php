@@ -1,4 +1,4 @@
-<div wire:ignore.self class="modal fade" id="hapusMyModal" role="dialog" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="hapusSkrining" role="dialog" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog  modal-md" role="document">
       <div class="modal-content">
           <div class="modal-header">
@@ -15,7 +15,7 @@
         </div>
         <div class="modal-footer" wire:loading.remove='targer'>
             <button class="btn btn-default btn-sm" data-dismiss="modal">Batal</button>
-            <button class="btn btn-danger  btn-sm"><i class="fa fa-trash-alt fa-light"></i> Hapus</button>
+            <button class="btn btn-danger  btn-sm" wire:click='deleteSkrining' data-dismiss="modal" ><i class="fa fa-trash-alt fa-light text-xs"></i> Hapus</button>
         </div>
       </div>
     </div>
