@@ -119,7 +119,7 @@ class TablePtm extends Component
     }
     public function viewPasien($id){
         $data = DB::table('pasiens')
-                ->join('skriningptm','pasiens.id','skriningptm.id_pasien')
+                ->join('skriningptms','pasiens.id','skriningptms.id_pasien')
                 ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
                 ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
                 ->join('kotas','kecamatans.kota_id','kotas.kota_id')

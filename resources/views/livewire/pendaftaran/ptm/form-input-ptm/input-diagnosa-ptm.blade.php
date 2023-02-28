@@ -2,10 +2,10 @@
     <div class="card card-purple card-outline">
         <div class="card-body">
             <form wire:submit.prevent='inputPtm' class="form-horizontal">
-                <div class="form-group row">
+                <div class="form-group row" style="margin-bottom:-5px;">
                     <label class="form-col-group col-lg-4 col-sm-12 col-md-2">Tekanan Darah</label>
                 </div>
-                <div class="row text-xs">
+                <div class="row text-xs" style="margin-bottom:-20px;">
                     <div class="form-group col-sm-6 row">
                         <label class="form-label text-sm col-md-4 col-sm-4 col-lg-4">Sistole</label>
                         <div class="col-md-8 col-sm-4 col-lg-8">
@@ -33,10 +33,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row" style="margin-bottom:-5px;">
                     <label class="form-col-group col-lg-4 col-sm-12 col-md-2">IMT</label>
                 </div>
-                <div class="row text-xs">
+                <div class="row text-xs" style="margin-bottom:-5px;">
                     <div class="form-group col-sm-6 row">
                         <label class="form-label text-sm col-md-4 col-sm-4 col-lg-4">Tinggi Badan</label>
                         <div class="col-md-8 col-sm-4 col-lg-8">
@@ -66,8 +66,8 @@
                 </div>
                 <div class="row text-xs">
                     <div class="form-group col-sm-6 row">
-                        <label class="form-label text-sm col-md-4 col-sm-4 col-lg-5">Lingakar Perut</label>
-                        <div class="col-md-8 col-sm-4 col-lg-7">
+                        <label class="form-label text-sm col-md-4 col-sm-4 col-lg-4">Lingakar Perut</label>
+                        <div class="col-md-8 col-sm-4 col-lg-8">
                             <div class="input-group">
                                 <input type="text" maxlength="3" class="form-control form-control-sm rounded-0">
                                 <div class="input-group-append">

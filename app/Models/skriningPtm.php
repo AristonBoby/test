@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class skriningPtm extends Model
 {
     use HasFactory;
-    protected $table = 'skriningptm';
+    protected $table = 'skriningptms';
     protected $fillable =
     [
         'id_pasien',

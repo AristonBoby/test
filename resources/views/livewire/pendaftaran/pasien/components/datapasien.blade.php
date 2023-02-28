@@ -85,11 +85,11 @@
             <div class="col-md-12 col-lg-12 col-sm-12 row">
                 <tr>
                     <td colspan='14'>
-                    <div>
-                        <span class=" mt-2 text-sm float-left">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
+                    <div class="col-md-6">
+                        <span class="mt-2  text-sm float-left">{{$pasien->links()}}</span>
                     </div>
-                        <div class="float-right mt-2">
-                            <p class=" mt-4  btn-sm float-right">{{$pasien->links()}}</p>
+                        <div class="col-md-6 mt-2">
+                            <p class=" mt-2 btn-sm float-right">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</p>
                         </div>
                     </td>
                 </tr>

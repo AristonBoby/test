@@ -36,6 +36,7 @@
                             <input type="text"  wire:model.defer="nik" maxlength="16" class="form-control form-control-sm rounded-0"  placeholder="Masukan NIK ">
                             <span class="input-group-append">
                                 <button class="btn btn-primary btn-sm">Cari</button>
+                                <button type="button" class="btn btn-default btn-sm"><b>...</b></button>
                             </span>
                         </div>
                     </div>
