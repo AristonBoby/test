@@ -12,7 +12,7 @@
             </button>
           </div>
           <div class="modal-body">
-              <table class="table table-sm table-hover table-bordered text-xs text-uppercase">
+              <table wire:loading.remove wire:class="table table-sm table-hover table-bordered text-xs text-uppercase">
                       <tbody>
                           <tr>
                               <td width="150">NO. REKAM MEDIS</td>

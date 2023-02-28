@@ -10,12 +10,12 @@ use App\Models\kota;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 class EditdataPasien extends Component
-{   
-    
+{
+
     public $nama;
     public $no_Rm;
     public $tempat_Lahir;
-    public $tanggal_Lahir; 
+    public $tanggal_Lahir;
     public $kepala_keluarga;
     public $pekerjaan;
     public $jenkel;
@@ -34,7 +34,7 @@ class EditdataPasien extends Component
     public $kecamatan;
     public $tglcari;
 
-    use WithPagination; 
+    use WithPagination;
     protected $paginationTheme = 'bootstrap';
     protected $listeners= ['tglKunjungan'=>'tglKunjungan'];
     // Cara Reset Paginate LIVEWIRE//
@@ -56,7 +56,7 @@ class EditdataPasien extends Component
                         'pasien'=> DB::table('pasiens')
                                     ->join('users','pasiens.id_user','users.id')
                                     ->select('pasiens.id','pasiens.no_Rm','pasiens.nama','tanggal_Lahir','jenkel','nik','bpjs','users.name')
-                                    ->where('pasiens.updated_at','LIKE','%'.$this->tglcari.'%')->where('status',0)->orderBy('pasiens.no_Rm','desc')->paginate(10),
+                                    ->where('pasiens.created_at','LIKE','%'.$this->tglcari.'%')->where('status',0)->orderBy('pasiens.no_Rm','desc')->paginate(10),
                         'provinsi'  =>  provinsi::all(),
                         'kota'      =>  kota::where('prov_id',$this->prov)->get(),
                         'kec'       =>  kecamatan::where('kota_id',$this->kotas)->get(),
@@ -68,18 +68,18 @@ class EditdataPasien extends Component
         $this->tanggal = date('d-m-Y');
     }
     public function index ()
-    { 
+    {
         return view('livewire.pendaftaran.pasien.editdata-Pasien');
-        
+
     }
 
     public function Tglcari()
     {
         $this->resetPage();
     }
-    
+
     public function detailPasien($data){
-           
+
             $query = DB::table('pasiens')
                     ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
                     ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
@@ -91,7 +91,7 @@ class EditdataPasien extends Component
            if($query){
             $this->kel_name         =   false;
             $this->id_pasien        =   $query->id;
-            $this->nama             =   $query->nama; 
+            $this->nama             =   $query->nama;
             $this->no_Rm            =   $query->no_Rm;
             $this->agama            =   $query->agama;
             $this->tempat_Lahir     =   $query->tempat_Lahir;
@@ -101,7 +101,7 @@ class EditdataPasien extends Component
             $this->pekerjaan        =   $query->pekerjaan;
             $this->nik              =   $query->nik;
             $this->bpjs             =   $query->bpjs;
-            $this->alamat           =   $query->alamat;   
+            $this->alamat           =   $query->alamat;
             $this->no_tlpn          =   $query->no_tlpn;
             $this->kec_name         =   $query->kec_name;
             $this->kel_name         =   $query->kel_name;
@@ -114,7 +114,7 @@ class EditdataPasien extends Component
             $this->kota_name        =   null;
             $this->prov_name        =   null;
             $this->id_pasien        =   $query->id;
-            $this->nama             =   $query->nama; 
+            $this->nama             =   $query->nama;
             $this->no_Rm            =   $query->no_Rm;
             $this->agama            =   $query->agama;
             $this->tempat_Lahir     =   $query->tempat_Lahir;
@@ -124,9 +124,9 @@ class EditdataPasien extends Component
             $this->pekerjaan        =   $query->pekerjaan;
             $this->nik              =   $query->nik;
             $this->bpjs             =   $query->bpjs;
-            $this->alamat           =   $query->alamat;   
+            $this->alamat           =   $query->alamat;
             $this->no_tlpn          =   $query->no_tlpn;
         }
-        
+
     }
 }

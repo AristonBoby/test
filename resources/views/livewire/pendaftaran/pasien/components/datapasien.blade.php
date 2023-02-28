@@ -9,12 +9,14 @@
         </div>
         <div class="card-body">
             <a href="daftar" class="btn btn-primary mb-4 btn-sm" >+ Tambah Data Pasien</a>
-                <div class="col-md-6 float-right">
-                    <div class="form-group row">
-                        <h5 class=" col-md-12 col-lg-3 col-sm-12"> Pencarian Pasien</h5>
-                            <div class="col-md-6 col-lg-8 col-sm-12">
-                                <input type="text"  wire:model.lazy="caripasien" class=" form-control " placeholder="Pencarian Data Pasien">
-                            </div>
+                <div class="col-md-4 float-right">
+                    <div class="input-group">
+                        <input type="search" class="form-control form-control-md" wire:model.lazy="caripasien" placeholder="Pencarian Pasien">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-md btn-primary" wire:click='render'>
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <p class="text-danger col-md-8 col-sm-12 col-lg-6">

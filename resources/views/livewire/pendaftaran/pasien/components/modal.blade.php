@@ -12,7 +12,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-sm table-bordered text-sm">
+                    <table wire:loading.remove class="table table-sm table-bordered text-sm">
                             <tbody>
                                 <tr>
                                     <td>NOMOR REKAM MEDIS</td>
@@ -89,8 +89,8 @@
                     <span aria-hidden="true">&times;</span>
                   </a>
                 </div>
-                <div class="modal-body">
-                  <form wire:submit.prevent='editPasien'>
+                <div class="modal-body" wire:loading.remove>
+                  <form  wire:submit.prevent='editPasien'>
                     @csrf
                     <input type="hidden" wire:model.defer='id_pasien'>
                     <div class="row">

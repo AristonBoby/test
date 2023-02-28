@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fontawesome-free/css/all.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('AdminLTE/jquery-ui.min.css') }}">  
+  <link rel="stylesheet" href="{{ asset('AdminLTE/jquery-ui.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A==" crossorigin="anonymous" />
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('AdminLTE/dist/css/adminlte.min.css')}}">
@@ -55,7 +55,7 @@
         @include('layouts.nav')
       </div>
     </aside>
-    
+
     <div class="content-wrapper" style="min-height: 1000.8px;">
         <div class="content-header">
           @yield('breadcrumb')
@@ -64,12 +64,12 @@
                   @yield('content')
         </section>
     </div>
- 
+
     <footer class="main-footer ">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0
       </div>
-      <strong>Copyright &copy; 2022 <a href="/">UPTD Puskesmas</a>.</strong> SEGIRI 
+      <strong>Copyright &copy; 2022 <a href="/">UPTD Puskesmas</a>.</strong> SEGIRI
     </footer>
     @stack('js')
 <!-- jQuery -->
@@ -78,7 +78,6 @@
 <script src="{{ asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('AdminLTE/dist/js/adminlte.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
@@ -91,7 +90,17 @@
             }
           });
         });
-       
+
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.date').datepicker({
+            format: "dd-mm-yyyy",
+            autoclose:true,
+        });
+    });
 </script>
 @livewireScripts
 </body>

@@ -1,5 +1,5 @@
 <div class="card card-primary card-outline">
-    
+
         <div class="card-header">
             <h5 class="card-title"><b>Form Input</b> PTM</h5>
             <div wire:loading>
@@ -14,8 +14,8 @@
                 <div class="col-md-12" style="margin-bottom:-8px;">
                     <div class="form-group row">
                         <label class="col-md-4 col-form-label">Nama Lengkap</label>
-                        <div class="col-md-8">
-                            <input type="text" @disabled($form) wire:model.defer="nama" class="form-control form-control-sm rounded-0 @error('nama') is-invalid @enderror" placeholder="Nama Lengkap">
+                            <div class="col-md-8">
+                                <input type="text" @disabled($form) wire:model.defer="nama" class="form-control form-control-sm rounded-0 @error('nama') is-invalid @enderror" placeholder="Nama Lengkap">
                             @error('nama')<span class="invalid-feedback">{{$message}} {{$this->dispatchBrowserEvent('no_Rm_Ganda');}}</span>@enderror
                         </div>
                     </div>
@@ -167,7 +167,7 @@
 </div>
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-  
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -181,7 +181,7 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-  
+
     </div>
   </div>
 
