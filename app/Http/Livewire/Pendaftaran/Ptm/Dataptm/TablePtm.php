@@ -145,7 +145,7 @@ class TablePtm extends Component
         elseif(!empty($skrining))
         {   $this->resetVar();
             $data = DB::table('pasiens')
-                    ->join('skriningptm','pasiens.id','skriningptm.id_pasien')
+                    ->join('skriningptms','pasiens.id','skriningptms.id_pasien')
                     ->where('pasiens.id',$this->varIdSkrining)->first();
                     $this->varIdSkrining            = $data->id;
                     $this->dataRiwayatKeluarga1     = $data->riwayatKeluarga1;

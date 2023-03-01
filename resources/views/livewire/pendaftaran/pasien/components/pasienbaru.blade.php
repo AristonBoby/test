@@ -1,4 +1,4 @@
-    <div style="font-family:'Arial';">  
+    <div style="font-family:'Arial';">
             <div class="card card-default card-outline">
                 <div class="card-body text-sm">
                     <form @if($modeUpdate==1) wire:submit.prevent="store" @elseif($modeUpdate==0) wire:submit.prevent="updateData"@endif  class="form-horizontal">
@@ -12,7 +12,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4 control-label">Nama Lengkap</label>
@@ -27,7 +27,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-4 control-label ">Tempat Lahir</label>
                                     <div class="col-md-8">
-                                        <input @disabled($form) type="text" wire:model.lazy="pasien.varTmplahir" class="form-control form-control-sm   @error('pasien.varTmplahir')is-invalid @enderror" placeholder="Tempat Lahir"> 
+                                        <input @disabled($form) type="text" wire:model.lazy="pasien.varTmplahir" class="form-control form-control-sm   @error('pasien.varTmplahir')is-invalid @enderror" placeholder="Tempat Lahir">
                                         @error('pasien.varTmplahir')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row ">
                                     <label class="col-md-4 control-label">Kepala Keluarga</label>
@@ -127,7 +127,7 @@
                                     <label class="col-md-4 control-label">No. BPJS <code>*</code></label>
                                     <div class="col-md-8">
                                         <input @disabled($form) type="text" wire:model.lazy='pasien.varBpjs' class=" number @error('pasien.varBpjs')is-invalid @enderror form-control form-control-sm  " placeholder="Nomor BPJS" maxlength="13">
-                                        @error('pasien.varBpjs')<span class="invalid-feedback">{{$message}}</span>@enderror 
+                                        @error('pasien.varBpjs')<span class="invalid-feedback">{{$message}}</span>@enderror
                                         <span class="text-xs">*Kosongkan Jika Pasien Tidak Memiliki BPJS</span>
                                     </div>
                                 </div>
@@ -140,14 +140,14 @@
                                         <select @disabled($form) id="test" wire:model.lazy="pasien.varProvinsi" class=" form-control form-control-sm @error('pasien.varProvinsi')is-invalid @enderror">
                                             <option value="">-- Pilih Provinsi --</option>
                                             @foreach ($provinsi as $data)
-                                                <option value="{{$data->prov_id}}">{{$data->prov_name}}</option>   
-                                            @endforeach                                     
+                                                <option value="{{$data->prov_id}}">{{$data->prov_name}}</option>
+                                            @endforeach
                                         </select>
-                                        @error('pasien.varProvinsi')<span class="invalid-feedback">{{$message}}</span>@enderror 
+                                        @error('pasien.varProvinsi')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="col-lg-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
                                     <label class="col-md-4 control-label">Kab/Kota</label>
@@ -155,10 +155,10 @@
                                         <select @disabled($form) id="test" class="form-control form-control-sm @error('pasien.varKota')is-invalid @enderror" wire:model.lazy="pasien.varKota" @empty($kota) disabled @endempty>
                                             <option selected>-- Pilih Kab/Kota --</option>
                                             @foreach ($kota as $data)
-                                                <option value="{{$data->kota_id}}" >{{$data->kota_name}}</option>   
-                                            @endforeach                                     
+                                                <option value="{{$data->kota_id}}" >{{$data->kota_name}}</option>
+                                            @endforeach
                                         </select>
-                                        @error('pasien.varKota')<span class="invalid-feedback">{{$message}}</span>@enderror 
+                                        @error('pasien.varKota')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
                             </div>
@@ -170,8 +170,8 @@
                                         <select @disabled($form) id="test"class="form-control form-control-sm @error('pasien.varKecamatan')is-invalid @enderror" wire:model.lazy="pasien.varKecamatan" >
                                             <option selected>-- Pilih Kecamatan --</option>
                                             @foreach ($kec as $data)
-                                                <option value="{{$data->id_kec}}" >{{$data->kec_name}}</option>   
-                                            @endforeach                                     
+                                                <option value="{{$data->id_kec}}" >{{$data->kec_name}}</option>
+                                            @endforeach
                                         </select>
                                         @error('pasien.varKecamatan')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
@@ -185,13 +185,13 @@
                                         <select @disabled($form) id="test"class="form-control form-control-sm @error('pasien.varKecamatan')is-invalid @enderror" wire:model.lazy="pasien.varKelurahan">
                                             <option selected>-- Pilih Kelurahan / Desa --</option>
                                             @foreach ($kel as $data)
-                                                <option value="{{$data->id_kel}}" >{{$data->kel_name}}</option>   
-                                            @endforeach                                     
+                                                <option value="{{$data->id_kel}}" >{{$data->kel_name}}</option>
+                                            @endforeach
                                         </select>
                                         @error('pasien.varKelurahan')<span class="invalid-feedback">{{$message}}</span>@enderror
                                     </div>
                                 </div>
-                            </div>               
+                            </div>
 
                             <div class="col-md-12" style="margin-bottom:-8px;">
                                 <div class="form-group row">
@@ -203,13 +203,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12" style="margin-top:12px;">    
+                        <div class="col-md-12" style="margin-top:12px;">
                             <a @disabled($form)  class="btn btn-danger btn-sm float-right " href="{{url('/pendaftaran/daftar')}}" style="margin-left:5px;"><b class="text-sm fas fa-times"></b> <span class="text-sm">Batal</span></a>
                             <button @disabled($form) type="submit" class="btn btn-success btn-sm float-right"><i class="text-sm fas fa-save"></i> <span class="text-sm">@if($modeUpdate==1||$modeUpdate==2) Simpan @elseif($modeUpdate==0) Edit Data @endif</span></button>
                         </div>
                     </form>
                 </div>
-               
+
             </div>
         </div>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
@@ -227,14 +227,14 @@
                 Swal.fire({
                     title: event.detail.title,
                     text: event.detail.text,
-                    icon: event.detail.icon,   
-                    showConfirmButton: false, 
+                    icon: event.detail.icon,
+                    showConfirmButton: false,
                     timer: event.detail.timer,
                     buttons: false,
                 });
-                
+
             });
-            
+
        </script>
         <script type="text/javascript">
             $(function () {

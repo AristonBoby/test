@@ -3,7 +3,7 @@
         <div class="card-header">
             <h3 class="card-title"><b>Input Data</b> PTM</h3>
             <div wire:loading>
-                <span class="badge bg-success text-sm"style="margin-left:5px;"> <i class="text-sm fas fa fa-spinner fa-spin"></i> &nbsp; Loading...</span>
+                <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-sm fas fa fa-spinner fa-spin"></i> &nbsp; Loading...</span>
             </div>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">

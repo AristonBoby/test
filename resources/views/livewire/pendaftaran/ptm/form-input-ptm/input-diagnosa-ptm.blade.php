@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="form-group col-sm-6 row">
-                        <label class="form-label text-sm col-md-4 col-sm-4 col-lg-4">HbA1c</label>
+                        <label class="form-label text-sm col-md-4 col-sm-4 col-lg-4">Glukosa</label>
                         <div class="col-md-8 col-sm-4 col-lg-7">
                             <div class="input-group">
                                 <input type="text" maxlength="3" class="form-control form-control-sm rounded-0">

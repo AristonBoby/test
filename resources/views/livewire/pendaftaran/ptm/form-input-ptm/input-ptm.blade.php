@@ -27,7 +27,7 @@
                     <livewire:pendaftaran.ptm.form-input-ptm.form-skrining-ptm>
                 </div>
                 <div class="col-md-4 col-sm-4 col-lg12">
-                    <livewire:pendaftaran.ptm.form-input-ptm.form-skrining-ptm>
+                    <livewire:pendaftaran.ptm.form-input-ptm.riwayat-antropometri>
                 </div>
             </div>
         </div>
