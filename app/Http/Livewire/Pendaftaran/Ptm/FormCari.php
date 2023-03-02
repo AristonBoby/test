@@ -41,9 +41,11 @@ class FormCari extends Component
 
         if(!empty($ptm))
         {   $this->emit('formTidakAktif');
-            $this->dispatchBrowserEvent('alert',['title'=>'Data Pasien Telah Terdaftar','icon'=>'warning','btnConfrim'=>'OK']);
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Data Pasien Telah Terdaftar dengan Nama : '.$ptm->nama.'','timer'=>3000]);
+
         }else{
             $this->emit('formAktif');
+            $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','icon'=>'success','text'=>'NIK Belum Terdaftar, Entry Data Pasien','timer'=>2000]);
         }
 
 

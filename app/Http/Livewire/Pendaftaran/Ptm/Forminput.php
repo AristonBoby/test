@@ -29,8 +29,6 @@ class Forminput extends Component
     public $alamat;
     public $nik;
 
-
-
     protected $listeners = ['formAktif' => 'aktifForm','formTidakAktif'=>'tidakAktif'];
 
     public function render()
@@ -50,7 +48,23 @@ class Forminput extends Component
     public function tidakAktif(){
         $this->form = true;
     }
-    protected $rules=([
+
+    public function resetForm()
+    {
+        $this->nik              = '';
+        $this->nama             = '';
+        $this->tanggal_Lahir    = '';
+        $this->jenkel           = '';
+        $this->agama            = '';
+        $this->pekerjaan        = '';
+        $this->idkelurahan      = '';
+        $this->alamat           = '';
+        $this->id_kec           = '';
+        $this->kota_id          = '';
+        $this->prov             = '';
+    }
+
+    protected $rules = ([
         'nik'           => 'required||unique:pasiens||min:16||max:16',
         'nama'          => 'required',
         'tanggal_Lahir' => 'required',
@@ -64,11 +78,10 @@ class Forminput extends Component
         'alamat'        => 'required',
         'kota_id'       => 'required',
         'prov'          => 'required',
-
-
     ]);
+
     public function simpanPtm()
-    {   $this->validate();
+    {   $this->resetForm();
         $query = pasien::create([
                 'nama'              => $this->nama,
                 'tanggal_Lahir'     => $this->tanggal_Lahir,
@@ -85,7 +98,7 @@ class Forminput extends Component
 
         if($query)
         {
-            $this->dispatchBrowserEvent('riwayatPenyakit');
+            $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','icon'=>'success','text'=>'Data Pasien PTM Berhasil Tersimpan','timer'=>2000]);
         }
     }
 }

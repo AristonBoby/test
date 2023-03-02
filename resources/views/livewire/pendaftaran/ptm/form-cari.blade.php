@@ -22,13 +22,3 @@
         </form>
     </div>
 </div>
-<script>
-    window.addEventListener('dataGanda', event => {
-               Swal.fire({
-                   title: event.detail.title,
-                   text: event.detail.text,
-                   icon: event.detail.icon,
-               })
-           });
-
-</script>

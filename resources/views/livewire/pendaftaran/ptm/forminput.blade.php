@@ -11,31 +11,31 @@
             <form wire:submit.prevent='simpanPtm' class="form-horizontal">
             <div class="row">
                 @csrf
-                <div class="col-md-12" style="margin-bottom:-8px;">
+                <div class="col-md-12" style="margin-bottom:-14px;">
                     <div class="form-group row">
                         <label class="col-md-4 col-form-label">Nama Lengkap</label>
                             <div class="col-md-8">
-                                <input type="text" @disabled($form) wire:model.defer="nama" class="form-control form-control-sm rounded-0 @error('nama') is-invalid @enderror" placeholder="Nama Lengkap">
+                                <input type="text" @disabled($form) wire:model.defer="nama" class="form-control form-control-sm @error('nama') is-invalid @enderror" placeholder="Nama Lengkap">
                             @error('nama')<span class="invalid-feedback">{{$message}} {{$this->dispatchBrowserEvent('no_Rm_Ganda');}}</span>@enderror
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-12" style="margin-bottom:-8px;">
+                <div class="col-md-12" style="margin-bottom:-14px;">
                     <div class="form-group row rounded-0">
                         <label class="col-md-4 col-form-label ">Tanggal Lahir</label>
                         <div class="col-md-8">
-                            <input type="date" @disabled($form) wire:model.defer="tanggal_Lahir" placeholder="Tanggal lahir" class=" form-control form-control-sm  rounded-0 @error('tanggal_Lahir') is-invalid @enderror">
+                            <input type="date" @disabled($form) wire:model.defer="tanggal_Lahir" placeholder="Tanggal lahir" class=" form-control form-control-sm  @error('tanggal_Lahir') is-invalid @enderror">
                             @error('tanggal_Lahir')<span class="invalid-feedback">{{$message}}</span> @enderror
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-12" style="margin-bottom:-8px;">
+                <div class="col-md-12" style="margin-bottom:-14px;">
                     <div class="form-group row">
                         <label class="col-md-4  rounded-0">Kelamin</label>
                         <div class="col-md-8">
-                            <select @disabled($form) class="form-control form-control-sm  rounded-0 @error('jenkel') is-invalid @enderror " wire:model.defer="jenkel" >
+                            <select @disabled($form) class="form-control form-control-sm @error('jenkel') is-invalid @enderror " wire:model.defer="jenkel" >
                                 <option>Pilih Salah Satu</option>
                                 <option value="L">Laki-Laki</option>
                                 <option value="P">Perempuan</option>
@@ -45,11 +45,11 @@
                     </div>
                 </div>
 
-                <div class="col-md-12" style="margin-bottom:-8px;">
+                <div class="col-md-12" style="margin-bottom:-10px;">
                     <div class="form-group row">
-                        <label class="col-md-4  rounded-0">Agama</label>
+                        <label class="col-md-4">Agama</label>
                         <div class="col-md-8">
-                            <select @disabled($form) class="form-control form-control-sm  rounded-0 @error('agama')is-invalid @enderror" wire:model.defer='agama'>
+                            <select @disabled($form) class="form-control form-control-sm @error('agama')is-invalid @enderror" wire:model.defer='agama'>
                                 <option>Pilih Salah Satu</option>
                                 <option>Islam</option>
                                 <option>Kristen</option>
@@ -63,36 +63,36 @@
                     </div>
                 </div>
 
-                <div class="col-md-12" style="margin-bottom:-8px;">
+                <div class="col-md-12" style="margin-bottom:-10px;">
                     <div class="form-group row">
                         <label class="col-md-4  rounded-0">Pekerjaan</label>
                         <div class="col-md-8">
-                            <input @disabled($form) type="text" wire:model.defer='pekerjaan' class="form-control form-control-sm  rounded-0 @error('pekerjaan') is-invalid @enderror" placeholder="Pekerjaan" maxlength="50">
+                            <input @disabled($form) type="text" wire:model.defer='pekerjaan' class="form-control form-control-sm @error('pekerjaan') is-invalid @enderror" placeholder="Pekerjaan" maxlength="50">
                             @error('pekerjaan')<span class="invalid-feedback">{{$message}}</span>@enderror
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12" style="margin-bottom:-8px;">
+                <div class="col-md-12" style="margin-bottom:-10px;">
                     <div class="form-group row">
                         <label class="col-md-4  rounded-0">No. Telepon / HP</label>
                         <div class="col-md-8">
-                            <input @disabled($form) type="text" wire:model.defer='no_tlpn' class=" number form-control form-control-sm  rounded-0 @error('no_tlpn') is-invalid @enderror" placeholder="Nomor Telepon" maxlength="13">
+                            <input @disabled($form) type="text" wire:model.defer='no_tlpn' class=" number form-control form-control-sm @error('no_tlpn') is-invalid @enderror" placeholder="Nomor Telepon" maxlength="13">
                             @error('no_tlpn')<span class="invalid-feedback">{{$message}}</span>@enderror
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-12" style="margin-bottom:-8px;">
+                <div class="col-md-12" style="margin-bottom:-10px;">
                     <div class="form-group row">
                         <label class="col-md-4  rounded-0">NIK</label>
                         <div class="col-md-8">
-                            <input @disabled($form) type="text" wire:model.defer='nik' class="@error('nik')is-invalid @enderror number form-control form-control-sm  rounded-0" placeholder="Nomor Induk Kependudukan" maxlength="16">
+                            <input @disabled($form) type="text" wire:model.defer='nik' class="@error('nik')is-invalid @enderror number form-control form-control-sm" placeholder="Nomor Induk Kependudukan" maxlength="16">
                             @error('nik')<span class="invalid-feedback">{{$message}}</span>@enderror
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-12" style="margin-bottom:-8px;">
+                <div class="col-lg-12" style="margin-bottom:-10px;">
                     <div class="form-group row">
                         <label class="col-md-4 ">Provinsi</label>
                         <div class="col-md-8">
@@ -105,11 +105,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12" style="margin-bottom:-8px;">
+                <div class="col-lg-12" style="margin-bottom:-10px;">
                     <div class="form-group row">
                         <label class="col-md-4 ">Kab/Kota</label>
                         <div class="col-md-8">
-                            <select id="test" class="form-control form-control-sm rounded-0 @error('kota_id') is-invalid @enderror" wire:model.lazy="kota_id" @disabled($form)>
+                            <select id="test" class="form-control form-control-sm @error('kota_id') is-invalid @enderror" wire:model.lazy="kota_id" @disabled($form)>
                                 <option selected>-- Pilih Kab/Kota --</option>
                                 @foreach ($kota as $data)
                                     <option value="{{$data->kota_id}}" >{{$data->kota_name}}</option>
@@ -119,11 +119,11 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12" style="margin-bottom:-8px;">
+                <div class="col-lg-12" style="margin-bottom:-10px;">
                     <div class="form-group row">
                         <label class="col-md-4 ">Kecamatan</label>
                         <div class="col-md-8">
-                            <select id="test"class="form-control form-control-sm rounded-0  @error('id_kec') is-invalid @enderror" wire:model.lazy="id_kec" @disabled($form)>
+                            <select id="test"class="form-control form-control-sm @error('id_kec') is-invalid @enderror" wire:model.lazy="id_kec" @disabled($form)>
                                 <option selected>-- Pilih Kecamatan --</option>
                                 @foreach ($kec as $data)
                                     <option value="{{$data->id_kec}}" >{{$data->kec_name}}</option>
@@ -133,11 +133,11 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12" style="margin-bottom:-8px;">
+                <div class="col-lg-12" style="margin-bottom:-10px;">
                     <div class="form-group row">
                         <label class="col-md-4 ">Kelurahan / Desa</label>
                         <div class="col-md-8">
-                            <select id="test"class="form-control form-control-sm rounded-0 @error('idkelurahan') is-invalid @enderror" wire:model.lazy="idkelurahan" @disabled($form)>
+                            <select id="test"class="form-control form-control-sm @error('idkelurahan') is-invalid @enderror" wire:model.lazy="idkelurahan" @disabled($form)>
                                 <option selected>-- Pilih Kelurahan / Desa --</option>
                                 @foreach ($kel as $data)
                                     <option value="{{$data->id_kel}}" >{{$data->kel_name}}</option>
@@ -147,7 +147,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-12" style="margin-bottom:-8px;">
+                <div class="col-md-12" style="margin-bottom:-10px;">
                     <div class="form-group row">
                         <label class="col-md-4 ">Alamat</label>
                         <div class="col-md-8">
@@ -158,46 +158,10 @@
                 </div>
             </div>
             <div class="col-md-12" style="margin-top:12px;">
+                <button type="submit" class="btn btn-primary btn-sm text-sm float-right ml-1"><i class="far fa-save text-sm fa-light"></i> Simpan</button>
                 <a @disabled($form) class="btn btn-danger btn-sm float-right " id="myBtn" style="margin-left:5px;"><b class="text-sm fas fa-times"></b> <span class="text-sm">Batal</span></a>
-                <button type="submit">Simpan</button>
                 <!--<button type="button" wire:click="modal"  data-toggle="modal" data-target="#riwayatDialog" class="btn btn-success btn-sm float-right"><i class="text-sm fas fa-save"></i> <span class="text-sm">Simpan</span></button>-->
             </div>
         </div>
     </form>
 </div>
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-<script>
-    window.addEventListener('alert', event => {
-                Swal.fire({
-                    title: event.detail.title,
-                    text: event.detail.text,
-                    icon: event.detail.icon,
-                })
-            });
-</script>
-<script>
-    $(document).ready(function(){
-        $("#myBtn").click(function(){
-            $("#myModal").modal();
-        });
-    });
-</script>

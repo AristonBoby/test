@@ -27,3 +27,16 @@
     </div>
   </div>
 @endsection
+<script>
+    window.addEventListener('alert', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.text,
+            icon: event.detail.icon,
+            showConfirmButton: false,
+            timer: event.detail.timer,
+            buttons: false,
+        });
+    });
+
+</script>
