@@ -78,55 +78,5 @@ class EditdataPasien extends Component
         $this->resetPage();
     }
 
-    public function detailPasien($data){
 
-            $query = DB::table('pasiens')
-                    ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
-                    ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
-                    ->join('kotas','kecamatans.kota_id','kotas.kota_id')
-                    ->join('provinsis','kotas.prov_id','provinsis.prov_id')
-                    ->select('*','kelurahans.kel_name','kecamatans.kec_name','kotas.kota_name','provinsis.prov_name')
-                    ->where('pasiens.id',$data)->first();
-
-           if($query){
-            $this->kel_name         =   false;
-            $this->id_pasien        =   $query->id;
-            $this->nama             =   $query->nama;
-            $this->no_Rm            =   $query->no_Rm;
-            $this->agama            =   $query->agama;
-            $this->tempat_Lahir     =   $query->tempat_Lahir;
-            $this->tanggal_Lahir    =   $query->tanggal_Lahir;
-            $this->kepala_keluarga  =   $query->kepala_keluarga;
-            $this->jenkel           =   $query->jenkel;
-            $this->pekerjaan        =   $query->pekerjaan;
-            $this->nik              =   $query->nik;
-            $this->bpjs             =   $query->bpjs;
-            $this->alamat           =   $query->alamat;
-            $this->no_tlpn          =   $query->no_tlpn;
-            $this->kec_name         =   $query->kec_name;
-            $this->kel_name         =   $query->kel_name;
-            $this->kota_name        =   $query->kota_name;
-            $this->prov_name        =   $query->prov_name;
-        }else{
-            $query = pasien::find($data);
-            $this->kec_name         =   null;
-            $this->kel_name         =   null;
-            $this->kota_name        =   null;
-            $this->prov_name        =   null;
-            $this->id_pasien        =   $query->id;
-            $this->nama             =   $query->nama;
-            $this->no_Rm            =   $query->no_Rm;
-            $this->agama            =   $query->agama;
-            $this->tempat_Lahir     =   $query->tempat_Lahir;
-            $this->tanggal_Lahir    =   $query->tanggal_Lahir;
-            $this->kepala_keluarga  =   $query->kepala_keluarga;
-            $this->jenkel           =   $query->jenkel;
-            $this->pekerjaan        =   $query->pekerjaan;
-            $this->nik              =   $query->nik;
-            $this->bpjs             =   $query->bpjs;
-            $this->alamat           =   $query->alamat;
-            $this->no_tlpn          =   $query->no_tlpn;
-        }
-
-    }
 }

@@ -7,7 +7,7 @@
     </div>
     <div class="card-body" wire:loading.remove>
         <div class="table-responsive">
-            <table class="table table-xs table-bordered text-xs text-uppercase">
+            <table class="table table-xs table-bordered text-sm">
                 <thead>
                     <tr>
                         <th class="text-center">No</th>
@@ -24,13 +24,13 @@
                 @if(!empty($query))
                     @foreach($query as $i=>$data)
                         <tr>
-                            <td>{{$i+1}}.</td>
-                            <td>{{\carbon\carbon::parse($data->tanggal)->format('d-m-Y')}}</td>
-                            <td>{{$data->sistole}}</td>
-                            <td>{{$data->diastole}}</td>
-                            <td>{{$data->tinggi_badan}}</td>
-                            <td>{{$data->berat_badan}}</td>
-                            <td>{{$data->lingkar_perut}}</td>
+                            <td style="width:0%;">{{$i+1}}.</td>
+                            <td width=100px>{{\carbon\carbon::parse($data->tanggal)->format('d-m-Y')}}</td>
+                            <td>{{$data->sistole}} mmHg</td>
+                            <td>{{$data->diastole}} mmHg</td>
+                            <td class="text-lowercase">{{$data->tinggi_badan}} Cm</td>
+                            <td>{{$data->berat_badan}} Kg</td>
+                            <td class="text-lowercase">{{$data->lingkar_perut}} cm</td>
                             <td>{{$data->glukosa}}</td>
                         </tr>
                     @endforeach

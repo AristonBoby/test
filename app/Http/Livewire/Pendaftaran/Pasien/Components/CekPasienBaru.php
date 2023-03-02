@@ -38,7 +38,7 @@ class CekPasienBaru extends Component
 
                 // Mengirim data ke Pasienbaru.php //
                 // mengaktifkan form jika pasien telah di daftar via form PTM //
-               
+
                 $this->emit('formAktif',false);
 
                 // ----------------------------//
@@ -51,7 +51,7 @@ class CekPasienBaru extends Component
                 //-----------------------------------//
 
 
-                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Data Pasien Belum Lengkap']);
+                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Data Pasien Belum Lengkap, Lengkapi Data Pasien']);
             }
             else
             {
@@ -61,7 +61,7 @@ class CekPasienBaru extends Component
 
             }
         }
-       
+
     }
 
     public function tanpaNIK()

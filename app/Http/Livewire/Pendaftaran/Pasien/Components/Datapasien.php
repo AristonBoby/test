@@ -212,6 +212,7 @@ class Datapasien extends Component
             'alamat'            =>  $this->alamat,
             'no_tlpn'           =>  $this->no_tlpn,
             'kel_id'            =>  $this->kelurahan,
+            'status'            => 0,
         ]);
         if($query){
             $this->dispatchBrowserEvent('editPasien');

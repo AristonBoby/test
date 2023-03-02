@@ -15,12 +15,12 @@
             </div>
         </div>
         <div class="card-body">
-            <form wire:submit.prevent='inputPtm'>
+            <form wire:submit.prevent='pencarianPtm'>
                 <div class="form-group row">
                     <label class="form-col-group col-lg-2 col-sm-12 col-md-2">Tanggal</label>
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <div class="input-group">
-                            <input type="text" wire:model.defer="varTanggal" onchange='Livewire.emit("ubahTanggal", this.value)' class="date form-control form-control-sm rounded-0" readonly placeholder="dd-mm-yyyy">
+                            <input type="text" wire:model="varTanggal" onchange='Livewire.emit("ubahTanggal", this.value)' class="date form-control form-control-sm rounded-0" readonly placeholder="dd-mm-yyyy">
                             <div class="input-group-append">
                                 <span class="input-group-text fa-light">
                                     <i class="fa fa-calendar"></i>

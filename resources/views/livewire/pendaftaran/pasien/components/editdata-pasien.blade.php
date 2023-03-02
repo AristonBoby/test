@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-xs table-hover  text-sm text-center">
+                    <table class="table table-sm table-hover text-sm text-center">
                         <thead class="text-uppercase">
                             <tr>
                                 <th class="text-center">No</th>
@@ -63,7 +63,7 @@
                                     <td>{{$query->nik}}</td>
                                     <td>{{$query->bpjs}}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-info"  data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="text-xs far fa-eye"></i></a>
+                                        <a class="btn btn-sm btn-info" target="_blank" href="printpasien/{{$query->no_Rm}}"><i class="text-xs fa fa-print"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

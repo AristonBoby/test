@@ -61,8 +61,8 @@ class Pasienbaru extends Component
 
 
     /*==============================================================*/
-    /*  Untuk Mengaktifkan Form ketika data pasien tidak ada atau   */ 
-    /*  Pasien Telah terdaftar tetapi pasien didaftar melalui PTM   */ 
+    /*  Untuk Mengaktifkan Form ketika data pasien tidak ada atau   */
+    /*  Pasien Telah terdaftar tetapi pasien didaftar melalui PTM   */
     /*  Parameter dikirim CekPasienBaru.php Via emit                */
     /*  bernilai false / true maka form aktif                       */
     /*==============================================================*/
@@ -75,7 +75,7 @@ class Pasienbaru extends Component
 
 
     /*==============================================================*/
-    /*  untuk Mengubah mode form pada cek-pasien.blade.php          */ 
+    /*  untuk Mengubah mode form pada cek-pasien.blade.php          */
     /*==============================================================*/
 
     public function formUpdate($data)
@@ -85,7 +85,7 @@ class Pasienbaru extends Component
 
 
     public function dataBlmLengkap($id)
-    {   
+    {
         $data = DB::table('pasiens')
                     ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
                     ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
@@ -110,9 +110,9 @@ class Pasienbaru extends Component
             $this->pasien['varKota']            = $data->kota_id;
             $this->pasien['varKecamatan']       = $data->kec_id;
             $this->pasien['varKelurahan']       = $data->id_kel;
-            $this->pasien['varAlamat']          = $data->alamat;     
+            $this->pasien['varAlamat']          = $data->alamat;
         }
-       
+
     }
 
     public function index ()
@@ -160,28 +160,28 @@ class Pasienbaru extends Component
         'pasien.varKota.required'           =>'Kota tidak boleh kosong',
         'pasien.varKecamatan.required'      =>'Kecamatan tidak boleh kosong',
     ];
-    
+
 
     /*==============================================================*/
-    /*          Proses Penyimpanan data pasien Baru                 */ 
-    /*          Data diambil pada pasienbaru.balade.php             */ 
+    /*          Proses Penyimpanan data pasien Baru                 */
+    /*          Data diambil pada pasienbaru.balade.php             */
     /*==============================================================*/
-    
-    
+
+
     public function store(){
 
         /*===================================================================*/
-        /* Mengubah varTgllahir ke format database pada pasienbaru.blade.php */ 
+        /* Mengubah varTgllahir ke format database pada pasienbaru.blade.php */
         /*===================================================================*/
 
         $date = Carbon::parse($this->pasien['varTgllahir'])->format('Y-m-d');
-    
+
         /*==============================================================*/
-        /*          Proses Pemanggilan Method Validasi data             */ 
+        /*          Proses Pemanggilan Method Validasi data             */
         /*          Jika data Pasien Berhasil di validasi lalu proses   */
         /*          Penyimpanan data                                    */
         /*==============================================================*/
-    
+
         if (!$this->validasi_data(false)){
             $query = pasien::create([
                 'no_Rm'             => $this->pasien['varRm'],
@@ -197,6 +197,7 @@ class Pasienbaru extends Component
                 'bpjs'              => $this->pasien['varBpjs'],
                 'kel_id'            => $this->pasien['varKelurahan'],
                 'alamat'            => $this->pasien['varAlamat'],
+                'status'            => 0,
                 'id_user'           => Auth::id(),
                 ]);
 
@@ -204,27 +205,35 @@ class Pasienbaru extends Component
                     $this->formReset();
                     $this->modeUpdate=1;
                     $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','icon'=>'success','text'=>'Data Berhasil Tersimpan','btnConfrim'=>'OK']);
-            }        
+            }
         }
 
     }
 
-    
+
     /*==============================================================*/
-    /*              Proses Validasi Data Pasien                     */ 
+    /*              Proses Validasi Data Pasien                     */
     /*==============================================================*/
 
     private function validasi_data(){
-        
+             /*==============================================================*/
+            /*           Proses Validasi Umur MINIMAL 5 TH WAJIB NIK        */
             /*==============================================================*/
-            /*           Proses Validasi Nomor Rekam Medis                  */ 
+            $umur = \Carbon\Carbon::parse($this->pasien['varTgllahir'])->age;
+            if($umur >= 5 && $this->pasien['varNik'] == '')
+            {
+                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien Telah Berumur Lebih Dari 5 Tahun Pastikan NIK Telah Diisi','timer'=>10000]);
+            }
+
+            /*==============================================================*/
+            /*           Proses Validasi Nomor Rekam Medis                  */
             /*==============================================================*/
 
             if(!empty($this->pasien['varRm'])){
 
                 /*==============================================================*/
                 /*      Proses pengecekan pada Database                         */
-                /*      nomor Rekam Medis                                       */ 
+                /*      nomor Rekam Medis                                       */
                 /*      Proses Pengecekan Panjang Minimal Karakter no RM 7      */
                 /*==============================================================*/
 
@@ -242,21 +251,17 @@ class Pasienbaru extends Component
                     $this->form = false;
                     return back();
                 }
-            
+
                 /*==================================================================*/
                 /*  validasi jika panjang Rekam Medis lebih dari 7 tampilakn pesan  */
                 /*==================================================================*/
-        
+
                 if($noRm_Panjang < 7){
                     $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Nomor Rekam Medis Minimal 7 Karakter','timer'=>10000]);
                     return back();
                 }
-                
+
             }
-
-
-
-
 
             if(!empty($this->pasien['varBpjs']) && empty($this->pasien['varNik'])){
                 $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien telah memiliki nomor BPJS pastikan NIK Pasien telah diisi !!!','timer'=>10000]);
@@ -299,6 +304,7 @@ class Pasienbaru extends Component
 
     public function formReset(){
         $this->form = true;
+        $this->modeUpdate=1;
         $this->pasien= [
             'varRm'             => '',
             'varId'             => '',
@@ -321,7 +327,7 @@ class Pasienbaru extends Component
     }
 
     public function updateData()
-    {   
+    {
         $this->validate([
             'pasien.varRm'                     => 'required|unique:pasiens,no_Rm|max:15|min:7',
             'pasien.varNama'                   => 'required',
@@ -358,6 +364,7 @@ class Pasienbaru extends Component
                 'bpjs'              => $this->pasien['varBpjs'],
                 'kel_id'            => $this->pasien['varKelurahan'],
                 'alamat'            => $this->pasien['varAlamat'],
+                'status'            => 0,
             ]);
             if($data)
             {
@@ -365,7 +372,7 @@ class Pasienbaru extends Component
                 $this->formReset();
             }
         }
-       
+
     }
 
 }

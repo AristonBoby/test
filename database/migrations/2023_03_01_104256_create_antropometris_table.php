@@ -23,7 +23,9 @@ return new class extends Migration
             $table->char('berat_badan',3)->nullable();
             $table->char('lingkar_perut',3)->nullable();
             $table->char('glukosa',3)->nullable();
+            $table->bigInteger('id_user')->unsigned();
             $table->foreign('id_skrining')->references('id')->on('skriningPtms')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('id_user')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

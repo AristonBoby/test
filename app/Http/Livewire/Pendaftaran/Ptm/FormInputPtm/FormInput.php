@@ -23,8 +23,8 @@ class FormInput extends Component
         $this->varTanggal = $id;
     }
 
-    public function inputPtm()
+    public function pencarianPtm()
     {
-        $this->emit('pencarian',$this->nik,$this->varTanggal);
+        $this->emit('pencarian', $this->nik, $this->varTanggal);
     }
 }
