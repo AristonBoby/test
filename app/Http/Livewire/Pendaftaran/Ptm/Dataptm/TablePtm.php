@@ -244,7 +244,6 @@ class TablePtm extends Component
                     'ht'       => $this->dataHt,
                     'dm'       => $this->dataDm,
                 ]);
-
                 if($id)
                 {
                     $this->render();

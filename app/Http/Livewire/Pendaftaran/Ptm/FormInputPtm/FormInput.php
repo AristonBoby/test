@@ -37,10 +37,11 @@ class FormInput extends Component
 
         }
         elseif(!empty($skrining))
-        {
+        {   $this->emit('pencarian', $this->nik, $this->varTanggal);
             $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien Belum Skrining','timer'=>2000]);
         }
         else{
+            $this->emit('pencarian', $this->nik, $this->varTanggal);
             $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'error','text'=>'Pasien Belum Terdaftar','timer'=>2000]);
         }
     }
