@@ -204,7 +204,7 @@ class TablePtm extends Component
     public function riwayatPenyakit()
     {   $id = pasien::findOrFail($this->varIdSkrining);
         $skrining = skriningPtm::where('id_pasien',$this->varIdSkrining)->first();
-        if( !empty($id) && empty($skrining) )
+        if(!empty($id) && empty($skrining))
         {
            $createSkrining = skriningPtm::create([
                 'id_pasien'         => $this->varIdSkrining,
@@ -250,7 +250,7 @@ class TablePtm extends Component
                     $this->render();
                     $this->resetVar();
                     $this->dispatchBrowserEvent('closeModalSimpan');
-                    $this->dispatchBrowserEvent('alert',['title'=>'Berhasil Disimpan','icon'=>'success','text'=>'Skrining Pasien Berhasil di Simpan','timer'=>2000]);
+                    $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','icon'=>'success','text'=>'Skrining Pasien Berhasil di Simpan','timer'=>2000]);
 
                 }
            }
