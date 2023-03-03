@@ -19,14 +19,33 @@ class InputDiagnosaPtm extends Component
     public $glukosa;
     public $tanggal;
     public $idUser;
-
-    protected $listeners = ['pencarian'];
+    public $form;
+    protected $listeners = ['pencarian','aktifForm'];
 
     public function render()
     {
         return view('livewire.pendaftaran.ptm.form-input-ptm.input-diagnosa-ptm');
     }
 
+    public function mount()
+    {
+        $this->form = true;
+    }
+
+    public function aktifForm($id)
+    {
+        $this->form = false;
+    }
+
+    private function resetForm()
+    {
+        $this->sistole = '';
+        $this->diastole = '';
+        $this->tinggiBadan = '';
+        $this->beratBadan = '';
+        $this->lingkarPerut = '';
+        $this->glukosa = '';
+    }
     public function inputPtm()
     {   $idSkrining = DB::table('pasiens')
                     ->join('skriningptms','pasiens.id','skriningptms.id_pasien')
@@ -43,6 +62,14 @@ class InputDiagnosaPtm extends Component
                 'glukosa'       => $this->glukosa,
                 'id_user'       => Auth::id(),
         ]);
+
+        if($query)
+        {
+            $this->form = true;
+            $this->resetForm();
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'success','text'=>'Data Berhasil Tersimpan','timer'=>2000]);
+
+        }
     }
 
     public function pencarian($id, $tanggal)

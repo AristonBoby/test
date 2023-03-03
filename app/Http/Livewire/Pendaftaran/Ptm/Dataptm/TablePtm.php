@@ -201,8 +201,15 @@ class TablePtm extends Component
         }
     }
 
+
+    protected $rules = ([
+        'dataHt'      => 'required',
+        'dataDm'      => 'required',
+    ]);
+
     public function riwayatPenyakit()
-    {   $id = pasien::findOrFail($this->varIdSkrining);
+    {   $this->validate();
+        $id = pasien::findOrFail($this->varIdSkrining);
         $skrining = skriningPtm::where('id_pasien',$this->varIdSkrining)->first();
         if(!empty($id) && empty($skrining))
         {

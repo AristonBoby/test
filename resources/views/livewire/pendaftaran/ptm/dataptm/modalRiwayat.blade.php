@@ -15,7 +15,7 @@
                 <div class="col-lg-12 col-sm-12 col-md-12 form-group row">
                     <label class="control-label col-md-3 col-lg-3 col-sm-12 text-md"> Hipertensi</label>
                     <div class="col-md-6 col-lg-3 col-sm-6" >
-                        <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataHt'>
+                        <select class="@error('dataHt') is-invalid @enderror form-control text-md form-control-sm rounded-0" wire:model.defer='dataHt'>
                             <option value=''>--- Pilih Salah Satu ---</option>
                             <option value=1>Ya</option>
                             <option value=0>Tidak</option>
@@ -25,7 +25,7 @@
                 <div class="col-lg-12 col-sm-12 col-md-12 form-group row">
                     <label class="control-label col-md-3 col-lg-3 col-sm-12 text-md"> Diabetes Melitus</label>
                     <div class="col-md-6 col-lg-3 col-sm-6" >
-                        <select class="form-control text-md form-control-sm rounded-0" wire:model.defer='dataDm'>
+                        <select class="@error('dataDm') is-invalid @enderror form-control text-md form-control-sm rounded-0" wire:model.defer='dataDm'>
                             <option value=''>--- Pilih Salah Satu ---</option>
                             <option value=1>Ya</option>
                             <option value=0>Tidak</option>

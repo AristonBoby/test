@@ -34,7 +34,7 @@ class FormInput extends Component
         if(!empty($query))
         {
             $this->emit('pencarian', $this->nik, $this->varTanggal);
-
+            $this->emit('aktifForm', false);
         }
         elseif(!empty($skrining))
         {   $this->emit('pencarian', $this->nik, $this->varTanggal);

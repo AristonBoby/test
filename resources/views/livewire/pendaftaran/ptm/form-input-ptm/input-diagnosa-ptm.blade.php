@@ -10,7 +10,7 @@
                         <label class="form-label text-sm col-md-4 col-sm-4 col-lg-4">Sistole</label>
                         <div class="col-md-8 col-sm-4 col-lg-8">
                             <div class="input-group">
-                                <input type="text" wire:model.defer="sistole" maxlength="3" class="form-control form-control-sm rounded-0">
+                                <input @disabled($form) type="text" wire:model.defer="sistole" maxlength="3" class="form-control form-control-sm rounded-0">
                                 <div class="input-group-append">
                                     <span class="input-group-text text-xs">
                                         <b> mmHg</b>
@@ -23,7 +23,7 @@
                         <label class="form-label text-sm col-md-4 col-sm-4 col-lg-4">Diastole</label>
                         <div class="col-md-8 col-sm-4 col-lg-8">
                             <div class="input-group">
-                                <input type="text" wire:model.defer="diastole" maxlength="3" class="form-control form-control-sm rounded-0">
+                                <input @disabled($form) type="text" wire:model.defer="diastole" maxlength="3" class="form-control form-control-sm rounded-0">
                                 <div class="input-group-append">
                                     <span class="input-group-text text-xs">
                                         <b> mmHg</b>
@@ -41,7 +41,7 @@
                         <label class="form-label text-sm col-md-4 col-sm-4 col-lg-4">Tinggi Badan</label>
                         <div class="col-md-8 col-sm-4 col-lg-8">
                             <div class="input-group">
-                                <input type="text" wire:model.defer="tinggiBadan" maxlength="3" class="form-control form-control-sm rounded-0">
+                                <input @disabled($form) type="text" wire:model.defer="tinggiBadan" maxlength="3" class="form-control form-control-sm rounded-0">
                                 <div class="input-group-append">
                                     <span class="input-group-text text-xs">
                                         <b>cm</b>
@@ -54,7 +54,7 @@
                         <label class="form-label text-sm col-md-4 col-sm-4 col-lg-4">Berat Badan</label>
                         <div class="col-md-8 col-sm-4 col-lg-8">
                             <div class="input-group">
-                                <input type="text" wire:model.defer="beratBadan" maxlength="3" class="form-control form-control-sm rounded-0">
+                                <input @disabled($form) type="text" wire:model.defer="beratBadan" maxlength="3" class="form-control form-control-sm rounded-0">
                                 <div class="input-group-append">
                                     <span class="input-group-text text-xs">
                                         <b>Kg</b>
@@ -69,7 +69,7 @@
                         <label class="form-label text-sm col-md-4 col-sm-4 col-lg-4">Lingakar Perut</label>
                         <div class="col-md-8 col-sm-4 col-lg-8">
                             <div class="input-group">
-                                <input type="text"  wire:model.defer="lingkarPerut" maxlength="3" class="form-control form-control-sm rounded-0">
+                                <input @disabled($form) type="text"  wire:model.defer="lingkarPerut" maxlength="3" class="form-control form-control-sm rounded-0">
                                 <div class="input-group-append">
                                     <span class="input-group-text text-xs">
                                         <b>cm</b>
@@ -82,12 +82,12 @@
                         <label class="form-label text-sm col-md-4 col-sm-4 col-lg-4">Glukosa</label>
                         <div class="col-md-8 col-sm-4 col-lg-7">
                             <div class="input-group">
-                                <input type="text" wire:model.defer="glukosa" maxlength="3" class="form-control form-control-sm rounded-0">
+                                <input @disabled($form) type="text" wire:model.defer="glukosa" maxlength="3" class="form-control form-control-sm rounded-0">
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="float-right btn-primary btn-sm btn "><i class="fa fa-save"></i> Simpan</button>
+                <button @disabled($form) class="float-right btn-primary btn-sm btn "><i class="fa fa-save"></i> Simpan</button>
             </form>
         </div>
     </div>
