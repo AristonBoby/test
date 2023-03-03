@@ -93,21 +93,4 @@
     </div>
 </div>
 
-    <script>
-    window.addEventListener('datatidakditemukan', event => {
-        Swal.fire({
-            title: 'Perhatian',
-            text: "Data Kunjungan Pasien tidak ditemukan Pada tanggal tersebut",
-        })
-    });
-
-    window.addEventListener('alert', event => {
-        Swal.fire({
-            title: event.detail.title,
-            text : event.detail.text,
-            icon : event.detail.icon,
-        })
-    });
-
-    </script>
 

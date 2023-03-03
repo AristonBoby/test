@@ -46,7 +46,7 @@
     </div>
 </div>
 
-    <script>
+<script>
     window.addEventListener('datatidakditemukan', event => {
         Swal.fire({
             title: 'Perhatian',
@@ -57,9 +57,11 @@
     window.addEventListener('alert', event => {
         Swal.fire({
             title: event.detail.title,
-            text : event.detail.text,
-            icon : event.detail.icon,
-        })
+            text: event.detail.text,
+            icon: event.detail.icon,
+            showConfirmButton: false,
+            timer: event.detail.timer,
+            buttons: false,
+        });
     });
-
-    </script>
+</script>

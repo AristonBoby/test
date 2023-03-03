@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Pendaftaran\Ptm\FormInputPtm;
-
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class FormInput extends Component
@@ -25,6 +25,19 @@ class FormInput extends Component
 
     public function pencarianPtm()
     {
-        $this->emit('pencarian', $this->nik, $this->varTanggal);
+        $query = DB::table('pasiens')
+            ->join('skriningptms','pasiens.id','skriningptms.id_pasien')
+            ->where('nik',$this->nik)->first();
+        $skrining = DB::table('pasiens')
+            ->where('nik',$this->nik)->first();
+
+        if(!empty($query))
+        {
+            $this->emit('pencarian', $this->nik, $this->varTanggal);
+        }elseif(!empty($skrining))
+        {
+            $this->dispatchBrowserEvent('alert');
+        }
+
     }
 }
