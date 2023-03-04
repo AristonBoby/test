@@ -265,44 +265,46 @@ class TablePtm extends Component
     }
 
     public function updateRiwayat()
-    {
-          $updateSkrining = skriningPtm::find($this->varIdSkrining);
-          $updatePasien   = pasien::find($this->updateSkrining['id_pasien']);
-          $updatePasien->update(['dm'=> $this->dataDm,
-                                 'ht'=> $this->dataHt,
-                                ]);
-          $updateSkrining->update([
-                'riwayatKeluarga1'  => $this->dataRiwayatKeluarga1,
-                'riwayatKeluarga2'  => $this->dataRiwayatKeluarga2,
-                'riwayatKeluarga3'  => $this->dataRiwayatKeluarga3,
-                'riwayatSendiri1'   => $this->dataRiwayatSendiri1,
-                'riwayatSendiri2'   => $this->dataRiwayatSendiri2,
-                'riwayatSendiri3'   => $this->dataRiwayatSendiri3,
-                'merokok'           => $this->dataMerokok,
-                'aktifitasFisik'    => $this->dataAktifitasFisik,
-                'gula'              => $this->dataGula,
-                'garam'             => $this->dataGaram,
-                'lemak'             => $this->dataLemak,
-                'sayur'             => $this->dataSayur,
-                'alkohol'           => $this->dataAlkohol,
-                'diagnosis1'        => $this->dataDiagnosis1,
-                'diagnosis2'        => $this->dataDiagnosis2,
-                'diagnosis3'        => $this->dataDiagnosis3,
-                'terapiFarmakologi' => $this->dataTerapiFarmakologi,
-                'konseling'         => $this->dataKonseling,
-                'hasilIva'          => $this->dataHasilIva,
-                'tindakLanjutIva'   => $this->dataTindakLanjutIva,
-                'hasilSadanis'      => $this->dataHasilSadanis,
-                'tidakLanjutSadanis'=> $this->dataTidakLanjutSadanis,
-                'konselingUbm'      => $this->dataKonselingUbm,
-                'car'               => $this->dataCar,
-                'ubm'               => $this->dataUbm,
-                'kondisi'           => $this->dataKondisi,
-           ]);
+    {   $this->validate();
+
+        $updateSkrining = skriningPtm::find($this->varIdSkrining);
+        $updatePasien   = pasien::find($this->updateSkrining['id_pasien']);
+
+        $updatePasien->update([ 'dm'=> $this->dataDm,
+                                'ht'=> $this->dataHt,
+                            ]);
+        $updateSkrining->update([
+            'riwayatKeluarga1'  => $this->dataRiwayatKeluarga1,
+            'riwayatKeluarga2'  => $this->dataRiwayatKeluarga2,
+            'riwayatKeluarga3'  => $this->dataRiwayatKeluarga3,
+            'riwayatSendiri1'   => $this->dataRiwayatSendiri1,
+            'riwayatSendiri2'   => $this->dataRiwayatSendiri2,
+            'riwayatSendiri3'   => $this->dataRiwayatSendiri3,
+            'merokok'           => $this->dataMerokok,
+            'aktifitasFisik'    => $this->dataAktifitasFisik,
+            'gula'              => $this->dataGula,
+            'garam'             => $this->dataGaram,
+            'lemak'             => $this->dataLemak,
+            'sayur'             => $this->dataSayur,
+            'alkohol'           => $this->dataAlkohol,
+            'diagnosis1'        => $this->dataDiagnosis1,
+            'diagnosis2'        => $this->dataDiagnosis2,
+            'diagnosis3'        => $this->dataDiagnosis3,
+            'terapiFarmakologi' => $this->dataTerapiFarmakologi,
+            'konseling'         => $this->dataKonseling,
+            'hasilIva'          => $this->dataHasilIva,
+            'tindakLanjutIva'   => $this->dataTindakLanjutIva,
+            'hasilSadanis'      => $this->dataHasilSadanis,
+            'tidakLanjutSadanis'=> $this->dataTidakLanjutSadanis,
+            'konselingUbm'      => $this->dataKonselingUbm,
+            'car'               => $this->dataCar,
+            'ubm'               => $this->dataUbm,
+            'kondisi'           => $this->dataKondisi,
+        ]);
 
         if($updateSkrining && $updatePasien)
-        {   $this->dispatchBrowserEvent('closeModalEdit');
-            $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','text'=>'Data Berhasil Tersimpan','icon'=>'success','timer'=>3000]);
+        {   $this->dispatchBrowserEvent('closeModalEditSkrining');
+            $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','text'=>'Data Berhasil Diperbarui','icon'=>'success','timer'=>3000]);
         }
     }
 
@@ -323,6 +325,7 @@ class TablePtm extends Component
             if($pasien)
             {
                 $this->idDelete = '';
+                $this->render();
                 $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','text'=>'Data Berhasil Di Hapus','icon'=>'success','timer'=>3000]);
                 $this->dispatchBrowserEvent('closeDeleteSkrining');
             }

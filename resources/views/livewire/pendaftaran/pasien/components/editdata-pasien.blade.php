@@ -47,9 +47,9 @@
                             <tr wire:loading>
                                 <td>Loading...</td>
                             </tr>
-                            @if($pasien->isEmpty())
+                            @if($pasien->count() === 0)
                             <tr>
-                                <td colspan="9">Data Kosong</td>
+                                <td colspan="9">Pasien tidak ditemukan <span class="fa fa-database fa-light text-xs" aria-hidden="true"></span></td>
                             </tr>
                             @endif
                             @foreach ($pasien as $index => $query)
