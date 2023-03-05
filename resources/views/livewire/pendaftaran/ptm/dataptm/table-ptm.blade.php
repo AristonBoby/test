@@ -76,8 +76,6 @@
                                 <div class="btn-group text-xs">
                                     @if($data->skrining ==1)
                                         <button class="btn btn-primary btn-sm text-xs mt-2 btn-md" wire:click="viewPasien('{{$data->id}}')" data-toggle="modal" data-target="#viewPasien"><i class="fa fa-eye"></i></button>
-                                        <button class="btn btn-warning btn-sm text-xs mt-2 btn-md" data-toggle="modal" data-target="#hapusPasien"><i class="fa fa-edit"></i></button>
-                                        <button class="btn btn-danger btn-sm text-xs mt-2 btn-md" data-toggle="modal" data-target="#hapusPasien"><i class="fa fa-trash-alt"></i></button>
                                     @endif
                                 </div>
                             </td>

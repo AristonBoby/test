@@ -36,7 +36,7 @@
                         <label class="col-md-4  rounded-0">Kelamin</label>
                         <div class="col-md-8">
                             <select @disabled($form) class="form-control form-control-sm @error('jenkel') is-invalid @enderror " wire:model.defer="jenkel" >
-                                <option>Pilih Salah Satu</option>
+                                <option value="">Pilih Salah Satu</option>
                                 <option value="L">Laki-Laki</option>
                                 <option value="P">Perempuan</option>
                             </select>
@@ -50,7 +50,7 @@
                         <label class="col-md-4">Agama</label>
                         <div class="col-md-8">
                             <select @disabled($form) class="form-control form-control-sm @error('agama')is-invalid @enderror" wire:model.defer='agama'>
-                                <option>Pilih Salah Satu</option>
+                                <option value="" >Pilih Salah Satu</option>
                                 <option>Islam</option>
                                 <option>Kristen</option>
                                 <option>Khatolik</option>
@@ -102,6 +102,7 @@
                                     <option value="{{$data->prov_id}}">{{$data->prov_name}}</option>
                                 @endforeach
                             </select>
+                            @error('prov')<span class="invalid-feedback">{{$message}}</span>@enderror
                         </div>
                     </div>
                 </div>
@@ -110,11 +111,12 @@
                         <label class="col-md-4 ">Kab/Kota</label>
                         <div class="col-md-8">
                             <select id="test" class="form-control form-control-sm @error('kota_id') is-invalid @enderror" wire:model.lazy="kota_id" @disabled($form)>
-                                <option selected>-- Pilih Kab/Kota --</option>
+                                <option selected value="">-- Pilih Kab/Kota --</option>
                                 @foreach ($kota as $data)
                                     <option value="{{$data->kota_id}}" >{{$data->kota_name}}</option>
                                 @endforeach
                             </select>
+                            @error('kota_id')<span class="invalid-feedback">{{$message}}</span>@enderror
                         </div>
                     </div>
                 </div>
@@ -124,11 +126,12 @@
                         <label class="col-md-4 ">Kecamatan</label>
                         <div class="col-md-8">
                             <select id="test"class="form-control form-control-sm @error('id_kec') is-invalid @enderror" wire:model.lazy="id_kec" @disabled($form)>
-                                <option selected>-- Pilih Kecamatan --</option>
+                                <option selected value="">-- Pilih Kecamatan --</option>
                                 @foreach ($kec as $data)
                                     <option value="{{$data->id_kec}}" >{{$data->kec_name}}</option>
                                 @endforeach
                             </select>
+                            @error('id_kec')<span class="invalid-feedback">{{$message}}</span>@enderror
                         </div>
                     </div>
                 </div>
@@ -138,11 +141,12 @@
                         <label class="col-md-4 ">Kelurahan / Desa</label>
                         <div class="col-md-8">
                             <select id="test"class="form-control form-control-sm @error('idkelurahan') is-invalid @enderror" wire:model.lazy="idkelurahan" @disabled($form)>
-                                <option selected>-- Pilih Kelurahan / Desa --</option>
+                                <option selected value="">-- Pilih Kelurahan / Desa --</option>
                                 @foreach ($kel as $data)
                                     <option value="{{$data->id_kel}}" >{{$data->kel_name}}</option>
                                 @endforeach
                             </select>
+                            @error('idkelurahan')<span class="invalid-feedback">{{$message}}</span>@enderror
                         </div>
                     </div>
                 </div>

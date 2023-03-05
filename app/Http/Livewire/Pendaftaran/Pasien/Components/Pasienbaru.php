@@ -220,9 +220,10 @@ class Pasienbaru extends Component
             /*           Proses Validasi Umur MINIMAL 5 TH WAJIB NIK        */
             /*==============================================================*/
             $umur = \Carbon\Carbon::parse($this->pasien['varTgllahir'])->age;
-            if($umur >= 5 && $this->pasien['varNik'] == '')
+            if($umur >= 5 && $this->pasien['varNik'] === '')
             {
                 $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Pasien Telah Berumur Lebih Dari 5 Tahun Pastikan NIK Telah Diisi','timer'=>10000]);
+                return back();
             }
 
             /*==============================================================*/

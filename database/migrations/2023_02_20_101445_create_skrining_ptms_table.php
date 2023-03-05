@@ -43,8 +43,7 @@ return new class extends Migration
             $table->string('ubm',25)->nullable();
             $table->string('kondisi',25)->nullable();
             $table->timestamps();
-            $table->foreign('id_pasien')->references('id')
-              ->on('pasiens');
+            $table->foreign('id_pasien')->references('id')->on('pasiens')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

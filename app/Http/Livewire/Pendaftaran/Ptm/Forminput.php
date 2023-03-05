@@ -62,6 +62,7 @@ class Forminput extends Component
         $this->id_kec           = '';
         $this->kota_id          = '';
         $this->prov             = '';
+        $this->form = true;
     }
 
     protected $rules = ([
@@ -73,15 +74,35 @@ class Forminput extends Component
         'pekerjaan'     => 'required',
         'no_tlpn'       => 'required||min:10',
         'idkelurahan'   => 'required',
-        'idkelurahan'   => 'required',
         'id_kec'        => 'required',
         'alamat'        => 'required',
         'kota_id'       => 'required',
         'prov'          => 'required',
     ]);
 
+    protected $messages = ([
+        'nik.unique'                => 'NIK Telah Digunakan',
+        'nik.required'              => 'NIK Pasien Wajib Diisi',
+        'nama.required'             => 'Nama Pasien Wajib Diisi',
+        'tanggal_Lahir.required'    => 'Tanggal Lahir Pasien Wajib Diisi',
+        'jenkel.max'                => 'Jenis Kelamin Pasien Wajib Diisi',
+        'jenkel.min'                => 'Jenis Kelamin Pasien Wajib Diisi',
+        'jenkel.required'           => 'Jenis Kelamin Pasien Wajib Diisi',
+        'agama.required'            => 'Agama Pasien Wajib Diisi',
+        'pekerjaan.required'        => 'Agama Pasien Wajib Diisi',
+        'no_tlpn.required'          => 'No. Telepon / HP Pasien Wajib Diisi',
+        'no_tlpn.min'               => 'No. Telepon / HP Minimal 10 Karakter',
+        'prov.required'             => 'Provinsi Pasien Wajib Diisi',
+        'kota_id.required'          => 'Kab/Kota Pasien Wajib Diisi',
+        'id_kec.required'           => 'Kecamatan Pasien Wajib Diisi',
+        'idkelurahan.required'      => 'Kelurahan Pasien Wajib Diisi',
+        'alamat.required'      => 'Kelurahan Pasien Wajib Diisi',
+
+
+    ]);
+
     public function simpanPtm()
-    {
+    {   $this->validate();
         $query = pasien::create([
                 'nama'              => $this->nama,
                 'tanggal_Lahir'     => $this->tanggal_Lahir,
