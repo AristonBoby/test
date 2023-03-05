@@ -1,4 +1,4 @@
-    <div wire:ignore.self class="modal fade" style="display:block" id="modalcaridiagnosa" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="modalcaridiagnosa" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -19,8 +19,8 @@
                                         <input wire:model='cariicd' class=" text-sm form-control form-control rounded-0" placeholder="Pencarian Diagnosa Penyakit">
                                     </div>
                                 </div>
-                            </div> 
-                   
+                            </div>
+
                         <div class=" mt-3 table-responsive">
                             <table class="table text-xs table-sm table-striped table-hover">
                                 <thead>
@@ -28,27 +28,27 @@
                                         <th class="text-center" width="90">Code</th>
                                         <th class="text-center">Diagnosa</th>
                                     </tr>
-                                </thead>   
+                                </thead>
                                 @empty(!$diag)
                                     @foreach ($diag as $data)
                                         <tr>
                                             <td><button type="button" wire:click="dataDiagnosa('{{$data->icd_code}}')" class="btn btn-xs btn-flat btn-default" style="width:60px;"><b>{{$data->icd_code}}</b></button></td>
                                             <td>{{$data->diagnosa}}</td>
-                                        </tr>              
+                                        </tr>
                                     @endforeach
                                 @endempty
                             </table>
                         </div>
-                        
+
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-danger btn-sm float-right "data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
 <script>
     window.addEventListener('closeModal', event => {
-        $("#modalcaridiagnosa").modal('hide');                
+        $("#modalcaridiagnosa").modal('hide');
    });
 </script>

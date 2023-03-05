@@ -1,4 +1,4 @@
-<div class="col-lg-4 col-md-12 col-sm-12">   
+<div class="col-lg-4 col-md-12 col-sm-12">
     <div class="card card-danger card-outline">
         <div class="card-header">
             <h3 class="card-title">Input Diagnosa Penyakit</h3>
@@ -59,246 +59,7 @@
                     <label class="col-md-4 text-sm text-right">NIK</label>
                     <label class="control-label text-sm col-md-8">{{$nik}}</label>
                 </div>
-                <form wire:submit.prevent='test' class="form-horizontal"> 
-                    <div class="callout callout-danger" style="margin-top:15px;">
-                        <label class="control-label " >Penyakit</label>
-                        <div class="form-group row">
-                            <label class="control-label col-md-3 text-sm">Prolanis</label>
-                            <div class="col-md-9" >
-                                <select class="text-sm form-control form-control-sm">
-                                    <option>Penyakit Hipertensi </option>
-                                    <option>Penyakit Diabetes Mellitus</option>
-                                    <option>Penyakit Hipertensi dan Penyakit Diabetes Mellitus</option>
-                                    <option>Tidak Ada</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="callout callout-danger" style="margin-top:15px;">
-                        <label class="control-label " >Riwayat Penyakit Tidak Menular Pada Keluarga</label>
-                        <div class="form-group row">
-                            <label class="control-label col-md-3 text-sm">Riwayat 1</label>
-                            <div class="col-md-9" >
-                                <select class="text-sm form-control form-control-sm">
-                                    <option>Penyakit Hypertensi</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row" style="margin-top:-9px;">
-                            <label class="control-label text-sm col-md-3">Riwayat 2</label>
-                            <div class="col-md-9" >
-                                <select class="form-control text-sm form-control-sm">
-                                    <option>Penyakit Hypertensi</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row" style="margin-top:-9px;">
-                            <label class="control-label text-sm col-md-3 ">Riwayat 3</label>
-                            <div class="col-md-9">
-                                <select class="form-control text-sm form-control-sm">
-                                    <option>Penyakit Hypertensi</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="callout callout-danger" style="margin-top:15px;">
-                        <label class="control-label " style="margin-top:-17px;">Riwayat Penyakit Tidak Menular Pada Diri Sendiri</label>
-                        <div class="form-group row">
-                            <label class="control-label text-sm col-md-3">Riwayat 1</label>
-                            <div class="col-md-9">
-                                <select class="form-control form-control-sm">
-                                    <option>Penyakit Hypertensi</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="control-label text-sm col-md-3">Riwayat 2</label>
-                            <div class="col-md-9" style="margin-top:-9px;">
-                                <select class="form-control text-sm form-control-sm">
-                                    <option>Penyakit Hypertensi</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="control-label text-sm col-md-3 ">Riwayat 3</label>
-                            <div class="col-md-9" style="margin-top:-9px;">
-                                <select class="text-sm form-control form-control-sm">
-                                    <option>Penyakit Hypertensi</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="callout callout-warning">
-                        <label class="control-label " style="margin-top:-20%;">Faktor Risiko</label>
-                        <div class="form-group row">
-                            <label class="control-label col-md-3 text-sm">Merokok</label>
-                            <div class="col-md-3">
-                                <select class="form-control text-sm form-control-sm">
-                                    <option>YA</option>
-                                    <option>TIDAK</option>
-                                </select>
-                            </div>
-                            <label class="control-label col-md-3 text-sm">Kurang Aktifitas Fisik</label>
-                            <div class="col-md-3">
-                                <select class="form-control text-sm form-control-sm">
-                                    <option>YA</option>
-                                    <option>TIDAK</option>
-                                </select>
-                            </div>
-                        </div>
-                        <label class="control-label" >Pola Makan</label>
-                        <div class="form-group row">
-                            <label class="control-label col-md-3 text-sm">Gula Berlebihan</label>
-                            <div class="col-md-3">
-                                <select class="form-control text-sm form-control-sm">
-                                    <option>YA</option>
-                                    <option>TIDAK</option>
-                                </select>
-                            </div>
-                            <label class="control-label col-md-3 text-sm" >Garam Berlebihan</label>
-                            <div class="col-md-3">
-                                <select class="form-control text-sm form-control-sm">
-                                    <option>YA</option>
-                                    <option>TIDAK</option>
-                                </select>
-                            </div>
-                        </div> 
-                        <div class="form-group row">
-                            <label class="control-label col-md-3 text-sm">Lemak Berlebihan</label>
-                            <div class="col-md-3">
-                                <select class="form-control text-sm form-control-sm">
-                                    <option>YA</option>
-                                    <option>TIDAK</option>
-                                </select>
-                            </div>
-                            <label class="control-label col-md-3 text-sm" >Kurang Makan Buah dan Sayur</label>
-                            <div class="col-md-3">
-                                <select class="form-control text-sm form-control-sm">
-                                    <option>YA</option>
-                                    <option>TIDAK</option>
-                                </select>
-                            </div>
-                            <label class="control-label col-md-3 text-sm" >Konsumsi Alkohol</label>
-                            <div class="col-md-3">
-                                <select class="form-control text-sm form-control-sm">
-                                    <option>YA</option>
-                                    <option>TIDAK</option>
-                                </select>
-                            </div>
-                        </div>  
-                    </div>
-                    <div class="callout callout-info" style="margin-top:15px;">
-                        <label class="control-label " style="margin-top:-17px;">Tekanan Darah</label>
-                            <div class="form-group row">
-                                <label class="control-label col-md-3 text-sm">Sistol</label>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control form-control-sm">
-                                </div>
-                                <label class="control-label col-md-3 text-sm form-control-sm" >Diastol</label>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>  
-                    </div>
-                    <div class="callout callout-info" style="margin-top:15px;">
-                        <label class="control-label " style="margin-top:-17px;">IMT</label>
-                            <div class="form-group row">
-                                <label class="control-label col-md-3 text-sm">Tinggi Badan</label>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control form-control-sm">
-                                </div>
-                                <label class="control-label col-md-3 text-sm form-control-sm" >Berat Badan</label>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>  
-                    </div>  
-                    <div class="callout callout-success" style="margin-top:15px;">
-                            <div class="form-group row">
-                                <label class="control-label col-md-3 text-sm">Lingkar Perut</label>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control form-control-sm">
-                                </div>
-                                <label class="control-label col-md-3 text-sm form-control-sm" >Pemeriksaan Gula</label>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control">
-                                </div>
-                                <label class="control-label col-md-3 text-sm form-control-sm" >Rujuk RS</label>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>  
-                    </div>  
-                    <div class="callout callout-success" style="margin-top:15px;">
-                        <label class="control-label " style="margin-top:-17px;">Diagnosis</label>
-                        <div class="form-group row">
-                            <label class="control-label col-md-3 text-sm form-control-sm" >Diagnosis 1</label>  
-                            <div class="col-md-9">
-                                <input type="text" class="form-control form-control-sm">
-                            </div>
-                            <label class="control-label col-md-3 text-sm form-control-sm" >Diagnosis 2</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control">
-                            </div>
-                            <label class="control-label col-md-3 text-sm form-control-sm" >Diagnosis 3</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control">
-                            </div>
-                            <label class="control-label col-md-3 text-sm form-control-sm" >Terapi Farmakologi</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control">
-                            </div>
-                            <label class="control-label col-md-3 text-sm form-control-sm" >Konseling, Informasi dan Edukasi Kesehatan</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>  
-                    </div>
-                    <div class="callout callout-success" style="margin-top:15px;">
-                        <label class="control-label " style="margin-top:-17px;">PEMERIKSAAN IVA</label>
-                        <div class="form-group row">
-                            <label class="control-label col-md-3 text-sm form-control-sm" >Hasil IVA</label>  
-                            <div class="col-md-9">
-                                <input type="text" class="form-control form-control-sm">
-                            </div>
-                            <label class="control-label col-md-3 text-sm form-control-sm" >Tindak Lanjut IVA Positif</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <label class="control-label " style="margin-top:-17px;">PEMERIKSAAN SADANIS</label>
-                        <div class="form-group row">
-                            <label class="control-label col-md-3 text-sm form-control-sm" >Hasil SADANIS</label>  
-                            <div class="col-md-9">
-                                <input type="text" class="form-control form-control-sm">
-                            </div>
-                            <label class="control-label col-md-3 text-sm form-control-sm" >Tindak Lanjut SADANIS</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="callout callout-success" style="margin-top:15px;">
-                        <label class="control-label " style="margin-top:-17px;">FORM UBM</label>
-                        <div class="form-group row">
-                            <label class="control-label col-md-3 text-sm form-control-sm" >Konseling</label>  
-                            <div class="col-md-9">
-                                <input type="text" class="form-control form-control-sm">
-                            </div>
-                            <label class="control-label col-md-3 text-sm form-control-sm" >CAR</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control">
-                            </div>
-                            <label class="control-label col-md-3 text-sm form-control-sm" >Rujuk UBM</label>  
-                            <div class="col-md-9">
-                                <input type="text" class="form-control form-control-sm">
-                            </div>
-                            <label class="control-label col-md-3 text-sm form-control-sm" >Kondisi</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                    </div>
+                <form wire:submit.prevent='test' class="form-horizontal">
                     <label class="control-label" style="margin-top:-17px;">Diagnosa</label>
                         @foreach($diagnosas as $no => $diagnosa)
                             <div class="input-group row mt-1">
@@ -321,7 +82,7 @@
                             </div>
                         @endforeach
                     <label class="control-label" style="margin-top:15px">Dokter</label>
-                        <div class="col-md-12 col-lg-12 col-sm-12 mt-12">  
+                        <div class="col-md-12 col-lg-12 col-sm-12 mt-12">
                             <select placeholder="Pilih Dokter" wire:model="id_dokter" class="form-control form-control-sm  rounded-0" @disabled($form) required>
                                 <option selected value="">--PILIH DOKTER--</option>
                                     @foreach ($dokter as $data )
@@ -335,8 +96,8 @@
                             <input type="text" wire:model="id_pasien" hidden>
                         </div>
                 </form>
-        </div>       
-    </div>              
+        </div>
+    </div>
 </div>
 
     <script>
@@ -354,6 +115,6 @@
             icon : event.detail.icon,
         })
     });
-    
+
     </script>
 </div>

@@ -48,7 +48,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(!empty($pasiendiagnosa))    
+                            @if(!empty($pasiendiagnosa))
                                 @foreach ($pasiendiagnosa as $no=>$data)
                                 <tr height="5px">
                                     <td>{{$no+1}}.</td>
@@ -63,22 +63,18 @@
                                     <td><a class="btn btn-sm btn-danger"><i class="fas fa-light fa-trash-alt"></i></a></td>
                                 </tr>
                                 @endforeach
-                            @endif 
+                            @endif
                         </tbody>
                     </table>
                 </div>
-            </div>  
-            <div class="card-footer float-right">
-                    
             </div>
-
         </div>
         <style>
             nav svg{
                 height:20px;
             }
         </style>
-    </div>    
+    </div>
 
     <script>
         window.addEventListener('show-delete-confirmation', event => {
@@ -96,7 +92,7 @@
                   }
                 })
           });
-         
+
 
         window.addEventListener('editPasien', event => {
                   Swal.fire({
@@ -105,5 +101,5 @@
                   icon: 'success',
                 })
           });
-        
+
   </script>

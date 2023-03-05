@@ -21,11 +21,6 @@
                                 <td width=100% colspan='3' class="text-right"> <h4>No. Rekam Medis : <b>@if(!empty($no_Rm)) {{$no_Rm}} @else <span class="badge bg-danger text-sm">Nomor Rekam Medis Tidak Ada</span> @endif</b></h4></td>
                             </tr>
                             <tr>
-                                <td>NOMOR REKAM MEDIS</td>
-                                <td>:</td>
-                                <td>{{$no_Rm}}</td>
-                            </tr>
-                            <tr>
                                 <td>NAMA LENGKAP</td>
                                 <td>:</td>
                                 <td>{{$nama}}</td>

@@ -81,7 +81,7 @@ class Forminput extends Component
     ]);
 
     public function simpanPtm()
-    {   $this->resetForm();
+    {
         $query = pasien::create([
                 'nama'              => $this->nama,
                 'tanggal_Lahir'     => $this->tanggal_Lahir,
@@ -98,6 +98,7 @@ class Forminput extends Component
 
         if($query)
         {
+            $this->resetForm();
             $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','icon'=>'success','text'=>'Data Pasien PTM Berhasil Tersimpan','timer'=>2000]);
         }
     }

@@ -61,7 +61,7 @@ class Formdiagnosa extends Component
         $data = icd::where('icd_code', $id)->first();
             $this->diagnosa[$this->idModal] = $id;
             $this->diagnosaName[$this->idModal] = $data->diagnosa;
-            $this->dispatchBrowserEvent('closeModal'); 
+            $this->dispatchBrowserEvent('closeModal');
         // dd($data->icd_code);
 
     }
@@ -102,10 +102,10 @@ class Formdiagnosa extends Component
     {   $this->validate();
         $this->cekDataPasien();
     }
-    
+
     private function cekDataPasien()
     {
-        $data = pasien::where('no_Rm', $this->cari)->first();
+        $data = pasien::where('no_Rm', $this->cari)->orWhere('nik', $this->cari)->first();
         if(!empty($data)){
             $this->nama  = $data->nama;
             $this->no_Rm = $data->no_Rm;
@@ -124,7 +124,7 @@ class Formdiagnosa extends Component
     {
         $kunjungan = kunjungan::where('id_pasien',$id)->where('tanggal',$this->tanggal)->first();
         if(!empty($kunjungan)){
-          $this->id_kunjungan = $kunjungan->id;  
+          $this->id_kunjungan = $kunjungan->id;
           $this->cekDiagnosa($kunjungan->id);
         }
         else{
@@ -149,13 +149,13 @@ class Formdiagnosa extends Component
 
 
     public function test(){
-        // Proses Cek Data Kunjungan pada table diagnosas Apakah telah di input // 
+        // Proses Cek Data Kunjungan pada table diagnosas Apakah telah di input //
         $cek_Kunjungan = diagnosa::where('id_kunjungan',$this->id_kunjungan)->first();
         $this->validate();
         // proses cek jika diagnosa tidak ada kosong //
         if(empty($cek_Kunjungan))
-        {   
-            
+        {
+
             for ($i = 0; $i < count($this->diagnosa); $i++)
                 {
                     $query = diagnosa::create([
