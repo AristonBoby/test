@@ -3,7 +3,7 @@
             <div class="modal-dialog modal-xl" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="staticBackdropLabel">DATA PASIEN</h5>
+                  <h5 class="modal-title" id="staticBackdropLabel"><b>DATA</b> PASIEN</h5>
                   <div wire:loading>
                     <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
                 </div>
@@ -13,56 +13,74 @@
                 </div>
                 <div class="modal-body">
                     <table wire:loading.remove class="table table-sm table-bordered text-sm">
-                            <tbody>
-                                <tr>
-                                    <td>NOMOR REKAM MEDIS</td>
-                                    <td>{{$no_Rm}}</td>
-                                </tr>
-                                <tr>
-                                    <td>NAMA LENGKAP</td>
-                                    <td>{{$nama}}</td>
-                                </tr>
-                                <tr>
-                                    <td>TEMPAT LAHIR</td>
-                                    <td>{{$tempat_Lahir}}</td>
-                                </tr>
-                                <tr>
-                                    <td>TANGGAL LAHIR</td>
-                                    <td>{{$tanggal_Lahir}}</td>
-                                </tr>
-                                <tr>
-                                    <td>KEPALA KELUARGA</td>
-                                    <td>{{$kepala_keluarga}}</td>
-                                </tr>
-                                <tr>
-                                    <td>JENIS KELAMIN</td>
-                                    <td>@if($jenkel == 'L')LAKI-LAKI @else PEREMPUAN @endif </td>
-                                </tr>
-                                <tr>
-                                    <td>AGAMA</td>
-                                    <td>{{$agama}}</td>
-                                </tr>
-                                <tr>
-                                    <td>PEKERJAAN</td>
-                                    <td>{{$pekerjaan}}</td>
-                                </tr>
-                                <tr>
-                                    <td>NIK</td>
-                                    <td>{{$nik}}</td>
-                                </tr>
-                                <tr>
-                                    <td>BPJS</td>
-                                    <td>{{$bpjs}}</td>
-                                </tr>
-                                <tr>
-                                    <td>NOMOR TELEPON / HP</td>
-                                    <td>{{$no_tlpn}}</td>
-                                </tr>
-                                <tr>
-                                    <td>ALAMAT</td>
-                                    <td>{{$alamat}}, @if($kelurahan)KELURAHAN {{$kelurahan}} KECAMATAN {{$kecamatan}} KAB/KOTA {{$kota_name}} PROVINSI {{$prov_name}}@endempty</td>
-                                </tr>
-                            </tbody>
+                        <tbody>
+                            <tr>
+                                <td width=100% colspan='3' class="text-center"><h4><b>DATA PASIEN</b></h4></td>
+                            </tr>
+                            <tr>
+                                <td width=100% colspan='3' class="text-right"> <h4>No. Rekam Medis : <b>@if(!empty($no_Rm)) {{$no_Rm}} @else <span class="badge bg-danger text-sm">Nomor Rekam Medis Tidak Ada</span> @endif</b></h4></td>
+                            </tr>
+                            <tr>
+                                <td>NOMOR REKAM MEDIS</td>
+                                <td>:</td>
+                                <td>{{$no_Rm}}</td>
+                            </tr>
+                            <tr>
+                                <td>NAMA LENGKAP</td>
+                                <td>:</td>
+                                <td>{{$nama}}</td>
+                            </tr>
+                            <tr>
+                                <td>TEMPAT LAHIR</td>
+                                <td>:</td>
+                                <td>{{$tempat_Lahir}}</td>
+                            </tr>
+                            <tr>
+                                <td>TANGGAL LAHIR</td>
+                                <td>:</td>
+                                <td>{{$tanggal_Lahir}}</td>
+                            </tr>
+                            <tr>
+                                <td>KEPALA KELUARGA</td>
+                                <td>:</td>
+                                <td>{{$kepala_keluarga}}</td>
+                            </tr>
+                            <tr>
+                                <td>JENIS KELAMIN</td>
+                                <td>:</td>
+                                <td>@if($jenkel == 'L')LAKI-LAKI @else PEREMPUAN @endif </td>
+                            </tr>
+                            <tr>
+                                <td>AGAMA</td>
+                                <td>:</td>
+                                <td>{{$agama}}</td>
+                            </tr>
+                            <tr>
+                                <td>PEKERJAAN</td>
+                                <td>:</td>
+                                <td>{{$pekerjaan}}</td>
+                            </tr>
+                            <tr>
+                                <td>NIK</td>
+                                <td>:</td>
+                                <td>{{$nik}}</td>
+                            </tr>
+                            <tr>
+                                <td>BPJS</td>
+                                <td>:</td>
+                                <td>{{$bpjs}}</td>
+                            </tr>
+                            <tr>
+                                <td>NOMOR TELEPON / HP</td>
+                                <td>:</td>
+                                <td>{{$no_tlpn}}</td>
+                            </tr>
+                            <tr>
+                                <td>ALAMAT</td>
+                                <td>:</td>
+                                <td>{{$alamat}}, @if($kelurahan)KELURAHAN {{$kelurahan}} KECAMATAN {{$kecamatan}} KAB/KOTA {{$kota_name}} PROVINSI {{$prov_name}}@endempty</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div class="modal-footer">

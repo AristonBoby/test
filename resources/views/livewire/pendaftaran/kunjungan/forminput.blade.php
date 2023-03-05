@@ -1,4 +1,4 @@
-<div class="col-lg-4 col-md-8 col-sm-12 btn-xs">   
+<div class="col-lg-4 col-md-8 col-sm-12 btn-xs">
     <div class="card card-warning card-outline">
         <div class="card-header">
             <h3 class="card-title"><b>Input Kunjungan</b> Pasien</h3>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group row" style="margin-bottom:-7px;">
                             <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">Tanggal Lahir</label>
-                            <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$tanggal_Lahir}}</label>
+                            <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6">@if(!empty($tanggal_Lahir)){{\Carbon\Carbon::Parse($tanggal_Lahir)->format('d-m-Y') }} -- Umur  {{\Carbon\Carbon::Parse($tanggal_Lahir)->age }}@endif</label>
                         </div>
                         <div class="form-group row" style="margin-bottom:-7px;">
                             <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">NIK</label>
@@ -76,7 +76,7 @@
                                 </select>
                                 @error("jeniskunjungan")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror
                             </div>
-                        </div> 
+                        </div>
                         <div class="form-group row" style="margin-top:-10px;">
                             <label class="form-control-label text-sm col-md-4 ">Poli</label>
                             <div class="col-md-6">
@@ -90,8 +90,8 @@
                                 </select>
                                 @error("poli")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror
                             </div>
-                        </div> 
-                    <button type="submit" class="btn btn-sm btn-primary float-right text-xs" @disabled($form)><i class="far fa-save text-xs"></i> Simpan</button> 
+                        </div>
+                    <button type="submit" class="btn btn-sm btn-primary float-right text-xs" @disabled($form)><i class="far fa-save text-xs"></i> Simpan</button>
                 </div>
             </div>
     </div>
@@ -99,25 +99,14 @@
     </div>
 </div>
 <script>
-window.addEventListener('dataTidakDitemukan', event => {
-    Swal.fire({
-        title: 'Perhatian',
-        text: "Data Pasien tidak ditemukan",
-    })
-});
-window.addEventListener('kunjunganBerhasil', event => {
-    Swal.fire({
-        title: 'Perhatian',
-        text: "Data Pasien Tersimpan",
-        icon: 'success',
-    })
-});
-window.addEventListener('kunjunganganda', event => {
-    Swal.fire({
-        title: 'Perhatian',
-        text: "Pasien Telah di Entri pada hari yang sama dan Poli yang sama",
-        icon: 'warning',
-    })
-});
-
+    window.addEventListener('alert', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.text,
+            icon: event.detail.icon,
+            showConfirmButton: false,
+            timer: event.detail.timer,
+            buttons: false,
+        });
+    });
 </script>

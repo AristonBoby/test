@@ -37,6 +37,7 @@
                             <th class="text-center">No Rekam Medis</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Tanggal Lahir</th>
+                            <th class="text-center">Umur</th>
                             <th class="text-center">Kelamin</th>
                             <th class="text-center">NIK</th>
                             <th class="text-center">BPJS</th>
@@ -56,7 +57,8 @@
                                 <td>{{$query->firstItem() + $no}}.</td>
                                 <td>{{$data->no_Rm}}</td>
                                 <td class="text-left">{{$data->nama}}</td>
-                                <td>{{$data->tanggal_Lahir}}</td>
+                                <td>{{\Carbon\Carbon::parse($data->tanggal_Lahir)->format('d-m-Y')}}</td>
+                                <td>{{\Carbon\Carbon::parse($data->tanggal_Lahir)->age }}</td>
                                 <td>{{$data->jenkel}}</td>
                                 <td>{{$data->nik}}</td>
                                 <td>{{$data->bpjs}}</td>

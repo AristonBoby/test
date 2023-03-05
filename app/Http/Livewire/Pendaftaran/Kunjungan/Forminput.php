@@ -44,12 +44,13 @@ class Forminput extends Component
         $this->poli             = "";
         $this->nama             = "";
         $this->no_Rm            = "";
-        $this->tanggal_lahir    = "";
+        $this->tanggal_Lahir    = "";
         $this->nik              = "";
         $this->bpjs             = "";
         $this->no_tlpn          = "";
         $this->tanggal_Lahir    = "";
         $this->jeniskunjungan   = "";
+        $this->emit('riwayatKunjungan','');
         $this->form             = true;
     }
 
@@ -65,20 +66,35 @@ class Forminput extends Component
         $query = pasien::where('nik',$this->cari)
                         ->orWhere('no_Rm',$this->cari)
                         ->orWhere('bpjs',$this->cari)->first();
-
         if($query)
         {
-            $this->id_pasien        =   $query->id;
-            $this->no_Rm            =   $query->no_Rm;
-            $this->nama             =   $query->nama;
-            $this->tanggal_Lahir    =   $query->tanggal_Lahir;
-            $this->bpjs             =   $query->bpjs;
-            $this->nik              =   $query->nik;
-            $this->no_tlpn          =   $query->no_tlpn;
-            $this->form = false;
-            $this->emit('riwayatKunjungan',$this->id_pasien);
+            if($query->nik =='' && \Carbon\Carbon::parse($query->tanggal_Lahir)->age >= 5)
+            {
+                $this->clear();
+                $this->form = true;
+                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','text'=>'Pasien Berumur Lebih Dari 5 Tahun Pastikan NIK Pasien Terisi','icon'=>'warning','timer'=>3000]);
+
+            }
+            else{
+                if($query->status ==1)
+                {
+                     $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','text'=>'Data Pasien Tidak Lengkap Pastikan Data Pasien Lengkap','icon'=>'warning','timer'=>3000]);
+                }
+                else
+                {
+                    $this->id_pasien        =   $query->id;
+                    $this->no_Rm            =   $query->no_Rm;
+                    $this->nama             =   $query->nama;
+                    $this->tanggal_Lahir    =   $query->tanggal_Lahir;
+                    $this->bpjs             =   $query->bpjs;
+                    $this->nik              =   $query->nik;
+                    $this->no_tlpn          =   $query->no_tlpn;
+                    $this->form = false;
+                    $this->emit('riwayatKunjungan',$this->id_pasien);
+                }
+            }
         }else{
-            $this->dispatchBrowserEvent('dataTidakDitemukan');
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','text'=>'Pasien Tidak Terdaftar','icon'=>'warning','timer'=>3000]);
             $this->form = true;
         }
     }
@@ -97,7 +113,7 @@ class Forminput extends Component
         $data = kunjungan::where('id_pasien',$this->id_pasien)->where('tanggal',$this->tanggal)->where('id_poli',$this->poli)->first();
         if($data)
         {
-            $this->dispatchBrowserEvent('kunjunganganda');
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','text'=>'Pasien Telah DiInput Di Poli yang Sama','icon'=>'warning','timer'=>3000]);
         }
         else{
             $query = kunjungan::create([
@@ -110,7 +126,7 @@ class Forminput extends Component
 
             if($query)
                 {
-                    $this->dispatchBrowserEvent('kunjunganBerhasil');
+                    $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','text'=>'Data Berhasil Tersimpan','icon'=>'success','timer'=>3000]);
                     $this->clear();
                 }
         }

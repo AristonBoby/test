@@ -12,6 +12,7 @@
             </button>
           </div>
           <div class="modal-body">
+
               <table wire:loading.remove class="table table-sm table-hover table-bordered text-xs text-uppercase">
                 <tbody>
                     <tr>
