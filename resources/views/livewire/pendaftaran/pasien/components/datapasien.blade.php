@@ -73,7 +73,7 @@
                                 <td>
                                     <div class="btn-group text-xs">
                                         <a class="btn btn-sm btn-info" data-toggle="modal" data-target="#staticBackdrop" wire:click.prevent="detailPasien('{{$query->id}}')"><i class="text-xs far fa-eye"></i></a>
-                                        <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit" wire:click="edit({{$query->id}})"><i class="text-xs fa fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editDataPasien" wire:click="edit({{$query->id}})"><i class="text-xs fa fa-edit"></i></a>
                                         <a class="btn btn-sm btn-danger" href="javascript:void(0)" wire:click.prevent='deleteConfirmation({{$query->id}})' target="blank_"><i class="text-xs fas fa-light fa-trash-alt"></i></a>
                                     </div>
                                 </td>
@@ -129,12 +129,18 @@
         })
     });
 
-    window.addEventListener('editPasien', event => {
-              Swal.fire({
-              title: 'Berhasil ',
-              text: "Data Pasien Berhasil di Update",
-              icon: 'success',
-            })
+    window.addEventListener('alert', event => {
+                Swal.fire({
+                    title: event.detail.title,
+                    text: event.detail.text,
+                    icon: event.detail.icon,
+                    showConfirmButton: false,
+                    timer: event.detail.timer,
+                    buttons: false,
+                });
+      });
+      window.addEventListener('editTutup', event => {
+        $('#editDataPasien').modal('hide');
       });
 
 </script>

@@ -197,27 +197,35 @@ class Datapasien extends Component
 
     public function editPasien ()
     {   $this->validate();
-        $query = pasien::find($this->id_pasien);
-        $query->update([
-            'no_Rm'             =>  $this->no_Rm,
-            'nama'              =>  $this->nama,
-            'agama'             =>  $this->agama,
-            'tempat_Lahir'      =>  $this->tempat_Lahir,
-            'tanggal_Lahir'     =>  $this->tanggal_Lahir,
-            'kepala_keluarga'   =>  $this->kepala_keluarga,
-            'jenkel'            =>  $this->jenkel,
-            'pekerjaan'         =>  $this->pekerjaan,
-            'nik'               =>  $this->nik,
-            'bpjs'              =>  $this->bpjs,
-            'alamat'            =>  $this->alamat,
-            'no_tlpn'           =>  $this->no_tlpn,
-            'kel_id'            =>  $this->kelurahan,
-            'status'            => 0,
-        ]);
-        if($query){
-            $this->dispatchBrowserEvent('editPasien');
-            $this->prov="";
+        if(\Carbon\Carbon::parse($this->tanggal_Lahir)->age >= 5 && $this->nik ==='')
+        {
+            $this->dispatchBrowserEvent('alert',['title'=>'Warning','text'=>'Pasien Berumur Lebih dari 5 Tahun, NIK Pasien Wajib diisi','icon'=>'warning','timer'=>3000]);
         }
+        else{
+            $query = pasien::find($this->id_pasien);
+            $query->update([
+                'no_Rm'             =>  $this->no_Rm,
+                'nama'              =>  $this->nama,
+                'agama'             =>  $this->agama,
+                'tempat_Lahir'      =>  $this->tempat_Lahir,
+                'tanggal_Lahir'     =>  $this->tanggal_Lahir,
+                'kepala_keluarga'   =>  $this->kepala_keluarga,
+                'jenkel'            =>  $this->jenkel,
+                'pekerjaan'         =>  $this->pekerjaan,
+                'nik'               =>  $this->nik,
+                'bpjs'              =>  $this->bpjs,
+                'alamat'            =>  $this->alamat,
+                'no_tlpn'           =>  $this->no_tlpn,
+                'kel_id'            =>  $this->kelurahan,
+                'status'            =>  0,
+            ]);
+            if($query){
+                $this->dispatchBrowserEvent('alert',['title'=>'Berhasil','text'=>'Data Berhsil Di Update','icon'=>'success','timer'=>3000]);
+                $this->dispatchBrowserEvent('editTutup');
+                $this->prov="";
+            }
+        }
+
     }
 
     public function deleteConfirmation($id){

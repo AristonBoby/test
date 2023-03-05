@@ -118,7 +118,7 @@
         $('#myModal').modal('hide');
     });
 
-    windows/addEventListener('closeDeleteSkrining',event=>{
+    window.addEventListener('closeDeleteSkrining',event=>{
         $('#hapusSkrining').modal('hide');
     });
 
