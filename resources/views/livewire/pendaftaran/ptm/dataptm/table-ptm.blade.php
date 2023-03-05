@@ -34,7 +34,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody wire:loading.remove>
                         <tr wire:loading wire:target='caridata' >
                             <td>Loading ...</td>
                         </tr>
@@ -85,9 +85,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="col-lg-12 row">
-                    <div class="col-lg-7 col-sm-12 mt-3 text-sm ">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</div>
-                    <div class="col-lg-3 col-sm-12 mt-3 text-sm "><span class="float-left">{{$pasien->links()}}</span></div>
+                <div class="col-lg-12 row" wire:loading.remove>
+                    <div class="col-lg-6 col-sm-12 mt-3 text-sm "><span class="float-left">{{$pasien->links()}}</span></div>
+                    <div class="col-lg-6 col-sm-12 mt-3 text-sm "><span class="float-right"> Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span></div>
                 </div>
             </div>
         </div>
@@ -121,8 +121,7 @@
     window.addEventListener('closeDeleteSkrining',event=>{
         $('#hapusSkrining').modal('hide');
     });
-
-    window.addEventListener('closeModalEdit',event=>{
+    window.addEventListener('closeModalEditSkrining',event=>{
         $('#editMyModal').modal('hide');
     });
 
