@@ -17,7 +17,7 @@ class RiwayatKunjungan extends Component
         $query = DB::table('kunjungans')
         ->join('jaminans','kunjungans.id_jaminan','jaminans.id_jaminan')
         ->join('polis','kunjungans.id_poli','polis.id_poli')
-        ->where('id_pasien',$id_pasien)->orderBy('tanggal','desc')->get();
-        $this->riwayatKunjungan = $query;
+        ->where('id_pasien',$id_pasien)->orderBy('tanggal','desc')->paginate(2);
+        $this->riwayatKunjungan = json_encode($query);
     }
 }

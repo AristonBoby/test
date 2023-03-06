@@ -1,5 +1,5 @@
-<div class="col-lg-4 col-md-8 col-sm-12 btn-xs">   
-    <div class="card card-success card-outline">
+<div class="col-lg-4 col-md-8 col-sm-12 btn-xs">
+    <div class="card card-info">
         <div class="card-header">
             <h3 class="card-title"><b>Riwayat Kunjungan</b> Pasien</h3>
             <div wire:loading>
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="card-body">
-                
+
             <div class="col-md-12 col-sm-12 col-lg-12">
                 @empty(!$riwayatKunjungan)
                         <table class="table table-sm text-xs table-bordered table-hover table-striped">

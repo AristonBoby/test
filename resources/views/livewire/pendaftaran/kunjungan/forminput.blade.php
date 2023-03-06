@@ -1,7 +1,7 @@
 <div class="col-lg-4 col-md-8 col-sm-12 btn-xs">
-    <div class="card card-warning card-outline">
+    <div class="card card-info card-outline">
         <div class="card-header">
-            <h3 class="card-title"><b>Input Kunjungan</b> Pasien</h3>
+            <h3 class="card-title"><b><i class="fa fa-edit text-sm"></i> Kunjungan</b> Pasien</h3>
             <div wire:loading>
                 <span class="badge bg-success text-xs" style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
             </div>
@@ -35,37 +35,37 @@
                 <form wire:submit.prevent='simpanKunjungan'>
                     @csrf
                         <input type="hidden" wire.model='id_pasien'>
-                        <div class="form-group row"style="margin-bottom:-7px;">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">No Rekam Medis</label>
-                            <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6 ">{{$no_Rm}}</label>
+                        <div class="form-group row"style="margin-bottom:-1px;">
+                            <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">No Rekam Medis</label>
+                            <label class="text-uppercase control-label text-sm col-sm-6 col-lg-6 col-md-6 ">{{$no_Rm}}</label>
                         </div>
-                        <div class="form-group row"style="margin-bottom:-7px;">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">Nama</label>
-                            <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$nama}}</label>
+                        <div class="form-group row"style="margin-bottom:-1px;">
+                            <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">Nama</label>
+                            <label class="text-uppercase control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$nama}}</label>
                         </div>
-                        <div class="form-group row" style="margin-bottom:-7px;">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">Tanggal Lahir</label>
-                            <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6">@if(!empty($tanggal_Lahir)){{\Carbon\Carbon::Parse($tanggal_Lahir)->format('d-m-Y') }} -- Umur  {{\Carbon\Carbon::Parse($tanggal_Lahir)->age }}@endif</label>
+                        <div class="form-group row" style="margin-bottom:-1px;">
+                            <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">Tanggal Lahir</label>
+                            <label class="text-uppercase control-label text-sm col-sm-6 col-lg-6 col-md-6">@if(!empty($tanggal_Lahir)){{\Carbon\Carbon::Parse($tanggal_Lahir)->format('d-m-Y') }} -- Umur  {{\Carbon\Carbon::Parse($tanggal_Lahir)->age }}@endif</label>
                         </div>
-                        <div class="form-group row" style="margin-bottom:-7px;">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">NIK</label>
-                            <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$nik}}</label>
+                        <div class="form-group row" style="margin-bottom:-1px;">
+                            <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">NIK</label>
+                            <label class="text-uppercase control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$nik}}</label>
                         </div>
-                        <div class="form-group row" style="margin-bottom:-7px;">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">BPJS</label>
-                            <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$bpjs}}</label>
+                        <div class="form-group row" style="margin-bottom:-1px;">
+                            <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">BPJS</label>
+                            <label class="text-uppercase control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$bpjs}}</label>
                         </div>
-                        <div class="form-group row" style="margin-bottom:-7px;">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">Telepon / HP</label>
-                            <label class="control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$no_tlpn}}</label>
+                        <div class="form-group row" style="margin-bottom:-1px;">
+                            <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">Telepon / HP</label>
+                            <label class="text-uppercase control-label text-sm col-sm-6 col-lg-6 col-md-6">{{$no_tlpn}}</label>
                         </div>
-                        <div class="form-group row"style="margin-top:12px; ">
-                            <label class="col-md-4 col-lg-4 col-sm-4 text-sm ">Tanggal Kunjungan</label>
-                            <div class="col-md-6">
+                        <div class="form-group row"style="margin-top:12px;">
+                            <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">Tanggal Kunjungan</label>
+                            <div class="text-uppercase col-md-6">
                                 <input type="date"  wire:model='tanggal' class="form-control form-control-sm rounded-0" required @disabled($form) >
                             </div>
                         </div>
-                        <div class="form-group row" style="margin-top:-10px;">
+                        <div class=" text-uppercase form-group row" style="margin-top:-10px;">
                             <label class="form-control-label text-sm col-md-4 ">Jenis Kunjungan</label>
                             <div class="col-md-6">
                                 <select @disabled($form) class="form-control form-control-sm text-sm rounded-0  @error('jeniskunjungan') is-invalid @enderror" wire:model.defer="jeniskunjungan">
@@ -77,7 +77,7 @@
                                 @error("jeniskunjungan")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror
                             </div>
                         </div>
-                        <div class="form-group row" style="margin-top:-10px;">
+                        <div class="text-uppercase form-group row" style="margin-top:-10px;">
                             <label class="form-control-label text-sm col-md-4 ">Poli</label>
                             <div class="col-md-6">
                                 <select class="form-control form-control-sm text-sm rounded-0 @error('poli') is-invalid @enderror" wire:model.defer="poli" @disabled($form) >
@@ -91,7 +91,7 @@
                                 @error("poli")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror
                             </div>
                         </div>
-                    <button type="submit" class="btn btn-sm btn-primary float-right text-xs" @disabled($form)><i class="far fa-save text-xs"></i> Simpan</button>
+                    <button type="submit" class="btn btn-sm btn-primary float-right text-xs btn-flat" @disabled($form)><i class="fa fa-save text-sm"></i> Simpan</button>
                 </div>
             </div>
     </div>

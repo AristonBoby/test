@@ -1,7 +1,7 @@
 <div class="col-md-12 col-sm-12 col-lg-12">
-    <div class="card card-danger card-outline">
+    <div class="card card-info card-outline">
         <div class="card-header">
-            <h5 class="card-title"><b>Data Kunjungan</b> Pasien</h5>
+            <h5 class="card-title"><b><i class="fa fa-table text-sm"></i> Kunjungan</b> Pasien</h5>
             <div wire:loading>
                 <span class="badge bg-success text-xs" style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
             </div>
@@ -24,7 +24,7 @@
                         <label class="form-label col-md-3 col-sm-3 col-lg-4 text-sm"> Tanggal</label>
                             <div class="input-group col-md-4 col-lg-8 col-sm-4 mb-3">
                                 <input type="date"  wire:model="tanggal" class=" form-control form-control-sm">
-                                <button class="btn btn-primary btn-sm btn-flat" wire:click='render'>Refresh</button>
+                                <button class="btn btn-primary btn-sm btn-flat" wire:click='render'><i class="fa fa-search text-xs"></i> Cari</button>
                             </div>
                     </div>
                 </div>
@@ -46,14 +46,14 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody >
-                        @if($query->isEmpty())
-                            <tr class="text-uppercase">
-                                <td colspan="10" class="text-sm">Data Kosong</td>
+                    <tbody  wire:loading.remove>
+                        @if($query->count() === 0)
+                            <tr>
+                                <td colspan='11' class="text-center">Data Kunjungan Kosong <i class="fa fa-database text-xs"></i></td>
                             </tr>
                         @endif
                         @foreach ($query as $no => $data)
-                            <tr>
+                            <tr  style="@if(\Carbon\Carbon::parse($data->tanggal_Lahir)->age >= 60)  background-color:#ffffd6 @endif">
                                 <td>{{$query->firstItem() + $no}}.</td>
                                 <td>{{$data->no_Rm}}</td>
                                 <td class="text-left">{{$data->nama}}</td>
