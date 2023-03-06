@@ -22,7 +22,7 @@
                         <div class="form-group row">
                             <label class="col-md-4 col-sm-4 col-lg-4 text-sm ">No</label>
                             <div class="col-md-8 col-sm-8 col-lg-8 input-group input-group-sm">
-                                <input type="text" class="form-control input-group-sm text-sm" wire:model.defer="cari" placeholder="Nomor RM / NIK / BPJS" required maxlength="16">
+                                <input autofocus type="text" class="form-control input-group-sm text-sm" wire:model.defer="cari" placeholder="Nomor RM / NIK / BPJS" required maxlength="16">
                                 <span class="input-group-append">
                                     <button type="submit" class="btn btn-info btn-flat">Cari</button>
                                     <button data-toggle="modal" data-target="#modalKunjunganCariPasien" type="button" class="btn btn-default btn-flat"> <b>...</b> </button>
@@ -45,7 +45,12 @@
                         </div>
                         <div class="form-group row" style="margin-bottom:-1px;">
                             <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">Tanggal Lahir</label>
-                            <label class="text-uppercase control-label text-sm col-sm-6 col-lg-6 col-md-6">@if(!empty($tanggal_Lahir)){{\Carbon\Carbon::Parse($tanggal_Lahir)->format('d-m-Y') }} -- Umur  {{\Carbon\Carbon::Parse($tanggal_Lahir)->age }}@endif</label>
+                            <label class="text-uppercase control-label text-sm col-sm-6 col-lg-6 col-md-6">@if(!empty($tanggal_Lahir)){{\Carbon\Carbon::Parse($tanggal_Lahir)->format('d-m-Y') }} -- Umur
+                                {{\Carbon\Carbon::Parse($tanggal_Lahir)->age }}@endif
+                                @if(\Carbon\Carbon::parse($tanggal_Lahir)->age >= 60 )
+                                    <span class="badge badge-warning text-sm ml-2">Lansia</span>
+                                @endif
+                            </label>
                         </div>
                         <div class="form-group row" style="margin-bottom:-1px;">
                             <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">NIK</label>
@@ -109,4 +114,7 @@
             buttons: false,
         });
     });
+
+
+
 </script>

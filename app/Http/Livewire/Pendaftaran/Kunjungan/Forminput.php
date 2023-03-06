@@ -72,7 +72,7 @@ class Forminput extends Component
             {
                 $this->clear();
                 $this->form = true;
-                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','text'=>'Pasien Berumur Lebih Dari 5 Tahun Pastikan NIK Pasien Terisi','icon'=>'warning','timer'=>3000]);
+                $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','text'=>'Pasien Berumur Lebih Dari 5 Tahun Pastikan NIK Pasien Diisi','icon'=>'error','timer'=>3000]);
 
             }
             else{
