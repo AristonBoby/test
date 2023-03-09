@@ -53,7 +53,7 @@
                             </tr>
                             @endif
                             @foreach ($pasien as $index => $query)
-                                <tr class="text-uppercase" wire:loading.remove>
+                                <tr class="text-uppercase" wire:loading.remove style='@if(\Carbon\Carbon::parse($query->tanggal_Lahir)->age >= 60 ) background-color:#ffffd6 @endif'>
                                     <td>{{$pasien->firstItem() + $index}}.</td>
                                     <td class="text-left">{{$query->no_Rm}}</td>
                                     <td class="text-left">{{$query->nama}}</td>

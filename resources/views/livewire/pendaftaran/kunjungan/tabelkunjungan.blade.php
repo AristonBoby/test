@@ -46,7 +46,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody  wire:loading.remove>
+                    <tbody  wire:loading.remove class="text-uppercase">
                         @if($query->count() === 0)
                             <tr>
                                 <td colspan='11' class="text-center">Data Kunjungan Kosong <i class="fa fa-database text-xs"></i></td>
