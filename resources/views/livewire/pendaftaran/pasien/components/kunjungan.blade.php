@@ -1,4 +1,4 @@
-    <div class="col-lg-4 col-md-8 col-sm-12">   
+    <div class="col-lg-4 col-md-8 col-sm-12">
         <div class="card card-info card-outline">
             <div class="card-header">
                 <h3 class="card-title">Input Kunjungan Pasien</h3>
@@ -69,17 +69,17 @@
                                         @foreach ($poli as $polis )
                                             <option value="{{$polis->id_poli}}">{{$polis->nama_poli}}</option>
                                         @endforeach
-                                       
+
                                     </select>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                     </div>
                 </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-sm btn-primary float-right"  @disabled($form)>Simpan</button>
                     </div>
-                    
+
                 </form>
         </div>
     </div>

@@ -33,7 +33,7 @@
                 </form>
                 <div class="col-md-12 col-sm-12 col-lg-12">
                 <form wire:submit.prevent='simpanKunjungan'>
-                    @csrf
+
                         <input type="hidden" wire.model='id_pasien'>
                         <div class="form-group row"style="margin-bottom:-1px;">
                             <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">No Rekam Medis</label>
@@ -66,9 +66,15 @@
                         </div>
                         <div class="form-group row"style="margin-top:12px;">
                             <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">Tanggal Kunjungan</label>
-                            <div class="text-uppercase col-md-6">
-                                <input type="date"  wire:model='tanggal' class="form-control form-control-sm rounded-0" required @disabled($form) >
+                            <div class="input-group col-md-6">
+                                <input readonly @disabled($form) type="text" value="{{$tanggal}}" onchange='Livewire.emit("tanggalKunjungan", this.value)' id="tglKunjungan" class="form-control " placeholder="dd-mm-yyyy" >
+                                <span class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </span>
                             </div>
+
                         </div>
                         <div class=" text-uppercase form-group row" style="margin-top:-10px;">
                             <label class="form-control-label text-sm col-md-4 ">Jenis Kunjungan</label>
@@ -96,13 +102,16 @@
                                 @error("poli")<span class="invalid-feedback text-xs">{{$message}}</span> @enderror
                             </div>
                         </div>
-                    <button type="submit" class="btn btn-sm btn-primary float-right text-xs btn-flat" @disabled($form)><i class="fa fa-save text-sm"></i> Simpan</button>
+                    <button type="submit" class="btn btn-sm btn-primary float-right text-xs" @disabled($form)><i class="fa fa-save text-xs"></i> Simpan</button>
+                    <a href="" class="btn btn-sm btn-default float-right text-xs  mr-2" @disabled($form)><i class="fa fa-times text-xs"></i> Batal</a>
                 </div>
             </div>
     </div>
 </form>
     </div>
 </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
 <script>
     window.addEventListener('alert', event => {
         Swal.fire({
@@ -114,7 +123,12 @@
             buttons: false,
         });
     });
-
-
-
+</script>
+<script>
+    $(function () {
+        $('#tglKunjungan').datepicker({
+            format: "dd-mm-yyyy",
+            autoclose:true,
+        });
+    });
 </script>

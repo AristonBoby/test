@@ -24,8 +24,14 @@ class Forminput extends Component
     public $form = true;
 
     public $cari_Pasien_no_RM;
-    protected $listeners =['cariDataPasien'=>'cariDataPasien'];
-
+    protected $listeners =['cariDataPasien'=>'cariDataPasien','tanggalKunjungan'=>'tglKunjungan'];
+      /*========================================*/
+    /*     Mengubah tanggal Kunjungan        */
+    /*======================================*/
+    public function tglKunjungan($data)
+    {
+        $this->tanggal = $data;
+    }
     public function render()
     {
         return view('livewire.pendaftaran.kunjungan.forminput',[
@@ -35,12 +41,14 @@ class Forminput extends Component
     }
 
     public function mount(){
-        $this->tanggal = date('Y-m-d');
+        $this->tanggal = date('d-m-Y');
     }
+
+
 
     public function clear(){
         $this->id_pasien        = "";
-        $this->tanggal          = date('Y-m-d');
+        $this->tanggal          = date('d-m-Y');
         $this->poli             = "";
         $this->nama             = "";
         $this->no_Rm            = "";
@@ -110,6 +118,7 @@ class Forminput extends Component
 
     public function simpanKunjungan (){
         $this->validate();
+        $this->tanggal = \Carbon\Carbon::parse($this->tanggal)->format('Y-m-d');
         $data = kunjungan::where('id_pasien',$this->id_pasien)->where('tanggal',$this->tanggal)->where('id_poli',$this->poli)->first();
         if($data)
         {
