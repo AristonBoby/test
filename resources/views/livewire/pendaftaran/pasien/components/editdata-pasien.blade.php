@@ -1,7 +1,7 @@
     <div class="col-md-12 col-sm-12 col-lg-8">
         <div class="card card-primary card-outline">
             <div class="card-header">
-                <h5 class="card-title"><b>Table Pendaftaran</b> Pasien</h5>
+                <h5 class="card-title"><b><i class="fa fa-table text-sm"></i> Table Pendaftaran</b> Pasien</h5>
                 <div wire:loading>
                     <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
                 </div>
@@ -68,21 +68,20 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="3">
-                                    <div class="float-left">
-                                        <span class="text-lefttext-sm mt-6">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
-                                    </div>
-                                </td>
-                                <td colspan="7">
-                                    <div class="">
-                                        <span class="btn-sm float-right">{{$pasien->links()}}</span>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tfoot>
+                    <tfoot>
+                        <tr>
+                            <td colspan="9"></td>
+                        </tr>
+                    </tfoot>
                     </table>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-9">
+                                <span class="btn-sm float-left">{{$pasien->links()}}</span>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-2">
+                                <span class="text-sm float-right">Showing {{$pasien->currentPage()}} - {{$pasien->lastPage()}} of {{$pasien->total()}}</span>
+                            </div>
+                        </div>
                 </div>
             </div>
 

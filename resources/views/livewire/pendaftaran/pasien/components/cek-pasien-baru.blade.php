@@ -1,6 +1,6 @@
 <div class="card card-primary text-sm card-outline">
     <div class="card-header">
-        <h5 class="card-title"><b>Pendaftaran</b> Pasien</h5>
+        <h5 class="card-title"><b><i class="fa fa-edit text-sm"></i> Pendaftaran</b> Pasien</h5>
     </div>
     <div class="card-body">
         <form class="form-horizontal" wire:submit.prevent='cekPasien'>
