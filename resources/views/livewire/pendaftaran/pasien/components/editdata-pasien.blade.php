@@ -11,10 +11,10 @@
                     <div class="col-md-12">
                         <code>* Data Pasien yang ditampilkan berdasarkan tanggal pasien di input</code>
                     </div>
-                    <div class="col-md-4 mb-3 float-right">
-                        <div class="form-group row">
-                            <label class="form-label col-md-4 text-sm"> Tanggal</label>
-                                <div class="col-md-8">
+                    <div class="col-md-12 mb-3 ">
+                        <div class="col-md-4 form-group float-right row">
+                            <label class="form-label col-md-3 text-sm"> Tanggal</label>
+                                <div class="col-md-9">
                                     <div class="input-group">
                                         <span class="input-group-append">
                                             <span class="input-group-text">
@@ -22,7 +22,7 @@
                                             </span>
                                         </span>
                                         <input type="text" value="{{$tanggal}}"  onchange='Livewire.emit("tglKunjungan", this.value)' readonly class=" date form-control form-control-sm" wire.target="table">
-                                        <a class="btn btn-primary btn-sm btn-flat" wire:click="render()"wire.target="table">Cari</a>
+                                        <a class="btn btn-primary btn-sm btn-flat" wire:click="render()"wire.target="table"><i class="fa fa-search"></i> Cari</a>
                                     </div>
                                 </div>
                         </div>

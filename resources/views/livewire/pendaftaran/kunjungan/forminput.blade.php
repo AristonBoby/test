@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group row">
-                            <label class="col-md-4 col-sm-4 col-lg-4 text-sm ">No</label>
+                            <label class="col-md-4 col-sm-4 col-lg-4 text-sm ">NOMOR</label>
                             <div class="col-md-8 col-sm-8 col-lg-8 input-group input-group-sm">
                                 <input autofocus type="text" class="form-control input-group-sm text-sm" wire:model.defer="cari" placeholder="Nomor RM / NIK / BPJS" required maxlength="16">
                                 <span class="input-group-append">
