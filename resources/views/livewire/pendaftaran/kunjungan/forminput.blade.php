@@ -24,7 +24,7 @@
                             <div class="col-md-8 col-sm-8 col-lg-8 input-group input-group-sm">
                                 <input autofocus type="text" class="form-control input-group-sm text-sm" wire:model.defer="cari" placeholder="Nomor RM / NIK / BPJS" required maxlength="16">
                                 <span class="input-group-append">
-                                    <button type="submit" class="btn btn-info btn-flat">Cari</button>
+                                    <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i> Cari</button>
                                     <button data-toggle="modal" data-target="#modalKunjunganCariPasien" type="button" class="btn btn-default btn-flat"> <b>...</b> </button>
                                 </span>
                             </div>
@@ -70,7 +70,7 @@
                                 <input readonly @disabled($form) type="text" value="{{$tanggal}}" onchange='Livewire.emit("tanggalKunjungan", this.value)' id="tglKunjungan" class="form-control " placeholder="dd-mm-yyyy" >
                                 <span class="input-group-append">
                                     <span class="input-group-text">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        <i class="fa fa-calendar text-sm" aria-hidden="true"></i>
                                     </span>
                                 </span>
                             </div>

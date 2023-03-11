@@ -7,21 +7,25 @@
                 <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
             </div>
         </div>
-        <div class="card-body">
-            <a href="daftar" class="btn btn-primary mb-4 btn-sm" >+ Tambah Data Pasien</a>
-                <div class="col-md-4 float-right">
-                    <div class="input-group">
+        <div class="card-body row">
+            <div class="col-lg-12">
+                <a href="daftar" class="btn btn-primary mb-4 btn-sm" >+ Tambah Data Pasien</a>
+            </div>
+                <div class=" col-lg-12">
+                    <div class="input-group col-md-4 float-right">
                         <input type="search" class="form-control form-control-md" wire:model.lazy="caripasien" placeholder="Pencarian Pasien">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-md btn-primary" wire:click='render'>
-                                <i class="fa fa-search"></i>
+                                <i class="fa fa-search"></i> Cari
                             </button>
                         </div>
                     </div>
                 </div>
-                <p class="text-danger col-md-8 col-sm-12 col-lg-6">
-                    * Pencarian Pasien dapat menggunakan : Nomor Rekam Medis, Nama, NIK, BPJS
-                </p>
+                <div class="col-md-8 col-sm-12 col-lg-12">
+                    <p class="text-danger ">
+                        * Pencarian Pasien dapat menggunakan : Nomor Rekam Medis, Nama, NIK, BPJS
+                    </p>
+                <div>
             <div class="table-responsive mt-3">
                 <table class="table table-bordered table-sm table-hover text-sm text-center table-striped">
                     <thead>

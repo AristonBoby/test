@@ -8,7 +8,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <code>* Data Pasien yang ditampilkan berdasarkan tanggal pasien di input</code>
                     </div>
                     <div class="col-md-4 mb-3 float-right">
@@ -26,6 +26,7 @@
                                     </div>
                                 </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="table-responsive">
