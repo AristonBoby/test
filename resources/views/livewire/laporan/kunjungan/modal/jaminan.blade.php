@@ -8,7 +8,7 @@
              <div wire:loading>
               <span class="badge bg-success text-xs" style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
             </div>
-             <button type="button" class="close" data-dismiss="modal" wire:click="reset" aria-label="Close">
+             <button type="button" class="close" data-dismiss="modal"  aria-label="Close">
                <span aria-hidden="true">&times;</span>
              </button>
            </div>
