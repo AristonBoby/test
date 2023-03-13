@@ -71,7 +71,7 @@
                                 <input readonly @disabled($form) type="text" value="{{$tanggal}}" onchange='Livewire.emit("tanggalKunjungan", this.value)' id="tglKunjungan" class="form-control " placeholder="dd-mm-yyyy" >
                                 <span class="input-group-append">
                                     <span class="input-group-text">
-                                        <i class="fa fa-calendar text-sm" aria-hidden="true"></i>
+                                        <i class="far fa-calendar-alt" aria-hidden="true"></i>
                                     </span>
                                 </span>
                             </div>

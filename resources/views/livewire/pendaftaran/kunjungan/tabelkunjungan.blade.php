@@ -25,7 +25,7 @@
                             <div class="input-group col-md-4 col-lg-8 col-sm-4 mb-3">
                                 <span class="input-group-append">
                                     <span class="input-group-text">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        <i class="far fa-calendar-alt" aria-hidden="true"></i>
                                     </span>
                                 </span>
                                 <input type="text"  id="tableKunjungan" readonly onchange="Livewire.emit('tblKunjungan',this.value)" value="{{$tanggal}}" class=" form-control form-control-sm">

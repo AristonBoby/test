@@ -26,7 +26,7 @@
                                     <div class="input-group">
                                         <span class="input-group-append">
                                             <span class="input-group-text">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                <i class="far fa-calendar-alt" aria-hidden="true"></i>
                                             </span>
                                         </span>
                                         <input type="text" value="{{$tanggal}}"  onchange='Livewire.emit("tglKunjungan", this.value)' readonly class=" date form-control form-control-sm" wire.target="table">

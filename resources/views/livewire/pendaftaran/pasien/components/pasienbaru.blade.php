@@ -41,7 +41,7 @@
                                             <input @disabled($form) type="text" value="{{$pasien['varTgllahir']}}" onchange='Livewire.emit("selectDate", this.value)'  class="date form-control form-control-sm @error('pasien.varTgllahir') is-invalid @enderror" placeholder="dd-mm-yyyy" readonly>
                                             <span class="input-group-append">
                                                 <span class="input-group-text">
-                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                    <i class="far fa-calendar-alt" aria-hidden="true"></i>
                                                 </span>
                                             </span>
                                         </div>
