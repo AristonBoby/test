@@ -1,6 +1,14 @@
 <div class="card card-primary text-sm card-outline">
     <div class="card-header">
         <h5 class="card-title"><b><i class="fa fa-edit text-sm"></i> Pendaftaran</b> Pasien</h5>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
     </div>
     <div class="card-body">
         <form class="form-horizontal" wire:submit.prevent='cekPasien'>

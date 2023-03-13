@@ -11,9 +11,10 @@ class Tabelkunjungan extends Component
 
     public $tanggal;
     public $delate;
+    public $tglKunjungan;
     use WithPagination;
 
-    protected $listeners = ['hapus' => 'hapus'];
+    protected $listeners = ['hapus' => 'hapus','tblKunjungan'=>'tblKunjungan'];
     protected $paginationTheme = 'bootstrap';
 
     //Reset Paginate//
@@ -22,13 +23,18 @@ class Tabelkunjungan extends Component
         $this->resetPage();
     }
     //end//
+    public function tblKunjungan($id)
+    {
+        $this->tglKunjungan = \Carbon\Carbon::parse($id)->format('Y-m-d');
+       // dd($this->tglKunjungan);
+    }
     public function render()
     {   $data = DB::table('kunjungans')
                 ->join('jaminans','kunjungans.id_jaminan','jaminans.id_jaminan')
                 ->join('pasiens','kunjungans.id_pasien','pasiens.id')
                 ->join('polis','kunjungans.id_poli','polis.id_poli')
                 ->select('kunjungans.id','pasiens.no_Rm','pasiens.nama','pasiens.tanggal_Lahir','pasiens.jenkel','pasiens.nik','pasiens.bpjs','polis.nama_poli','jaminans.jaminan','tanggal','pasiens.no_tlpn')
-                ->where('tanggal',$this->tanggal)
+                ->where('tanggal',$this->tglKunjungan)
                 ->orderBy('kunjungans.created_at','desc')
                 ->paginate(10);
 
@@ -41,7 +47,7 @@ class Tabelkunjungan extends Component
 
     public function mount()
     {
-        $this->tanggal = date('Y-m-d');
+        $this->tanggal = date('d-m-Y');
     }
     public function konfirmasihapus($id){
         $this->dispatchBrowserEvent('konfirmasihapus');

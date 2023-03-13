@@ -23,8 +23,15 @@
                     <div class="col-md-12 col-lg-4 col-sm-12 float-right row">
                         <label class="form-label col-md-3 col-sm-3 col-lg-4 text-sm"> Tanggal</label>
                             <div class="input-group col-md-4 col-lg-8 col-sm-4 mb-3">
-                                <input type="date"  wire:model="tanggal" class=" form-control form-control-sm">
-                                <button class="btn btn-primary btn-sm btn-flat" wire:click='render'><i class="fa fa-search text-xs"></i> Cari</button>
+                                <span class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                                <input type="text"  id="tableKunjungan" readonly onchange="Livewire.emit('tblKunjungan',this.value)" value="{{$tanggal}}" class=" form-control form-control-sm">
+                                <span class="input-group-append">
+                                    <button class="btn btn-primary btn-sm" wire:click='render'><i class="fa fa-search text-xs"></i> Cari</button>
+                                </span>
                             </div>
                     </div>
                 </div>
@@ -137,3 +144,11 @@
           });
 
   </script>
+  <script>
+    $(function () {
+        $('#tableKunjungan').datepicker({
+            format: "dd-mm-yyyy",
+            autoclose:true,
+        });
+    });
+</script>

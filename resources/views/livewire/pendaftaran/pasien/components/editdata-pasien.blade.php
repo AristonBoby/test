@@ -5,6 +5,14 @@
                 <div wire:loading>
                     <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
                 </div>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -22,7 +30,9 @@
                                             </span>
                                         </span>
                                         <input type="text" value="{{$tanggal}}"  onchange='Livewire.emit("tglKunjungan", this.value)' readonly class=" date form-control form-control-sm" wire.target="table">
-                                        <a class="btn btn-primary btn-sm btn-flat" wire:click="render()"wire.target="table"><i class="fa fa-search"></i> Cari</a>
+                                        <span class="input-group-append">
+                                            <button class="btn btn-primary btn-sm" wire:click="render()"wire.target="table"><i class="fa fa-search"></i> Cari</button>
+                                        </span>
                                     </div>
                                 </div>
                         </div>
