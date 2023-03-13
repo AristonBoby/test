@@ -10,7 +10,7 @@ class Laporankunjungan extends Component
     public $sampaitanggal;
     public $laporanpoli;
     protected $listeners = ['ubahData'=>'updateData'];
-    
+
     public function render()
     {
         return view('livewire.Laporan.laporankunjungan');

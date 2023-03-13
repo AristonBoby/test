@@ -1,6 +1,15 @@
 <div class="card card-danger card-outline">
     <div class="card-header">
         <h5 class="card-title"><b>Laporan</b> Kunjungan</h5>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+            </button>
+
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+            </button>
+        </div>
         <div wire:loading>
             <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-sm fas fa-stroopwafel fa-spin"></i> &nbsp; Loading...</span>
         </div>
