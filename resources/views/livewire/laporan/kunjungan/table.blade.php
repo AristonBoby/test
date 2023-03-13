@@ -1,4 +1,4 @@
-<div class="card card-warning card-outline table-responsive">
+<div class="card card-purple card-outline table-responsive">
     <div class="card-header">
         <h5 class="card-title"><b>Table Daftar</b> Pasien</h5>
         <div class="card-tools">
