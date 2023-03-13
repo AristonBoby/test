@@ -239,7 +239,8 @@
         <script type="text/javascript">
             $(function () {
                 $('.date').datepicker({
-                    format: "dd-mm-yyyy"
+                    format: "dd-mm-yyyy",
+                    endDate: "dateToday",
                 });
             });
         </script>

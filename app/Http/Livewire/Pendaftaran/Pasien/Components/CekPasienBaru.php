@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Pendaftaran\Pasien\Components;
 
 use Livewire\Component;
 use App\Models\pasien;
+
 class CekPasienBaru extends Component
 {   public $nik;
     public function render()

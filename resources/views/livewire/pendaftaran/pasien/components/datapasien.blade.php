@@ -21,16 +21,15 @@
                 <a href="daftar" class="btn btn-primary mb-4 btn-sm" >+ Tambah Data Pasien</a>
             </div>
                 <div class=" col-lg-12">
-                    <div class="input-group col-md-4 col-lg-4 col-sm-12 float-right row">
-                        <div class="input-group-append">
-                            <label>Pencarian Pasien</label>
-                        </div>
-                        <input type="search" class="form-control form-control-md" wire:model.lazy="caripasien" placeholder="Pencarian Pasien">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-md btn-primary" wire:click='render'>
-                                <i class="fa fa-search"></i> Cari
-                            </button>
-                        </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12 float-right">
+                        <div class="input-group">
+                            <input type="search" class="form-control form-control-md" wire:model.lazy="caripasien" placeholder="Pencarian Pasien">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-md btn-primary" wire:click='render'>
+                                    <i class="fa fa-search"></i> Cari
+                                </button>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -39,7 +38,7 @@
                         * Pencarian Pasien dapat menggunakan : Nomor Rekam Medis, Nama, NIK, BPJS
                     </p>
                 <div>
-            <div class="table-responsive mt-3">
+            <div class="table-responsive mt-5">
                 <table class="table table-bordered table-sm table-hover text-sm text-center table-striped">
                     <thead>
                         <tr class="text-uppercase">

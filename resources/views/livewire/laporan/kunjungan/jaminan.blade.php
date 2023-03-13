@@ -26,10 +26,10 @@
                 <tbody>
                     @empty(!$jumlahJaminan)
                         @foreach ($jumlahJaminan as $no=>$data )
-                            <tr wire:loading.remove>
+                            <tr>
                                 <td>{{$no+1}}.</td>
                                 <td class="text-left">{{$data->jaminan}}</td>
-                                <td>{{$data->jumlah}}</td>
+                                <td><button data-toggle="modal" data-target="#modalLaporanKunjungan" wire:click = "modalDataJaminan({{ $data->id_jaminan }})" class=" btn btn-default btn-xs btn-block"><b>{{$data->jumlah}}</b></button></td>
                             </tr>
                         @endforeach
                             <tr>
@@ -41,4 +41,5 @@
                 </tbody>
             </table>
     </div>
+    <livewire:laporan.kunjungan.modal.jaminan>
 </div>

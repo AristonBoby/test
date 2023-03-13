@@ -130,6 +130,7 @@
         $('#tglKunjungan').datepicker({
             format: "dd-mm-yyyy",
             autoclose:true,
+            endDate: "dateToday",
         });
     });
 </script>

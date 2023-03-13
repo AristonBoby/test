@@ -18,17 +18,31 @@
         <form wire:submit.prevent='store' class="text-sm">
             <div class="col-md-12">
                 <div class="form-group row">
-                    <label class="col-md-12 col-sm-12 col-lg-4 form-col-label">Mulai Tanggal</label>
-                    <div class="col-md-12 col-sm-12 col-lg-8">
-                        <input type="date" wire:model.defer="tanggalMulai" class="form-control form-control-sm rounded-0" required>
+                    <label class="col-md-12 col-sm-12 col-lg-5 form-col-label">Mulai Tanggal <code>*</code></label>
+                    <div class="col-md-12 col-sm-12 col-lg-7">
+                        <div class="input-group">
+                            <input type="text" value="{{$tanggalMulai}}" onchange="Livewire.emit('tanggalLaporanMulai',this.value)" class="tglLaporan form-control form-control-sm rounded-0" readonly placeholder="dd-mm-yyyy">
+                            <span class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-group row">
-                    <label class="col-md-12 col-sm-12 col-lg-4 form-col-label">Sampai Tanggal</label>
-                    <div class="col-md-12 col-sm-12 col-lg-8">
-                        <input type="date" wire:model.defer="tanggalSampai" class="form-control form-control-sm rounded-0" required>
+                    <label class="col-md-12 col-sm-12 col-lg-5 form-col-label">Sampai Tanggal <code>*</code></label>
+                    <div class="col-md-12 col-sm-12 col-lg-7">
+                        <div class="input-group">
+                            <input type="text" value="{{$tanggalSampai}}" onchange="Livewire.emit('tanggalLaporanSampai',this.value)" class="tglLaporan form-control form-control-sm rounded-0" readonly placeholder="dd-mm-yyyy">
+                            <span class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -45,3 +59,13 @@
         </form>
     </div>
 </div>
+<script>
+    $(function () {
+        $('.tglLaporan').datepicker({
+            format: "dd-mm-yyyy",
+            autoclose:true,
+            endDate: "dateToday",
+
+        });
+    });
+</script>

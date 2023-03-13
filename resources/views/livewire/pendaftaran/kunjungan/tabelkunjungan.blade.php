@@ -148,7 +148,9 @@
     $(function () {
         $('#tableKunjungan').datepicker({
             format: "dd-mm-yyyy",
+            locale:'id',
             autoclose:true,
+            endDate: "dateToday",
         });
     });
 </script>

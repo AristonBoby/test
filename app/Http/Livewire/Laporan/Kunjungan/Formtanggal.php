@@ -3,27 +3,36 @@
 namespace App\Http\Livewire\Laporan\Kunjungan;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-use PDF;
+
 class Formtanggal extends Component
-{
+{   protected $listeners=['tanggalLaporanMulai','tanggalLaporanSampai'];
     public $tanggalMulai;
     public $tanggalSampai;
 
+    public function tanggalLaporanMulai($tglMulai)
+    {
+        $this->tanggalMulai = $tglMulai;
+    }
+    public function tanggalLaporanSampai($tglSampai)
+    {
+        $this->tanggalSampai= $tglSampai;
+    }
+
     public function render()
     {
-        $tanggalMulai = $this->tanggalMulai;
-        $tanggalSampai = $this->tanggalSampai;
 
         return view('livewire.laporan.kunjungan.formtanggal');
     }
+
     public function mount(){
-        $this->tanggalMulai;
-        $this->tanggalSampai;
+        $this->tanggalMulai = date('d-m-Y');
+        $this->tanggalSampai = date('d-m-Y');
     }
 
     public function store()
-    {
-        $this->emit('laporanKunjungan',$this->tanggalMulai, $this->tanggalSampai);
+    {   $tanggalMulai = \Carbon\Carbon::parse($this->tanggalMulai)->format('Y-m-d');
+        $tanggalSampai = \Carbon\Carbon::parse($this->tanggalSampai)->format('Y-m-d');
+        $this->emit('laporanKunjungan',$tanggalMulai, $tanggalSampai);
     }
 
 }
