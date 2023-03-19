@@ -51,6 +51,7 @@
                             <td>{{ $data->nik }}</td>
                             <td>{{ $data->alamat }}, {{ $data->kel_name }}, {{ $data->kec_name }}, {{ $data->kota_name }}</td>
                             <td>{{ $data->jaminan}}</td>
+                            <td>{{ $data->poli}}</td>
                         </tr>
                     @endforeach
                     @endif
