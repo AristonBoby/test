@@ -28,6 +28,7 @@ class Jaminan extends Component
     {
         $query = DB::table('jaminans')
                     ->join('kunjungans','jaminans.id_jaminan','kunjungans.id_jaminan')
+                    ->join('polis','kunjungans.id_poli','polis.id_poli')
                     ->join('pasiens','kunjungans.id_pasien','pasiens.id')
                     ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
                     ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
@@ -46,7 +47,8 @@ class Jaminan extends Component
                             'kel_name',
                             'kec_name',
                             'kota_name',
-                            'jaminan'
+                            'jaminan',
+                            'nama_poli'
                             )
                     ->where('jaminans.id_jaminan',$this->data)
                     ->where('nama', 'like', '%' .$this->cari. '%')
