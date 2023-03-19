@@ -49,7 +49,7 @@ class Jaminan extends Component
                             'jaminan'
                             )
                     ->where('jaminans.id_jaminan',$this->data)
-                    ->Where('nama', 'like', '%' .$this->cari. '%')
+                    ->where('nama', 'like', '%' .$this->cari. '%')
                     ->whereBetween('tanggal',[$this->tanggalMulai,$this->tanggalSelesai])
                     ->paginate(10,['*'],'jaminan');
         return view('livewire.laporan.kunjungan.modal.jaminan',[

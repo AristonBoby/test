@@ -9,6 +9,7 @@ class Jaminan extends Component
     public $jumlah;
     public $tanggalMulai;
     public $tanggalSelesai;
+
     public function render()
     {
         return view('livewire.laporan.kunjungan.jaminan',[
@@ -35,6 +36,7 @@ class Jaminan extends Component
         $totalJaminan = DB::table('kunjungans')
                     ->whereBetween('tanggal',[$this->tanggalMulai,$this->tanggalSelesai])
                     ->count();
+
         $this->totalJaminan = $totalJaminan;
         $this->jumlah = $jumlahJaminan;
     }

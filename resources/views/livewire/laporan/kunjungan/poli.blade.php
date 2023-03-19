@@ -28,9 +28,9 @@
                     @empty(!$jumlahPoli)
                         @foreach ($jumlahPoli as $no=>$data)
                         <tr wire:loading.remove>
-                            <td>{{$no+1}}.</td>
+                            <td>{{$no+$jumlahPoli->firstItem()}}.</td>
                             <td class="text-left">{{$data->nama_poli}}</td>
-                            <td>{{$data->jumlah}}</td>
+                            <td width='55'><button data-toggle="modal" wire:click="modalPoli({{$data->id_poli}})" data-target="#modalLaporanPoli" class=" btn btn-default btn-xs btn-block"><b>{{$data->jumlah}}</b></button></td>
                         </tr>
                         @endforeach
                         <tr>
@@ -38,8 +38,11 @@
                             <th><b>{{$total}}</b></th>
                         </tr>
                     @endempty
-
                 </tbody>
             </table>
+            <div class="col-md-6 col-sm-6 col-lg-6 mt-3 text-xs">
+                {{ $jumlahPoli->links() }}
+            </div>
     </div>
+    <livewire:laporan.kunjungan.modal.poli>
 </div>
