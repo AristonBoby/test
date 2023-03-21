@@ -21,6 +21,7 @@ class Forminput extends Component
     public $no_tlpn;
     public $id_pasien;
     public $jeniskunjungan;
+    public $dm;
     public $form = true;
 
     public $cari_Pasien_no_RM;
@@ -97,6 +98,7 @@ class Forminput extends Component
                     $this->bpjs             =   $query->bpjs;
                     $this->nik              =   $query->nik;
                     $this->no_tlpn          =   $query->no_tlpn;
+                    $this->dm               =   $query->dm;
                     $this->form = false;
                     $this->emit('riwayatKunjungan',$this->id_pasien);
                 }

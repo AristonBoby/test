@@ -48,8 +48,18 @@
                             <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">Tanggal Lahir</label>
                             <label class="text-uppercase control-label text-sm col-sm-6 col-lg-6 col-md-6">@if(!empty($tanggal_Lahir)){{\Carbon\Carbon::Parse($tanggal_Lahir)->format('d-m-Y') }} -- Umur
                                 {{\Carbon\Carbon::Parse($tanggal_Lahir)->age }}@endif
+                            </label>
+                        </div>
+                        <div class="form-group row" style="margin-bottom:-1px;">
+                            <label class="text-uppercase control-label text-sm text-right col-sm-6 col-lg-12 col-md-6">
                                 @if(\Carbon\Carbon::parse($tanggal_Lahir)->age >= 60 )
                                     <span class="badge badge-warning text-sm ml-2">Lansia</span>
+                                @endif
+                                @if($dm === '1')
+                                    <span class="badge badge-danger text-sm ml-2">DIABETES MELITUS</span>
+                                @endif
+                                @if($dm === '1')
+                                    <span class="badge badge-primary text-sm ml-2">HIPERTENSI</span>
                                 @endif
                             </label>
                         </div>
