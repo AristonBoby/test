@@ -14,7 +14,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class Cetakpdf extends Component
 {
    public function cetakPdf($tanggalMulai, $tanggalSampai)
-   {      
+   {
       $query = DB::table('kunjungans')
             ->Join('pasiens','kunjungans.id_pasien','pasiens.id')
             ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
@@ -52,7 +52,14 @@ class Cetakpdf extends Component
                ->whereBetween('kunjungans.tanggal',[$tanggalMulai,$tanggalSampai])
                ->orderBy('jumlah','desc')->get();
          }
-         return view('livewire.laporan.kunjungan.cetakpdf',['jumlahjenkel'=>$jumlahjenkel,'dataKunjungan'=> $query,'tglMulai'=>$tanggalMulai,'tglSampai'=>$tanggalSampai,'jumlahPoli'=>$jumlahPoli,'jaminan'=>$jumlahjaminan]);
+         return view('livewire.laporan.kunjungan.cetakpdf',[
+                    'jumlahjenkel'  =>  $jumlahjenkel,
+                    'dataKunjungan' =>  $query,
+                    'tglMulai'      =>  $tanggalMulai,
+                    'tglSampai'     =>  $tanggalSampai,
+                    'jumlahPoli'    =>  $jumlahPoli,
+                    'jaminan'       =>  $jumlahjaminan,
+                ]);
 
    }
 }
