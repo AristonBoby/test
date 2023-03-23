@@ -14,7 +14,11 @@ use Maatwebsite\Excel\Facades\Excel;
 class Cetakpdf extends Component
 {
    public function cetakPdf($tanggalMulai, $tanggalSampai)
-   {      
+   {
+        $tanggalMulai = \Carbon\Carbon::parse($tanggalMulai)->format('Y-m-d');
+        $tanggalSampai = \Carbon\Carbon::parse($tanggalSampai)->format('Y-m-d');
+
+
       $query = DB::table('kunjungans')
             ->Join('pasiens','kunjungans.id_pasien','pasiens.id')
             ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
