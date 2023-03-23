@@ -37,7 +37,8 @@ class Poli extends Component
     }
 
     public function cariLaporan($tanggalMulai,$tanggalSelesai)
-    {   $this->tanggalMulai     = $tanggalMulai;
+    {   $this->resetPage('poli');
+        $this->tanggalMulai     = $tanggalMulai;
         $this->tanggalSelesai   = $tanggalSelesai;
     }
 }

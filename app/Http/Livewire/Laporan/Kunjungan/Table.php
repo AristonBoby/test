@@ -52,7 +52,7 @@ class Table extends Component
     }
 
     public function cariLaporan($tanggalMulai,$tanggalSelesai)
-    {
+    {  $this->resetPage('pasien');
        $this->tanggalmulai      = $tanggalMulai;
        $this->tanggalselesai    = $tanggalSelesai;
     }

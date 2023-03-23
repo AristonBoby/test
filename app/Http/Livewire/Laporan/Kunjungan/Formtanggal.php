@@ -32,7 +32,7 @@ class Formtanggal extends Component
     }
 
     public function store()
-    {   $this->resetPage('poli');
+    {   $this->resetPage();
         $tanggalMulai = \Carbon\Carbon::parse($this->tanggalMulai)->format('Y-m-d');
         $tanggalSampai = \Carbon\Carbon::parse($this->tanggalSampai)->format('Y-m-d');
         $this->emit('laporanKunjungan',$tanggalMulai, $tanggalSampai);
