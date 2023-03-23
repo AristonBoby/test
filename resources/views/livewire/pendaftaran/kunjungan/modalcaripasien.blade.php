@@ -29,7 +29,7 @@
                        <p class="text-xs text-danger text-center">*Pencarian Pasien berdasarkan Nama, NIK, BPJS</p>
                     </div>
                 <div class="table-responsive">
-                    @if($query)
+
                         <table class="table table-sm table-hover">
                             <thead>
                             <tr>
@@ -43,17 +43,19 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($query as $id => $data)
-                                <tr>
-                                <td scope="row" class="text-xs">{{$query->firstItem()+$id}}.</td>
-                                <td scope="row text-center" class="text-xs"><button data-dismiss="modal" wire:click="cariPasien('{{$data->no_Rm}}')" class="btn btn-default btn-xs"><b>{{$data->no_Rm}}</b></button></td>
-                                <td class="text-xs">{{$data->nama}}</td>
-                                <td class="text-xs">{{$data->tanggal_Lahir}}</td>
-                                <td class="text-xs text-center">{{$data->jenkel}}</td>
-                                <td class="text-xs">{{$data->nik}}</td>
-                                <td class="text-xs">{{$data->bpjs}}</td>
-                                </tr>
-                                @endforeach
+                                @if($query)
+                                    @foreach ($query as $id => $data)
+                                        <tr>
+                                        <td scope="row" class="text-xs">{{$query->firstItem()+$id}}.</td>
+                                        <td scope="row text-center" class="text-xs"><button data-dismiss="modal" wire:click="cariPasien('{{$data->no_Rm}}')" class="btn btn-default btn-xs"><b>{{$data->no_Rm}}</b></button></td>
+                                        <td class="text-xs">{{$data->nama}}</td>
+                                        <td class="text-xs">{{$data->tanggal_Lahir}}</td>
+                                        <td class="text-xs text-center">{{$data->jenkel}}</td>
+                                        <td class="text-xs">{{$data->nik}}</td>
+                                        <td class="text-xs">{{$data->bpjs}}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                         <div class=" row btn-sm mt-5">
@@ -66,7 +68,6 @@
                                 </span>
                             </div>
                         </div>
-                    @endif
                 </div>
            </div>
            <div class="modal-footer">
