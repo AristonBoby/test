@@ -24,7 +24,6 @@
                                 <button class="btn btn-primary btn-sm "><i class="fa fa-search"></i> Cari Pasien</button>
                               </span>
                             </div>
-
                         </div>
 
                       </form>
