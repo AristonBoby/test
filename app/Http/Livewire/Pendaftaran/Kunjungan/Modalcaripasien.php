@@ -3,35 +3,47 @@
 namespace App\Http\Livewire\Pendaftaran\Kunjungan;
 use App\Models\pasien;
 use Livewire\Component;
-
+use Livewire\WithPagination;
 class Modalcaripasien extends Component
 {
-    public $cari=""; 
-    public $query;
+    public $cari="";
+    public $caridatapasien = null;
+    private $queryData = null;
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
+
     public function render()
-    {
-        return view('livewire.pendaftaran.kunjungan.modalcaripasien',  [   
-            'query' => $this->query
+    {   $this->queryData = pasien::where('no_Rm', $this->caridatapasien)
+                        ->orwhere('nama','Like','%'.$this->caridatapasien.'%')
+                        ->orwhere('nik','LIKE','%'.$this->caridatapasien.'%')
+                        ->orwhere('bpjs','LIKE','%'.$this->caridatapasien.'%')
+                        ->orderby('created_at','desc')
+                        ->paginate(10, ['*'], 'cariPasien');
+        if($this->caridatapasien == '')
+        {
+            $this->queryData = '';
+        }
+        return view('livewire.pendaftaran.kunjungan.modalcaripasien',  [
+            'query' => $this->queryData
         ]);
     }
+
     public function hapuscari()
     {
-        $this->cari = "";
+        $this->caridatapasien = null;
+        $this->cari = '';
+        $this->resetPage('cariPasien');
     }
 
-    public function cariData(){
-    $data = pasien::where('no_Rm', $this->cari)
-                       ->orwhere('nama','Like','%'.$this->cari.'%')
-                       ->orwhere('nik','LIKE','%'.$this->cari.'%')
-                       ->orwhere('bpjs','LIKE','%'.$this->cari.'%')->orderby('created_at','desc')->get();
-    if($data)
-    {
-        $this->query = $data;
-    }
+    public function caridatamodal(){
 
+        $this->caridatapasien = $this->cari;
+        $this->resetPage('cariPasien');
     }
     public function cariPasien($no_Rm){
       $this->emit('cariDataPasien',$no_Rm);
-    } 
+    }
 
 }

@@ -34,7 +34,6 @@
                 </form>
                 <div class="col-md-12 col-sm-12 col-lg-12">
                 <form wire:submit.prevent='simpanKunjungan'>
-
                         <input type="hidden" wire.model='id_pasien'>
                         <div class="form-group row"style="margin-bottom:-1px;">
                             <label class="text-uppercase col-md-4 col-lg-4 col-sm-4 text-sm ">No Rekam Medis</label>
@@ -114,7 +113,7 @@
                             </div>
                         </div>
                     <button type="submit" class="btn btn-sm btn-primary float-right text-xs" @disabled($form)><i class="fa fa-save text-xs"></i> Simpan</button>
-                    <a href="" class="btn btn-sm btn-default float-right text-xs  mr-2" @disabled($form)><i class="fa fa-times text-xs"></i> Batal</a>
+                    <a href="" class="btn btn-sm btn-danger float-right text-xs mr-2" ><i class="fa fa-times text-xs"></i> Batal</a>
                 </div>
             </div>
     </div>
