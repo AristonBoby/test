@@ -8,7 +8,7 @@
                 <div class="card-body">
                 <div class="row">
                     <div class="col-lg-4 col-sm-12 col-md-12">
-                    
+
                         <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>{{$jumlahperhari->count()}}</h3>
@@ -59,14 +59,14 @@
                     </div>
         @endif
 
-        @if(Auth::user()->role=='2')
+        @if(Auth::user()->role=='2' || Auth::user()->role=='4')
         <div class="card-header">
-            <h5 class="card-title">Laporan Data Kunjungan Pasien</h5>
+            <h5 class="card-title"> Data Kunjungan Pasien</h5>
         </div>
         <div class="card-body">
         <div class="row">
             <div class="col-lg-4 col-sm-12 col-md-12">
-            
+
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <h3>{{$kunjunganperhari->count()}}</h3>
