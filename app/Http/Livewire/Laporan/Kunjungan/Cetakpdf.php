@@ -15,6 +15,13 @@ class Cetakpdf extends Component
 {
    public function cetakPdf($tanggalMulai, $tanggalSampai)
    {
+<<<<<<< HEAD
+=======
+        $tanggalMulai = \Carbon\Carbon::parse($tanggalMulai)->format('Y-m-d');
+        $tanggalSampai = \Carbon\Carbon::parse($tanggalSampai)->format('Y-m-d');
+
+
+>>>>>>> 2118412d10754ab2b4d965627fa83b78504697dd
       $query = DB::table('kunjungans')
             ->Join('pasiens','kunjungans.id_pasien','pasiens.id')
             ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
