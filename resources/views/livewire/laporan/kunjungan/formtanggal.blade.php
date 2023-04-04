@@ -48,12 +48,15 @@
             </div>
 </div>
     <div class="card-footer">
-            <div class="form-group row">
-                <div class="col-md-6 col-sm-12 col-lg-4">
-                        <a target="_blank" class=" btn btn-danger float-left btn-sm text-sm float-left" href="cetakKunjungan/{{$tanggalMulai}}/{{$tanggalSampai}}"><i class="fas fa-file-pdf" aria-hidden="true"></i>  PDF</a>
+            <div class="form-group row mt-3">
+                <div class="col-md-4 col-sm-4 col-lg-4 mb-2">
+                        <a target="_blank" class=" btn btn-danger float-left btn-sm btn-block text-sm float-left" href="cetakKunjungan/{{$tanggalMulai}}/{{$tanggalSampai}}"><i class="fas fa-file-pdf" aria-hidden="true"></i>  PDF</a>
                 </div>
-                <div class="col-md-6 col-lg-8 col-sm-12">
-                        <Button class=" btn float-right btn-primary  btn-sm text-sm"><i class="fas fa-search text-xs"></i> Cari</Button>
+                <div class="col-md-4 col-sm-4 col-lg-4 mb-2">
+                    <a target="_blank" class=" btn btn-success btn-sm btn-block text-sm float-left" href="cetakKunjungan/{{$tanggalMulai}}/{{$tanggalSampai}}"><i class="fas fa-file-excel" aria-hidden="true"></i>  Excel</a>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-4">
+                        <Button class=" btn float-right btn-primary btn-block btn-sm text-sm"><i class="fas fa-search text-xs"></i> Cari</Button>
                 </div>
             </div>
         </form>

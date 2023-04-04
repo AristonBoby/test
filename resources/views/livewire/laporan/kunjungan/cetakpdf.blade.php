@@ -6,8 +6,8 @@ table, tr, td {
         border: 1px solid black;
         border-collapse: collapse;
         padding:3px;
-        
-        }        
+
+        }
 #logo1{
         position: absolute;
         top:0px;
@@ -21,7 +21,7 @@ table, tr, td {
         margin-right: 10px;
         margin-top: 45px;
 }
-                
+
 @media print {
    .break{ page-break-before: always;}
 }
@@ -52,64 +52,81 @@ table, tr, td {
             </tr>
         </table>
         <div width=100%>
-            <table  border=1 border-collapse=0 width="300" style=" margin-left:40px; float:left; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
-                <tr>
-                    <th>No</th>
-                    <th>Poli</th>
-                    <th>Jumlah</th>
-                </tr>
-                @foreach ($jumlahPoli as $no=>$data)
-                <tr>
-                    <th>{{$no+1}}.</th>
-                    <td><b>{{$data->nama_poli}}</b></td>
-                    <th>{{$data->jumlahPoli}}</th>
-                </tr>
-                @endforeach
-            </table>
-            <table  border=1 border-collapse=0 width="300" style="margin-bottom:-5px; margin-left:37%; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
-                <tr>
-                    <th>No</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Jumlah</th>
-                </tr>
-                @foreach ($jumlahjenkel as $no=>$data)
-                <tr>
-                    <th>{{$no+1}}.</th>
-                    <td><b> @if($data->jenkel=='P')PEREMPUAN @elseif($data->jenkel=="L")LAKI-LAKI @endif</b></td>
-                    <th>{{$data->jumlah}}</th>
-                </tr>
-                @endforeach
-            </table>
-
-            <table  border=1 border-collapse=0 width="300"  style="margin-left:70%; margin-top:-210px;float:left; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
-                <tr>
-                    <th>No</th>
-                    <th>Jaminan</th>
-                    <th>Jumlah</th>
-                </tr>
-                @foreach ($jaminan as $no=>$data)
+            <div class="width:30%;">
+                <table  border=1 border-collapse=0 width="300" style=" margin-left:40px; float:left; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
+                    <tr>
+                        <th>No</th>
+                        <th>Poli</th>
+                        <th>Jumlah</th>
+                    </tr>
+                    @foreach ($jumlahPoli as $no=>$data)
                     <tr>
                         <th>{{$no+1}}.</th>
-                        <td><b>{{$data->jaminan}}</b></td>
-                        <th>{{$data->jumlahJaminan}}</th>
+                        <td><b>{{$data->nama_poli}}</b></td>
+                        <th>{{$data->jumlahPoli}}</th>
                     </tr>
-                @endforeach
-                
-               
-            </table>
+                    @endforeach
+                    <tr>
+                        <td colspan='2' style="text-align:center;"><b>Total</b></td>
+                        <td style="text-align:center;"><b>{{$dataKunjungan->count()}}</b></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="width:30%;">
+                <table  border=1 border-collapse=0 width="300" style="margin-bottom:-5px; margin-left:37%; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
+                    <tr>
+                        <th>No</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Jumlah</th>
+                    </tr>
+                    @foreach ($jumlahjenkel as $no=>$data)
+                    <tr>
+                        <th>{{$no+1}}.</th>
+                        <td><b> @if($data->jenkel=='P')PEREMPUAN @elseif($data->jenkel=="L")LAKI-LAKI @endif</b></td>
+                        <th>{{$data->jumlah}}</th>
+                    </tr>
+                    @endforeach
+                    <tr>
+                        <td colspan='2' style="text-align:center;"><b>Total</b></td>
+                        <td style="text-align:center;"><b>{{$dataKunjungan->count()}}</b></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="width:30%;">
+                <table  border=1 border-collapse=0 width="300"  style="margin-left:70%; margin-top:-230px; float:left; font-family:Arial, Helvetica, sans-serif; font-size:9pt;">
+                    <tr>
+                        <th>No</th>
+                        <th>Jaminan</th>
+                        <th>Jumlah</th>
+                    </tr>
+                    @foreach ($jaminan as $no=>$data)
+                        <tr>
+                            <th>{{$no+1}}.</th>
+                            <td><b>{{$data->jaminan}}</b></td>
+                            <th>{{$data->jumlahJaminan}}</th>
+                        </tr>
+                    @endforeach
+                    <tr>
+                        <td colspan='2' style="text-align:center;"><b>Total</b></td>
+                        <td style="text-align:center;"><b>{{$dataKunjungan->count()}}</b></td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
         <div width="100%" style="margin-top:100px;">
         <div class="padding-top:30px;" style="page-break-before:always;">
             <h3 style="text-align: center;  font-family:Arial, Helvetica, sans-serif; text-transform: uppercase;" >Daftar Nama Pasien</h3>
-        <table border=1 border-collapse=0 border-style="dotted" class=" margin-top:100px; table table-sm table-striped" style="margin-top:30px;font-size:8pt; width:100%; font-family:Arial, Helvetica, sans-serif; font-size:9pt; text-transform: uppercase;">    
-          
+        <table border=1 border-collapse=0 border-style="dotted" class=" margin-top:100px; table table-sm table-striped" style="margin-top:30px;font-size:8pt; width:100%; font-family:Arial, Helvetica, sans-serif; font-size:9pt; text-transform: uppercase;">
+
                 <tr class="text">
                     <th style="font-size:8pt;" align="center">No</th>
                     <th style="font-size:8pt;" align="center" width="75">Tanggal</th>
                     <th style="font-size:8pt;" align="center">Rekam Medis</th>
                     <th style="font-size:8pt;" align="center" width="120">Nama</th>
                     <th style="font-size:8pt;" align="center" width="75">Tanggal Lahir</th>
+                    <th style="font-size:8pt;" align="center" >Umur</th>
                     <th style="font-size:8pt;" align="center">L/P</th>
                     <th style="font-size:8pt;" align="center">NIK</th>
                     <th style="font-size:8pt;" align="center">Poli</th>
@@ -119,18 +136,19 @@ table, tr, td {
                 @foreach ($dataKunjungan as $no=>$data )
                 <tr>
                     <td  align="center" style="font-size:8pt">{{$no+1}}.</td>
-                    <td  align="center" style="font-size:8pt">{{$data->tanggal}}</td>
+                    <td  align="center" style="font-size:8pt">{{ \Carbon\Carbon::parse($data->tanggal)->format('d-m-Y') }}</td>
                     <td  align="center" style="font-size:8pt">{{$data->no_Rm}}</td>
                     <td  style="font-size:8pt">{{$data->nama}}</td>
-                    <td align="center" style="font-size:8pt">{{$data->tanggal_Lahir}}</td>
+                    <td align="center" style="font-size:8pt">{{ \Carbon\Carbon::parse($data->tanggal_Lahir)->format('d-m-Y') }}</td>
+                    <td align="center" style="font-size:8pt">{{ \Carbon\Carbon::parse($data->tanggal_Lahir)->age }}</td>
                     <td align="center">{{$data->jenkel}}</td>
                     <td align="center" style="font-size:8pt">{{$data->nik}}</td>
                     <td align="center">{{$data->nama_poli}}</td>
                     <td align="center" >{{$data->jaminan}}</td>
                     <td style="font-size:8pt">{{$data->alamat}}, {{$data->kel_name}}, {{$data->kec_name}}, {{$data->kota_name}}</td>
                 </tr>
-                @endforeach 
-        </table>    
+                @endforeach
+        </table>
         </div>
         </div>
     </div>
