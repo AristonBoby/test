@@ -1,7 +1,7 @@
 <div class="col-md-12 col-sm-12 col-lg-12">
     <div class="card card-info card-outline">
         <div class="card-header">
-            <h5 class="card-title"><b><i class="fa fa-table text-sm"></i> Kunjungan</b> Pasien</h5>
+            <h5 class="card-title"><b><i class="fa fa-table text-sm"></i> Data Kunjungan</b> Pasien</h5>
             <div wire:loading>
                 <span class="badge bg-success text-xs" style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
             </div>
@@ -17,7 +17,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4 col-lg-4 col-sm-12">
-                    <p class="text-sm text-danger">* Data Kunjungan yang ditampilkan berdasarkan tanggal Kunjungan</p>
+                    <p class="text-sm text-danger">* Data kunjungan yang ditampilkan berdasarkan tanggal kunjungan</p>
                 </div>
                 <div class="form-group float-left col-md-8col-sm-8 col-lg-8">
                     <div class="col-md-12 col-lg-4 col-sm-12 float-right row">
