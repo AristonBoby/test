@@ -37,6 +37,8 @@ return array(
     'App\\Http\\Livewire\\Laporan\\Kunjungan\\Formtanggal' => $baseDir . '/app/Http/Livewire/Laporan/Kunjungan/Formtanggal.php',
     'App\\Http\\Livewire\\Laporan\\Kunjungan\\Jaminan' => $baseDir . '/app/Http/Livewire/Laporan/Kunjungan/Jaminan.php',
     'App\\Http\\Livewire\\Laporan\\Kunjungan\\Jenkel' => $baseDir . '/app/Http/Livewire/Laporan/Kunjungan/Jenkel.php',
+    'App\\Http\\Livewire\\Laporan\\Kunjungan\\Modal\\Jaminan' => $baseDir . '/app/Http/Livewire/Laporan/Kunjungan/Modal/Jaminan.php',
+    'App\\Http\\Livewire\\Laporan\\Kunjungan\\Modal\\Poli' => $baseDir . '/app/Http/Livewire/Laporan/Kunjungan/Modal/Poli.php',
     'App\\Http\\Livewire\\Laporan\\Kunjungan\\Poli' => $baseDir . '/app/Http/Livewire/Laporan/Kunjungan/Poli.php',
     'App\\Http\\Livewire\\Laporan\\Kunjungan\\Table' => $baseDir . '/app/Http/Livewire/Laporan/Kunjungan/Table.php',
     'App\\Http\\Livewire\\Laporan\\Wilayah\\Table' => $baseDir . '/app/Http/Livewire/Laporan/Wilayah/Table.php',

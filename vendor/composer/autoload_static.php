@@ -654,6 +654,8 @@ class ComposerStaticInit0bb9b2b464d3d18b779a4311c1da2163
         'App\\Http\\Livewire\\Laporan\\Kunjungan\\Formtanggal' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Kunjungan/Formtanggal.php',
         'App\\Http\\Livewire\\Laporan\\Kunjungan\\Jaminan' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Kunjungan/Jaminan.php',
         'App\\Http\\Livewire\\Laporan\\Kunjungan\\Jenkel' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Kunjungan/Jenkel.php',
+        'App\\Http\\Livewire\\Laporan\\Kunjungan\\Modal\\Jaminan' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Kunjungan/Modal/Jaminan.php',
+        'App\\Http\\Livewire\\Laporan\\Kunjungan\\Modal\\Poli' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Kunjungan/Modal/Poli.php',
         'App\\Http\\Livewire\\Laporan\\Kunjungan\\Poli' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Kunjungan/Poli.php',
         'App\\Http\\Livewire\\Laporan\\Kunjungan\\Table' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Kunjungan/Table.php',
         'App\\Http\\Livewire\\Laporan\\Wilayah\\Table' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Wilayah/Table.php',

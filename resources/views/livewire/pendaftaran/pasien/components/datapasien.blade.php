@@ -28,6 +28,9 @@
                                 <button type="submit" class="btn btn-md btn-primary" wire:click='render'>
                                     <i class="fa fa-search"></i> Cari
                                 </button>
+                                                                <button type="submit" class="btn btn-md btn-primary" wire:click='print'>
+                                    <i class="fa fa-search"></i> +
+                                </button>
                             </div>
                             </div>
                         </div>
