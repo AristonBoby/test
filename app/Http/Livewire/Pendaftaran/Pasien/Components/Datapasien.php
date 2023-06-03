@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Pendaftaran\Pasien\Components;
+use App\Exports\PasiensExport;
 use App\Models\pasien;
 use Livewire\Component;
 use App\Models\provinsi;
@@ -10,6 +11,9 @@ use App\Models\kelurahan;
 use Livewire\WithPagination;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Datapasien extends Component
 {
@@ -96,6 +100,14 @@ class Datapasien extends Component
         $this->tanggal_Lahir = date('Y-m-d');
         $this->caripasien = '';
     }
+
+    public function print()
+    {
+        $name = date('y-m-d:h:m:i');
+       // dd($name);
+        return Excel::download(new PasiensExport, 'Master_Data_Pasien_Tanggal_'.$name.'.xls');
+    }
+
     protected $rules =([
         'no_Rm'             => 'required',
         'nama'              => 'required',
