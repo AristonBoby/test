@@ -21,15 +21,15 @@
                 <a href="daftar" class="btn btn-primary mb-4 btn-sm" >+ Tambah Data Pasien</a>
             </div>
                 <div class=" col-lg-12">
+                    <button type="submit" class="btn btn-sm btn-success" wire:click='print'>
+                        <i class="fas fa-file-excel" aria-hidden="true"></i> Dewnload ecxel
+                    </button>
                     <div class="col-lg-3 col-md-12 col-sm-12 float-right">
                         <div class="input-group">
                             <input type="search" class="form-control form-control-md" wire:model.lazy="caripasien" placeholder="Pencarian Pasien">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-md btn-primary" wire:click='render'>
                                     <i class="fa fa-search"></i> Cari
-                                </button>
-                                                                <button type="submit" class="btn btn-md btn-primary" wire:click='print'>
-                                    <i class="fa fa-search"></i> +
                                 </button>
                             </div>
                             </div>
