@@ -18,14 +18,14 @@ class PasiensExport implements FromCollection, WithColumnFormatting, WithHeading
     */
     public function collection()
     {
-
         $data = DB::table('pasiens')
                 ->join('users','pasiens.id_user','users.id')
                 ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
                 ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')
                 ->join('kotas','kecamatans.kota_id','kotas.kota_id')
                 ->join('provinsis','kotas.prov_id','provinsis.prov_id')
-                ->select('pasiens.id',
+                ->where('pasiens.nama','LIKE','%'.'ratna'.'%')
+                ->select(
                  'pasiens.no_Rm',
                  'pasiens.nama',
                  'tanggal_Lahir',
@@ -40,9 +40,7 @@ class PasiensExport implements FromCollection, WithColumnFormatting, WithHeading
                  'kotas.kota_name',
                  'kelurahans.kel_name',
                  'pasiens.alamat',
-
                  )->get();
-
         return $data;
     }
 
@@ -56,12 +54,12 @@ class PasiensExport implements FromCollection, WithColumnFormatting, WithHeading
     public function headings(): array
     {
         return [
-            'ID',
             'Nomor Rekam Medis',
             'Nama',
             'Tanggal Lahir',
             'Jenkel',
             'Nomor Telepon',
+            'Pekerjaan',
             'NIK',
             'BPJS',
             'Provinsi',

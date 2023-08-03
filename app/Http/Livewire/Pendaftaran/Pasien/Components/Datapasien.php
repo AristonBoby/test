@@ -40,6 +40,7 @@ class Datapasien extends Component
     public $prov_name;
     public $kec_name;
     public $kota_name;
+    public $datak='ratna';
     public $status=1;
     protected $listeners = ['deleteConfirmed' => 'hapusPasien'];
     protected $paginationTheme = 'bootstrap';
@@ -105,7 +106,8 @@ class Datapasien extends Component
     {
         $name = date('y-m-d:h:m:i');
        // dd($name);
-        return Excel::download(new PasiensExport, 'Master_Data_Pasien_Tanggal_'.$name.'.xls');
+
+        return Excel::download(new PasiensExport(), 'Master_Data_Pasien_Tanggal_'.$name.'.xls');
     }
 
     protected $rules =([
