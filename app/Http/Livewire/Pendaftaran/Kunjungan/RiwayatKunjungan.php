@@ -28,6 +28,7 @@ class RiwayatKunjungan extends Component
 
     public function kunjungan($id_pasien){
         $this->riwayatKunjungan = $id_pasien;
+        $this->resetPage('commentsPage');
     }
 
     public function idHapus($id)
