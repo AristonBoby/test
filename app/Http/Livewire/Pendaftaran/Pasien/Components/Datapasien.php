@@ -103,9 +103,9 @@ class Datapasien extends Component
     }
 
     public function print()
-    {
+    {   $data="ddd";
         $name = date('d M Y');
-        return Excel::download(new PasiensExport(), 'Master Data Pasien Tanggal '.$name.'.xls');
+        return Excel::download(new PasiensExport($data), 'Master Data Pasien Tanggal '.$name.'.xls');
     }
 
     protected $rules =([

@@ -15,12 +15,12 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table table-sm table-bordered text-sm table-striped table-hover">
+        <table class="text-uppercase table table-sm table-bordered text-sm table-striped table-hover">
             <thead>
-                <tr>
+                <tr class="text-center">
                     <th>No</th>
-                    <th>Jenkel</th>
-                    <th>Jumlah</th>
+                    <th >KELAMIN</th>
+                    <th >Jumlah</th>
                 </tr>
             </thead>
             <tbody>

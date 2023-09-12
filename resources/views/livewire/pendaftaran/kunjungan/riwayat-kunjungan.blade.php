@@ -1,10 +1,13 @@
 <div class="col-lg-4 col-md-8 col-sm-12 btn-xs">
     <div class="card card-info card-outline">
+        <div wire:loading>
+            <div class="overlay">
+                <i class="fas fa-spinner fa-md fa-pulse"></i>
+                <span class="text-md">&nbsp; Loading .... </span>
+            </div>
+        </div>
         <div class="card-header">
             <h3 class="card-title"><b><i class="fa fa-table text-sm"></i> RIwayat Kunjungan</b> Pasien</h3>
-            <div wire:loading>
-                <span class="badge bg-success text-xs" style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
-            </div>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                 <i class="fas fa-minus"></i>
@@ -21,10 +24,10 @@
                             <thead>
                                 <tr>
                                     <th width=10>No.</th>
-                                    <th width=70 align="center">Tanggal</th>
-                                    <th width=180>Jaminan</th>
-                                    <th width=180>Poli</th>
-                                    <th width=180>Action</th>
+                                    <th width=70 align="center">TANGGAL</th>
+                                    <th width=180>JAMINAN</th>
+                                    <th width=180>POLI</th>
+                                    <th width=180>ACTION</th>
                                 </tr>
                             </thead>
                             @foreach ($riwayat as $no=>$data )
@@ -38,6 +41,7 @@
                             @endforeach
                         </table>
                         <div class="mt-4 row">
+
                             <span class="text-xs btn-xs col-md-9 col-sm-9 col-lg-9">
                                 {{ $riwayat->links() }}
                             </span>

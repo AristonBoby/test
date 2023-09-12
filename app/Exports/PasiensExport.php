@@ -16,6 +16,12 @@ class PasiensExport implements FromCollection, WithColumnFormatting, WithHeading
     /**
     * @return \Illuminate\Support\Collection
     */
+
+    public function __construct($data)
+    {
+        dd($data);
+    }
+
     public function collection()
     {
         $data = DB::table('pasiens')

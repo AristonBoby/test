@@ -74,7 +74,8 @@
                                     <td>{{$query->nik}}</td>
                                     <td>{{$query->bpjs}}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-info" target="_blank" href="printpasien/{{$query->no_Rm}}"><i class="text-xs fa fa-print"></i></a>
+                                        <a class="btn btn-xs btn-info" target="_blank" href="printpasien/{{$query->no_Rm}}"><i class="text-xs fa fa-print"></i></a>
+                                        <button class="btn btn-xs btn-primary rounded-0" data-toggle="modal" data-target="#generalconsent"><i class="text-xs fa fa-print"></i> General Consent</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -104,4 +105,5 @@
                 height:20px;
             }
         </style>
+            @include('livewire.pendaftaran.pasien.components.modalgeneralconsent')
     </div>

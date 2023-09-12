@@ -1,17 +1,21 @@
-<div class="card card-purple card-outline table-responsive">
+<div class="card card-purple card-outline table-responsive " wire:ignore.self >
     <div class="card-header">
         <h5 class="card-title"><b>Table Daftar</b> Pasien</h5>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
             <i class="fas fa-minus"></i>
             </button>
-
+            <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
+            </button>
             <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
             <i class="fas fa-times"></i>
             </button>
         </div>
-        <div wire:loading>
-            <span class="badge bg-success text-xs"style="margin-left:5px;"> <i class="text-xs fas fa-3x fa-sync-alt fa-spin"></i> Loading...</span>
+    </div>
+    <div wire:loading>
+        <div class="overlay">
+            <i class="fas fa-spinner fa-md fa-pulse"></i>
+            <span class="text-md">&nbsp; Loading .... </span>
         </div>
     </div>
     <div class="card-body text-sm text-center ">

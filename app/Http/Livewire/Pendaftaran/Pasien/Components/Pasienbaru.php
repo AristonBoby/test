@@ -375,5 +375,4 @@ class Pasienbaru extends Component
         }
 
     }
-
 }

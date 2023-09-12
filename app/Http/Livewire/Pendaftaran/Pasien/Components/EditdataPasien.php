@@ -78,5 +78,10 @@ class EditdataPasien extends Component
         $this->resetPage();
     }
 
+    public function generalconsent()
+    {
+        dd('ddd');
+    }
+
 
 }
