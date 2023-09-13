@@ -55,16 +55,13 @@
                             </tr>
                         </thead>
                         <tbody >
-                            <tr wire:loading>
-                                <td>Loading...</td>
-                            </tr>
                             @if($pasien->count() === 0)
                             <tr>
                                 <td colspan="9">Pasien tidak ditemukan <span class="fa fa-database fa-light text-xs" aria-hidden="true"></span></td>
                             </tr>
                             @endif
                             @foreach ($pasien as $index => $query)
-                                <tr class="text-uppercase" wire:loading.remove style='@if(\Carbon\Carbon::parse($query->tanggal_Lahir)->age >= 60 ) background-color:#ffffd6 @endif'>
+                                <tr class="text-uppercase"style='@if(\Carbon\Carbon::parse($query->tanggal_Lahir)->age >= 60 ) background-color:#ffffd6 @endif'>
                                     <td>{{$pasien->firstItem() + $index}}.</td>
                                     <td class="text-left">{{$query->no_Rm}}</td>
                                     <td class="text-left">{{$query->nama}}</td>
@@ -74,8 +71,7 @@
                                     <td>{{$query->nik}}</td>
                                     <td>{{$query->bpjs}}</td>
                                     <td>
-                                        <a class="btn btn-xs btn-info" target="_blank" href="printpasien/{{$query->no_Rm}}"><i class="text-xs fa fa-print"></i></a>
-                                        <button class="btn btn-xs btn-primary rounded-0" data-toggle="modal" data-target="#generalconsent"><i class="text-xs fa fa-print"></i> General Consent</button>
+                                        <button class="btn btn-xs btn-primary rounded-0" wire:click.prevent="generalconsent('{{ $query->id }}')"><i class="text-xs fa fa-print"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -96,9 +92,6 @@
                         </div>
                 </div>
             </div>
-
-
-            @include('livewire.pendaftaran.pasien.components.modaldetailpasien')
         </div>
         <style>
             nav svg{
@@ -107,3 +100,24 @@
         </style>
             @include('livewire.pendaftaran.pasien.components.modalgeneralconsent')
     </div>
+<script>
+        window.addEventListener('modalGeneralConsent', event => {
+                Swal.fire({
+                    title: event.detail.title,
+                    text: event.detail.text,
+                    icon: event.detail.icon,
+                    showConfirmButton: true,
+                    timer: event.detail.timer,
+                    buttons: true,
+                });
+                Swal.fire({
+                    title: event.detail.title,
+                    text: event.detail.text,
+                    icon: event.detail.icon,
+                    showConfirmButton: true,
+                    timer: event.detail.timer,
+                    buttons: true,
+                });
+      });
+
+</script>

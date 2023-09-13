@@ -78,12 +78,9 @@ class EditdataPasien extends Component
         $this->resetPage();
     }
 
-    public function generalconsent()
-    {
-        $data = DB::table('pasiens')
-                ->join('generalconsents','pasiens.id','generalconsents.id_pasien')
-                ->select(['generalconsents.*', 'pasiens.*'])->paginate(10);
-                dd($data);
+    public function generalconsent($id)
+    {    $this->dispatchBrowserEvent('modalGeneralConsent');
+
     }
 
 
