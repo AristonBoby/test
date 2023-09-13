@@ -80,7 +80,10 @@ class EditdataPasien extends Component
 
     public function generalconsent()
     {
-        dd('ddd');
+        $data = DB::table('pasiens')
+                ->join('generalconsents','pasiens.id','generalconsents.id_pasien')
+                ->select(['generalconsents.*', 'pasiens.*'])->paginate(10);
+                dd($data);
     }
 
 

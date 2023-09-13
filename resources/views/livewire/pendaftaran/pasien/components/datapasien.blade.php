@@ -22,7 +22,7 @@
             </div>
                 <div class=" col-lg-12">
                     <button type="submit" class="btn btn-sm btn-success" wire:click='print'>
-                        <i class="fas fa-file-excel" aria-hidden="true"></i> Excel
+                        <i class="fas fa-file-excel" aria-hidden="true"></i> Download Excel
                     </button>
                     <div class="col-lg-3 col-md-12 col-sm-12 float-right">
                         <div class="input-group">

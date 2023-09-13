@@ -68,7 +68,7 @@ class Datapasien extends Component
                                              'pasiens.nama',
                                              'pasiens.created_at',
                                              'tanggal_Lahir',
-                                             'jenkel',
+                                             'pasiens.jenkel',
                                              'no_tlpn',
                                              'nik',
                                              'kecamatans.kec_name',
@@ -76,9 +76,9 @@ class Datapasien extends Component
                                              'bpjs',
                                              'users.name',
                                              'pasiens.alamat',
-                                             'kelurahans.kel_name'
+                                             'kelurahans.kel_name',
                                              )
-                                    ->where('nama', 'like', '%' .$this->caripasien. '%')
+                                    ->where('pasiens.nama', 'like', '%' .$this->caripasien. '%')
                                     ->orWhere('no_Rm',$this->caripasien)
                                     ->orWhere('nik',$this->caripasien)
                                     ->orWhere('bpjs',$this->caripasien)
@@ -140,7 +140,6 @@ class Datapasien extends Component
         'nik.unique'                =>'NIK Pasien telah digunakan',
         'bpjs.unique'               =>'Nomor BPJS Pasien telah digunakan',
         'kelurahan.required'        =>'Kelurahan tidak boleh kosong',
-
     ];
 
 
@@ -148,10 +147,8 @@ class Datapasien extends Component
         $this->detailPasien($data);
     }
 
-
     // Menampilkan data pasien UNTUK EDIT > PENDAFTARAN PASIEN > DATA PASIEN >EDIT //
     public function detailPasien($data){
-
            $query = DB::table('pasiens')
                     ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
                     ->join('kecamatans','kelurahans.kec_id','kecamatans.id_kec')

@@ -625,6 +625,7 @@ class ComposerStaticInit0bb9b2b464d3d18b779a4311c1da2163
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Exports\\PasiensExport' => __DIR__ . '/../..' . '/app/Exports/PasiensExport.php',
         'App\\Exports\\UsersExport' => __DIR__ . '/../..' . '/app/Exports/UsersExport.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -658,6 +659,7 @@ class ComposerStaticInit0bb9b2b464d3d18b779a4311c1da2163
         'App\\Http\\Livewire\\Laporan\\Kunjungan\\Modal\\Poli' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Kunjungan/Modal/Poli.php',
         'App\\Http\\Livewire\\Laporan\\Kunjungan\\Poli' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Kunjungan/Poli.php',
         'App\\Http\\Livewire\\Laporan\\Kunjungan\\Table' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Kunjungan/Table.php',
+        'App\\Http\\Livewire\\Laporan\\Wilayah\\Modal' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Wilayah/Modal.php',
         'App\\Http\\Livewire\\Laporan\\Wilayah\\Table' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/Wilayah/Table.php',
         'App\\Http\\Livewire\\Laporan\\laporan' => __DIR__ . '/../..' . '/app/Http/Livewire/Laporan/laporan.php',
         'App\\Http\\Livewire\\Pendaftaran\\Kunjungan\\Forminput' => __DIR__ . '/../..' . '/app/Http/Livewire/Pendaftaran/Kunjungan/Forminput.php',
@@ -705,6 +707,7 @@ class ComposerStaticInit0bb9b2b464d3d18b779a4311c1da2163
         'App\\Models\\antropometri' => __DIR__ . '/../..' . '/app/Models/antropometri.php',
         'App\\Models\\diagnosa' => __DIR__ . '/../..' . '/app/Models/diagnosa.php',
         'App\\Models\\dokter' => __DIR__ . '/../..' . '/app/Models/dokter.php',
+        'App\\Models\\generalconsent' => __DIR__ . '/../..' . '/app/Models/generalconsent.php',
         'App\\Models\\icd' => __DIR__ . '/../..' . '/app/Models/icd.php',
         'App\\Models\\jaminan' => __DIR__ . '/../..' . '/app/Models/jaminan.php',
         'App\\Models\\kecamatan' => __DIR__ . '/../..' . '/app/Models/kecamatan.php',

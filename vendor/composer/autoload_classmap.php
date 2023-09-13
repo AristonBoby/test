@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Exports\\PasiensExport' => $baseDir . '/app/Exports/PasiensExport.php',
     'App\\Exports\\UsersExport' => $baseDir . '/app/Exports/UsersExport.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -41,6 +42,7 @@ return array(
     'App\\Http\\Livewire\\Laporan\\Kunjungan\\Modal\\Poli' => $baseDir . '/app/Http/Livewire/Laporan/Kunjungan/Modal/Poli.php',
     'App\\Http\\Livewire\\Laporan\\Kunjungan\\Poli' => $baseDir . '/app/Http/Livewire/Laporan/Kunjungan/Poli.php',
     'App\\Http\\Livewire\\Laporan\\Kunjungan\\Table' => $baseDir . '/app/Http/Livewire/Laporan/Kunjungan/Table.php',
+    'App\\Http\\Livewire\\Laporan\\Wilayah\\Modal' => $baseDir . '/app/Http/Livewire/Laporan/Wilayah/Modal.php',
     'App\\Http\\Livewire\\Laporan\\Wilayah\\Table' => $baseDir . '/app/Http/Livewire/Laporan/Wilayah/Table.php',
     'App\\Http\\Livewire\\Laporan\\laporan' => $baseDir . '/app/Http/Livewire/Laporan/laporan.php',
     'App\\Http\\Livewire\\Pendaftaran\\Kunjungan\\Forminput' => $baseDir . '/app/Http/Livewire/Pendaftaran/Kunjungan/Forminput.php',
@@ -88,6 +90,7 @@ return array(
     'App\\Models\\antropometri' => $baseDir . '/app/Models/antropometri.php',
     'App\\Models\\diagnosa' => $baseDir . '/app/Models/diagnosa.php',
     'App\\Models\\dokter' => $baseDir . '/app/Models/dokter.php',
+    'App\\Models\\generalconsent' => $baseDir . '/app/Models/generalconsent.php',
     'App\\Models\\icd' => $baseDir . '/app/Models/icd.php',
     'App\\Models\\jaminan' => $baseDir . '/app/Models/jaminan.php',
     'App\\Models\\kecamatan' => $baseDir . '/app/Models/kecamatan.php',
