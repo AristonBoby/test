@@ -13,9 +13,20 @@
           <div class="modal-body">
                 <form wire:submit.prevent='generalconsent'>
                     <div class="form-group row">
+                        <label class="col-md-3 label-control">Penanggung Jawab</label>
+                        <div class="col-md-9">
+                            <select wire:model.defer='status' class="form-control-sm form-control rounded-0">
+                                <option value="" selected disabled>-- Pilih Salah Satu --</option>
+                                <option value="Pasien">Pasien</option>
+                                <option value="Keluarga Pasien">Keluarga Pasien</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label class="col-md-3 label-control">Nama</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control rounded-0 form-control-sm">
+                            <input type="text" wire:model.defer='valNamaGeneral' class="form-control rounded-0 form-control-sm">
                         </div>
                     </div>
                     <div class="form-group row">

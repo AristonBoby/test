@@ -72,7 +72,7 @@
                                     <td>{{$query->bpjs}}</td>
                                     <td>
                                         <button class="btn btn-sm btn-primary rounded-0" wire:click.prevent="generalconsent('{{ $query->id }}')"><i class="text-xs fa fa-print"></i></button>
-                                        <button class="btn btn-sm btn-success rounded-0" ><i class="text-xs fa fa-edit"></i> General Consent</button>
+                                        <button data-target="#generalconsent" data-toggle="modal" wire:click="tampilkanGeneralConsent('{{ $query->id }}')" class="btn btn-sm btn-success rounded-0" ><i class="text-xs fa fa-edit"></i> General Consent</button>
                                     </td>
                                 </tr>
                             @endforeach

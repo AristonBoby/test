@@ -34,6 +34,15 @@ class EditdataPasien extends Component
     public $kecamatan;
     public $tglcari;
 
+    // Variable General Consent //
+
+    public $valStatusGeneral;
+    public $valNamaGeneral;
+    public $valJenkelGeneral;
+    public $valAlamatGeneral;
+    public $valHpGeneral;
+    public $valIdPasien;
+
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     protected $listeners= ['tglKunjungan'=>'tglKunjungan'];
@@ -78,7 +87,7 @@ class EditdataPasien extends Component
         $this->resetPage();
     }
 
-    public function generalconsent($id)
+    public function generalconsent()
     {
         $cetak = DB::table('generalconsents')
                  ->join('pasiens','generalconsents.id_pasien','pasiens.id')
@@ -90,8 +99,31 @@ class EditdataPasien extends Component
             $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Data GENEREAL CONSENT Belum diisi']);
 
         }
+    }
+    public function tampilkanGeneralConsent($id)
+    {
+        $this->valStatusGeneral     = '';
+        $this->valNamaGeneral       = '';
+        $this->valJenkelGeneral     = '';
+        $this->valAlamatGeneral     = '';
+        $this->valHpGeneral         = '';
+        $this->valIdPasien          = '';
+
+        $query =  DB::table('generalconsents')->where('id_pasien',$id)->first();
+
+        if(!empty($query))
+        {
+            $this->valStatusGeneral     ='';
+            $this->valNamaGeneral       = $query->nama;
+            $this->valJenkelGeneral     = $query->jenkel;
+            $this->valAlamatGeneral     = $query->alamat;
+            $this->valHpGeneral         = $query->notlpn;
+            $this->valIdPasien          = $id;
+        }
 
     }
+
+
 
 
 }
