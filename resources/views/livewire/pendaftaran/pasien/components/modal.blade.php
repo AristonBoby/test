@@ -80,6 +80,7 @@
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-primary btn-sm" href="printpasien/{{$no_Rm}}"  target="_blank"><i class="text-xs fa fa-print"></i> Print</a>
+                    <button class="btn btn-sm btn-success rounded-0" ><i class="text-xs fa fa-edit"></i> General Consent</button>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="text-xs fas fa-times"></i> Tutup</button>
                 </div>
               </div>

@@ -71,7 +71,8 @@
                                     <td>{{$query->nik}}</td>
                                     <td>{{$query->bpjs}}</td>
                                     <td>
-                                        <button class="btn btn-xs btn-primary rounded-0" wire:click.prevent="generalconsent('{{ $query->id }}')"><i class="text-xs fa fa-print"></i></button>
+                                        <button class="btn btn-sm btn-primary rounded-0" wire:click.prevent="generalconsent('{{ $query->id }}')"><i class="text-xs fa fa-print"></i></button>
+                                        <button class="btn btn-sm btn-success rounded-0" ><i class="text-xs fa fa-edit"></i> General Consent</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -102,22 +103,7 @@
     </div>
 <script>
         window.addEventListener('modalGeneralConsent', event => {
-                Swal.fire({
-                    title: event.detail.title,
-                    text: event.detail.text,
-                    icon: event.detail.icon,
-                    showConfirmButton: true,
-                    timer: event.detail.timer,
-                    buttons: true,
-                });
-                Swal.fire({
-                    title: event.detail.title,
-                    text: event.detail.text,
-                    icon: event.detail.icon,
-                    showConfirmButton: true,
-                    timer: event.detail.timer,
-                    buttons: true,
-                });
+            window.open ('printpasien/'+event.detail.id,'_blank');
       });
 
 </script>

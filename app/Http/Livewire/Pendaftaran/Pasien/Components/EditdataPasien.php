@@ -79,7 +79,17 @@ class EditdataPasien extends Component
     }
 
     public function generalconsent($id)
-    {    $this->dispatchBrowserEvent('modalGeneralConsent');
+    {
+        $cetak = DB::table('generalconsents')
+                 ->join('pasiens','generalconsents.id_pasien','pasiens.id')
+                 ->where('id_pasien',intval($id))->first();
+        if(!empty($cetak->no_Rm))
+        {
+            $this->dispatchBrowserEvent('modalGeneralConsent',['id'=>$cetak->no_Rm]);
+        }else{
+            $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Data GENEREAL CONSENT Belum diisi']);
+
+        }
 
     }
 
