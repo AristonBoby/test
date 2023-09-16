@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('generalconsents', function (Blueprint $table) {
             $table->id();
             $table->string('nama',25);
-            $table->char('status',1);
+            $table->char('status',25);
             $table->char('jenkel',1);
             $table->string('alamat',100);
             $table->char('notlpn',12);

@@ -35,13 +35,13 @@ class EditdataPasien extends Component
     public $tglcari;
 
     // Variable General Consent //
-
-    public $valStatusGeneral;
+    public $valstatus;
     public $valNamaGeneral;
     public $valJenkelGeneral;
     public $valAlamatGeneral;
-    public $valHpGeneral;
-    public $valIdPasien;
+    public $valJenkel;
+    public $valno_tlpn;
+    public $statusGeneralConsent;
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -87,42 +87,90 @@ class EditdataPasien extends Component
         $this->resetPage();
     }
 
-    public function generalconsent()
+    public function generalconsent($id)
     {
-        $cetak = DB::table('generalconsents')
-                 ->join('pasiens','generalconsents.id_pasien','pasiens.id')
-                 ->where('id_pasien',intval($id))->first();
-        if(!empty($cetak->no_Rm))
+        $cetak = DB::table('generalconsents')->where('id_pasien',$id)->first();
+
+        if(!empty($cetak))
         {
-            $this->dispatchBrowserEvent('modalGeneralConsent',['id'=>$cetak->no_Rm]);
-        }else{
+            $print = DB::table('pasiens')->where('id',$this->valIdPasien)->first();
+            $this->dispatchBrowserEvent('modalGeneralConsent',['id'=>$print->no_Rm]);
+        }
+        else{
             $this->dispatchBrowserEvent('alert',['title'=>'Perhatian','icon'=>'warning','text'=>'Data GENEREAL CONSENT Belum diisi']);
 
         }
     }
-    public function tampilkanGeneralConsent($id)
+
+    public function saveGeneralConsent()
     {
-        $this->valStatusGeneral     = '';
-        $this->valNamaGeneral       = '';
-        $this->valJenkelGeneral     = '';
-        $this->valAlamatGeneral     = '';
-        $this->valHpGeneral         = '';
-        $this->valIdPasien          = '';
-
-        $query =  DB::table('generalconsents')->where('id_pasien',$id)->first();
-
+         $query = DB::table('generalConsents')->where('id_pasien',$this->valIdPasien)->first();
         if(!empty($query))
         {
-            $this->valStatusGeneral     ='';
-            $this->valNamaGeneral       = $query->nama;
-            $this->valJenkelGeneral     = $query->jenkel;
-            $this->valAlamatGeneral     = $query->alamat;
-            $this->valHpGeneral         = $query->notlpn;
-            $this->valIdPasien          = $id;
+            DB::table('generalconsents')->where('id_pasien',$this->valIdPasien)->update([
+                'nama'      => $this->valNamaGeneral,
+                'status'    => $this->valstatus,
+                'jenkel'    => $this->valJenkelGeneral,
+                'alamat'    => $this->valAlamatGeneral,
+                'notlpn'    => $this->valno_tlpn,
+            ]);
+        }
+        else
+        {
+            DB::table('generalconsents')->insert([
+                'nama'      => $this->valNamaGeneral,
+                'status'    => $this->valstatus,
+                'jenkel'    => $this->valJenkelGeneral,
+                'alamat'    => $this->valAlamatGeneral,
+                'notlpn'    => $this->valno_tlpn,
+                'id_pasien' => $this->valIdPasien,
+            ]);
         }
 
     }
+    public function updatingValstatus($id)
+    {
+        if($id === 'Pasien')
+        {
+            $query = DB::table('pasiens')->find($this->valIdPasien);
+            $this->valstatus            = $id;
+            $this->valNamaGeneral       = $query->nama;
+            $this->valJenkelGeneral     = $query->jenkel;
+            $this->valAlamatGeneral     = $query->alamat;
+            $this->valno_tlpn           = $query->no_tlpn;
+        }
+        else if($id === 'Keluarga Pasien')
+        {   $this->valstatus            = $id;
+            $this->valNamaGeneral       = '';
+            $this->valJenkelGeneral     = '';
+            $this->valAlamatGeneral     = '';
+            $this->valno_tlpn           = '';
+        }
+    }
 
+
+    public function tampilkanGeneralConsent($id)
+    {
+        $this->valstatus            = '';
+        $this->valNamaGeneral       = '';
+        $this->valJenkelGeneral     = '';
+        $this->valAlamatGeneral     = '';
+        $this->valno_tlpn           = '';
+        $this->valIdPasien          = '';
+        $this->statusGeneralConsent = '';
+        $this->valIdPasien          = $id;
+
+        $query = DB::table('generalconsents')->where('id_pasien',$id)->first();
+        if(!empty($query))
+        {
+            $this->valNamaGeneral       = $query->nama;
+            $this->valJenkelGeneral     = $query->jenkel;
+            $this->valAlamatGeneral     = $query->alamat;
+            $this->valno_tlpn           = $query->notlpn;
+            $this->valstatus            = $query->status;
+        }
+
+    }
 
 
 

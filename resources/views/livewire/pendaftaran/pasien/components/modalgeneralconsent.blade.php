@@ -11,12 +11,12 @@
             </button>
           </div>
           <div class="modal-body">
-                <form wire:submit.prevent='generalconsent'>
+                <form wire:submit.prevent='saveGeneralConsent'>
                     <div class="form-group row">
                         <label class="col-md-3 label-control">Penanggung Jawab</label>
                         <div class="col-md-9">
-                            <select wire:model.defer='status' class="form-control-sm form-control rounded-0">
-                                <option value="" selected disabled>-- Pilih Salah Satu --</option>
+                            <select wire:model='valstatus' class="form-control-sm form-control rounded-0">
+                                <option value="" selected>-- Pilih Salah Satu --</option>
                                 <option value="Pasien">Pasien</option>
                                 <option value="Keluarga Pasien">Keluarga Pasien</option>
                             </select>
@@ -32,23 +32,23 @@
                     <div class="form-group row">
                         <label class="col-md-3 label-control">Jenis Kelamin</label>
                         <div class="col-md-9">
-                            <select class="form-control-sm form-control rounded-0">
-                                <option value="" selected disabled>-- Pilih Salah Satu --</option>
-                                <option value="L">Laki-laki</option>
-                                <option value="P">Perempuan</option>
+                            <select wire:modal='valJenkelGeneral' class="form-control-sm form-control rounded-0">
+                                <option value=""  @if($valJenkelGeneral === '') selected @endif>-- Pilih Salah Satu --</option>
+                                <option value="L" @if($valJenkelGeneral === 'L') selected @endif>Laki-laki</option>
+                                <option value="P" @if($valJenkelGeneral === 'P') selected @endif>Perempuan</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3 label-control">Alamat</label>
                         <div class="col-md-9">
-                            <textarea type="text" class="form-control rounded-0 form-control-sm"></textarea>
+                            <textarea wire:model.defer = "valAlamatGeneral" type="text" class="form-control rounded-0 form-control-sm"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3 label-control">Nomor Telepon / HP</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control rounded-0 form-control-sm">
+                            <input type="text" wire:model.defer='valno_tlpn' class="form-control rounded-0 form-control-sm">
                         </div>
                     </div>
                     <div>
