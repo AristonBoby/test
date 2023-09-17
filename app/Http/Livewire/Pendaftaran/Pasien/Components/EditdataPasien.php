@@ -104,7 +104,7 @@ class EditdataPasien extends Component
 
     public function saveGeneralConsent()
     {
-         $query = DB::table('generalConsents')->where('id_pasien',$this->valIdPasien)->first();
+        $query = DB::table('generalConsents')->where('id_pasien',$this->valIdPasien)->first();
         if(!empty($query))
         {
             DB::table('generalconsents')->where('id_pasien',$this->valIdPasien)->update([
@@ -132,12 +132,16 @@ class EditdataPasien extends Component
     {
         if($id === 'Pasien')
         {
-            $query = DB::table('pasiens')->find($this->valIdPasien);
-            $this->valstatus            = $id;
-            $this->valNamaGeneral       = $query->nama;
-            $this->valJenkelGeneral     = $query->jenkel;
-            $this->valAlamatGeneral     = $query->alamat;
-            $this->valno_tlpn           = $query->no_tlpn;
+            $query = DB::table('pasiens')
+            ->join('kelurahans','pasiens.kel_id','kelurahans.id_kel')
+            ->select('pasiens.*,kelurahans.kel_name')
+            ->find($this->valIdPasien);
+            // $this->valstatus            = $id;
+            // $this->valNamaGeneral       = $query->nama;
+            // $this->valJenkelGeneral     = $query->jenkel;
+            // $this->valAlamatGeneral     = $query->alamat;
+            // $this->valno_tlpn           = $query->no_tlpn;
+            dd($query);
         }
         else if($id === 'Keluarga Pasien')
         {   $this->valstatus            = $id;
