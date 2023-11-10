@@ -39,6 +39,7 @@ class Cetakpdf extends Component
             ->groupBy('kunjungans.id_poli')
             ->orderBy('jumlahPoli','desc')
             ->get();
+
          }
          if($jumlahPoli){
             $jumlahjaminan = DB::table('kunjungans')
