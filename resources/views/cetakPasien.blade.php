@@ -18,7 +18,7 @@
             top:20px;
             left:40px;
             width:2.2cm;
-            height:2.2cm;
+            height: 2.2cm;
         }
         #logo2{
             position: relative;
